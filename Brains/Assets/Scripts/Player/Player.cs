@@ -18,9 +18,17 @@ public class Player : MonoBehaviour, ICharacter {
         }
     }
 
-    public void AnimateMovement(Animation anim)
+    public void AnimateMovement(Animation anim, MovementState mState)
     {
-        throw new System.NotImplementedException();
+        switch (mState)
+        {
+            case MovementState.Idle:
+                break;
+            case MovementState.Creep:
+                break;
+            case MovementState.Crawl:
+                break;
+        }
     }
 
     public void Move(Rigidbody rbody, Vector3 moveDir, MovementState mState)
@@ -28,13 +36,30 @@ public class Player : MonoBehaviour, ICharacter {
         throw new System.NotImplementedException();
     }
 
+    void Awake()
+    {
+
+    }
+
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
+
+    void FixedUpdate()
+    {
+
+    }
+
+    void LateUpdate ()
+    {
+
+    }
 }

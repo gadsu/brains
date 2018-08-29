@@ -8,7 +8,7 @@ interface ICharacter
     MovementState MVState { get; set; }
 
     void Move(Rigidbody rbody, Vector3 moveDir, MovementState mState);
-    void AnimateMovement(Animation anim);
+    void AnimateMovement(Animation anim, MovementState mState);
 }
 
 namespace Assets.Scripts.Abstracts
