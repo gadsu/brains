@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         float s;
 
-        s = Mathf.Abs((-3 * (int)mvState + (int) mvState) + ((7 / 2) * (int)mvState));
+        s = 2 * (Mathf.Abs((float)Math.Sin((-3 * (int)mvState + (int)mvState) + ((7 / 2) * (int)mvState))) * (int)mvState);
         Debug.Log((int)mvState);
 
         Debug.Log("<color=red>Speed: </color>" + s);
