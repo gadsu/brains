@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(PlayerMovement))]
 public class Player : ACharacter {
-    private float moveSpeed;
-    private Vector3 move;
-    private Rigidbody rbody;
 
+    private float moveSpeed;
+    private Vector3 moveDir;
+    private Rigidbody rbody;
+    private PlayerMovement pmove;
     private void Awake()
     {
 
@@ -19,41 +21,23 @@ public class Player : ACharacter {
         MvState = MovementState.Idling;
         moveSpeed = 0;
         rbody = GetComponent<Rigidbody>();
+        rbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        pmove = GetComponent<PlayerMovement>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-
+        MvState = MovementState.Idling;
+        moveDir = pmove.SetDirection();
+        if (moveDir.x != 0f || moveDir.z != 0f) MvState = MovementState.Creeping;
+        if (Input.GetKey(KeyCode.LeftControl)) MvState = MovementState.Crawling;
+        moveSpeed = pmove.SetSpeed(MvState);
 	}
 
     private void FixedUpdate()
     {
-        if (Input.anyKey)
-        {
-            if (Input.GetKey(KeyCode.LeftControl) && MvState != MovementState.Crawling)
-            {
-                MvState = MovementState.Crawling;
-            }
-
-            if (Input.GetKey(KeyCode.W))
-            {
-                if (MvState != MovementState.Crawling ^ MvState != MovementState.Creeping)
-                {
-                    MvState = MovementState.Creeping;
-                }
-
-                move = Vector3.forward;
-            }
-        }
-
-        moveSpeed = ((-3 / 2) * (((int)MvState) ^ 2) + (7 / 2) * ((int)MvState));
-        Debug.Log("<color=black>" + MvState + "</color>");
-        Debug.Log("<color=cyan>" + moveSpeed + "</color>");
-        Debug.Log("<color=red>" + move + "</color>");
-
-        rbody.AddForce(move * moveSpeed, ForceMode.Impulse);
-        Debug.Log("<color=yellow>"+move * moveSpeed+"</color>");
+        pmove.Move(moveSpeed, moveDir, rbody);
     }
 
     private void LateUpdate()
