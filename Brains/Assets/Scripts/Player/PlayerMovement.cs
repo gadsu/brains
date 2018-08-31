@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     Vector3 mvDir;
 
     [Range(1.0f, 2.5f)]
-    public float v;
+    public float v = 2.5;
 
     private void Start()
     {

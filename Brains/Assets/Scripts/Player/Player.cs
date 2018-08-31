@@ -31,7 +31,7 @@ public class Player : ACharacter {
         MvState = MovementState.Idling;
         moveDir = pmove.SetDirection();
         if (moveDir.x != 0f || moveDir.z != 0f) MvState = MovementState.Creeping;
-        if (Input.GetKey(KeyCode.LeftControl)) MvState = MovementState.Crawling;
+        if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling;
         moveSpeed = pmove.SetSpeed(MvState);
 	}
 
