@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     Vector3 mvDir;
+
+    [Range(1.0f, 2.5f)]
+    public float v;
+
     private void Start()
     {
         mvDir = new Vector3(0, 0, 0);
@@ -14,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         float s;
 
-        s = 2 * (Mathf.Abs((float)Math.Sin((-3 * (int)mvState + (int)mvState) + ((7 / 2) * (int)mvState))) * (int)mvState);
+        s = v * Math.Abs(Math.Sin(mvState/(Math.Sqrt(mvState)+1)));
         Debug.Log((int)mvState);
 
         Debug.Log("<color=red>Speed: </color>" + s);
