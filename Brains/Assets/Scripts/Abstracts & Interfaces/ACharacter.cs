@@ -7,8 +7,8 @@ public abstract class ACharacter : MonoBehaviour
     public enum MovementState
     {
         Idling = 0,
-        Creeping = 1,
-        Crawling = 2
+        Creeping = 5,
+        Crawling = 10
     }
 
     private MovementState mvState;
