@@ -10,6 +10,7 @@ public class Player : ACharacter {
     private Vector3 moveDir;
     private Rigidbody rbody;
     private PlayerMovement pmove;
+
     private void Awake()
     {
 
@@ -19,25 +20,35 @@ public class Player : ACharacter {
     void Start ()
     {
         MvState = MovementState.Idling;
-        moveSpeed = 0;
+        moveSpeed = 0f;
+        moveDir = new Vector3(0, 0, 0);
+
         rbody = GetComponent<Rigidbody>();
-        rbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         pmove = GetComponent<PlayerMovement>();
+
+        rbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        MvState = MovementState.Idling;
-        moveDir = pmove.SetDirection();
-        if (moveDir.x != 0f || moveDir.z != 0f) MvState = MovementState.Creeping;
-        if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling;
-        moveSpeed = pmove.SetSpeed(MvState);
+        moveDir = Vector3.zero;
+        if (Input.anyKey)
+        {
+            moveDir = pmove.SetDirection();
+            if (moveDir != Vector3.zero) MvState = MovementState.Creeping;
+            if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling;
+        }
+
+        if (moveDir == Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Idling;
+
+        moveSpeed = pmove.SetSpeed((int)MvState);
 	}
 
     private void FixedUpdate()
     {
-        pmove.Move(moveSpeed, moveDir, rbody);
+        if(moveDir * moveSpeed != rbody.velocity)
+            pmove.Move(moveSpeed, moveDir, rbody);
     }
 
     private void LateUpdate()
