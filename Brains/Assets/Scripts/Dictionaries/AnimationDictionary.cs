@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class AnimationDictionary : MonoBehaviour
 {
-    protected Dictionary<int, Animation> charAnimation;
-    private Animation m_Anim;
+    protected Dictionary<int, string> charAnimation;
+    private string m_Anim;
     private KeyNotFoundException knfe;
 
     void Awake()
     {
+        charAnimation = new Dictionary<int, string>();
         knfe = new KeyNotFoundException("<color=yellow>Animation Key Error.</color>");
+        m_Anim = "";
 
         DontDestroyOnLoad(gameObject);
     }
 
-    public void AddToDictionary(int id, Animation p_Anim)
+    public void AddToDictionary(int id, string p_Anim)
     {
         try
         {
@@ -32,7 +34,7 @@ public class AnimationDictionary : MonoBehaviour
         }
     }
 
-    public Animation ReadFromDictionary(int id)
+    public string ReadFromDictionary(int id)
     {
         try
         {
