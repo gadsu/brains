@@ -43,6 +43,11 @@ public class Player : ACharacter {
         if (moveDir == Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Idling;
 
         moveSpeed = pmove.SetSpeed((int)MvState);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 	}
 
     private void FixedUpdate()
