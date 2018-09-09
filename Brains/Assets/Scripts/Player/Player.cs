@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(PlayerMovement))]
+/*
+ * Handles the players mechanics and animates them.
+ * 
+ * Author: Paul Manley
+ */
+
+[RequireComponent(typeof(Rigidbody))] // requires a Rigidbody component if one is not found it then generates one.
+[RequireComponent(typeof(PlayerMovement))] // requires a PlayerMovement component if one is not found it then generates one.
 public class Player : ACharacter {
 
-    private float moveSpeed;
-    private Vector3 moveDir;
-    private Rigidbody rbody;
-    private PlayerMovement pmove;
+    private float moveSpeed; // stores how fast the player should be moving.
+    private Vector3 moveDir; // stores the players movement direction.
+    private Rigidbody rbody; // stores the Rigidbody component.
+    private PlayerMovement pmove; // stores the PlayerMovement script.
 
     private void Awake()
     {
@@ -19,12 +25,12 @@ public class Player : ACharacter {
     // Use this for initialization
     void Start ()
     {
-        MvState = MovementState.Idling;
-        moveSpeed = 0f;
-        moveDir = new Vector3(0, 0, 0);
+        MvState = MovementState.Idling; // sets the players initial movement state.
+        moveSpeed = 0f; // sets the players initial speed.
+        moveDir = new Vector3(0, 0, 0); // sets the initial direction.
 
-        rbody = GetComponent<Rigidbody>();
-        pmove = GetComponent<PlayerMovement>();
+        rbody = GetComponent<Rigidbody>(); // gets and saves the Rigidbody component and access attached to this character.
+        pmove = GetComponent<PlayerMovement>(); // gets and saves access to this character PlayerMovement.
 
         rbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 	}
