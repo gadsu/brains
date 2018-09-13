@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45069265, g: 0.49876636, b: 0.5648049, a: 1}
+  m_IndirectSpecularColor: {r: 0.4506933, g: 0.49876744, b: 0.5648059, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -548,7 +548,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 384265030}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.17, y: 1.88, z: 0}
+  m_LocalPosition: {x: 0.743, y: 1.823, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 794622631}
@@ -1205,6 +1205,7 @@ GameObject:
   - component: {fileID: 794622634}
   - component: {fileID: 794622633}
   - component: {fileID: 794622632}
+  - component: {fileID: 794622636}
   m_Layer: 0
   m_Name: zomb_rig_defaultsettings_v1_1
   m_TagString: Untagged
@@ -1297,6 +1298,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90741c482f2a2474788bbe988b6e6f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &794622636
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 794622629}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0.2}
 --- !u!1 &820914158
 GameObject:
   m_ObjectHideFlags: 0

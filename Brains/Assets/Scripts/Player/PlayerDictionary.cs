@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +10,8 @@ public class PlayerDictionary : MonoBehaviour
     AnimationDictionary diction;
     Animator anim;
     AnimatorStateInfo animInfo;
-    string animationString;
-    int animationID;
+    string id;
+    int animationID, playingID;
 
     private void Start()
     {
@@ -18,19 +19,43 @@ public class PlayerDictionary : MonoBehaviour
         diction = GameObject.Find("Dictionary").GetComponent<AnimationDictionary>();
         anim = GetComponent<Animator>();
         animInfo = new AnimatorStateInfo();
+        animationID = 0;
+        id = "";
+        playingID = -1;
 
         /****Idle Animatiions****/
-        diction.AddToDictionary(0000, "Idle");
+        diction.AddToDictionary(0000, "zomb_rig|zomb_idle");
+        diction.AddToDictionary(5000, "zomb_rig|zomb_crawl");
+        diction.AddToDictionary(10000, "zomb_rig|zomb_creep");
     }
 
-    public void Animate(int id, float speed)
+    public int RetrieveKey(int mvState, int arms, int legs, int playDead)
     {
-        anim.SetFloat("Speed", speed);
-        animationString = diction.ReadFromDictionary(id);
+        return ((mvState * 1000) + (arms*100) + (legs*10) + (playDead));
+    }
 
-        //animInfo = anim.GetCurrentAnimatorStateInfo(0);
-        animationID = Animator.StringToHash(animationString);
+    public void Animate(int p_id, float speed)
+    {
+        id = diction.ReadFromDictionary(p_id);
 
-        anim.SetTrigger(animationID);
+        //anim.SetTrigger(animationID);
+        animationID = Animator.StringToHash(id);
+
+        if (animationID != playingID)
+        {
+            if (p_id == 0000 ^ p_id == 0001)
+            {
+                anim.SetBool("Moving", false);
+                Debug.Log("False");
+            }
+            else
+            {
+                anim.SetBool("Moving", true);
+            }
+
+            anim.SetFloat("Speed", speed);
+            anim.Play(animationID);
+            playingID = animationID;
+        }
     }
 }

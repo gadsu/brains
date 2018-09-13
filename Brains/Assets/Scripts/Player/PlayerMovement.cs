@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public float SetSpeed(int mvState)
     {
+        //Debug.Log((float)(v * (Math.Sin(mvState / (Math.Sqrt(mvState) + 1)))));
         return (float)(v * (Math.Sin(mvState / (Math.Sqrt(mvState) + 1))));
     }
 
