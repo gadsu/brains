@@ -19,8 +19,8 @@ public class Player : ACharacter {
     private PlayerMovement pmove; // stores the PlayerMovement script.
     private PlayerDictionary diction;
 
-    private int playDead;
     private int animationKey;
+    private int backwards;
 
     private void Awake()
     {
@@ -33,8 +33,8 @@ public class Player : ACharacter {
         MvState = MovementState.Idling; // sets the players initial movement state.
         moveSpeed = 0f; // sets the players initial speed.
         moveDir = new Vector3(0, 0, 0); // sets the initial direction.
-        playDead = 0;
         animationKey = 0;
+        backwards = 0;
 
         rbody = GetComponent<Rigidbody>(); // gets and saves the Rigidbody component and access attached to this character.
         pmove = GetComponent<PlayerMovement>(); // gets and saves access to this character PlayerMovement.
@@ -52,16 +52,13 @@ public class Player : ACharacter {
             moveDir = pmove.SetDirection();
             if (moveDir != Vector3.zero) MvState = MovementState.Creeping;
             if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling;
+
+            if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
         }
 
         if (moveDir == Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Idling;
 
         moveSpeed = pmove.SetSpeed((int)MvState);
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
 	}
 
     private void FixedUpdate()
@@ -72,7 +69,8 @@ public class Player : ACharacter {
 
     private void LateUpdate()
     {
-        animationKey = diction.RetrieveKey((int)MvState, 0, 0, playDead);
-        diction.Animate(animationKey, moveSpeed);
+        backwards = (moveDir.z < 0f) ? -1 : 1;
+        animationKey = diction.RetrieveKey((int)MvState, 0, 0, 0);
+        diction.Animate(animationKey, moveSpeed, backwards);
     }
 }

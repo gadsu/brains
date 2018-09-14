@@ -9,7 +9,7 @@ public class PlayerDictionary : MonoBehaviour
 {
     AnimationDictionary diction;
     Animator anim;
-    AnimatorStateInfo animInfo;
+    //AnimatorStateInfo animInfo;
     string id;
     int animationID, playingID;
 
@@ -18,44 +18,51 @@ public class PlayerDictionary : MonoBehaviour
         // Add the player animations to the animation dictionary.
         diction = GameObject.Find("Dictionary").GetComponent<AnimationDictionary>();
         anim = GetComponent<Animator>();
-        animInfo = new AnimatorStateInfo();
+        //animInfo = new AnimatorStateInfo();
         animationID = 0;
         id = "";
         playingID = -1;
 
         /****Idle Animatiions****/
-        diction.AddToDictionary(0000, "zomb_rig|zomb_idle");
-        diction.AddToDictionary(5000, "zomb_rig|zomb_crawl");
-        diction.AddToDictionary(10000, "zomb_rig|zomb_creep");
+        InitializeAnimationList();
     }
 
     public int RetrieveKey(int mvState, int arms, int legs, int playDead)
     {
+        //Debug.Log("<color=red>" + ((mvState * 1000) + (arms * 100) + (legs * 10) + (playDead)) + "</color>");
         return ((mvState * 1000) + (arms*100) + (legs*10) + (playDead));
     }
 
-    public void Animate(int p_id, float speed)
+    public void Animate(int p_id, float speed, int b)
     {
         id = diction.ReadFromDictionary(p_id);
 
         //anim.SetTrigger(animationID);
+        Debug.Log(speed);
         animationID = Animator.StringToHash(id);
+        anim.SetFloat("Speed", ((b + (speed*b)) + (Math.Abs((1/3)*b))));
 
         if (animationID != playingID)
         {
             if (p_id == 0000 ^ p_id == 0001)
             {
                 anim.SetBool("Moving", false);
-                Debug.Log("False");
+                //Debug.Log("False");
             }
             else
             {
                 anim.SetBool("Moving", true);
+                //Debug.Log("True");
             }
-
-            anim.SetFloat("Speed", speed);
             anim.Play(animationID);
             playingID = animationID;
         }
+    }
+
+    void InitializeAnimationList()
+    {
+        diction.AddToDictionary(0000, "zomb_rig|zomb_idle");
+        diction.AddToDictionary(5000, "zomb_rig|zomb_crawl");
+        diction.AddToDictionary(10000, "zomb_rig|zomb_creep");
     }
 }
