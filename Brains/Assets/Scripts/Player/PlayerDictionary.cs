@@ -37,23 +37,12 @@ public class PlayerDictionary : MonoBehaviour
     {
         id = diction.ReadFromDictionary(p_id);
 
-        //anim.SetTrigger(animationID);
-        Debug.Log(speed);
+        if (speed == 0f) speed = 1f;
         animationID = Animator.StringToHash(id);
-        anim.SetFloat("Speed", ((b + (speed*b)) + (Math.Abs((1/3)*b))));
+        anim.SetFloat("Speed",(speed * b));
 
         if (animationID != playingID)
         {
-            if (p_id == 0000 ^ p_id == 0001)
-            {
-                anim.SetBool("Moving", false);
-                //Debug.Log("False");
-            }
-            else
-            {
-                anim.SetBool("Moving", true);
-                //Debug.Log("True");
-            }
             anim.Play(animationID);
             playingID = animationID;
         }
