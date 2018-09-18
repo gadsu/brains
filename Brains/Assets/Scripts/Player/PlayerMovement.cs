@@ -24,17 +24,16 @@ public class PlayerMovement : MonoBehaviour {
     {
         mvDir.x = Input.GetAxis("Horizontal");
         mvDir.z = Input.GetAxis("Vertical");
-
-        if (mvDir.x != 0f && mvDir.z != 0f)
-        {
-            mvDir.x = .75f * mvDir.x;
-            mvDir.z = .75f * mvDir.z;
-        }
         return mvDir;
     }
 
-    public void Move(float moveSpeed, Vector3 moveDir, Rigidbody rbody)
+    public void RotatePlayer(Transform pt, Vector3 dir, float p_rate)
     {
-        rbody.velocity = (moveDir * moveSpeed);
+        pt.forward += dir*p_rate;
+    }
+
+    public void Move(float moveSpeed, Vector3 moveDir, Rigidbody rbody, Transform pt)
+    {
+        rbody.velocity = pt.forward * moveSpeed;
     }
 }

@@ -33,9 +33,6 @@ public class FollowPlayer : MonoBehaviour
 
         pos = targetPos;
         pos -= dist;
-        /*pos.x -= distX;
-        pos.y -= distY;
-        pos.z -= distZ;*/
 
         transform.position = pos;
 

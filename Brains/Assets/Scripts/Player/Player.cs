@@ -59,12 +59,14 @@ public class Player : ACharacter {
         if (moveDir == Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Idling;
 
         moveSpeed = pmove.SetSpeed((int)MvState);
+
+        pmove.RotatePlayer(this.transform, moveDir, .1f);
 	}
 
     private void FixedUpdate()
     {
         if(moveDir * moveSpeed != rbody.velocity)
-            pmove.Move(moveSpeed, moveDir, rbody);
+            pmove.Move(moveSpeed, moveDir, rbody, this.transform);
     }
 
     private void LateUpdate()
