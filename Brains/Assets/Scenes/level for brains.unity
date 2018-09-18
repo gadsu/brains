@@ -7402,7 +7402,8 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136565252488838190, guid: fd2fec56c5c35ed409d67d649778b2ec, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: fd2fec56c5c35ed409d67d649778b2ec, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1162606411
@@ -7720,6 +7721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1255639796}
+  m_rate: 100
 --- !u!81 &1231265435
 AudioListener:
   m_ObjectHideFlags: 0

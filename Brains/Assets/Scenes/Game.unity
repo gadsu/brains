@@ -756,6 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 384265030}
+  m_rate: 100
 --- !u!1 &1965975063
 GameObject:
   m_ObjectHideFlags: 0
