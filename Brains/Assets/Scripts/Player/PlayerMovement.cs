@@ -35,6 +35,6 @@ public class PlayerMovement : MonoBehaviour {
 
     public void Move(float moveSpeed, Vector3 moveDir, Rigidbody rbody, Transform pt)
     {
-        rbody.velocity = pt.forward * moveSpeed;
+        rbody.velocity = (pt.forward * moveDir.z) * moveSpeed;
     }
 }
