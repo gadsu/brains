@@ -33,8 +33,8 @@ public class PlayerMovement : MonoBehaviour {
         pt.rotation = Quaternion.Euler(0f, playerRotation.x, 0f);
     }
 
-    public void Move(float moveSpeed, Vector3 moveDir, Rigidbody rbody, Transform pt)
+    public void Move(float moveSpeed, Rigidbody rbody, Transform pt, int backwards)
     {
-        rbody.velocity = (pt.forward * moveDir.z) * moveSpeed;
+        rbody.velocity = (pt.forward * backwards) * moveSpeed;
     }
 }
