@@ -5,19 +5,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     Vector3 mvDir;
-    Quaternion playerRotation;
+    Vector3 playerRotation;
     [Range(1.0f, 5f)]
     public float v = 2.5f;
 
     private void Start()
     {
         mvDir = new Vector3(0, 0, 0);
-        playerRotation = transform.Rotation;
+        playerRotation = transform.rotation.eulerAngles;
     }
 
     public float SetSpeed(int mvState)
     {
-        //Debug.Log((float)(v * (Math.Sin(mvState / (Math.Sqrt(mvState) + 1)))));
         return (float)(v * (Math.Sin(mvState / (Math.Sqrt(mvState) + 1))));
     }
 
@@ -30,9 +29,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public void RotatePlayer(Transform pt, Vector3 dir, float p_rate)
     {
-        playerRotation += Quaternion.euler(dir * p_rate);
-        pt.rotation = playerRotation;
-        
+        playerRotation += dir * p_rate;
+        pt.rotation = Quaternion.Euler(0f, playerRotation.x, 0f);
     }
 
     public void Move(float moveSpeed, Vector3 moveDir, Rigidbody rbody, Transform pt)

@@ -60,7 +60,7 @@ public class Player : ACharacter {
 
         moveSpeed = pmove.SetSpeed((int)MvState);
 
-        pmove.RotatePlayer(this.transform, moveDir, .1f);
+        pmove.RotatePlayer(this.transform, moveDir, moveSpeed);
 	}
 
     private void FixedUpdate()
