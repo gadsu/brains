@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     Vector3 mvDir;
-
+    Quaternion playerRotation;
     [Range(1.0f, 5f)]
     public float v = 2.5f;
 
     private void Start()
     {
         mvDir = new Vector3(0, 0, 0);
+        playerRotation = transform.Rotation;
     }
 
     public float SetSpeed(int mvState)
@@ -29,7 +30,9 @@ public class PlayerMovement : MonoBehaviour {
 
     public void RotatePlayer(Transform pt, Vector3 dir, float p_rate)
     {
-        pt.forward += dir*p_rate;
+        playerRotation += Quaternion.euler(dir * p_rate);
+        pt.rotation = playerRotation;
+        
     }
 
     public void Move(float moveSpeed, Vector3 moveDir, Rigidbody rbody, Transform pt)
