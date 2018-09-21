@@ -65,13 +65,13 @@ public class Player : ACharacter {
 
     private void FixedUpdate()
     {
-        if(moveDir * moveSpeed != rbody.velocity)
-            pmove.Move(moveSpeed, moveDir, rbody, this.transform);
+        backwards = (moveDir.z < 0f) ? -1 : 1;
+        if (moveDir * moveSpeed != rbody.velocity)
+            pmove.Move(moveSpeed, rbody, this.transform, backwards);
     }
 
     private void LateUpdate()
     {
-        backwards = (moveDir.z < 0f) ? -1 : 1;
         animationKey = diction.RetrieveKey((int)MvState, 0, 0, 0);
         diction.Animate(animationKey, moveSpeed, backwards);
     }
