@@ -11,13 +11,20 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))] // requires a Rigidbody component if one is not found it then generates one.
 [RequireComponent(typeof(PlayerMovement))] // requires a PlayerMovement component if one is not found it then generates one.
 [RequireComponent(typeof(PlayerDictionary))] // requires a PlayerDictionary component if one is not found it then generates one.
+[RequireComponent(typeof(StealthHandler))]
+[RequireComponent(typeof(GroanHandler))]
+[RequireComponent(typeof(BodyHandler))]
 public class Player : ACharacter {
 
     private float moveSpeed; // stores how fast the player should be moving.
     private Vector3 moveDir; // stores the players movement direction.
     private Rigidbody rbody; // stores the Rigidbody component.
+
     private PlayerMovement pmove; // stores the PlayerMovement script.
     private PlayerDictionary diction;
+    private StealthHandler stealth;
+    private GroanHandler groan;
+    private BodyHandler body;
 
     private int animationKey;
     private int backwards;
@@ -39,6 +46,9 @@ public class Player : ACharacter {
         rbody = GetComponent<Rigidbody>(); // gets and saves the Rigidbody component and access attached to this character.
         pmove = GetComponent<PlayerMovement>(); // gets and saves access to this character PlayerMovement.
         diction = GetComponent<PlayerDictionary>();
+        stealth = GetComponent<StealthHandler>();
+        groan = GetComponent<GroanHandler>();
+        body = GetComponent<BodyHandler>();
 
         rbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 	}
@@ -60,19 +70,26 @@ public class Player : ACharacter {
 
         moveSpeed = pmove.SetSpeed((int)MvState);
 
-        pmove.RotatePlayer(this.transform, moveDir, moveSpeed);
+        pmove.RotatePlayer(transform, moveDir, moveSpeed);
+
 	}
 
     private void FixedUpdate()
     {
         backwards = (moveDir.z < 0f) ? -1 : 1;
         if (moveDir * moveSpeed != rbody.velocity)
-            pmove.Move(moveSpeed, rbody, this.transform, backwards);
+        {
+            pmove.Move(moveSpeed, rbody, transform, backwards);
+            stealth.UpdateStealthState(0, body.GetArms(), body.GetLegs(), (int)MvState);
+            groan.SetGroanSpeed((int)MvState, moveSpeed);
+        }
     }
 
     private void LateUpdate()
     {
-        animationKey = diction.RetrieveKey((int)MvState, 0, 0, 0);
+        animationKey = diction.RetrieveKey((int)MvState, body.GetArms(), body.GetLegs(), 0);
         diction.Animate(animationKey, moveSpeed, backwards);
+        if (groan.UpdateGroanAmount())
+            groan.Groan();
     }
 }
