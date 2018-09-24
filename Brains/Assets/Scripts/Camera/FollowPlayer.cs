@@ -4,29 +4,39 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public float offsetX, offsetY, offsetZ;
     public GameObject target;
-
+    public int m_rate;
+    private Vector3 targetPos;
     private Vector3 pos;
     private Quaternion rot;
 
+    private Vector3 dist;
+    /*private float distX;
+    private float distY;
+    private float distZ;*/
     private void Start()
     {
+        targetPos = target.GetComponent<Transform>().position;
         pos = transform.position;
-        rot = gameObject.transform.rotation;
+        dist = new Vector3(0, 0, 0);
     }
 
     private void Update()
     {
-        rot = transform.rotation;
+        pos = transform.position;
 
-        pos = target.transform.position;
-        pos.x = pos.x - offsetX;
-        pos.y = pos.y - offsetY;
-        pos.z = pos.z - offsetZ;
+        dist.x = targetPos.x - pos.x;
+        dist.y = targetPos.y - pos.y;
+        dist.z = targetPos.z - pos.z;
 
+        targetPos = target.GetComponent<Transform>().position;
 
+        pos = targetPos;
+        pos -= dist;
 
         transform.position = pos;
+
+        transform.RotateAround(targetPos, new Vector3(0f, Input.GetAxis("Mouse X"), 0f), m_rate*Time.deltaTime);
+        transform.Rotate(new Vector3(-((Input.GetAxis("Mouse Y")*m_rate)*Time.deltaTime), 0f, 0f));
     }
 }

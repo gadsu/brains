@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     Vector3 mvDir;
-
+    Vector3 playerRotation;
     [Range(1.0f, 5f)]
     public float v = 2.5f;
 
     private void Start()
     {
         mvDir = new Vector3(0, 0, 0);
+        playerRotation = transform.rotation.eulerAngles;
     }
 
     public float SetSpeed(int mvState)
@@ -23,17 +24,17 @@ public class PlayerMovement : MonoBehaviour {
     {
         mvDir.x = Input.GetAxis("Horizontal");
         mvDir.z = Input.GetAxis("Vertical");
-
-        if (mvDir.x != 0f && mvDir.z != 0f)
-        {
-            mvDir.x = .75f * mvDir.x;
-            mvDir.z = .75f * mvDir.z;
-        }
         return mvDir;
     }
 
-    public void Move(float moveSpeed, Vector3 moveDir, Rigidbody rbody)
+    public void RotatePlayer(Transform pt, Vector3 dir, float p_rate)
     {
-        rbody.velocity = (moveDir * moveSpeed);
+        playerRotation += dir * p_rate;
+        pt.rotation = Quaternion.Euler(0f, playerRotation.x, 0f);
+    }
+
+    public void Move(float moveSpeed, Rigidbody rbody, Transform pt, int backwards)
+    {
+        rbody.velocity = (pt.forward * backwards) * moveSpeed;
     }
 }

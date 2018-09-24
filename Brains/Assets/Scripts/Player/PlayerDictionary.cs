@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,29 +9,49 @@ public class PlayerDictionary : MonoBehaviour
 {
     AnimationDictionary diction;
     Animator anim;
-    AnimatorStateInfo animInfo;
-    string animationString;
-    int animationID;
+    //AnimatorStateInfo animInfo;
+    string id;
+    int animationID, playingID;
 
     private void Start()
     {
         // Add the player animations to the animation dictionary.
         diction = GameObject.Find("Dictionary").GetComponent<AnimationDictionary>();
         anim = GetComponent<Animator>();
-        animInfo = new AnimatorStateInfo();
+        //animInfo = new AnimatorStateInfo();
+        animationID = 0;
+        id = "";
+        playingID = -1;
 
         /****Idle Animatiions****/
-        diction.AddToDictionary(0000, "Idle");
+        InitializeAnimationList();
     }
 
-    public void Animate(int id, float speed)
+    public int RetrieveKey(int mvState, int arms, int legs, int playDead)
     {
-        anim.SetFloat("Speed", speed);
-        animationString = diction.ReadFromDictionary(id);
+        //Debug.Log("<color=red>" + ((mvState * 1000) + (arms * 100) + (legs * 10) + (playDead)) + "</color>");
+        return ((mvState * 1000) + (arms*100) + (legs*10) + (playDead));
+    }
 
-        //animInfo = anim.GetCurrentAnimatorStateInfo(0);
-        animationID = Animator.StringToHash(animationString);
+    public void Animate(int p_id, float speed, int b)
+    {
+        id = diction.ReadFromDictionary(p_id);
 
-        anim.SetTrigger(animationID);
+        if (speed == 0f) speed = 1f;
+        animationID = Animator.StringToHash(id);
+        anim.SetFloat("Speed",(speed * b));
+
+        if (animationID != playingID)
+        {
+            anim.Play(animationID);
+            playingID = animationID;
+        }
+    }
+
+    void InitializeAnimationList()
+    {
+        diction.AddToDictionary(0000, "zomb_rig|zomb_idle");
+        diction.AddToDictionary(5000, "zomb_rig|zomb_crawl");
+        diction.AddToDictionary(10000, "zomb_rig|zomb_creep");
     }
 }

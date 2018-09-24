@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: dcb96bfe0e920644fb4631d6344ec061
+    path: Assets/Scenes/level for brains.unity
+    guid: ef40cf58a93991948801bfdaf20e21c0
   m_configObjects: {}
