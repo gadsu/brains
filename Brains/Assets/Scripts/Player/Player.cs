@@ -28,6 +28,7 @@ public class Player : ACharacter {
 
     private int animationKey;
     private int backwards;
+    private int moving;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class Player : ACharacter {
         moveDir = new Vector3(0, 0, 0); // sets the initial direction.
         animationKey = 0;
         backwards = 0;
+        moving = 0;
 
         rbody = GetComponent<Rigidbody>(); // gets and saves the Rigidbody component and access attached to this character.
         pmove = GetComponent<PlayerMovement>(); // gets and saves access to this character PlayerMovement.
@@ -56,7 +58,9 @@ public class Player : ACharacter {
 	// Update is called once per frame
 	void Update ()
     {
+        MvState = MovementState.Idling;
         moveDir = Vector3.zero;
+        moving = 0;
         if (Input.anyKey)
         {
             moveDir = pmove.SetDirection();
@@ -66,12 +70,12 @@ public class Player : ACharacter {
             if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
         }
 
-        if (moveDir == Vector3.zero && !Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Idling;
-
-        moveSpeed = pmove.SetSpeed((int)MvState);
-
-        pmove.RotatePlayer(transform, moveDir, moveSpeed);
-
+        moveSpeed = (moveDir != Vector3.zero) ? pmove.SetSpeed((int)MvState) : 0f;
+        if (moveSpeed > 0f)
+        {
+            pmove.RotatePlayer(transform, moveDir, moveSpeed);
+            moving = 1;
+        }
 	}
 
     private void FixedUpdate()
@@ -87,7 +91,7 @@ public class Player : ACharacter {
 
     private void LateUpdate()
     {
-        animationKey = diction.RetrieveKey((int)MvState, body.GetArms(), body.GetLegs(), 0);
+        animationKey = diction.RetrieveKey(moving, (int)MvState, body.GetArms(), body.GetLegs(), 0);
         diction.Animate(animationKey, moveSpeed, backwards);
         if (groan.UpdateGroanAmount())
             groan.Groan();

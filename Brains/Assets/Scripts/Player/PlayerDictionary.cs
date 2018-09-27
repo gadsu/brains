@@ -27,10 +27,10 @@ public class PlayerDictionary : MonoBehaviour
         InitializeAnimationList();
     }
 
-    public int RetrieveKey(int mvState, int arms, int legs, int playDead)
+    public int RetrieveKey(int moving, int mvState, int arms, int legs, int playDead)
     {
         //Debug.Log("<color=red>" + ((mvState * 1000) + (arms * 100) + (legs * 10) + (playDead)) + "</color>");
-        return ((mvState * 1000) + (arms*100) + (legs*10) + (playDead));
+        return ((moving * 10000) + (mvState * 1000) + (arms*100) + (legs*10) + (playDead));
     }
 
     public void Animate(int p_id, float speed, int b)
@@ -39,7 +39,7 @@ public class PlayerDictionary : MonoBehaviour
 
         if (speed == 0f) speed = 1f;
         animationID = Animator.StringToHash(id);
-        anim.SetFloat("Speed",(speed * b));
+        anim.SetFloat("Speed", (speed * b));
 
         if (animationID != playingID)
         {
@@ -50,8 +50,10 @@ public class PlayerDictionary : MonoBehaviour
 
     void InitializeAnimationList()
     {
-        diction.AddToDictionary(0000, "zomb_rig|zomb_idle");
-        diction.AddToDictionary(5000, "zomb_rig|zomb_crawl");
-        diction.AddToDictionary(10000, "zomb_rig|zomb_creep");
+        diction.AddToDictionary(00220, "zomb_rig|zomb_idle");
+        diction.AddToDictionary(20220, "zomb_rig|zomb_creep");
+
+        diction.AddToDictionary(05220, "zomb_rig|zomb_crawl_idle");
+        diction.AddToDictionary(15220, "zomb_rig|zomb_crawl");
     }
 }
