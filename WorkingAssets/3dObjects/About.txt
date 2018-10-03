@@ -1,0 +1,13 @@
+Conventions (from https://github.com/Allar/ue4-style-guide#textures)
+
+Level 		/ Map
+Level (Persistent)		_P	
+Level (Audio)			_Audio	
+Level (Lighting)		_Lighting	
+Level (Geometry)		_Geo	
+Level (Gameplay)		_Gameplay			
+Material	M_		
+Static Mesh	S_		Many use SM_. We use S_.
+Skeletal Mesh	SK_		
+Texture		T_	_?	See Textures
+Particle System	PS_	
