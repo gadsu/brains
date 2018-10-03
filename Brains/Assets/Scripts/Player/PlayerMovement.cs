@@ -37,15 +37,21 @@ public class PlayerMovement : MonoBehaviour {
 
     public void RotatePlayer(Transform pt, Vector3 dir, float p_rate)
     {
-        cameraY = cameraTransform.rotation.y;
+        /*cameraY = cameraTransform.rotation.y;
         playerRotation += dir * p_rate;
         playerRotation.y += cameraY;
         pt.rotation = Quaternion.Euler(0f, cameraY * playerRotation.x, 0f);
+        */
+
+        cameraY = cameraTransform.rotation.eulerAngles.y;
+        playerRotation = pt.rotation.eulerAngles;
+        playerRotation.y = cameraY + dir.x;
+
+        pt.rotation = Quaternion.Euler(playerRotation);
     }
 
     public void Move(float moveSpeed, Rigidbody rbody, Transform pt, int backwards, Vector3 dir)
     {
-        //dir = new Vector3(cameraTransform.rotation.y * dir.x, cameraTransform.rotation.z, cameraTransform.rotation.y *dir.z);
-        rbody.velocity = (pt.forward * backwards) * moveSpeed;
+        //rbody.velocity = (pt.forward * backwards) * moveSpeed;
     }
 }
