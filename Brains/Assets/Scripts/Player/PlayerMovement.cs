@@ -45,13 +45,13 @@ public class PlayerMovement : MonoBehaviour {
 
         cameraY = cameraTransform.rotation.eulerAngles.y;
         playerRotation = pt.rotation.eulerAngles;
-        playerRotation.y = cameraY + dir.x;
+        playerRotation.y = cameraY + (dir.x * 100f);
 
         pt.rotation = Quaternion.Euler(playerRotation);
     }
 
     public void Move(float moveSpeed, Rigidbody rbody, Transform pt, int backwards, Vector3 dir)
     {
-        //rbody.velocity = (pt.forward * backwards) * moveSpeed;
+        rbody.velocity = (pt.forward * backwards) * moveSpeed;
     }
 }
