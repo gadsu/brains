@@ -71,9 +71,9 @@ public class Player : ACharacter {
         }
 
         moveSpeed = (moveDir != Vector3.zero) ? pmove.SetSpeed((int)MvState) : 0f;
+        pmove.RotatePlayer(transform, moveDir, moveSpeed);
         if (moveSpeed > 0f)
         {
-            pmove.RotatePlayer(transform, moveDir, moveSpeed);
             moving = 1;
         }
 	}
