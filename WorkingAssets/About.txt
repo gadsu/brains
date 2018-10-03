@@ -1,0 +1,2 @@
+Throw all yer in-game stuffs here.
+(Conventions from https://github.com/Allar/ue4-style-guide#textures)
