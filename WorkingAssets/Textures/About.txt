@@ -1,0 +1,16 @@
+Conventions (from https://github.com/Allar/ue4-style-guide#textures)
+
+Asset Type		Prefix	Suffix	Notes
+Texture	T_		
+Texture (Diffuse)	T_	_D	
+Texture (Normal)	T_	_N	
+Texture (Roughness)	T_	_R	
+Texture (Alpha/Opacity)	T_	_A	
+Texture (AO)		T_	_O	
+Texture (Bump)		T_	_B	
+Texture (Emissive)	T_	_E	
+Texture (Mask)		T_	_M	
+Texture (Specular)	T_	_S	
+Texture (Packed)	T_	_*	See notes below about packing.
+Texture Cube		TC_		
+Media Texture		MT_
