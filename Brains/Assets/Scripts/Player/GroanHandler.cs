@@ -1,37 +1,60 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GroanHandler : MonoBehaviour {
     private float currentAmount, nextAmount, groanSpeed;
+    private Vector3 groanTransformScale;
 
-    [Range(1f, 5f)]
+    [Range(.1f, .5f)]
     public float groanRate;
+
+    public Image groanMeter;
 
     private void Awake()
     {
         currentAmount = 0f;
         nextAmount = 0f;
+        groanTransformScale = Vector3.zero;
+        groanTransformScale.y = 1f;
+        groanTransformScale.z = 1f;
     }
 
     public void SetGroanSpeed(int mvState, float mvSpeed)
     {
-        groanSpeed = groanRate + (mvSpeed * Mathf.Log(mvState + 1));
+        groanSpeed = groanRate + (.5f * groanRate)*(mvSpeed * Mathf.Log(mvState + 1));
     }
 
     public bool UpdateGroanAmount()
     {
-        nextAmount = (currentAmount + groanSpeed) * Time.deltaTime;
-
-        if (nextAmount >= 100f)
-            return true;
-
+        nextAmount = currentAmount + (groanSpeed * Time.deltaTime);
         currentAmount = nextAmount;
+        groanTransformScale.x = currentAmount;
+        groanMeter.transform.localScale = groanTransformScale;
+
+        if (currentAmount > 1f)
+        {
+            return true;
+        }
+
         return false;
     }
 
     public void Groan()
     {
         currentAmount = 0f;
+        StartCoroutine(Groaning());
+    }
+
+    private IEnumerator Groaning()
+    {
+        int x = 0;
+        do
+        {
+            x++;
+            Debug.Log("Groan!");
+            yield return new WaitForSeconds(.5f);
+        } while (x < 5);
     }
 }
