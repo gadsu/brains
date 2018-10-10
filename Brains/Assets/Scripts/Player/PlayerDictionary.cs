@@ -48,12 +48,14 @@ public class PlayerDictionary : MonoBehaviour
         }
     }
 
+    // Initial filenames from the FBX asset are weird, should them in the animator.
+    // i.e remove 'zomb_rig|' prefix from everything. 
     void InitializeAnimationList()
     {
-        diction.AddToDictionary(00220, "zomb_rig|zomb_idle");
-        diction.AddToDictionary(20220, "zomb_rig|zomb_creep");
+        diction.AddToDictionary(00220, "A_SpudIdle");
+        diction.AddToDictionary(20220, "A_SpudCreep");
 
-        diction.AddToDictionary(05220, "zomb_rig|zomb_crawl_idle");
-        diction.AddToDictionary(15220, "zomb_rig|zomb_crawl");
+        diction.AddToDictionary(05220, "A_SpudCrawlIdle");
+        diction.AddToDictionary(15220, "A_SpudCrawl");
     }
 }

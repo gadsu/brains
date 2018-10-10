@@ -12,6 +12,8 @@ public class GroanHandler : MonoBehaviour {
 
     public Image groanMeter;
 
+    public GameObject agentTester;
+
     private void Awake()
     {
         currentAmount = 0f;
@@ -20,7 +22,7 @@ public class GroanHandler : MonoBehaviour {
         groanTransformScale.y = 1f;
         groanTransformScale.z = 1f;
     }
-
+   
     public void SetGroanSpeed(int mvState, float mvSpeed)
     {
         groanSpeed = groanRate + (.5f * groanRate)*(mvSpeed * Mathf.Log(mvState + 1));
@@ -50,9 +52,14 @@ public class GroanHandler : MonoBehaviour {
     private IEnumerator Groaning()
     {
         int x = 0;
+        Vector3 groanLocation = transform.position;
         do
         {
             x++;
+            if (x == 3)
+            {
+                agentTester.GetComponent<TutorialMoveTo>().PathTo(groanLocation);
+            }
             Debug.Log("Groan!");
             yield return new WaitForSeconds(.5f);
         } while (x < 5);
