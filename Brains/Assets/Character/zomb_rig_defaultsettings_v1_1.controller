@@ -27,13 +27,13 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &1102231711258764042
+--- !u!1102 &1102041022993928896
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: zomb_rig|zomb_crawl_idle
+  m_Name: A_SpudIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -46,19 +46,19 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400018, guid: 327eeda21648d174fb218feb5e8087cf, type: 3}
+  m_Motion: {fileID: 7400006, guid: 9ee9669a90c15d34ba7801a715b89e69, type: 3}
   m_Tag: 
   m_SpeedParameter: Speed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102693247733391542
+--- !u!1102 &1102145511795411368
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: zomb_rig|zomb_idle
+  m_Name: A_SpudCreep
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -71,19 +71,44 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400004, guid: 22fcf07d4e5a3ea4eaf0e2e34f7e5f08, type: 3}
+  m_Motion: {fileID: 7400000, guid: 9ee9669a90c15d34ba7801a715b89e69, type: 3}
+  m_Tag: 
+  m_SpeedParameter: Speed
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: Speed
+  m_TimeParameter: Speed
+--- !u!1102 &1102461794819523594
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: A_SpudCrawl
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 1
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400002, guid: 9ee9669a90c15d34ba7801a715b89e69, type: 3}
   m_Tag: 
   m_SpeedParameter: Speed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102846621834912706
+--- !u!1102 &1102731750662977354
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: zomb_rig|zomb_crawl
+  m_Name: A_SpudCrawlIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -96,57 +121,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400016, guid: 327eeda21648d174fb218feb5e8087cf, type: 3}
-  m_Tag: 
-  m_SpeedParameter: Speed
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &1102919541445757714
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: zomb_rig|zomb_idle 0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 1
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400022, guid: 327eeda21648d174fb218feb5e8087cf, type: 3}
-  m_Tag: 
-  m_SpeedParameter: Speed
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &1102934553720821722
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: zomb_rig|zomb_creep
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 1
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400020, guid: 327eeda21648d174fb218feb5e8087cf, type: 3}
+  m_Motion: {fileID: 7400004, guid: 9ee9669a90c15d34ba7801a715b89e69, type: 3}
   m_Tag: 
   m_SpeedParameter: Speed
   m_MirrorParameter: 
@@ -161,27 +136,24 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 1102693247733391542}
-    m_Position: {x: 252, y: 0, z: 0}
+    m_State: {fileID: 1102145511795411368}
+    m_Position: {x: 348, y: 72, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102919541445757714}
-    m_Position: {x: 360, y: 216, z: 0}
+    m_State: {fileID: 1102461794819523594}
+    m_Position: {x: 624, y: 192, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102934553720821722}
-    m_Position: {x: 666.2162, y: 92.15445, z: 0}
+    m_State: {fileID: 1102731750662977354}
+    m_Position: {x: 348, y: 192, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102231711258764042}
-    m_Position: {x: 655.2124, y: -36.223938, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102846621834912706}
-    m_Position: {x: 682.1107, y: 238.87259, z: 0}
+    m_State: {fileID: 1102041022993928896}
+    m_Position: {x: 624, y: 72, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
+  m_EntryPosition: {x: 48, y: 96, z: 0}
   m_ExitPosition: {x: 48, y: 168, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 1102693247733391542}
+  m_DefaultState: {fileID: 1102041022993928896}

@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     Vector3 mvDir;
     Vector3 playerRotation;
     [Range(1.0f, 5f)]
-    public float v = 2.5f;
+    public float speedRate = 2.5f;
 
     public Transform cameraTransform;
     private float cameraY;
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public float SetSpeed(int mvState)
     {
-        return (float)(v * (Math.Sin(mvState / (Math.Sqrt(mvState) + 1))));
+        return (float)(speedRate * (Math.Sin(mvState / (Math.Sqrt(mvState) + 1))));
     }
 
     public Vector3 SetDirection()

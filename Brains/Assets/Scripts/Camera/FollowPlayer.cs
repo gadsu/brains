@@ -6,14 +6,9 @@ public class FollowPlayer : MonoBehaviour
 {
     public GameObject target;
     public int m_rate;
-    private Vector3 targetPos;
-    private Vector3 pos;
+    private Vector3 targetPos, pos, dist;
     private Quaternion rot;
 
-    private Vector3 dist;
-    /*private float distX;
-    private float distY;
-    private float distZ;*/
     private void Start()
     {
         targetPos = target.GetComponent<Transform>().position;
