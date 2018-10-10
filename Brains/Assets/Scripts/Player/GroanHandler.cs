@@ -7,12 +7,16 @@ public class GroanHandler : MonoBehaviour {
     private float currentAmount, nextAmount, groanSpeed;
     private Vector3 groanTransformScale;
 
-    [Range(.1f, .5f)]
+    [Range(.01f, .1f)]
     public float groanRate;
 
     public Image groanMeter;
 
     public GameObject agentTester;
+    public GameObject groanSphere;
+
+    public bool groaning;
+    public Vector3 groanLocation;
 
     private void Awake()
     {
@@ -21,6 +25,7 @@ public class GroanHandler : MonoBehaviour {
         groanTransformScale = Vector3.zero;
         groanTransformScale.y = 1f;
         groanTransformScale.z = 1f;
+        groaning = false;
     }
    
     public void SetGroanSpeed(int mvState, float mvSpeed)
@@ -35,6 +40,8 @@ public class GroanHandler : MonoBehaviour {
         groanTransformScale.x = currentAmount;
         groanMeter.transform.localScale = groanTransformScale;
 
+
+
         if (currentAmount > 1f)
         {
             return true;
@@ -46,22 +53,27 @@ public class GroanHandler : MonoBehaviour {
     public void Groan()
     {
         currentAmount = 0f;
+        groaning = true;
         StartCoroutine(Groaning());
     }
 
     private IEnumerator Groaning()
     {
         int x = 0;
-        Vector3 groanLocation = transform.position;
+        groanLocation = transform.position;
+        groanLocation.y += 1.5f;
         do
         {
             x++;
-            if (x == 3)
+
+            /*if (x == 3)
             {
                 agentTester.GetComponent<TutorialMoveTo>().PathTo(groanLocation);
-            }
+            }*/
+
             Debug.Log("Groan!");
             yield return new WaitForSeconds(.5f);
         } while (x < 5);
+        groaning = false;
     }
 }
