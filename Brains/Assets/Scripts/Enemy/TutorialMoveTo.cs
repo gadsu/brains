@@ -10,7 +10,7 @@ public class TutorialMoveTo : MonoBehaviour
     // Flag for clicking to set destination
     public int mousePositionSetter;
     public bool doDebugAgentTesterTracking;
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class TutorialMoveTo : MonoBehaviour
                 agent.destination = hit.point;
             }
         }*/
-        if(transform.position == agent.destination)
+        if(Mathf.Abs(Vector3.Distance(transform.position, agent.destination)) < agent.radius+1f)
         {
             doDebugAgentTesterTracking = true;
         }

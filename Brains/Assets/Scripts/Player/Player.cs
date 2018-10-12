@@ -83,7 +83,7 @@ public class Player : ACharacter {
         backwards = (moveDir.z < 0f) ? -1 : 1;
         if (moveDir * moveSpeed != rbody.velocity)
         {
-            pmove.Move(moveSpeed, rbody, transform, backwards, moveDir);
+            pmove.Move(moveSpeed, rbody, moveDir);
             stealth.UpdateStealthState(0, body.GetArms(), body.GetLegs(), (int)MvState);
             groan.SetGroanSpeed((int)MvState, moveSpeed);
         }

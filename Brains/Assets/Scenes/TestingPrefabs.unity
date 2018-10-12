@@ -501,7 +501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &751913175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hearValue: 0
   sightValue: 0
+  thisCamera: {fileID: 0}
+  player: {fileID: 0}
 --- !u!135 &751913176
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -834,7 +836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45360754b6a304c46802664a21b4bd0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groanRate: 0.05
+  groanRate: 0.055
   groanMeter: {fileID: 1397586788}
   agentTester: {fileID: 1953937717}
   groanSphere: {fileID: 624177281}
@@ -1253,6 +1255,7 @@ MonoBehaviour:
   targetCamera: {fileID: 1969463986}
   mousePositionSetter: 1
   doDebugAgentTesterTracking: 1
+  agent: {fileID: 0}
 --- !u!1 &1969463984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1328,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1969463984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.008, y: 2.46, z: -3.401}
+  m_LocalPosition: {x: 1.882, y: 2.46, z: -3.401}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1343,7 +1346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1115620453}
-  m_rate: 100
+  m_rate: 200
 --- !u!1 &1980205440
 GameObject:
   m_ObjectHideFlags: 0

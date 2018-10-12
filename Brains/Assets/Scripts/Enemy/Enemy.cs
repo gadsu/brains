@@ -7,8 +7,10 @@ public class Enemy : AEnemyBase
     public Camera thisCamera;
     private Vector3 thisLocation, targetPosition;
 
-    private Pathing path;
+    private PathHandler path;
     private DetectionHandler dtHandler;
+
+    public GameObject player;
 
     private void Awake()
     {
@@ -16,7 +18,7 @@ public class Enemy : AEnemyBase
         Detection = DetectionLevel.Detecting;
         thisLocation = transform.position;
 
-        path = GetComponent<Pathing>();
+        path = GetComponent<PathHandler>();
         dtHandler = GetComponent<DetectionHandler>();
     }
 
@@ -33,6 +35,7 @@ public class Enemy : AEnemyBase
         Detection = dtHandler.UpdateDetection(Awareness, sightValue);
 
         targetPosition = path.UpdatePath(Awareness, Detection);
+
         path.PathTo(targetPosition);
     }
 
