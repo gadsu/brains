@@ -4,54 +4,56 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-    Vector3 mvDir;
-    Vector3 playerRotation;
+    Vector3 m_playerRotation;
     [Range(1.0f, 5f)]
-    public float speedRate = 2.5f;
+    public float m_speedRate = 2.5f;
 
-    public Transform cameraTransform;
-    private float cameraY;
+    public Transform m_cameraTransform;
+    private float m_cameraY;
 
     private void Start()
     {
-        mvDir = new Vector3(0, 0, 0);
-        cameraY = cameraTransform.rotation.y;
-        playerRotation = new Vector3(0, 0, 0)
+        m_cameraY = m_cameraTransform.rotation.y;
+        m_playerRotation = new Vector3(0, 0, 0)
         {
-            y = cameraY
+            y = m_cameraY
         };
-        transform.rotation = Quaternion.Euler(0f, playerRotation.y, 0f);
+        transform.rotation = Quaternion.Euler(0f, m_playerRotation.y, 0f);
     }
 
-    public float SetSpeed(int mvState)
+    public float SetSpeed(int p_mvState)
     {
-        return (float)(speedRate * (Math.Sin(mvState / (Math.Sqrt(mvState) + 1))));
+        return (float)(m_speedRate * (Math.Sin(p_mvState / (Math.Sqrt(p_mvState) + 1))));
     }
 
     public Vector3 SetDirection()
     {
-        mvDir.x = Input.GetAxis("Horizontal");
-        mvDir.z = Input.GetAxis("Vertical");
-        return mvDir;
+        return new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
     }
 
-    public void RotatePlayer(Transform pt, Vector3 dir, float p_rate)
+    public void RotatePlayer(Transform p_playerTransform, Vector3 p_direction, float p_rate)
     {
-        /*cameraY = cameraTransform.rotation.y;
-        playerRotation += dir * p_rate;
-        playerRotation.y += cameraY;
-        pt.rotation = Quaternion.Euler(0f, cameraY * playerRotation.x, 0f);
-        */
+        m_cameraY = m_cameraTransform.rotation.eulerAngles.y;
+        m_playerRotation = p_playerTransform.rotation.eulerAngles;
+        if (p_direction.z >= 0)
+            m_playerRotation.y = m_cameraY + (p_direction.x * (90f - (45f * p_direction.z)));
+        else
+            m_playerRotation.y = m_cameraY + (-p_direction.x * (90f - (45f * -p_direction.z)));
 
-        cameraY = cameraTransform.rotation.eulerAngles.y;
-        playerRotation = pt.rotation.eulerAngles;
-        playerRotation.y = cameraY + (dir.x * (90f - ((.5f * Math.Abs(dir.z))*90f)));
-
-        pt.rotation = Quaternion.Euler(playerRotation);
+        p_playerTransform.rotation = Quaternion.Euler(m_playerRotation);
     }
 
-    public void Move(float moveSpeed, Rigidbody rbody, Vector3 dir)
+    public void Move(float p_moveSpeed, Rigidbody p_rbody, Vector3 p_direction)
     {
-        rbody.velocity = ((cameraTransform.forward * dir.z) + (cameraTransform.right * dir.x)) * moveSpeed;
+        Vector3 l_newCameraDirection = m_cameraTransform.forward;
+        l_newCameraDirection.y = 0f;
+        p_rbody.velocity = ((l_newCameraDirection * p_direction.z) + (m_cameraTransform.right * p_direction.x)) * p_moveSpeed;
     }
 }
+
+/*
+ * cameraY = cameraTransform.rotation.y;
+ * playerRotation += dir * p_rate;
+ * playerRotation.y += cameraY;
+ * pt.rotation = Quaternion.Euler(0f, cameraY * playerRotation.x, 0f);
+ */
