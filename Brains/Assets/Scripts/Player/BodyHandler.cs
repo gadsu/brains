@@ -6,7 +6,7 @@ public class BodyHandler : MonoBehaviour
 {
     private int val;
     private bool updatedBody;
-    public struct Body
+    protected struct Body
     {
         public  int arms, legs;
         public string hands, feet;

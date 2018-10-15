@@ -6,6 +6,12 @@ using UnityEngine.AI;
 public class PathHandler : MonoBehaviour
 {
     NavMeshAgent agent;
+
+    private void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.destination = transform.position;
+    }
     internal Vector3 UpdatePath(AEnemyBase.AwarenessLevel awareness, AEnemyBase.DetectionLevel detection)
     {
         return Vector3.zero;

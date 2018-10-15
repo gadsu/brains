@@ -16,84 +16,93 @@ using UnityEngine;
 [RequireComponent(typeof(BodyHandler))]
 public class Player : ACharacter {
 
-    private float moveSpeed; // stores how fast the player should be moving.
-    private Vector3 moveDir; // stores the players movement direction.
-    private Rigidbody rbody; // stores the Rigidbody component.
+    private float m_moveSpeed; // stores how fast the player should be moving.
+    private Vector3 m_moveDir; // stores the players movement direction.
+    private Rigidbody m_rbody; // stores the Rigidbody component.
 
-    private PlayerMovement pmove; // stores the PlayerMovement script.
-    private PlayerDictionary diction;
-    private StealthHandler stealth;
-    private GroanHandler groan;
-    private BodyHandler body;
+    private PlayerMovement m_scriptPMove; // stores the PlayerMovement script.
+    private PlayerDictionary m_scriptPDiction;
+    private StealthHandler m_scriptStealthHandler;
+    private GroanHandler m_scriptGroanHandler;
+    private BodyHandler m_scriptBodyHandler;
 
-    private int animationKey;
-    private int backwards;
-    private int moving;
+    private int m_animationKey;
+    private int m_backwards;
+    private int m_moving;
 
+    private Vector3 spawn;
     private void Awake()
     {
-
+        MvState = MovementState.Idling;
+        m_moveSpeed = 0f;
+        m_moveDir = new Vector3(0, 0, 0);
+        spawn = transform.position;
+        m_animationKey = 0;
+        m_backwards = 0;
+        m_moving = 0;
     }
 
     // Use this for initialization
     void Start ()
     {
-        MvState = MovementState.Idling; // sets the players initial movement state.
-        moveSpeed = 0f; // sets the players initial speed.
-        moveDir = new Vector3(0, 0, 0); // sets the initial direction.
-        animationKey = 0;
-        backwards = 0;
-        moving = 0;
+        m_rbody = GetComponent<Rigidbody>();
+        m_scriptPMove = GetComponent<PlayerMovement>();
+        m_scriptPDiction = GetComponent<PlayerDictionary>();
+        m_scriptStealthHandler = GetComponent<StealthHandler>();
+        m_scriptGroanHandler = GetComponent<GroanHandler>();
+        m_scriptBodyHandler = GetComponent<BodyHandler>();
 
-        rbody = GetComponent<Rigidbody>(); // gets and saves the Rigidbody component and access attached to this character.
-        pmove = GetComponent<PlayerMovement>(); // gets and saves access to this character PlayerMovement.
-        diction = GetComponent<PlayerDictionary>();
-        stealth = GetComponent<StealthHandler>();
-        groan = GetComponent<GroanHandler>();
-        body = GetComponent<BodyHandler>();
-
-        rbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        m_rbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
         MvState = MovementState.Idling;
-        moveDir = Vector3.zero;
-        moving = 0;
+        m_moveDir = Vector3.zero;
+        m_moving = 0;
         if (Input.anyKey)
         {
-            moveDir = pmove.SetDirection();
-            if (moveDir != Vector3.zero) MvState = MovementState.Creeping;
+            if(Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
+                m_moveDir = m_scriptPMove.SetDirection();
+
+            if (m_moveDir != Vector3.zero) MvState = MovementState.Creeping;
             if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling;
 
             if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
         }
 
-        moveSpeed = (moveDir != Vector3.zero) ? pmove.SetSpeed((int)MvState) : 0f;
-        pmove.RotatePlayer(transform, moveDir, moveSpeed);
-        if (moveSpeed > 0f)
+        m_moveSpeed = (m_moveDir != Vector3.zero) ? m_scriptPMove.SetSpeed((int)MvState) : 0f;
+        m_scriptPMove.RotatePlayer(transform, m_moveDir, m_moveSpeed);
+
+        if (m_moveSpeed > 0f)
         {
-            moving = 1;
+            m_moving = 1;
         }
 	}
 
     private void FixedUpdate()
     {
-        backwards = (moveDir.z < 0f) ? -1 : 1;
-        if (moveDir * moveSpeed != rbody.velocity)
+        m_backwards = (m_moveDir.z < 0f) ? -1 : 1;
+
+        if (m_moveDir * m_moveSpeed != m_rbody.velocity)
         {
-            pmove.Move(moveSpeed, rbody, moveDir);
-            stealth.UpdateStealthState(0, body.GetArms(), body.GetLegs(), (int)MvState);
-            groan.SetGroanSpeed((int)MvState, moveSpeed);
+            m_scriptPMove.Move(m_moveSpeed, m_rbody, m_moveDir);
+            m_scriptStealthHandler.UpdateStealthState(0, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), (int)MvState);
+            m_scriptGroanHandler.SetGroanSpeed((int)MvState, m_moveSpeed);
         }
     }
 
     private void LateUpdate()
     {
-        animationKey = diction.RetrieveKey(moving, (int)MvState, body.GetArms(), body.GetLegs(), 0);
-        diction.Animate(animationKey, moveSpeed, backwards);
-        if (groan.UpdateGroanAmount())
-            groan.Groan();
+        m_animationKey = m_scriptPDiction.RetrieveKey(m_moving, (int)MvState, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), 0);
+        m_scriptPDiction.Animate(m_animationKey, m_moveSpeed, m_backwards);
+        if (m_scriptGroanHandler.UpdateGroanAmount())
+            m_scriptGroanHandler.Groan();
+    }
+
+    public void SendToSpawn()
+    {
+        transform.position = spawn;
     }
 }
