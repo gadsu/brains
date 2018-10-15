@@ -30,21 +30,21 @@ public class Player : ACharacter {
     private int m_backwards;
     private int m_moving;
 
+    private Vector3 spawn;
     private void Awake()
     {
-
+        MvState = MovementState.Idling;
+        m_moveSpeed = 0f;
+        m_moveDir = new Vector3(0, 0, 0);
+        spawn = transform.position;
+        m_animationKey = 0;
+        m_backwards = 0;
+        m_moving = 0;
     }
 
     // Use this for initialization
     void Start ()
     {
-        MvState = MovementState.Idling;
-        m_moveSpeed = 0f; 
-        m_moveDir = new Vector3(0, 0, 0);
-        m_animationKey = 0;
-        m_backwards = 0;
-        m_moving = 0;
-
         m_rbody = GetComponent<Rigidbody>();
         m_scriptPMove = GetComponent<PlayerMovement>();
         m_scriptPDiction = GetComponent<PlayerDictionary>();
@@ -99,5 +99,10 @@ public class Player : ACharacter {
         m_scriptPDiction.Animate(m_animationKey, m_moveSpeed, m_backwards);
         if (m_scriptGroanHandler.UpdateGroanAmount())
             m_scriptGroanHandler.Groan();
+    }
+
+    public void SendToSpawn()
+    {
+        transform.position = spawn;
     }
 }
