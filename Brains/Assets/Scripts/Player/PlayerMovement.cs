@@ -5,55 +5,66 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     Vector3 m_playerRotation;
+
+    public Vector3 m_playerDirection;
     [Range(1.0f, 5f)]
     public float m_speedRate = 2.5f;
 
     public Transform m_cameraTransform;
+    public float m_moveSpeed;
     private float m_cameraY;
+
+    private void Awake()
+    {
+        /* Initializes 'simple' data variablees. */
+        m_playerDirection = new Vector3(0, 0, 0);
+        m_playerRotation = new Vector3(0, 0, 0);
+        m_moveSpeed = 0;
+    }
 
     private void Start()
     {
-        m_cameraY = m_cameraTransform.rotation.y;
-        m_playerRotation = new Vector3(0, 0, 0)
-        {
-            y = m_cameraY
-        };
-        transform.rotation = Quaternion.Euler(0f, m_playerRotation.y, 0f);
+        m_cameraY = m_cameraTransform.rotation.y; // Gets the cameras rotation along the y-axis.
+
+        transform.rotation = Quaternion.Euler(0f, m_cameraY, 0f);
+        
     }
 
-    public float SetSpeed(int p_mvState)
+    public void SetSpeed(int p_mvState)
     {
-        return (float)(m_speedRate * (Math.Sin(p_mvState / (Math.Sqrt(p_mvState) + 1))));
+        m_moveSpeed = (float)(m_speedRate * (Math.Sin(p_mvState / (Math.Sqrt(p_mvState) + 1)))); // calculates the new speed according to the movement state.
     }
 
-    public Vector3 SetDirection()
+    public void SetDirection()
     {
-        return new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        /* Gets the Input axis in order to set direction. */
+        m_playerDirection.x = Input.GetAxis("Horizontal");
+        m_playerDirection.z = Input.GetAxis("Vertical");
+        /**************************************************/
     }
 
-    public void RotatePlayer(Transform p_playerTransform, Vector3 p_direction, float p_rate)
+    public void RotatePlayer()
     {
+        /* Obtaining updated rotation values */
         m_cameraY = m_cameraTransform.rotation.eulerAngles.y;
-        m_playerRotation = p_playerTransform.rotation.eulerAngles;
-        if (p_direction.z >= 0)
-            m_playerRotation.y = m_cameraY + (p_direction.x * (90f - (45f * p_direction.z)));
-        else
-            m_playerRotation.y = m_cameraY + (-p_direction.x * (90f - (45f * -p_direction.z)));
+        m_playerRotation = transorm.rotation.eulerAngles;
+        /*************************************/
 
-        p_playerTransform.rotation = Quaternion.Euler(m_playerRotation);
+        /* Checks to see if the player is trying to move forward or backward and then interprets the facing direction */
+        if (m_playerDirection.z >= 0)
+            m_playerRotation.y = m_cameraY + (m_playerDirection.x * (90f - (45f * m_playerDirection.z)));
+        else
+            m_playerRotation.y = m_cameraY + (-m_playerDirection.x * (90f - (45f * -m_playerDirection.z)));
+        /**************************************************************************************************************/
+
+        transform.rotation = Quaternion.Euler(m_playerRotation); // Applies the new adjusted rotation.
     }
 
-    public void Move(float p_moveSpeed, Rigidbody p_rbody, Vector3 p_direction)
+    public void Move(Rigidbody p_rbody)
     {
-        Vector3 l_newCameraDirection = m_cameraTransform.forward;
-        l_newCameraDirection.y = 0f;
-        p_rbody.velocity = ((l_newCameraDirection * p_direction.z) + (m_cameraTransform.right * p_direction.x)) * p_moveSpeed;
+        Vector3 l_newCameraDirection = m_cameraTransform.forward; // assigns the camera forward direction.
+        l_newCameraDirection.y = 0f; // zeros out the rotations y value to prevent walking into the air.
+
+        p_rbody.velocity = ((l_newCameraDirection * m_playerDirection.z) + (m_cameraTransform.right * m_playerDirection.x)) * m_moveSpeed; // moves the player according to the updated camera and move direction.
     }
 }
-
-/*
- * cameraY = cameraTransform.rotation.y;
- * playerRotation += dir * p_rate;
- * playerRotation.y += cameraY;
- * pt.rotation = Quaternion.Euler(0f, cameraY * playerRotation.x, 0f);
- */
