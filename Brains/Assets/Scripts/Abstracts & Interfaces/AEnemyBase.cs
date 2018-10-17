@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PathHandler))]
+[RequireComponent(typeof(DetectionHandler))]
 public abstract class AEnemyBase : ACharacter
 {
     public enum DetectionLevel
@@ -19,24 +21,28 @@ public abstract class AEnemyBase : ACharacter
         lost = 2
     }
 
-    private DetectionLevel detection;
-    private AwarenessLevel awareness;
+    private DetectionLevel m_detection;
+    private AwarenessLevel m_awareness;
 
-    [Range(-1, 1)]
-    public int hearValue;
-
-    [Range(-1, 1)]
-    public int sightValue;
-
-    protected DetectionLevel Detection
+    protected DetectionLevel Enemy_Detection
     {
-        get { return detection; }
-        set { detection = value; }
+        get { return m_detection; }
+        set { m_detection = value; }
     }
 
-    protected AwarenessLevel Awareness
+    protected AwarenessLevel Enemy_Awareness
     {
-        get { return awareness; }
-        set { awareness = value; }
+        get { return m_awareness; }
+        set { m_awareness = value; }
     }
+
+    protected PathHandler mAEnemy_pathing;
+    protected DetectionHandler mAEnemy_detecting;
+    protected bool mAEnemy_isVisible;
+
+    [Range(-1, 1)]
+    public int mAEnemy_hearValue;
+
+    [Range(-1, 1)]
+    public int mAEnemy_sightValue;
 }
