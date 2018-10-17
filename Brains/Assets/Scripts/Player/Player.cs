@@ -65,15 +65,14 @@ public class Player : ACharacter
     {
         MvState = MovementState.Idling; // sets the default movement state to idle.
 
-
         m_scriptPMove.SetDirection();
 
         m_moving = (m_scriptPMove.m_playerDirection != Vector3.zero) ? 1 : 0; // is the player moving?
         m_backwards = (m_scriptPMove.m_playerDirection.z < 0f) ? -1 : 1; // is the player moving backwards?
 
         /* Overrides the default movement state if the condition is met. */
-        if (m_moving == 1) MvState = MovementState.Creeping; // compares against moving.
-        if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling; // compares against the shift key. (overrides the moving comparison in order to determine how movement is occuring.)
+        if (m_moving == 1) MvState = MovementState.Creeping;
+        if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling; // (overrides the moving comparison in order to determine how movement is occuring.)
         /*****************************************************************/
 
         m_scriptPMove.SetSpeed((int)MvState)

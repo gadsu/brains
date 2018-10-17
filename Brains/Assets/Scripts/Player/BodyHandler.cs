@@ -5,16 +5,16 @@ using UnityEngine;
 public class BodyHandler : MonoBehaviour
 {
     private int m_val;
-    private bool m_updatedBody;
 
     protected struct Body
     {
         public  int body_arms, body_legs;
         public string body_hands, body_feet;
+        public bool m_updatedBody;
 
         public bool UpdateArms(int limb, string side)
         {
-            switch (body_arms + a)
+            switch (body_arms + limb)
             {
                 case 1:
                     if (side == "Right")
@@ -33,14 +33,14 @@ public class BodyHandler : MonoBehaviour
             }
 
             if (m_updatedBody)
-                arms = arms + a;
+                body_arms = body_arms + limb;
 
             return m_updatedBody;
         }
 
         public bool UpdateLegs(int limb, string side)
         {
-            switch (body_legs + l)
+            switch (body_legs + limb)
             {
                 case 0:
                     body_feet = "Neither";
@@ -60,7 +60,7 @@ public class BodyHandler : MonoBehaviour
             }
 
             if (m_updatedBody)
-                body_legs = body_legs + l;
+                body_legs = body_legs + limb;
 
             return m_updatedBody;
         }
@@ -71,13 +71,13 @@ public class BodyHandler : MonoBehaviour
     private void Awake()
     {
         /* Initialize 'simple' data variables*/
-        m_updatedBody = false;
         m_val = 0;
         /*************************************/
 
         /* Initialize 'complex' data variables. */
         playerBody = new Body
         { // Keeps track of the updated body state.
+            m_updatedBody = false,
             body_arms = 2,
             body_legs = 2,
             body_hands = "Both",
@@ -88,14 +88,12 @@ public class BodyHandler : MonoBehaviour
 
     public bool UpdateLimbs(int limb, string side, string part)
     {
-        m_updatedBody = true;
+       playerBody.m_updatedBody = true;
 
         if (part == "Arms") playerBody.UpdateArms(limb, side);
         else if (part == "Legs") playerBody.UpdateLegs(limb, side);
-        else
-            return null;
 
-        return m_updatedBody;
+        return playerBody.m_updatedBody;
     }
 
     public int GetLegs()

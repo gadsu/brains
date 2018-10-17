@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         /* Obtaining updated rotation values */
         m_cameraY = m_cameraTransform.rotation.eulerAngles.y;
-        m_playerRotation = transorm.rotation.eulerAngles;
+        m_playerRotation = transform.rotation.eulerAngles;
         /*************************************/
 
         /* Checks to see if the player is trying to move forward or backward and then interprets the facing direction */

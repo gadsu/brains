@@ -21,7 +21,6 @@ public class GroanHandler : MonoBehaviour {
     {
         /* Initializing 'simple' data variables. */
         currentAmount = 0f;
-        nextAmount = 0f;
         groanTransformScale = Vector3.zero;
         groanTransformScale.y = 1f;
         groanTransformScale.z = 1f;
