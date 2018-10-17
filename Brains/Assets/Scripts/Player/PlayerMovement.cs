@@ -4,14 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-    Vector3 m_playerRotation;
 
+    public Transform m_cameraTransform;
     public Vector3 m_playerDirection;
+
     [Range(1.0f, 5f)]
     public float m_speedRate = 2.5f;
 
-    public Transform m_cameraTransform;
-    public float m_moveSpeed;
+    private float m_moveSpeed;
+    public float M_MoveSpeed { get { return m_moveSpeed; } } // makes it so that outside scripts can read but not manipulate m_moveSpeed;
+
+    private Vector3 m_playerRotation;
     private float m_cameraY;
 
     private void Awake()
@@ -20,19 +23,21 @@ public class PlayerMovement : MonoBehaviour {
         m_playerDirection = new Vector3(0, 0, 0);
         m_playerRotation = new Vector3(0, 0, 0);
         m_moveSpeed = 0;
+        /*****************************************/
     }
 
     private void Start()
     {
         m_cameraY = m_cameraTransform.rotation.y; // Gets the cameras rotation along the y-axis.
 
-        transform.rotation = Quaternion.Euler(0f, m_cameraY, 0f);
+        transform.rotation = Quaternion.Euler(0f, m_cameraY, 0f); // Sets the current GameObject's rotation to face the same way as the ccamera.
         
     }
 
-    public void SetSpeed(int p_mvState)
+    public PlayerMovement SetSpeed(int p_mvState)
     {
         m_moveSpeed = (float)(m_speedRate * (Math.Sin(p_mvState / (Math.Sqrt(p_mvState) + 1)))); // calculates the new speed according to the movement state.
+        return this;
     }
 
     public void SetDirection()
@@ -65,6 +70,7 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 l_newCameraDirection = m_cameraTransform.forward; // assigns the camera forward direction.
         l_newCameraDirection.y = 0f; // zeros out the rotations y value to prevent walking into the air.
 
-        p_rbody.velocity = ((l_newCameraDirection * m_playerDirection.z) + (m_cameraTransform.right * m_playerDirection.x)) * m_moveSpeed; // moves the player according to the updated camera and move direction.
+        p_rbody.velocity = 
+            ((l_newCameraDirection * m_playerDirection.z) + (m_cameraTransform.right * m_playerDirection.x)) * m_moveSpeed; // moves the player according to the updated camera and move direction.
     }
 }

@@ -3,13 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(Animation))]
 [RequireComponent(typeof(Animator))]
 public class PlayerDictionary : MonoBehaviour
 {
     AnimationDictionary diction;
     Animator anim;
-    //AnimatorStateInfo animInfo;
+
     string id;
     int animationID, playingID;
 
@@ -47,7 +46,7 @@ public class PlayerDictionary : MonoBehaviour
         anim.SetFloat("Speed", (speed * b)); // sets the speed and the direction of the animation.
 
         if (animationID != playingID)
-        { // checks to see if the animation is not already playing.
+        { // checks to make sure that the animation is not already playing.
             anim.Play(animationID); // plays the animation.
             playingID = animationID; // updates the playing animation reference.
         }

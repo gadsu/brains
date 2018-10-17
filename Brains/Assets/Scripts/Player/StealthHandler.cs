@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class StealthHandler : MonoBehaviour
 {
-    private float stealth_val; // sets the stealth_val to be unmanipulatable by anything but this script.
-    public float Stealth_val { get { return stealth_val; } } // lets other scripts read the stealth_val.
+    private float stealth_val;
+    public float Stealth_val { get { return stealth_val; } } // lets other scripts read the stealth_val without accidently manipulating it's value.
     private float offset, hidden;
 
     private void Awake()
@@ -26,6 +26,7 @@ public class StealthHandler : MonoBehaviour
     {
         offset = (hidden > 0f && mvState != 5) ? 1f : 0f; // offsets the value of the states if not crawling.
 
-        stealth_val = (hidden - playDead * (arms + legs)) + (((hidden - 1) * Mathf.Abs(5 - mvState) + 5 * playDead) / 2) - offset; // calculates the stealth_val.
+        stealth_val = 
+            (hidden - playDead * (arms + legs)) + (((hidden - 1) * Mathf.Abs(5 - mvState) + 5 * playDead) / 2) - offset; // calculates the new stealth rate value.
     }
 }

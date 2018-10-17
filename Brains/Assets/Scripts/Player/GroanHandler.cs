@@ -4,76 +4,74 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GroanHandler : MonoBehaviour {
-    private float currentAmount, nextAmount, groanSpeed;
+    private float currentAmount, groanSpeed;
     private Vector3 groanTransformScale;
+
+    public GameObject agentTester, groanSphere;
+    public Image groanMeter;
 
     [Range(.01f, .1f)]
     public float groanRate;
 
-    public Image groanMeter;
-
-    public GameObject agentTester;
-    public GameObject groanSphere;
+    public Vector3 groanLocation;
 
     public bool groaning;
-    public Vector3 groanLocation;
 
     private void Awake()
     {
+        /* Initializing 'simple' data variables. */
         currentAmount = 0f;
         nextAmount = 0f;
         groanTransformScale = Vector3.zero;
         groanTransformScale.y = 1f;
         groanTransformScale.z = 1f;
         groaning = false;
+        /*****************************************/
     }
-   
+
     public void SetGroanSpeed(int mvState, float mvSpeed)
     {
-        groanSpeed = groanRate + (.5f * groanRate)*(mvSpeed * Mathf.Log(mvState + 1));
+        groanSpeed = groanRate + (.5f * groanRate)*(mvSpeed * Mathf.Log(mvState + 1)); // manipulates the groan speed by the movement state and speed.
     }
 
     public bool UpdateGroanAmount()
     {
-        nextAmount = currentAmount + (groanSpeed * Time.deltaTime);
-        currentAmount = nextAmount;
+        /* Updates the current amount both data-wise and visual-wise. */
+        currentAmount = currentAmount + (groanSpeed * Time.deltaTime);
         groanTransformScale.x = currentAmount;
         groanMeter.transform.localScale = groanTransformScale;
+        /**************************************************************/
 
-
-
-        if (currentAmount > 1f)
-        {
-            return true;
-        }
-
-        return false;
+        return (currentAmount > 1f) ? true : false; // tells us that it is time to groan.. or not.
     }
 
     public void Groan()
     {
+        /* Sets the states for groaning. */
         currentAmount = 0f;
         groaning = true;
-        StartCoroutine(Groaning());
+        /*********************************/
+
+        StartCoroutine(Groaning()); // Starts the groan
     }
 
     private IEnumerator Groaning()
     {
-        int x = 0;
+        /* Sets initial information for groaning. */
+        int x = 0; // acts as the length of the groan.
         groanLocation = transform.position;
-        groanLocation.y += 1.5f;
+        groanLocation.y += 1.5f; // sets the groan location to approximately spuds throat.
+        /******************************************/
+
+        /* Iterates across the length of the groan. */
         do
         {
             x++;
-
-            /*if (x == 3)
-            {
-                agentTester.GetComponent<TutorialMoveTo>().PathTo(groanLocation);
-            }*/
-
-            Debug.Log("Groan!");
-            yield return new WaitForSeconds(.5f);
+            //Debug.Log("Groan!");
+            yield return new WaitForSeconds(.2f);
         } while (x < 5);
-        groaning = false;
+        /********************************************/
+
+        groaning = false; // closes out the groan state by ending the groaning.
     }
 }

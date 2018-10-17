@@ -16,23 +16,24 @@ using UnityEngine;
 [RequireComponent(typeof(GroanHandler))]
 [RequireComponent(typeof(BodyHandler))]
 /******************************************************************/
+
 public class Player : ACharacter
 {
     /* Sets up repeatedly used variables. */
-    private Rigidbody m_rbody; 
+    Rigidbody m_rbody; 
 
-    private PlayerMovement m_scriptPMove; 
-    private PlayerDictionary m_scriptPDiction;
-    private StealthHandler m_scriptStealthHandler;
-    private GroanHandler m_scriptGroanHandler;
-    private BodyHandler m_scriptBodyHandler;
+    PlayerMovement m_scriptPMove; 
+    PlayerDictionary m_scriptPDiction;
+    StealthHandler m_scriptStealthHandler;
+    GroanHandler m_scriptGroanHandler;
+    BodyHandler m_scriptBodyHandler;
 
-    private int m_animationKey;
-    private int m_backwards;
-    private int m_moving;
+    int m_animationKey;
+    int m_backwards;
+    int m_moving;
     /**************************************/
 
-    private Vector3 spawn; // For sending this game object back to it's spawn when out of bounds.
+    Vector3 spawn; // For sending this game object back to it's spawn when out of bounds.
 
     private void Awake()
     {
@@ -75,20 +76,19 @@ public class Player : ACharacter
         if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling; // compares against the shift key. (overrides the moving comparison in order to determine how movement is occuring.)
         /*****************************************************************/
 
-        m_scriptPMove.SetSpeed((int)MvState);
-
-        m_scriptPMove.RotatePlayer();
+        m_scriptPMove.SetSpeed((int)MvState)
+            .RotatePlayer();
 
         if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit(); // Quits the application (does not work in editor.)
     }
 
     private void FixedUpdate()
     {
-        if (m_scriptPMove.m_playerDirection * m_scriptPMove.m_moveSpeed != m_rbody.velocity)
+        if (m_scriptPMove.m_playerDirection * m_scriptPMove.M_MoveSpeed != m_rbody.velocity)
         { // if the player is not moving at the same speed and direction then update critical information sets.
             m_scriptPMove.Move(m_rbody);
             m_scriptStealthHandler.UpdateStealthState(0, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), (int)MvState);
-            m_scriptGroanHandler.SetGroanSpeed((int)MvState, m_scriptPMove.m_moveSpeed);
+            m_scriptGroanHandler.SetGroanSpeed((int)MvState, m_scriptPMove.M_MoveSpeed);
         }
     }
 
@@ -97,8 +97,9 @@ public class Player : ACharacter
         if (m_scriptGroanHandler.UpdateGroanAmount()) // if spud has to groan.
             m_scriptGroanHandler.Groan(); // then groan.
 
-        m_animationKey = m_scriptPDiction.RetrieveKey(m_moving, (int)MvState, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), 0); // Gets the key
-        m_scriptPDiction.Animate(m_animationKey, m_scriptPMove.m_moveSpeed, m_backwards); // inserts the key into the dictionary then animates accordingly.
+        m_animationKey = 
+            m_scriptPDiction.RetrieveKey(m_moving, (int)MvState, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), 0); // Gets the key
+        m_scriptPDiction.Animate(m_animationKey, m_scriptPMove.M_MoveSpeed, m_backwards); // inserts the key into the dictionary then animates accordingly.
     }
 
     public void SendToSpawn()
