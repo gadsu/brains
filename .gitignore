@@ -22,6 +22,8 @@ ExportedObj/
 *.booproj
 *.svd
 *.pdb
+LastSceneManagerSetup.txt
+CurrentLayout.dwlt
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -32,9 +34,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-
-Brains/Library/LastSceneManagerSetup.txt
-Brains/Library/CurrentLayout.dwlt
 
 # Blender backups
 *.blend1
