@@ -41,12 +41,12 @@ public class AudioManager : MonoBehaviour {
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
-            return;
 
             if (PauseMenu.GamePaused)
             {
                 s.source.pitch *= .5f;
             }
+            return;
         }
         s.source.Play();
 
