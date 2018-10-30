@@ -42,6 +42,11 @@ public class AudioManager : MonoBehaviour {
         {
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
+
+            if (PauseMenu.GamePaused)
+            {
+                s.source.pitch *= .5f;
+            }
         }
         s.source.Play();
 
