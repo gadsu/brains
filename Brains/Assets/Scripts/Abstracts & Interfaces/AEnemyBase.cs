@@ -16,8 +16,8 @@ public abstract class AEnemyBase : ACharacter
 
     public enum AwarenessLevel
     {
-        Aware = 0,
-        Unaware = 1,
+        Unaware = 0,
+        Aware = 1,
         lost = 2
     }
 

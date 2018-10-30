@@ -22,6 +22,8 @@ ExportedObj/
 *.booproj
 *.svd
 *.pdb
+LastSceneManagerSetup.txt
+CurrentLayout.dwlt
 
 # Unity3D generated meta files
 *.pidb.meta
