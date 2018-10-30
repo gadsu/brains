@@ -33,5 +33,8 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+Brains/Library/LastSceneManagerSetup.txt
+Brains/Library/CurrentLayout.dwlt
+
 # Blender backups
 *.blend1
