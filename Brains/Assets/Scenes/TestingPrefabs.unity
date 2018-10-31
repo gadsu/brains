@@ -1069,7 +1069,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: Menu
 --- !u!222 &1138586021
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1443,7 +1443,7 @@ GameObject:
   - component: {fileID: 1546349579}
   - component: {fileID: 1546349578}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: MenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1508,7 +1508,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1665399054}
-        m_MethodName: QuitGame
+        m_MethodName: ReturnMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2116,7 +2116,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: Groan
-    clip: {fileID: 8300000, guid: d45c4a7df8e386348bd9b81274b82802, type: 3}
+    clip: {fileID: 8300000, guid: 87dd8fda9dec5c64482bd0e2c40da0cf, type: 3}
     volume: 1
     pitch: 1
     loop: 0
