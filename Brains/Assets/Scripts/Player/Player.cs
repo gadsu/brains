@@ -89,18 +89,13 @@ public class Player : ACharacter
 
         m_scriptPMove.SetSpeed((int)MvState)
             .RotatePlayer();
-
-        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit(); // Quits the application (does not work in editor.)
     }
 
     private void FixedUpdate()
     {
-        if (m_scriptPMove.m_playerDirection * m_scriptPMove.M_MoveSpeed != m_rbody.velocity)
-        { // if the player is not moving at the same speed and direction then update critical information sets.
-            m_scriptPMove.Move(m_rbody);
-            m_scriptStealthHandler.UpdateStealthState(m_playDead, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), (int)MvState);
-            m_scriptGroanHandler.SetGroanSpeed((int)MvState, m_scriptPMove.M_MoveSpeed);
-        }
+        m_scriptPMove.Move(m_rbody);
+        m_scriptStealthHandler.UpdateStealthState(m_playDead, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), (int)MvState);
+        m_scriptGroanHandler.SetGroanSpeed((int)MvState, m_scriptPMove.M_MoveSpeed);
     }
 
     private void LateUpdate()

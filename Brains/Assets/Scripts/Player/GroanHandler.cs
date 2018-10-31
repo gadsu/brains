@@ -12,10 +12,11 @@ public class GroanHandler : MonoBehaviour {
     public Image groanMeter;
 
     [Range(.01f, .1f)]
-    public float groanRate;
+    public float groanRate = .02f;
 
+    [HideInInspector]
     public Vector3 groanLocation;
-
+    [HideInInspector]
     public bool groaning;
 
     private void Awake()
