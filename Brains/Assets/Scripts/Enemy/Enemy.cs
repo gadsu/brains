@@ -23,8 +23,8 @@ public class Enemy : AEnemyBase
 
     protected virtual void Update()
     {
-        mAEnemy_isVisible = mAEnemy_detecting.IsDetecting(m_camera, m_target);
-        Enemy_Awareness = mAEnemy_detecting.UpdateAwarenes(Enemy_Awareness, mAEnemy_isVisible, m_target);
-        Enemy_Detection = 
+      //  mAEnemy_isVisible = mAEnemy_detecting.IsDetecting(m_camera, m_target);
+       // Enemy_Awareness = mAEnemy_detecting.UpdateAwarenes(Enemy_Awareness, mAEnemy_isVisible, m_target);
+        //Enemy_Detection = 
     }
 }
