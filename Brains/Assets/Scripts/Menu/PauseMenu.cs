@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.SceneMangement;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
 
@@ -40,12 +40,12 @@ public class PauseMenu : MonoBehaviour {
     public void LoadCredits()
     {
         Debug.Log("Loading Credits...");
-        //Load Credits function here
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void QuitGame()
+    public void ReturnMenu()
     {
-        Debug.Log("Quitting Game...");
-        Application.Quit();
+        Debug.Log("Returning to Menu...");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
