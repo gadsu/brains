@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour {
         Play("BGMusic");
     }
 
-    public void Play (string name)
+    public void Play(string name)
     {
         Sound s = Array.Find(sounds, Sound => Sound.name == name);
         if (s == null)
