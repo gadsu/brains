@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public Transform m_cameraTransform;
+    [HideInInspector]
     public Vector3 m_playerDirection;
 
     [Range(1.0f, 5f)]
@@ -14,8 +15,8 @@ public class PlayerMovement : MonoBehaviour {
     private float m_moveSpeed;
     public float M_MoveSpeed { get { return m_moveSpeed; } } // makes it so that outside scripts can read but not manipulate m_moveSpeed;
 
-    private Vector3 m_playerRotation;
-    private float m_cameraY;
+    Vector3 m_playerRotation;
+    float m_cameraY;
 
     private void Awake()
     {

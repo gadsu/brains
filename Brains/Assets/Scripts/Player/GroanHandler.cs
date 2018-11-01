@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,10 +12,11 @@ public class GroanHandler : MonoBehaviour {
     public Image groanMeter;
 
     [Range(.01f, .1f)]
-    public float groanRate;
+    public float groanRate = .02f;
 
+    [HideInInspector]
     public Vector3 groanLocation;
-
+    [HideInInspector]
     public bool groaning;
 
     private void Awake()
@@ -60,6 +62,9 @@ public class GroanHandler : MonoBehaviour {
         int x = 0; // acts as the length of the groan.
         groanLocation = transform.position;
         groanLocation.y += 1.5f; // sets the groan location to approximately spuds throat.
+        //calls groan sound
+        FindObjectOfType<AudioManager>().Play("Groan");
+
         /******************************************/
 
         /* Iterates across the length of the groan. */

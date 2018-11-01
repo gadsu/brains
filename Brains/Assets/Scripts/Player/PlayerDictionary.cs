@@ -14,21 +14,19 @@ public class PlayerDictionary : MonoBehaviour
 
     private void Awake()
     {
+        /* Initialize references. */
+        diction = GameObject.Find("Dictionary").GetComponent<AnimationDictionary>(); // reference to another GameObject component.
+        anim = GetComponent<Animator>(); // reference to this gameObjects Animator component.
+        /*************************/
+    }
+
+    private void Start()
+    {
         /* Initializes 'simple' data variables. */
         animationID = 0;
         id = "";
         playingID = -1;
         /****************************************/
-    }
-
-    private void Start()
-    {
-        /* Initialize references. */
-        diction = GameObject.Find("Dictionary").GetComponent<AnimationDictionary>(); // reference to another GameObject component.
-        anim = GetComponent<Animator>(); // reference to this gameObjects Animator component.
-        /*************************/
-
-        InitializeAnimationList();
     }
 
     public int RetrieveKey(int moving, int mvState, int arms, int legs, int playDead)
@@ -50,22 +48,5 @@ public class PlayerDictionary : MonoBehaviour
             anim.Play(animationID); // plays the animation.
             playingID = animationID; // updates the playing animation reference.
         }
-    }
-
-    // Initial filenames from the FBX asset are weird, should them in the animator.
-    // i.e remove 'zomb_rig|' prefix from everything. 
-    void InitializeAnimationList()
-    {
-        /* sends in a reference for the formated key and string pair. */
-        /* Creep */
-        diction.AddToDictionary(00220, "A_SpudIdle");
-        diction.AddToDictionary(20220, "A_SpudCreep");
-        /*********/
-
-        /* Crawl */
-        diction.AddToDictionary(05220, "A_SpudCrawlIdle");
-        diction.AddToDictionary(15220, "A_SpudCrawl");
-        /*********/
-        /**************************************************************/
     }
 }

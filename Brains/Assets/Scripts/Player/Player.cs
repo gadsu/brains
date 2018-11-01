@@ -31,22 +31,13 @@ public class Player : ACharacter
     int m_animationKey;
     int m_backwards;
     int m_moving;
+
+    int m_playDead;
     /**************************************/
 
     Vector3 spawn; // For sending this game object back to it's spawn when out of bounds.
 
     private void Awake()
-    {
-        /* Initializes 'simple' data types.*/
-        MvState = MovementState.Idling;
-        spawn = transform.position;
-        m_animationKey = 0;
-        m_backwards = 0;
-        m_moving = 0;
-        /***********************************/
-    }
-
-    void Start ()
     {
         /* Initializes references to gameObject components. */
         m_rbody = GetComponent<Rigidbody>();
@@ -56,6 +47,18 @@ public class Player : ACharacter
         m_scriptGroanHandler = GetComponent<GroanHandler>();
         m_scriptBodyHandler = GetComponent<BodyHandler>();
         /****************************************************/
+    }
+
+    void Start ()
+    {
+        /* Initializes 'simple' data types.*/
+        MvState = MovementState.Idling;
+        spawn = transform.position;
+        m_animationKey = 0;
+        m_backwards = 0;
+        m_moving = 0;
+        m_playDead = 0;
+        /***********************************/
 
         m_rbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; // To prevent the gameObject from turning along the x and z rotation axis when moving.
 	}
@@ -64,6 +67,7 @@ public class Player : ACharacter
 	void Update ()
     {
         MvState = MovementState.Idling; // sets the default movement state to idle.
+        m_playDead = 0;
 
         m_scriptPMove.SetDirection();
 
@@ -75,20 +79,23 @@ public class Player : ACharacter
         if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling; // (overrides the moving comparison in order to determine how movement is occuring.)
         /*****************************************************************/
 
+        if(Input.GetKey(KeyCode.Space))
+        { // Ignore all previous input and set the state for playing dead.
+            m_moving = 0;
+            MvState = MovementState.Idling;
+            m_backwards = 1;
+            m_playDead = 1;
+        }
+
         m_scriptPMove.SetSpeed((int)MvState)
             .RotatePlayer();
-
-        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit(); // Quits the application (does not work in editor.)
     }
 
     private void FixedUpdate()
     {
-        if (m_scriptPMove.m_playerDirection * m_scriptPMove.M_MoveSpeed != m_rbody.velocity)
-        { // if the player is not moving at the same speed and direction then update critical information sets.
-            m_scriptPMove.Move(m_rbody);
-            m_scriptStealthHandler.UpdateStealthState(0, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), (int)MvState);
-            m_scriptGroanHandler.SetGroanSpeed((int)MvState, m_scriptPMove.M_MoveSpeed);
-        }
+        m_scriptPMove.Move(m_rbody);
+        m_scriptStealthHandler.UpdateStealthState(m_playDead, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), (int)MvState);
+        m_scriptGroanHandler.SetGroanSpeed((int)MvState, m_scriptPMove.M_MoveSpeed);
     }
 
     private void LateUpdate()
@@ -97,7 +104,7 @@ public class Player : ACharacter
             m_scriptGroanHandler.Groan(); // then groan.
 
         m_animationKey = 
-            m_scriptPDiction.RetrieveKey(m_moving, (int)MvState, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), 0); // Gets the key
+            m_scriptPDiction.RetrieveKey(m_moving, (int)MvState, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), m_playDead); // Gets the key
         m_scriptPDiction.Animate(m_animationKey, m_scriptPMove.M_MoveSpeed, m_backwards); // inserts the key into the dictionary then animates accordingly.
     }
 

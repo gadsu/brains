@@ -35,12 +35,22 @@ public class AudioManager : MonoBehaviour {
 
 	}
 
-    public void Play (string name)
+    void Start ()
+    {
+        Play("BGMusic");
+    }
+
+    public void Play(string name)
     {
         Sound s = Array.Find(sounds, Sound => Sound.name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
+
+            if (PauseMenu.GamePaused)
+            {
+                s.source.pitch *= .5f;
+            }
             return;
         }
         s.source.Play();
