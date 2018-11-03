@@ -62,8 +62,7 @@ public class GroanHandler : MonoBehaviour {
         int x = 0; // acts as the length of the groan.
         groanLocation = transform.position;
         groanLocation.y += 1.5f; // sets the groan location to approximately spuds throat.
-        //calls groan sound
-        FindObjectOfType<AudioManager>().Play("Groan");
+        FindObjectOfType<AudioManager>().Play("Groan"); //calls groan sound
 
         /******************************************/
 

@@ -878,7 +878,19 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: Groan
-    clip: {fileID: 8300000, guid: 87dd8fda9dec5c64482bd0e2c40da0cf, type: 3}
+    clip: {fileID: 8300000, guid: 661040c1776b5ef42931ad2296606ce8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Groan
+    clip: {fileID: 8300000, guid: f6c2a63a3e761b649b32d59cfa2adeb7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Groan
+    clip: {fileID: 8300000, guid: 761194e7d2f8812449b3f22718f8026c, type: 3}
     volume: 1
     pitch: 1
     loop: 0

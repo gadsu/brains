@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     public void LoadCredits()
     {
         Debug.Log("Loading Credits...");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
     public void QuitGame()

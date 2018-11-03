@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestingPrefabs.unity
     guid: 718d8b8447e5c044096ca539069c8e56
+  - enabled: 1
+    path: Assets/Scenes/MainMenu/Credits.unity
+    guid: c3cf53fc5f6daa943950ca44ff6c7316
   m_configObjects: {}
