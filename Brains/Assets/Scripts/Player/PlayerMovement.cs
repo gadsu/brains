@@ -70,8 +70,10 @@ public class PlayerMovement : MonoBehaviour {
     {
         Vector3 l_newCameraDirection = m_cameraTransform.forward; // assigns the camera forward direction.
         l_newCameraDirection.y = 0f; // zeros out the rotations y value to prevent walking into the air.
+		
+        if (p_rbody.velocity.magnitude < 1f * m_moveSpeed)
+            p_rbody.AddForce(((l_newCameraDirection * m_playerDirection.z) + (m_cameraTransform.right * m_playerDirection.x)) * m_moveSpeed, ForceMode.Impulse);  // moves the player according to the updated camera and move direction.
 
-        p_rbody.velocity = 
-            ((l_newCameraDirection * m_playerDirection.z) + (m_cameraTransform.right * m_playerDirection.x)) * m_moveSpeed; // moves the player according to the updated camera and move direction.
+        p_rbody.angularVelocity = Vector3.up * m_moveSpeed;
     }
 }
