@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEditor;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class PathTo : MonoBehaviour
@@ -24,9 +25,14 @@ public class PathTo : MonoBehaviour
                     y = des.y,
                     z = des.z
                 };
+                if (l_des == m_destinations[0]) Gizmos.color = Color.yellow;
                 Gizmos.DrawSphere(l_des, .25f);
             }
+            Handles.color = Color.cyan;
+            Handles.DrawPolyLine(m_destinations);
+            Handles.DrawLine(m_destinations[m_destinations.Length - 1], m_destinations[0]);
         }
+        //Handles.DrawPolyLine(m_destinations);
     }
     // Use this for initialization
     private void Awake()
