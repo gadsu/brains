@@ -38,8 +38,8 @@ public class DetectPlayer : MonoBehaviour
         Vector3 worldView = m_camera.WorldToViewportPoint(targetPosisition);
         m_ray.direction = Vector3.RotateTowards(m_ray.origin, targetPosisition, Mathf.Infinity, Mathf.Infinity);
 
-        inView = (worldView.z <= 0f) ? 
-            false : (worldView.x >= 0f && worldView.x <= 1f) ?
+        inView = (worldView.z < 0f) ? 
+            false : (worldView.x > 0f && worldView.x < 1f) ?
             true : false;
         //Debug.Log(Vector3.Angle(m_ray.origin, m_target.position));
     }
@@ -54,9 +54,13 @@ public class DetectPlayer : MonoBehaviour
             {
                 if (m_out.transform.CompareTag("Player"))
                 {
-                    Debug.Log("Hit the player");
+                    GetComponent<PathTo>().SetVisible(true);
                 }
             }
+        }
+        else
+        {
+            GetComponent<PathTo>().SetVisible(false);
         }
     }
 }

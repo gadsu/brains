@@ -7,10 +7,12 @@ using UnityEditor;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PathTo : MonoBehaviour
 {
-    NavMeshAgent m_agent;
     public Vector3[] m_destinations;
+
+    NavMeshAgent m_agent;
     Vector3 m_target;
     int destinationI;
+    bool IsVisible;
 
     private void OnDrawGizmosSelected()
     {
@@ -32,7 +34,6 @@ public class PathTo : MonoBehaviour
             Handles.DrawPolyLine(m_destinations);
             Handles.DrawLine(m_destinations[m_destinations.Length - 1], m_destinations[0]);
         }
-        //Handles.DrawPolyLine(m_destinations);
     }
     // Use this for initialization
     private void Awake()
@@ -44,22 +45,32 @@ public class PathTo : MonoBehaviour
         destinationI = 0;
         m_target = (m_destinations.Length > 0) ? m_destinations[destinationI] : transform.position;
         m_agent.SetDestination(m_target);
+        IsVisible = false;
 	}
 
     private void UpdateDestination()
     {
-        if (m_destinations.Length > 0)
+        if (m_destinations.Length > 0 && !IsVisible)
         {
+            if (m_agent.destination != m_target)
+                m_agent.SetDestination(m_target);
+
             if (Mathf.Abs(m_agent.remainingDistance) < .1f)
             {
-                //Debug.Log("Index position: " + destinationI + " remaining distance: " + m_agent.remainingDistance);
                 destinationI = (destinationI < m_destinations.Length - 1) ? destinationI + 1 : 0;
-                //Debug.DrawLine(transform.position, (transform.position + transform.forward), Color.green);
                 m_target = m_destinations[destinationI];
                 m_agent.SetDestination((m_target));
-                //Debug.Log(m_agent.remainingDistance);
             }
         }
+        else
+        {
+            m_agent.SetDestination(GameObject.Find("Player").transform.position);
+        }
+    }
+
+    public void SetVisible(bool p_visible)
+    {
+        IsVisible = p_visible;
     }
 	
 	// Update is called once per frame
