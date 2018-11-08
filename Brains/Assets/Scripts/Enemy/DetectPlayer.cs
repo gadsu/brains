@@ -13,7 +13,7 @@ public class DetectPlayer : MonoBehaviour
     Ray m_ray;
     RaycastHit m_out;
 
-    bool inView, isVisible;
+    bool m_inView, m_isVisible;
 
     private void Awake()
     {
@@ -24,8 +24,8 @@ public class DetectPlayer : MonoBehaviour
     private void Start()
     {
         m_camera.enabled = false;
-        inView = false;
-        isVisible = false;
+        m_inView = false;
+        m_isVisible = false;
         m_ray = new Ray();
         m_targetPosisition = new Vector3();
     }
@@ -41,11 +41,11 @@ public class DetectPlayer : MonoBehaviour
         worldView = m_camera.WorldToViewportPoint(m_targetPosisition);
         m_ray.direction = Vector3.RotateTowards(m_ray.origin, m_targetPosisition, Mathf.Infinity, Mathf.Infinity);
 
-        inView = (worldView.z < 0f) ? 
+        m_inView = (worldView.z < 0f) ? 
             false : (worldView.x > 0f && worldView.x < 1f) ?
             true : false;
         
-        return inView;
+        return m_inView;
     }
 
     public bool IsVisible()

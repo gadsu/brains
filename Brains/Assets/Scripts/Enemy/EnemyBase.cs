@@ -12,7 +12,7 @@ public class EnemyBase : MonoBehaviour
 	private void Awake()
 	{
 		m_pathTo = GetComponent<PathTo>();
-		m_DetectPlayer = GetComponent<PathTo>();
+		m_DetectPlayer = GetComponent<DetectPlayer>();
 	}
 
 	private void Start()
