@@ -11,7 +11,6 @@ public class PlayerDictionary : MonoBehaviour
 
     string id;
     int animationID, playingID;
-
     private void Awake()
     {
         /* Initialize references. */
@@ -34,14 +33,18 @@ public class PlayerDictionary : MonoBehaviour
         return ((moving * 10000) + (mvState * 1000) + (arms*100) + (legs*10) + (playDead)); // sends back the formatted key.
     }
 
-    public void Animate(int p_id, float speed, int b)
+    public void SetAnimationSpeed(float p_speed)
+    {
+        anim.SetFloat("Speed", p_speed);
+    }
+
+    public void Animate(int p_id, float speed)
     {
         id = diction.ReadFromDictionary(p_id); // reads back the string stored name of the animation.
 
         if (speed == 0f) speed = 1f; // makes sure the animation plays
 
         animationID = Animator.StringToHash(id); // gets the hashed id for the animator referece.
-        anim.SetFloat("Speed", (speed * b)); // sets the speed and the direction of the animation.
 
         if (animationID != playingID)
         { // checks to make sure that the animation is not already playing.

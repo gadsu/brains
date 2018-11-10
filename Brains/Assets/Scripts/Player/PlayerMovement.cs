@@ -8,8 +8,6 @@ public class PlayerMovement : MonoBehaviour {
     public Transform m_cameraTransform;
     [HideInInspector]
     public Vector3 m_playerDirection;
-    Animator anim;
-    Rigidbody rbody;
 
     [Range(1.0f, 5f)]
     public float m_speedRate = 2.5f;
@@ -27,8 +25,6 @@ public class PlayerMovement : MonoBehaviour {
         m_playerRotation = new Vector3(0, 0, 0);
         m_moveSpeed = 0;
         /*****************************************/
-        anim = GetComponent<Animator>();
-        rbody = GetComponent<Rigidbody>();
     }
 
     private void Start()
@@ -53,21 +49,24 @@ public class PlayerMovement : MonoBehaviour {
         /**************************************************/
     }
 
-    public void RotatePlayer()
+    public void RotatePlayer(int p_playDead)
     {
-        /* Obtaining updated rotation values */
-        m_cameraY = m_cameraTransform.rotation.eulerAngles.y;
-        m_playerRotation = transform.rotation.eulerAngles;
-        /*************************************/
+        if (p_playDead == 0)
+        {
+            /* Obtaining updated rotation values */
+            m_cameraY = m_cameraTransform.rotation.eulerAngles.y;
+            m_playerRotation = transform.rotation.eulerAngles;
+            /*************************************/
 
-        /* Checks to see if the player is trying to move forward or backward and then interprets the facing direction */
-        if (m_playerDirection.z >= 0)
-            m_playerRotation.y = m_cameraY + (m_playerDirection.x * (90f - (45f * m_playerDirection.z)));
-        else
-            m_playerRotation.y = m_cameraY + (-m_playerDirection.x * (90f - (45f * -m_playerDirection.z)));
-        /**************************************************************************************************************/
+            /* Checks to see if the player is trying to move forward or backward and then interprets the facing direction */
+            if (m_playerDirection.z >= 0)
+                m_playerRotation.y = m_cameraY + (m_playerDirection.x * (90f - (45f * m_playerDirection.z)));
+            else
+                m_playerRotation.y = m_cameraY + (-m_playerDirection.x * (90f - (45f * -m_playerDirection.z)));
+            /**************************************************************************************************************/
 
-        transform.rotation = Quaternion.Euler(m_playerRotation); // Applies the new adjusted rotation.
+            transform.rotation = Quaternion.Euler(m_playerRotation); // Applies the new adjusted rotation.
+        }
     }
 
     public void Move(Rigidbody p_rbody)
@@ -79,10 +78,5 @@ public class PlayerMovement : MonoBehaviour {
             p_rbody.AddForce(((l_newCameraDirection * m_playerDirection.z) + (m_cameraTransform.right * m_playerDirection.x)) * m_moveSpeed, ForceMode.Impulse);  // moves the player according to the updated camera and move direction.
 
         p_rbody.angularVelocity = Vector3.up * m_moveSpeed;
-    }
-    private void Update()
-    {
-        // ADDED STUFF HERE PAUL -----------------------------------------------------------------------------------------------
-        anim.SetFloat("Speed", (rbody.velocity.magnitude / 1.4f)+0.1f); //Take Spud's actual speed, divide by some factor, add a teeny bit so he doesn't 100% freeze.
     }
 }
