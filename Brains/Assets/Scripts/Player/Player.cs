@@ -89,6 +89,25 @@ public class Player : ACharacter
 
         m_scriptPMove.SetSpeed((int)MvState)
             .RotatePlayer();
+
+        if (MvState == MovementState.Crawling)
+        {
+            if (GetComponent<CapsuleCollider>().direction != 2 ^ Input.GetKey(KeyCode.Space))
+            {
+                GetComponent<CapsuleCollider>().center = new Vector3(0, .5f, 0);
+                GetComponent<CapsuleCollider>().direction = 2;
+                transform.position += Vector3.up * .1f;
+            }
+        }
+        else
+        {
+            if (GetComponent<CapsuleCollider>().direction != 1)
+            {
+                GetComponent<CapsuleCollider>().center = Vector3.up;
+                GetComponent<CapsuleCollider>().direction = 1;
+                transform.position += Vector3.up * .1f;
+            }
+        }
     }
 
     private void FixedUpdate()

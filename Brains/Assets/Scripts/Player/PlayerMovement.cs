@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour {
     public Transform m_cameraTransform;
     [HideInInspector]
     public Vector3 m_playerDirection;
+    Animator anim;
+    Rigidbody rbody;
 
     [Range(1.0f, 5f)]
     public float m_speedRate = 2.5f;
@@ -25,6 +27,8 @@ public class PlayerMovement : MonoBehaviour {
         m_playerRotation = new Vector3(0, 0, 0);
         m_moveSpeed = 0;
         /*****************************************/
+        anim = GetComponent<Animator>();
+        rbody = GetComponent<Rigidbody>();
     }
 
     private void Start()
@@ -75,5 +79,10 @@ public class PlayerMovement : MonoBehaviour {
             p_rbody.AddForce(((l_newCameraDirection * m_playerDirection.z) + (m_cameraTransform.right * m_playerDirection.x)) * m_moveSpeed, ForceMode.Impulse);  // moves the player according to the updated camera and move direction.
 
         p_rbody.angularVelocity = Vector3.up * m_moveSpeed;
+    }
+    private void Update()
+    {
+        // ADDED STUFF HERE PAUL -----------------------------------------------------------------------------------------------
+        anim.SetFloat("Speed", (rbody.velocity.magnitude / 1.4f)+0.1f); //Take Spud's actual speed, divide by some factor, add a teeny bit so he doesn't 100% freeze.
     }
 }

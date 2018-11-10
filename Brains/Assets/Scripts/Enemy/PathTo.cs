@@ -5,11 +5,13 @@ using UnityEngine.AI;
 using UnityEditor;
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator))]
 public class PathTo : MonoBehaviour
 {
     public Vector3[] m_destinations;
 
     NavMeshAgent m_agent;
+    Animator anim;
     Vector3 m_target;
     int destinationI;
     bool IsVisible;
@@ -39,6 +41,7 @@ public class PathTo : MonoBehaviour
     private void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
     void Start ()
     {
@@ -72,10 +75,11 @@ public class PathTo : MonoBehaviour
     {
         IsVisible = p_visible;
     }
-	
-	// Update is called once per frame
+
 	void Update ()
     {
         UpdateDestination();
+        // ADDED STUFF HERE PAUL -----------------------------------------------------------------------------------------------
+        anim.SetFloat("Velocity", m_agent.velocity.magnitude);
 	}
 }
