@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Camera))]
 public class DetectPlayer : MonoBehaviour
@@ -14,7 +15,10 @@ public class DetectPlayer : MonoBehaviour
     RaycastHit m_out;
 
     bool m_inView, m_isVisible;
+    public GameObject m_text_notice;
 
+    [Range(1f, 5f)]
+    public float xtime;
     private void Awake()
     {
         m_camera = GetComponent<Camera>();
@@ -57,5 +61,19 @@ public class DetectPlayer : MonoBehaviour
                     m_isVisible = true;
 
         return m_isVisible;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("Player"))
+        {
+            ReloadScene(SceneManager.GetActiveScene(), xtime);      
+        }
+    }
+
+    private IEnumerator ReloadScene(Scene _scene, float _time)
+    {
+        m_text_notice.SetActive(true);
+        yield return new WaitForSecondsRealtime(_time);
+        SceneManager.LoadScene(_scene.name);
     }
 }
