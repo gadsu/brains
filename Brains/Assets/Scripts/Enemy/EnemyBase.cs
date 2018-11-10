@@ -29,5 +29,5 @@ public class EnemyBase : MonoBehaviour
 				m_pathTo.SetVisible(true);
 			}
 		}
-	}
+    }
 }

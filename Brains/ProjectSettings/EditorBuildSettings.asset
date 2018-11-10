@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu/Menu.unity
     guid: 1af4b20b92897644886d474199d85edb
   - enabled: 1
-    path: Assets/Scenes/TestingPrefabs.unity
-    guid: 718d8b8447e5c044096ca539069c8e56
+    path: Assets/Scenes/Levels/Tutorial.unity
+    guid: 3c72c2fce4fbc1a419d9a838b5c4c3cc
   - enabled: 1
     path: Assets/Scenes/MainMenu/Credits.unity
     guid: c3cf53fc5f6daa943950ca44ff6c7316
