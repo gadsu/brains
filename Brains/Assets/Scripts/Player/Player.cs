@@ -94,7 +94,7 @@ public class Player : ACharacter
             {
                 if (GetComponent<CapsuleCollider>().direction != 2 ^ Input.GetKey(KeyCode.Space))
                 {
-                    GetComponent<CapsuleCollider>().center = new Vector3(0, .5f, 0);
+                    GetComponent<CapsuleCollider>().center = Vector3.up * .35f;
                     GetComponent<CapsuleCollider>().direction = 2;
                     transform.position += Vector3.up * .1f;
                 }
@@ -103,7 +103,7 @@ public class Player : ACharacter
             {
                 if (GetComponent<CapsuleCollider>().direction != 1)
                 {
-                    GetComponent<CapsuleCollider>().center = Vector3.up;
+                    GetComponent<CapsuleCollider>().center = Vector3.up * .9f;
                     GetComponent<CapsuleCollider>().direction = 1;
                     transform.position += Vector3.up * .1f;
                 }
