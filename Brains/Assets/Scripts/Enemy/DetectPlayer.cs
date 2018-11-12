@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class DetectPlayer : MonoBehaviour
 {
     public Camera m_camera;
-    Transform m_target;
     Vector3 m_targetPosition, worldView;
 
 
@@ -21,7 +20,6 @@ public class DetectPlayer : MonoBehaviour
     private float m_playerSizeY;
     private void Awake()
     {
-        m_target = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     private void Start()
@@ -36,7 +34,7 @@ public class DetectPlayer : MonoBehaviour
 
     public bool IsInView(Vector3 p_targetPosition)
     {
-        m_ray.origin = transform.position;
+        m_ray.origin = m_camera.transform.position;
         m_targetPosition = p_targetPosition;
         m_targetPosition.x -= m_ray.origin.x;
         m_targetPosition.y = (m_targetPosition.y + m_playerSizeY) -  m_ray.origin.y;
@@ -45,28 +43,30 @@ public class DetectPlayer : MonoBehaviour
         worldView = m_camera.WorldToViewportPoint(m_targetPosition);
         m_ray.direction = Vector3.RotateTowards(m_ray.origin, m_targetPosition, Mathf.Infinity, Mathf.Infinity);
 
-        m_inView = (worldView.z < 0f) ? 
+        m_inView = (worldView.z < m_camera.nearClipPlane || worldView.z > m_camera.farClipPlane) ? 
             false : (worldView.x > 0f && worldView.x < 1f) ?
             true : false;
         
         return m_inView;
     }
 
-    public bool IsVisible()
+    public bool IsVisible(Vector3 p_targetPosition)
     {
         m_isVisible = false;
         if (m_inView)
-            if (Physics.Raycast(m_ray, out m_out, Vector3.Distance(m_ray.origin, m_targetPosition)))
+        {
+            Debug.DrawRay(m_ray.origin, m_ray.direction * Vector3.Distance(m_ray.origin, m_targetPosition), Color.red);
+            if (Physics.Raycast(m_ray, out m_out, Vector3.Distance(m_ray.origin, p_targetPosition)))
                 if (m_out.transform.CompareTag("Player"))
                     m_isVisible = true;
-
+        }
         return m_isVisible;
     }
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.CompareTag("Player"))
         {
-            ReloadScene(SceneManager.GetActiveScene(), xtime);      
+            StartCoroutine(ReloadScene(SceneManager.GetActiveScene(), xtime));      
         }
     }
 

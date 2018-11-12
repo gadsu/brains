@@ -13,6 +13,7 @@ public class GameStateHandler : MonoBehaviour
     };
     private GameState m_currentState;
 
+    [HideInInspector]
     public bool m_gameOver;
 
     private void Awake()

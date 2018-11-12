@@ -24,9 +24,10 @@ public class EnemyBase : MonoBehaviour
 	{
 		if(m_DetectPlayer.IsInView(m_target.position))
 		{
-			if(m_DetectPlayer.IsVisible())
+			if(m_DetectPlayer.IsVisible(m_target.position))
 			{
 				m_pathTo.SetVisible(true);
+                Debug.Log("<color=yellow>Tom Path Set To Player! </color>");
 			}
 		}
     }
