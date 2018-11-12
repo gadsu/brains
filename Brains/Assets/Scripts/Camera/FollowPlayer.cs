@@ -32,6 +32,6 @@ public class FollowPlayer : MonoBehaviour
         transform.position = pos;
 
         transform.RotateAround(targetPos, new Vector3(0f, Input.GetAxis("Mouse X"), 0f), m_rate*Time.deltaTime);
-        transform.Rotate(new Vector3(-((Input.GetAxis("Mouse Y")*m_rate)*Time.deltaTime), 0f, 0f));
+        transform.Rotate(new Vector3(-(Input.GetAxis("Mouse Y")), 0f, 0f) * (m_rate * .5f) * Time.deltaTime);
     }
 }
