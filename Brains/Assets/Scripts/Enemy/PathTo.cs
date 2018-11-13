@@ -16,7 +16,7 @@ public class PathTo : MonoBehaviour
     int destinationI;
     bool IsVisible;
 
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
         if (m_destinations.Length > 0)
         {
@@ -36,7 +36,7 @@ public class PathTo : MonoBehaviour
             Handles.DrawPolyLine(m_destinations);
             Handles.DrawLine(m_destinations[m_destinations.Length - 1], m_destinations[0]);
         }
-    }
+    }*/
     // Use this for initialization
     private void Awake()
     {
