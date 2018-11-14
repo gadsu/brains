@@ -96,7 +96,6 @@ public class Player : ACharacter
                 {
                     GetComponent<CapsuleCollider>().center = Vector3.up * .35f;
                     GetComponent<CapsuleCollider>().direction = 2;
-                    transform.position += Vector3.up * .1f;
                 }
             }
             else
@@ -105,7 +104,6 @@ public class Player : ACharacter
                 {
                     GetComponent<CapsuleCollider>().center = Vector3.up * .9f;
                     GetComponent<CapsuleCollider>().direction = 1;
-                    transform.position += Vector3.up * .1f;
                 }
             }
 
