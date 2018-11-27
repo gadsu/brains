@@ -6,9 +6,10 @@ using UnityEditor;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Pathway))]
 public class PathTo : MonoBehaviour
 {
-    public Vector3[] m_destinations;
+    private Pathway path;
 
     NavMeshAgent m_agent;
     Animator anim;
@@ -16,52 +17,32 @@ public class PathTo : MonoBehaviour
     int destinationI;
     bool IsVisible;
 
-    /*private void OnDrawGizmosSelected()
-    {
-        if (m_destinations.Length > 0)
-        {
-            foreach (Vector3 des in m_destinations)
-            {
-                Gizmos.color = Color.green;
-                Vector3 l_des = new Vector3()
-                {
-                    x = des.x,
-                    y = des.y,
-                    z = des.z
-                };
-                if (l_des == m_destinations[0]) Gizmos.color = Color.yellow;
-                Gizmos.DrawSphere(l_des, .25f);
-            }
-            Handles.color = Color.cyan;
-            Handles.DrawPolyLine(m_destinations);
-            Handles.DrawLine(m_destinations[m_destinations.Length - 1], m_destinations[0]);
-        }
-    }*/
     // Use this for initialization
     private void Awake()
     {
+        path = GetComponent<Pathway>();
         m_agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
     }
     void Start ()
     {
         destinationI = 0;
-        m_target = (m_destinations.Length > 0) ? m_destinations[destinationI] : transform.position;
+        m_target = (path._destinations.Length > 0) ? path._destinations[destinationI]._destinationLocation : transform.position;
         m_agent.SetDestination(m_target);
         IsVisible = false;
 	}
 
     private void UpdateDestination()
     {
-        if (m_destinations.Length > 0 && !IsVisible)
+        if (path._destinations.Length > 0 && !IsVisible)
         {
             if (m_agent.destination != m_target)
                 m_agent.SetDestination(m_target);
 
             if (Mathf.Abs(m_agent.remainingDistance) < .1f)
             {
-                destinationI = (destinationI < m_destinations.Length - 1) ? destinationI + 1 : 0;
-                m_target = m_destinations[destinationI];
+                destinationI = (destinationI + 1 < path._destinations.Length - 1) ? destinationI + 1 : 0;
+                m_target = path._destinations[destinationI]._destinationLocation;
                 m_agent.SetDestination((m_target));
             }
         }

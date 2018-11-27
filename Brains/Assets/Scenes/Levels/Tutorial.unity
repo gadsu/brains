@@ -30968,6 +30968,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: dc976dd9f818b874ab96055274f77f28,
     type: 3}
   m_PrefabInternal: {fileID: 758597034}
+--- !u!114 &1831073719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1831073718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a87f72a46438748b1d2e8bab0e77ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destinations:
+  - _destinationType: 0
+    _destinationLocation: {x: 15.484632, y: 0.26204395, z: -17.786272}
+  - _destinationType: 0
+    _destinationLocation: {x: 23.698933, y: 0.26204395, z: 18.704494}
+  - _destinationType: 0
+    _destinationLocation: {x: 2.4103937, y: 0.26204395, z: 18.859802}
+  - _destinationType: 0
+    _destinationLocation: {x: 9.318196, y: 1.1394765, z: 34.074036}
+  - _destinationType: 0
+    _destinationLocation: {x: -4.3036575, y: 1.2983849, z: 27.382648}
+  - _destinationType: 0
+    _destinationLocation: {x: -10.974222, y: 0.26204395, z: 20.406027}
 --- !u!114 &1831073721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30993,11 +31017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5227902fb74c54699561034f9dce2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_destinations:
-  - {x: 16.54, y: 1.79, z: -7.9}
-  - {x: 3.43, y: 1, z: 19.6}
-  - {x: 25.5, y: 1, z: 19.64}
-  - {x: -9.2, y: 1, z: 23.1}
 --- !u!114 &1831073724
 MonoBehaviour:
   m_ObjectHideFlags: 0
