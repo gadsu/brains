@@ -17,6 +17,9 @@ using UnityEngine;
 [RequireComponent(typeof(BodyHandler))]
 /******************************************************************/
 
+    //TODO: Figure out how to do this:
+    // One.Philadelphia();
+
 public class Player : ACharacter
 {
     /* Sets up repeatedly used variables. */
@@ -36,6 +39,8 @@ public class Player : ACharacter
     /**************************************/
 
     Vector3 spawn; // For sending this game object back to it's spawn when out of bounds.
+
+	public MovementState mState{get{return MvState;}}
 
     private void Awake()
     {
@@ -107,7 +112,7 @@ public class Player : ACharacter
                 }
             }
 
-            m_scriptPDiction.SetAnimationSpeed(((m_rbody.velocity.magnitude / 1.4f) + 0.1f)); // sets the speed and the direction of the animation.
+            m_scriptPDiction.SetAnimationSpeed(((m_rbody.velocity.magnitude / 1.4f) + 0.1f) * Mathf.Sign(Input.GetAxis("Vertical"))); // sets the speed and the direction of the animation.
         }
         else
         {
@@ -127,7 +132,7 @@ public class Player : ACharacter
         }
         else
         {
-            m_scriptGroanHandler.SetGroanSpeed((int)MovementState.Idling, 0);
+           m_scriptGroanHandler.SetGroanSpeed((int)MovementState.Idling, 0);
             m_rbody.velocity = Vector3.zero;
         }
     }
@@ -136,8 +141,8 @@ public class Player : ACharacter
     {
         if (!m_gameState.m_gameOver)
         {
-            if (m_scriptGroanHandler.UpdateGroanAmount()) // if spud has to groan.
-                m_scriptGroanHandler.Groan(); // then groan.
+           if (m_scriptGroanHandler.UpdateGroanAmount()) // if spud has to groan.
+                m_scriptGroanHandler.Groan(); // then groan.*/
 
             m_animationKey =
                 m_scriptPDiction.RetrieveKey(m_moving, (int)MvState, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), m_playDead); // Gets the key

@@ -35,9 +35,11 @@ public class AudioManager : MonoBehaviour {
 
 	}
 
-    void Start ()
+    public void Start ()
     {
         Play("BGMusic");
+        Play("BGMusicHigh");
+        setVol("BGMusicHigh", 0);
     }
 
     public void Play(string name)
@@ -49,11 +51,21 @@ public class AudioManager : MonoBehaviour {
 
             if (PauseMenu.GamePaused)
             {
-                s.source.pitch *= .5f;
+                s.source.pitch *= 3f;
             }
             return;
         }
         s.source.Play();
 
+    }
+    public void setVol(string name, float vol)
+    {
+        Mathf.Clamp(vol, 0, 1f);
+        Sound s = Array.Find(sounds, Sound => Sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+        }
+        s.source.volume = vol;
     }
 }

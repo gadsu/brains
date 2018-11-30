@@ -9,7 +9,7 @@ public class GroanHandler : MonoBehaviour {
     private Vector3 groanTransformScale;
 
     public GameObject agentTester, groanSphere;
-    public Image groanMeter;
+    public GameObject groanMeter;
 
     [Range(.01f, .1f)]
     public float groanRate = .02f;
@@ -27,6 +27,7 @@ public class GroanHandler : MonoBehaviour {
         groanTransformScale.y = 1f;
         groanTransformScale.z = 1f;
         groaning = false;
+        groanMeter = GameObject.Find("GP_UIGroanMeterFill");
         /*****************************************/
     }
 
@@ -38,7 +39,7 @@ public class GroanHandler : MonoBehaviour {
     public bool UpdateGroanAmount()
     {
         /* Updates the current amount both data-wise and visual-wise. */
-        currentAmount = currentAmount + (groanSpeed * Time.deltaTime);
+        currentAmount += (groanSpeed * Time.deltaTime);
         groanTransformScale.x = currentAmount;
         groanMeter.transform.localScale = groanTransformScale;
         /**************************************************************/

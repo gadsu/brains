@@ -18,6 +18,8 @@ public class DetectPlayer : MonoBehaviour
     [Range(1f, 5f)]
     public float xtime;
     private float m_playerSizeY;
+    private bool failing = false;
+    public float seeDistance = 2f;
     private void Awake()
     {
     }
@@ -29,7 +31,8 @@ public class DetectPlayer : MonoBehaviour
         m_isVisible = false;
         m_ray = new Ray();
         m_targetPosition = new Vector3();
-        m_playerSizeY = GameObject.Find("Player").transform.lossyScale.y;
+        m_playerSizeY = GameObject.Find("Spud").transform.lossyScale.y;
+        failing = false;
     }
 
     public bool IsInView(Vector3 p_targetPosition)
@@ -64,16 +67,21 @@ public class DetectPlayer : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("Player"))
+        if(collision.collider.CompareTag("Player") && !failing)
         {
-            StartCoroutine(ReloadScene(SceneManager.GetActiveScene(), xtime));      
+            failing = true;
+            FindObjectOfType<AudioManager>().Play("Fail");
+            FindObjectOfType<AudioManager>().setVol("BGMusicHigh", 0.75f);
+            m_text_notice.SetActive(true);
+            GetComponent<EnemyBase>().blockingAnim("A_TomAttack");
+            StartCoroutine(ReloadScene(SceneManager.GetActiveScene(), xtime));  
         }
     }
 
     private IEnumerator ReloadScene(Scene _scene, float _time)
     {
-        m_text_notice.SetActive(true);
         yield return new WaitForSecondsRealtime(_time);
+        FindObjectOfType<AudioManager>().Start();
         SceneManager.LoadScene(_scene.name);
     }
 }

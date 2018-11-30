@@ -48,7 +48,7 @@ public class PathTo : MonoBehaviour
         }
         else
         {
-            m_agent.SetDestination(GameObject.Find("Player").transform.position);
+            m_agent.SetDestination(GameObject.Find("Spud").transform.position);
         }
     }
 

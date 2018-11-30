@@ -6,10 +6,31 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour {
 
     public static bool GamePaused = false;
-
     public GameObject pauseMenuUI;
-	// Update is called once per frame
-	void Update () {
+    public enum ButtonFunction { Pause, Resume, LoadScene, LoadScreen };
+
+    /*[System.Serializable]
+    public class MenuOption
+    {
+        //public string buttonText = "";
+        public ButtonFunction buttonFunction;
+        public GameObject buttonLink;
+        //public string buttonArg = "";
+    }
+    public MenuOption[] buttonsList;
+
+    private void Awake()
+    {
+        for(int i = 0; i < buttonsList.Length-1; i++)
+        {
+            switch(buttonsList[i].buttonFunction)
+            { case ButtonFunction.Pause: buttonsList[i].buttonLink.GetComponent<Button>().addListener(Pause); break;
+                default: break;
+            }
+        }
+    }*/
+
+    void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GamePaused)

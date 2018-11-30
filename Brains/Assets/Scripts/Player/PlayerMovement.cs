@@ -51,7 +51,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public void RotatePlayer(int p_playDead)
     {
-        if (p_playDead == 0)
+		
+		if (p_playDead == 0 && (int)GetComponent<Player>().mState != 0)
         {
             /* Obtaining updated rotation values */
             m_cameraY = m_cameraTransform.rotation.eulerAngles.y;
