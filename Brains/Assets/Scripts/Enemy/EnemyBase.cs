@@ -9,7 +9,7 @@ public class EnemyBase : MonoBehaviour
 	DetectPlayer m_DetectPlayer;
 	Transform m_target;
     NavMeshAgent m_agent;
-    public float moveSpeedStart;
+    public float moveSpeedStart = 3f;
     private float moveSpeed;
     private bool isChasing = false;
     private bool isBlocked = false;
@@ -46,11 +46,15 @@ public class EnemyBase : MonoBehaviour
 
         if(isChasing && !isBlocked)
         {
-            m_agent.speed = moveSpeedStart * 1.5f;
+            m_agent.speed = moveSpeedStart * 2f;
         }
         else if(!isChasing && !isBlocked)
         {
             m_agent.speed = moveSpeedStart;
+        }
+        if (isBlocked)
+        {
+            transform.LookAt(m_target, Vector3.up);
         }
     }
     public void blockingAnim(string anim)
@@ -75,7 +79,6 @@ public class EnemyBase : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(time);
-            //Debug.Log(clips[0].name);
             m_animator.SetTrigger("toMove");
             isBlocked = false;
         }
