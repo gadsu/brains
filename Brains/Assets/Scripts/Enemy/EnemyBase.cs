@@ -9,10 +9,8 @@ public class EnemyBase : MonoBehaviour
 	DetectPlayer m_DetectPlayer;
 	Transform m_target;
     NavMeshAgent m_agent;
-    public float moveSpeedStart;
+    public float moveSpeedStart = 3f;
     private float moveSpeed;
-    private bool isChasing = false;
-    private bool isBlocked = false;
 
 	private void Awake()
 	{
@@ -25,59 +23,67 @@ public class EnemyBase : MonoBehaviour
 	private void Start()
 	{
 		m_target = GameObject.Find("Spud").GetComponent<Transform>();
-        isChasing = false;
 	}
 
 	private void Update()
 	{
         if (m_DetectPlayer.IsInView(m_target.position))
         {
-            if (m_DetectPlayer.IsVisible(m_target.position) && !isChasing)
+            m_DetectPlayer.UpdateRayToPlayer(m_target.position);
+            if (m_DetectPlayer.IsVisible(m_target.position))
             {
-                isChasing = true;
-                m_pathTo.SetVisible(true);
-                FindObjectOfType<AudioManager>().Play("Dixie");
-                FindObjectOfType<AudioManager>().setVol("BGMusicHigh", 0.75f);
-                blockingAnim("A_TomSurprise");
-                Debug.Log("<color=yellow>Tom Path Set To Player! </color>");
+                Debug.Log(true);
             }
-        }
-        else isChasing = false;
-
-        if(isChasing && !isBlocked)
-        {
-            m_agent.speed = moveSpeedStart * 1.5f;
-        }
-        else if(!isChasing && !isBlocked)
-        {
-            m_agent.speed = moveSpeedStart;
-        }
-    }
-    public void blockingAnim(string anim)
-    {
-        StartCoroutine(blockingAnimCo(anim));
-    }
-    IEnumerator blockingAnimCo(string anim)
-    {
-        if (!isBlocked)
-        {
-            isBlocked = true;
-            Animator m_animator = GetComponent<Animator>();
-            float time = 0;
-            AnimationClip[] clips = m_animator.runtimeAnimatorController.animationClips;
-            foreach (AnimationClip clip in clips)
-            {
-                if (clip.name == anim)
-                {
-                    time = clip.length;
-                    m_agent.speed = 0;
-                    m_animator.Play(anim);
-                }
-            }
-            yield return new WaitForSeconds(time);
-            //Debug.Log(clips[0].name);
-            m_animator.SetTrigger("toMove");
-            isBlocked = false;
         }
     }
 }
+
+/*if (m_DetectPlayer.IsInView(m_target.position))
+{
+    if (m_DetectPlayer.IsVisible(m_target.position) && !isChasing)
+    {
+        isChasing = true;
+        m_pathTo.SetVisible(true);
+        FindObjectOfType<AudioManager>().Play("Dixie");
+        FindObjectOfType<AudioManager>().setVol("BGMusicHigh", 0.75f);
+        blockingAnim("A_TomSurprise");
+        Debug.Log("<color=yellow>Tom Path Set To Player! </color>");
+    }
+}
+else isChasing = false;
+
+if (!isBlocked)
+{
+    m_agent.speed = (isChasing) ? moveSpeedStart * 2f : moveSpeedStart;
+}
+else if (isBlocked)
+{
+    transform.LookAt(m_target, Vector3.up);
+}*/
+/*
+public void blockingAnim(string anim)
+{
+    StartCoroutine(blockingAnimCo(anim));
+}*/
+/*IEnumerator blockingAnimCo(string anim)
+{
+    if (!isBlocked)
+    {
+        isBlocked = true;
+        Animator m_animator = GetComponent<Animator>();
+        float time = 0;
+        AnimationClip[] clips = m_animator.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
+        {
+            if (clip.name == anim)
+            {
+                time = clip.length;
+                m_agent.speed = 0;
+                m_animator.Play(anim);
+            }
+        }
+        yield return new WaitForSeconds(time);
+        m_animator.SetTrigger("toMove");
+        isBlocked = false;
+    }
+}*/

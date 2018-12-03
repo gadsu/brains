@@ -17,7 +17,7 @@ public class DetectPlayer : MonoBehaviour
 
     [Range(1f, 5f)]
     public float xtime;
-    private float m_playerSizeY;
+    public float m_playerSizeY;
     private bool failing = false;
     public float seeDistance = 2f;
     private void Awake()
@@ -31,41 +31,41 @@ public class DetectPlayer : MonoBehaviour
         m_isVisible = false;
         m_ray = new Ray();
         m_targetPosition = new Vector3();
-        m_playerSizeY = GameObject.Find("Spud").transform.lossyScale.y;
         failing = false;
     }
 
     public bool IsInView(Vector3 p_targetPosition)
     {
+        worldView = m_camera.WorldToViewportPoint(p_targetPosition);
+
+        m_inView = (worldView.z < m_camera.farClipPlane && worldView.z > m_camera.nearClipPlane) ?
+            (worldView.x < 1f && worldView.x > 0f) ? true : false :
+            false;
+
+        return m_inView;
+    }
+
+    public void UpdateRayToPlayer(Vector3 p_targetPosition)
+    {
         m_ray.origin = m_camera.transform.position;
         m_targetPosition = p_targetPosition;
-        m_targetPosition.x -= m_ray.origin.x;
-        m_targetPosition.y = (m_targetPosition.y + m_playerSizeY) -  m_ray.origin.y;
+        m_targetPosition.x = m_targetPosition.x - m_ray.origin.x;
+        m_targetPosition.y = (m_targetPosition.y -  m_ray.origin.y) + (.5f * m_playerSizeY);
         m_targetPosition.z -= m_ray.origin.z;
 
-        worldView = m_camera.WorldToViewportPoint(m_targetPosition);
         m_ray.direction = Vector3.RotateTowards(m_ray.origin, m_targetPosition, Mathf.Infinity, Mathf.Infinity);
-
-        m_inView = (worldView.z < m_camera.nearClipPlane || worldView.z > m_camera.farClipPlane) ? 
-            false : (worldView.x > 0f && worldView.x < 1f) ?
-            true : false;
-        
-        return m_inView;
     }
 
     public bool IsVisible(Vector3 p_targetPosition)
     {
         m_isVisible = false;
-        if (m_inView)
-        {
-            Debug.DrawRay(m_ray.origin, m_ray.direction * Vector3.Distance(m_ray.origin, m_targetPosition), Color.red);
-            if (Physics.Raycast(m_ray, out m_out, Vector3.Distance(m_ray.origin, p_targetPosition)))
-                if (m_out.transform.CompareTag("Player"))
-                    m_isVisible = true;
-        }
+        if (Physics.Raycast(m_ray, out m_out, m_camera.farClipPlane))
+            if (m_out.transform.CompareTag("Player"))
+                m_isVisible = true;
+
         return m_isVisible;
     }
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.CompareTag("Player") && !failing)
         {
@@ -76,7 +76,7 @@ public class DetectPlayer : MonoBehaviour
             GetComponent<EnemyBase>().blockingAnim("A_TomAttack");
             StartCoroutine(ReloadScene(SceneManager.GetActiveScene(), xtime));  
         }
-    }
+    }*/
 
     private IEnumerator ReloadScene(Scene _scene, float _time)
     {
