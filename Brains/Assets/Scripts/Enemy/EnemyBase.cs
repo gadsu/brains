@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBase : MonoBehaviour 
+public class EnemyBase : AEnemy 
 {
-	PathTo m_pathTo;
-	DetectPlayer m_DetectPlayer;
 	Transform m_target;
     NavMeshAgent m_agent;
     public float moveSpeedStart = 3f;
@@ -14,8 +12,8 @@ public class EnemyBase : MonoBehaviour
 
 	private void Awake()
 	{
-		m_pathTo = GetComponent<PathTo>();
-		m_DetectPlayer = GetComponent<DetectPlayer>();
+        mAEnemy_pathing = GetComponent<PathTo>();
+        mAEnemy_detecting = GetComponent<DetectPlayer>();
         m_agent = GetComponent<NavMeshAgent>();
         moveSpeed = moveSpeedStart;
     }
@@ -27,14 +25,22 @@ public class EnemyBase : MonoBehaviour
 
 	private void Update()
 	{
-        if (m_DetectPlayer.IsInView(m_target.position))
+        if (mAEnemy_detecting.IsInView(m_target.position))
         {
-            m_DetectPlayer.UpdateRayToPlayer(m_target.position);
-            if (m_DetectPlayer.IsVisible(m_target.position))
+            Enemy_Detection = DetectionLevel.Detecting;
+            mAEnemy_detecting.UpdateRayToPlayer(m_target.position);
+            if (mAEnemy_detecting.IsVisible(m_target.position))
             {
-                Debug.Log(true);
+                Enemy_Awareness = AwarenessLevel.Aware;
             }
+            else if (Enemy_Awareness == AwarenessLevel.Aware) Enemy_Awareness = AwarenessLevel.Losing;
+            else Enemy_Awareness = AwarenessLevel.Unaware;
         }
+        else if (Enemy_Detection == DetectionLevel.Detecting) Enemy_Detection = DetectionLevel.Searching;
+        else if (Enemy_Detection == DetectionLevel.Searching) Enemy_Detection = DetectionLevel.Losing;
+        else Enemy_Detection = DetectionLevel.Unseen;
+
+        mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);
     }
 }
 
