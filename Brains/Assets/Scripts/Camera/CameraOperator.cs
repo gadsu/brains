@@ -6,12 +6,16 @@ public class CameraOperator : MonoBehaviour
 {
     public GameObject positionTarget;				// Position to follow.
 	public GameObject lookTarget;					// Object to look at.
+    private GameObject trueLookTarget;
+    public bool doCinematicMode = false;
+    private bool doTrackObject = false;
     //private Vector3 targetPos, pos, dist, camTarget, camRotation;
 
 	public float maxVerticalAngle = 60f;
 	public float minVerticalAngle = -70f;
 	public Vector3 	rotSens = new Vector3(1.5f, 0.75f, 1f);
 	public float baseSens = 1f;
+    private float distToTLookTarget = 0f;
 
 	public 	Vector3	pivotOffsetStart = 	new Vector3(0,1f,0);
 	private Vector3 pivotOffset = 		new Vector3(0,1f,0);	// Y-position (height) difference between camera and positionTarget, computed on start.
@@ -46,6 +50,7 @@ public class CameraOperator : MonoBehaviour
 	private float trueZDistanceGoal;
 	private int mvState;
     public float shoulderBumpUp= 0.5f;
+    private Quaternion defaultCamRot;
 
 	public int shoulderState = 0;
 
@@ -62,6 +67,7 @@ public class CameraOperator : MonoBehaviour
 		zDistanceGoal = zDistanceStart;
 		camOffsetStart = cam.transform.localPosition;
 		camOffsetGoal = camOffsetStart;
+        defaultCamRot = cam.transform.rotation;
         /*if (!positionTarget)
         {
             positionTarget = GameObject.Find("GP_Spud");
@@ -71,117 +77,175 @@ public class CameraOperator : MonoBehaviour
 
     private void Update()
     {
-		if(shoulderState == 0)
-			shoulderState = (Input.GetKeyDown(KeyCode.Q)) ? -1 : (Input.GetKeyDown(KeyCode.E)) ? 1 : shoulderState;
-		else
-			shoulderState = (Input.GetKeyDown(KeyCode.Q)) ? 0 : (Input.GetKeyDown(KeyCode.E)) ? 0 : shoulderState;
-		
-		pivotOffset = positionTarget.transform.position;
-		pivotOffset.y = transform.position.y - positionTarget.transform.position.y;
-		pivotOffsetGoal = pivotOffsetStart;
+        // ******* Playdead tracking
+        if (positionTarget.GetComponent<Player>())
+        {
+            Player m_player = positionTarget.GetComponent<Player>();
+            if (m_player.m_playDead == 1)
+            {
+                doTrackObject = true;
+                trueLookTarget = m_player.limbToLookAt;
+            }
+            else if (m_player.m_playDead != 1)
+            {
+                doTrackObject = false;
+                trueLookTarget = lookTarget;
+            }
+        }
+        distToTLookTarget = Vector3.Distance(cam.transform.position, trueLookTarget.transform.position);
 
-		mvState = (int)positionTarget.GetComponent<Player>().mState;
-		if (mvState == 5) {
-			pivotOffsetGoal.y = pivotOffsetStart.y -1f;
-		}
+        if (1==1) // !CinematicMode
+        {
+            if (shoulderState == 0)
+                shoulderState = (Input.GetKeyDown(KeyCode.Q)) ? -1 : (Input.GetKeyDown(KeyCode.E)) ? 1 : shoulderState;
+            else shoulderState = (Input.GetKeyDown(KeyCode.Q)) ? 0 : (Input.GetKeyDown(KeyCode.E)) ? 0 : shoulderState;
 
-		// Set camera 3D position, with height offset.
-		truePivotGoal.y = Mathf.Lerp(pivotOffset.y, pivotOffsetGoal.y, Time.deltaTime * 2);
-		//truePivotOffset.x = Mathf.Lerp(pivotOffset.x, pivotOffsetGoal.x, Time.deltaTime);
-		//truePivotOffset.z = Mathf.Lerp(pivotOffset.z, pivotOffsetGoal.z, Time.deltaTime);
-		transform.position = new Vector3(
-			positionTarget.transform.position.x, 
-			positionTarget.transform.position.y + truePivotGoal.y,
-			positionTarget.transform.position.z
-		);
 
-		// Set inputs
-		input.x = Input.GetAxis ("Mouse X");
-		input.y = Input.GetAxis ("Mouse Y");
 
-		// Cut out the vertical input if horizontal input is larger (this is nice, trust me)
-		// TODO: Make this nicer?
-		if (Mathf.Abs (Input.GetAxis ("Mouse X")) > Mathf.Abs (Input.GetAxis ("Mouse Y"))) axisDamper.y = 0f;
-		else axisDamper.y = 3f;
 
-		// Set rotation deltas
-		rotDelta.x += Mathf.Clamp(input.x / 10, -1, 1) * rotSens.x * baseSens * axisDamper.x * 2;
-		rotDelta.y += Mathf.Clamp(input.y / 10, -1, 1) * rotSens.y * baseSens * axisDamper.y * 2;
 
-		// Limit vertical angle
-		rotDelta.y = Mathf.Clamp(rotDelta.y, minVerticalAngle, maxVerticalAngle);
 
-		// Slight widening of FOV for high/low angles
-		trueTargetFOV = targetFOV + Mathf.Clamp(((Mathf.Pow(Mathf.Abs(rotDelta.y), 2)) / 200) - 8, 0, maxFOVTweak);
+            //******* PIVOT and CONTAINER POSITION
+            pivotOffset = positionTarget.transform.position;
+            pivotOffset.y = transform.position.y - positionTarget.transform.position.y;
+            pivotOffsetGoal = pivotOffsetStart;
 
-		// Slight widening of FOV for crawling
-		if (mvState == 5) {
-			trueTargetFOV += 5f;
-		}
+            mvState = (int)positionTarget.GetComponent<Player>().mState;
+            if (mvState == 5)
+            {
+                pivotOffsetGoal.y = pivotOffsetStart.y - 0.5f;
+            }
 
-		// Lerp to FOV target
-		camCamera.fieldOfView = Mathf.Lerp (camCamera.fieldOfView, trueTargetFOV,  Time.deltaTime * 8);
+            // Set camera 3D position, with height offset.
+            truePivotGoal.y = Mathf.Lerp(pivotOffset.y, pivotOffsetGoal.y, Time.deltaTime * 2);
+            //truePivotOffset.x = Mathf.Lerp(pivotOffset.x, pivotOffsetGoal.x, Time.deltaTime);
+            //truePivotOffset.z = Mathf.Lerp(pivotOffset.z, pivotOffsetGoal.z, Time.deltaTime);
+            transform.position = new Vector3(
+                positionTarget.transform.position.x,
+                positionTarget.transform.position.y + truePivotGoal.y,
+                positionTarget.transform.position.z
+            );
 
-		//TODO: Grab movement states for height change
 
-		// Set camera angle. DO THE THING!
-		aim = Quaternion.Euler(-rotDelta.y, rotDelta.x, 0);
-		transform.rotation = aim;
 
-	}
+
+            // ************** ROTATION
+            // Set inputs
+            if (1==1) // !DoTracking
+            {
+                Debug.Log("YARP");
+                input.x = Input.GetAxis("Mouse X");
+                input.y = Input.GetAxis("Mouse Y");
+
+                // Cut out the vertical input if horizontal input is larger (this is nice, trust me)
+                // TODO: Make this nicer?
+                if (Mathf.Abs(Input.GetAxis("Mouse X")) > Mathf.Abs(Input.GetAxis("Mouse Y"))) axisDamper.y = 0f;
+                else axisDamper.y = 3f;
+
+                // Set rotation deltas
+                rotDelta.x += Mathf.Clamp(input.x / 10, -1, 1) * rotSens.x * baseSens * axisDamper.x * 2;
+                rotDelta.y += Mathf.Clamp(input.y / 10, -1, 1) * rotSens.y * baseSens * axisDamper.y * 2;
+
+                // Limit vertical angle
+                rotDelta.y = Mathf.Clamp(rotDelta.y, minVerticalAngle, maxVerticalAngle);
+
+                //TODO: Grab movement states for height change
+
+                // Set camera angle. DO THE THING!
+                aim = Quaternion.Euler(-rotDelta.y, rotDelta.x, 0);
+                transform.rotation = aim;
+            }
+        }
+
+
+        // ********** FIELD-OF-VIEW
+        if (doTrackObject)
+        {
+            targetFOV = 60f + (0.1f * distToTLookTarget);
+        }
+        else if (!doTrackObject) targetFOV = defaultFOV;
+
+        // Slight widening of FOV for high/low angles
+        trueTargetFOV = targetFOV + Mathf.Clamp(((Mathf.Pow(Mathf.Abs(rotDelta.y), 2)) / 200) - 8, 0, maxFOVTweak);
+
+        // Slight widening of FOV for crawling
+        if (mvState == 5)
+        {
+            trueTargetFOV += 5f;
+        }
+
+        // Lerp to FOV target
+        camCamera.fieldOfView = Mathf.Lerp(camCamera.fieldOfView, trueTargetFOV, Time.deltaTime * 8);
+
+    }
 
 	//********************************************************************************************************
 	private void LateUpdate() {
-		RaycastHit hit;
-		Vector3 dir = Vector3.back;
-		Vector3 pos = cam.transform.position;
+        Vector3 pos = cam.transform.position;
 
-		trueZDistanceGoal = zDistanceGoal;
-		camPushRayLength = camPushRayStartLength;
-		// Make sure the raycast isn't too long or short
-		//Mathf.Clamp(camPushRayLength, 0.1f, camPushRayStartLength);
-
-		// Check for intersection
-		if (Physics.Raycast(pos, transform.TransformDirection(dir), out hit, camPushRayLength))
-		{
-			Debug.DrawRay(pos, transform.TransformDirection(dir) * hit.distance, Color.yellow);
-
-		}
-		else
-		{
-			Debug.DrawRay(pos, transform.TransformDirection(dir) * camPushRayLength, Color.green);
-		}
-
-		// Limit z distance
-		Mathf.Clamp(trueZDistanceGoal, zDistanceMin, zDistanceMax);
-
-		// Set z distance. DO THE THINGY
-		Vector3 derp = cam.transform.localPosition;
-		cam.transform.localPosition = new Vector3(derp.x, derp.y, trueZDistanceGoal * zDistanceInvert);
-
-
-
-		camOffset = cam.transform.localPosition;
-		camOffsetGoal = camOffsetStart;
-        if (shoulderState != 0)
+        if (!doCinematicMode && !doTrackObject)
         {
-            camOffsetGoal.x = camOffsetGoal.x * shoulderState;
-            camOffsetGoal.y = camOffsetStart.y;
+
+
+
+
+            //********** Z CAMERA OFFSET
+            RaycastHit hit;
+            Vector3 dir = Vector3.back;
+            trueZDistanceGoal = zDistanceGoal;
+            camPushRayLength = camPushRayStartLength;
+            // Make sure the raycast isn't too long or short
+            //Mathf.Clamp(camPushRayLength, 0.1f, camPushRayStartLength);
+
+            // Check for intersection
+            if (Physics.Raycast(pos, transform.TransformDirection(dir), out hit, camPushRayLength))
+            {
+                Debug.DrawRay(pos, transform.TransformDirection(dir) * hit.distance, Color.yellow);
+
+            }
+            else
+            {
+                Debug.DrawRay(pos, transform.TransformDirection(dir) * camPushRayLength, Color.green);
+            }
+
+            // Limit z distance
+            Mathf.Clamp(trueZDistanceGoal, zDistanceMin, zDistanceMax);
+
+            // Set z distance. DO THE THINGY
+            Vector3 derp = cam.transform.localPosition;
+            cam.transform.localPosition = new Vector3(derp.x, derp.y, trueZDistanceGoal * zDistanceInvert);
+
+
+
+
+
+
+            //******** X AND Y CAMERA OFFSET
+            camOffset = cam.transform.localPosition;
+            camOffsetGoal = camOffsetStart;
+            if (shoulderState != 0)
+            {
+                camOffsetGoal.x = camOffsetGoal.x * shoulderState;
+                camOffsetGoal.y = camOffsetStart.y;
+            }
+            else
+            {
+                camOffsetGoal.x = 0;
+                camOffsetGoal.y = camOffsetStart.y + shoulderBumpUp;
+            }
+
+            trueCamGoal.y = Mathf.Lerp(camOffset.y, camOffsetGoal.y, Time.deltaTime * 4);
+            trueCamGoal.x = Mathf.Lerp(camOffset.x, camOffsetGoal.x, Time.deltaTime * 4);
+            cam.transform.localPosition = new Vector3(
+                trueCamGoal.x,
+                trueCamGoal.y,
+                cam.transform.localPosition.z
+            );
+
         }
-        else
-        {
-            camOffsetGoal.x = 0;
-            camOffsetGoal.y = camOffsetStart.y + shoulderBumpUp;
+
+        if(doTrackObject){
+            cam.transform.LookAt(trueLookTarget.transform.position);
         }
-
-		trueCamGoal.y = Mathf.Lerp(camOffset.y, camOffsetGoal.y, Time.deltaTime * 4);
-		trueCamGoal.x = Mathf.Lerp(camOffset.x, camOffsetGoal.x, Time.deltaTime * 4);
-		cam.transform.localPosition = new Vector3(
-			trueCamGoal.x,
-			trueCamGoal.y,
-			cam.transform.localPosition.z
-		);
-
-
-	}
+    }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,8 +35,10 @@ public class Player : ACharacter
 
     int m_animationKey;
     int m_moving;
+    public GameObject limbToLookAt;
 
-    int m_playDead;
+    [HideInInspector]
+    public int m_playDead;
     /**************************************/
 
     Vector3 spawn; // For sending this game object back to it's spawn when out of bounds.
@@ -73,23 +76,31 @@ public class Player : ACharacter
     {
         if (!m_gameState.m_gameOver)
         {
-            MvState = MovementState.Idling; // sets the default movement state to idle.
-            m_playDead = 0;
-
-            m_scriptPMove.SetDirection();
-
-            m_moving = (m_scriptPMove.m_playerDirection != Vector3.zero) ? 1 : 0; // is the player moving?
-
-            /* Overrides the default movement state if the condition is met. */
-            if (m_moving == 1) MvState = MovementState.Creeping;
-            if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling; // (overrides the moving comparison in order to determine how movement is occuring.)
-                                                                                   /*****************************************************************/
-
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             { // Ignore all previous input and set the state for playing dead.
                 m_moving = 0;
                 MvState = MovementState.Idling;
-                m_playDead = 1;
+                m_playDead = Mathf.Abs(1 - Convert.ToInt32(m_scriptPMove.RagDead()));
+                Vector3 outOfDeadSnapPosition = limbToLookAt.transform.position;
+                if (m_playDead == 1)
+                {
+                    //transform.position = outOfDeadSnapPosition;
+                }
+                m_rbody.isKinematic = !m_rbody.isKinematic;
+            }
+
+            if (m_playDead == 0)
+            {
+                MvState = MovementState.Idling; // sets the default movement state to idle.
+
+                m_scriptPMove.SetDirection();
+
+                m_moving = (m_scriptPMove.m_playerDirection != Vector3.zero) ? 1 : 0; // is the player moving?
+
+                /* Overrides the default movement state if the condition is met. */
+                if (m_moving == 1) MvState = MovementState.Creeping;
+                if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling; // (overrides the moving comparison in order to determine how movement is occuring.)
+                                                                                       /*****************************************************************/
             }
 
             m_scriptPMove.SetSpeed((int)MvState)
