@@ -50,7 +50,7 @@ public class DetectPlayer : MonoBehaviour
         m_ray.origin = m_camera.transform.position;
         m_targetPosition = p_targetPosition;
         m_targetPosition.x = m_targetPosition.x - m_ray.origin.x;
-        m_targetPosition.y = (m_targetPosition.y -  m_ray.origin.y) + (.5f * m_playerSizeY);
+        m_targetPosition.y = (m_targetPosition.y - m_ray.origin.y) + (.5f * m_playerSizeY);
         m_targetPosition.z -= m_ray.origin.z;
 
         m_ray.direction = Vector3.RotateTowards(m_ray.origin, m_targetPosition, Mathf.Infinity, Mathf.Infinity);
@@ -70,6 +70,7 @@ public class DetectPlayer : MonoBehaviour
         float _s = p_player.GetComponent<StealthHandler>().Stealth_val;
         //Debug.Log(m_detectionAmount);
         m_detectionAmount += ((((p_detection - 3) + p_awareness) + _s) + p_sight - 1.5f) * Time.deltaTime;
+
 
         if (m_detectionAmount > 100f)
         {

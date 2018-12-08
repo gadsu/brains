@@ -3,44 +3,71 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBase : AEnemy 
+[RequireComponent(typeof(AnimationHandler))]
+public class EnemyBase : AEnemy
 {
-	Transform m_target;
+    Transform m_target;
     NavMeshAgent m_agent;
+    AnimationHandler _animHandler;
     public float moveSpeedStart = 3f;
-    private float moveSpeed;
+    bool chasing;
 
-	private void Awake()
-	{
+    private void Awake()
+    {
         mAEnemy_pathing = GetComponent<PathTo>();
         mAEnemy_detecting = GetComponent<DetectPlayer>();
         m_agent = GetComponent<NavMeshAgent>();
-        moveSpeed = moveSpeedStart;
+        m_target = GameObject.Find("Spud").GetComponent<Transform>();
+        _animHandler = GetComponent<AnimationHandler>();
     }
 
-	private void Start()
-	{
-		m_target = GameObject.Find("Spud").GetComponent<Transform>();
-	}
+    private void Start()
+    {
 
-	private void Update()
-	{
+    }
+
+    private void Update()
+    {
         if (mAEnemy_detecting.IsInView(m_target.position))
         {
             Enemy_Detection = DetectionLevel.Detecting;
             mAEnemy_detecting.UpdateRayToPlayer(m_target.position);
+
             if (mAEnemy_detecting.IsVisible(m_target.position))
             {
+                chasing = true;
                 Enemy_Awareness = AwarenessLevel.Aware;
+                mAEnemy_pathing.UpdateDestination(chasing);
+                if (chasing) _animHandler.SetAnimation("A_TomSurprise", true, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
             }
-            else if (Enemy_Awareness == AwarenessLevel.Aware) Enemy_Awareness = AwarenessLevel.Losing;
-            else Enemy_Awareness = AwarenessLevel.Unaware;
+            else
+            {
+                if (Enemy_Awareness == AwarenessLevel.Aware) Enemy_Awareness = AwarenessLevel.Losing;
+                else Enemy_Awareness = AwarenessLevel.Unaware;
+            }
         }
-        else if (Enemy_Detection == DetectionLevel.Detecting) Enemy_Detection = DetectionLevel.Searching;
-        else if (Enemy_Detection == DetectionLevel.Searching) Enemy_Detection = DetectionLevel.Losing;
-        else Enemy_Detection = DetectionLevel.Unseen;
+        else
+        {
+            chasing = false;
+            mAEnemy_pathing.UpdateDestination(chasing);
+            if (chasing) _animHandler.SetAnimation("A_TomSurprise", true, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
+
+            if (Enemy_Detection == DetectionLevel.Detecting) Enemy_Detection = DetectionLevel.Searching;
+            else if (Enemy_Detection == DetectionLevel.Searching) Enemy_Detection = DetectionLevel.Losing;
+            else Enemy_Detection = DetectionLevel.Unseen;
+        }
 
         mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);
+    }
+
+    private void FixedUpdate()
+    {
+
+    }
+
+    private void LateUpdate()
+    {
+        _animHandler.SetAnimationSpeed(m_agent.velocity.magnitude);
     }
 }
 /*
