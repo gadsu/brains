@@ -36,6 +36,7 @@ public class Player : ACharacter
     int m_animationKey;
     int m_moving;
     public GameObject limbToLookAt;
+    public float flingForce = 1;
 
     [HideInInspector]
     public int m_playDead;
@@ -87,6 +88,7 @@ public class Player : ACharacter
                     //transform.position = outOfDeadSnapPosition;
                 }
                 m_rbody.isKinematic = !m_rbody.isKinematic;
+                //limbToLookAt.GetComponent<Rigidbody>().AddForce(Vector3.up * flingForce);
             }
 
             if (m_playDead == 0)

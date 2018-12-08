@@ -74,16 +74,17 @@ public class DetectPlayer : MonoBehaviour
         if (m_detectionAmount > 100f)
         {
             m_detectionAmount = 0f;
-            //Debug.Log("Detected");
+            Debug.Log("Detected");
         }
 
         if (m_detectionAmount < 0f)
         {
             m_detectionAmount = 0f;
-            //Debug.Log("Lost");
+            Debug.Log("Lost");
         }
     }
-    /*private void OnCollisionEnter(Collision collision)
+    /*
+    private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.CompareTag("Player") && !failing)
         {
@@ -94,12 +95,13 @@ public class DetectPlayer : MonoBehaviour
             GetComponent<EnemyBase>().blockingAnim("A_TomAttack");
             StartCoroutine(ReloadScene(SceneManager.GetActiveScene(), xtime));  
         }
-    }*/
-    /*
+    }
+    
     private IEnumerator ReloadScene(Scene _scene, float _time)
     {
         yield return new WaitForSecondsRealtime(_time);
         FindObjectOfType<AudioManager>().Start();
         SceneManager.LoadScene(_scene.name);
-    }*/
+    }
+    */
 }

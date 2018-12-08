@@ -804,7 +804,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 10
+    limit: 45
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -830,7 +830,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0040094582, y: 0.0016498173, z: 0.0028437786}
+  m_Size: {x: 0.0040094582, y: 0.0037, z: 0.0028437786}
   m_Center: {x: -0.000007752329, y: 0.00082491024, z: 0.00021691015}
 --- !u!1001 &81199278
 Prefab:
@@ -2374,6 +2374,10 @@ Prefab:
       propertyPath: field of view
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 1623790654956360, guid: 620712cc13a88824b897d90a0a6be17d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 620712cc13a88824b897d90a0a6be17d, type: 2}
   m_IsPrefabAsset: 0
@@ -3783,11 +3787,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: -10
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 10
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
@@ -3819,7 +3823,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0014219871
+  m_Radius: 0.0009
   m_Height: 0.004739957
   m_Direction: 1
   m_Center: {x: 0, y: 0.0023699785, z: 0}
@@ -5547,7 +5551,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.001076899
+  m_Radius: 0.0008
   m_Height: 0.005384495
   m_Direction: 1
   m_Center: {x: 0, y: 0.0026922475, z: 0}
@@ -9161,7 +9165,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.00073689147
+  m_Radius: 0.0006
   m_Height: 0.0029475659
   m_Direction: 1
   m_Center: {x: 0, y: 0.0014737829, z: 0}
@@ -9750,6 +9754,10 @@ Prefab:
       propertyPath: limbToLookAt
       value: 
       objectReference: {fileID: 1084245878}
+    - target: {fileID: 1476005351214998, guid: 081cb1ca92a5a824ba412361a5dc43ca, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 081cb1ca92a5a824ba412361a5dc43ca, type: 2}
   m_IsPrefabAsset: 0
@@ -11572,6 +11580,10 @@ Prefab:
         type: 2}
       propertyPath: mAEnemy_sightValue
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441426034333536, guid: 54faec6a6cd643f41b1a69a9fdb67d9e, type: 2}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54faec6a6cd643f41b1a69a9fdb67d9e, type: 2}
@@ -15155,11 +15167,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: -10
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 10
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
@@ -15191,7 +15203,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0014219852
+  m_Radius: 0.0009
   m_Height: 0.0047399504
   m_Direction: 1
   m_Center: {x: 0, y: 0.0023699752, z: 0}
@@ -16475,7 +16487,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -80
+    limit: -10
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
@@ -16486,11 +16498,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 0
+    limit: 90
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 0
+    limit: 15
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -16526,10 +16538,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0015428513
+  m_Radius: 0.00085
   m_Height: 0.0061714053
   m_Direction: 1
-  m_Center: {x: 0, y: 0.0030857027, z: 0}
+  m_Center: {x: -0.0004, y: 0.0030857027, z: 0}
 --- !u!1 &1014956143 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: f6aef87dbda72974da74380e7f07e0af,
@@ -17059,11 +17071,6 @@ Prefab:
     m_Modifications:
     - target: {fileID: 224031615973522254, guid: b3c0c424eff223b48a0872fe16fb1b21,
         type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224031615973522254, guid: b3c0c424eff223b48a0872fe16fb1b21,
-        type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -17152,6 +17159,13 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114445533178935390, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_Text
+      value: 'SUPER
+
+        DEAD'
+      objectReference: {fileID: 0}
     - target: {fileID: 1188520867951136, guid: b3c0c424eff223b48a0872fe16fb1b21, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -17159,11 +17173,66 @@ Prefab:
     - target: {fileID: 114445533178935390, guid: b3c0c424eff223b48a0872fe16fb1b21,
         type: 2}
       propertyPath: m_FontData.m_FontSize
-      value: 131
+      value: 158
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114093509063011080, guid: b3c0c424eff223b48a0872fe16fb1b21, type: 2}
-    - {fileID: 95024720477746254, guid: b3c0c424eff223b48a0872fe16fb1b21, type: 2}
+    - target: {fileID: 224911741900044684, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224911741900044684, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224911741900044684, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114445533178935390, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114445533178935390, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 021e2cdd3c34c604d9b66081b3265721,
+        type: 3}
+    - target: {fileID: 114533979823860644, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 021e2cdd3c34c604d9b66081b3265721,
+        type: 3}
+    - target: {fileID: 224345846838224892, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 24.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 114781266315939194, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114781266315939194, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 114781266315939194, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.12517802
+      objectReference: {fileID: 0}
+    - target: {fileID: 114781266315939194, guid: b3c0c424eff223b48a0872fe16fb1b21,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.29468095
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3c0c424eff223b48a0872fe16fb1b21, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1053412883
@@ -17861,8 +17930,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0040148003, y: 0.0028445513, z: 0.004010165}
-  m_Center: {x: 0.0007393168, y: 0.00022165361, z: 0.000000005820766}
+  m_Size: {x: 0.0030148, y: 0.002, z: 0.0038}
+  m_Center: {x: 0, y: 0.0002, z: 0.000000005820766}
 --- !u!1 &1088417834
 GameObject:
   m_ObjectHideFlags: 0
@@ -18835,6 +18904,119 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5270ae51be93a2040b9f6e92d8368599, type: 3}
   m_IsPrefabAsset: 0
+--- !u!1 &1133445860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1494647922463130, guid: 54faec6a6cd643f41b1a69a9fdb67d9e,
+    type: 2}
+  m_PrefabInternal: {fileID: 758597034}
+--- !u!114 &1133445869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133445860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5ecd09eb2c00549b75bac57ffa7cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepClips: []
+  doDebugPrint: 0
+--- !u!82 &1133445870
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133445860}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1135829226
 GameObject:
   m_ObjectHideFlags: 0
@@ -28425,7 +28607,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -80
+    limit: -10
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
@@ -28436,11 +28618,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 0
+    limit: 15
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 0
+    limit: 90
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -28476,10 +28658,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.001542849
+  m_Radius: 0.00085
   m_Height: 0.006171396
   m_Direction: 1
-  m_Center: {x: 0, y: 0.003085698, z: 0}
+  m_Center: {x: 0.0004, y: 0.003085698, z: 0}
 --- !u!1001 &1677183044
 Prefab:
   m_ObjectHideFlags: 0
@@ -30733,7 +30915,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0010768983
+  m_Radius: 0.0008
   m_Height: 0.0053844913
   m_Direction: 1
   m_Center: {x: 0, y: 0.0026922456, z: 0}
@@ -32907,7 +33089,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.00073689135
+  m_Radius: 0.0006
   m_Height: 0.0029475654
   m_Direction: 1
   m_Center: {x: 0, y: 0.0014737827, z: 0}
@@ -35048,7 +35230,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0015
-  m_Center: {x: 0, y: 0.001, z: 0}
+  m_Center: {x: 0, y: 0.001, z: 0.0005}
 --- !u!1001 &2112218146
 Prefab:
   m_ObjectHideFlags: 0

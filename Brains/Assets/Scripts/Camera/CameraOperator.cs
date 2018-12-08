@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraOperator : MonoBehaviour
 {
     public GameObject positionTarget;				// Position to follow.
-	public GameObject lookTarget;					// Object to look at.
+    private GameObject truePositionTarget;
+    public GameObject lookTarget;					// Object to look at.
     private GameObject trueLookTarget;
     public bool doCinematicMode = false;
     private bool doTrackObject = false;
@@ -16,16 +17,18 @@ public class CameraOperator : MonoBehaviour
 	public Vector3 	rotSens = new Vector3(1.5f, 0.75f, 1f);
 	public float baseSens = 1f;
     private float distToTLookTarget = 0f;
+    public bool doFirstPerson = false;
 
-	public 	Vector3	pivotOffsetStart = 	new Vector3(0,1f,0);
+	private Vector3	pivotOffsetStart = 	new Vector3(0,1f,0);
 	private Vector3 pivotOffset = 		new Vector3(0,1f,0);	// Y-position (height) difference between camera and positionTarget, computed on start.
 	private Vector3 truePivotGoal = 	new Vector3(0,1f,0);
 	private Vector3 pivotOffsetGoal = 	new Vector3(0,1f,0);
 
-	public 	Vector3	camOffsetStart = 	new Vector3(0,0,0);
-	private Vector3 camOffset = 		new Vector3(0,0,0);
+    public Vector3 camOffsetStart =     new Vector3(0,0,0);
+    public Quaternion camRotStart;
+    private Vector3 camOffset = 		new Vector3(0,0,0);
 	private Vector3 trueCamGoal = 		new Vector3(0,0,0);
-	private Vector3 camOffsetGoal = 	new Vector3(0,0,0);
+	public Vector3 camOffsetGoal =  	new Vector3(0,0,0);
 
 	private Vector3 rotDelta = Vector3.zero;		// Amount of rotation. Input.getAxis multiplied by sensitivity.
 	private Quaternion aim;
@@ -35,7 +38,7 @@ public class CameraOperator : MonoBehaviour
 	public GameObject cam;
 	private Camera camCamera;
 
-	public float targetFOV;
+	private float targetFOV;
 	public float defaultFOV = 60f;
 	private float trueTargetFOV;
 	public float maxFOVTweak = 25f;
@@ -49,7 +52,7 @@ public class CameraOperator : MonoBehaviour
 	public float zDistanceGoal;
 	private float trueZDistanceGoal;
 	private int mvState;
-    public float shoulderBumpUp= 0.5f;
+    public float shoulderBumpUp= 0.3f;
     private Quaternion defaultCamRot;
 
 	public int shoulderState = 0;
@@ -60,24 +63,28 @@ public class CameraOperator : MonoBehaviour
 	//********************************************************************************************************
     private void Start()
     {
-		Cursor.visible = false;
+		Cursor.visible = false; ////////////////////////////////////////
 		targetFOV = defaultFOV;
 		camCamera = GetComponentInChildren<Camera>();
 		zDistanceMax = zDistanceStart;
 		zDistanceGoal = zDistanceStart;
 		camOffsetStart = cam.transform.localPosition;
-		camOffsetGoal = camOffsetStart;
+        camOffsetStart.y = 0.25f; // sort of a hack. <_<
+        camRotStart = cam.transform.localRotation;
+        camOffsetGoal = camOffsetStart;
         defaultCamRot = cam.transform.rotation;
         /*if (!positionTarget)
-        {
             positionTarget = GameObject.Find("GP_Spud");
         }*/
 
     }
 
+
+
     private void Update()
     {
         // ******* Playdead tracking
+        truePositionTarget = positionTarget;
         if (positionTarget.GetComponent<Player>())
         {
             Player m_player = positionTarget.GetComponent<Player>();
@@ -85,35 +92,47 @@ public class CameraOperator : MonoBehaviour
             {
                 doTrackObject = true;
                 trueLookTarget = m_player.limbToLookAt;
+                //truePositionTarget = m_player.limbToLookAt;
+                distToTLookTarget = Vector3.Distance(cam.transform.position, trueLookTarget.transform.position);
             }
-            else if (m_player.m_playDead != 1)
+            else
             {
                 doTrackObject = false;
                 trueLookTarget = lookTarget;
             }
         }
-        distToTLookTarget = Vector3.Distance(cam.transform.position, trueLookTarget.transform.position);
 
-        if (1==1) // !CinematicMode
+        if (!doCinematicMode)
         {
-            if (shoulderState == 0)
-                shoulderState = (Input.GetKeyDown(KeyCode.Q)) ? -1 : (Input.GetKeyDown(KeyCode.E)) ? 1 : shoulderState;
-            else shoulderState = (Input.GetKeyDown(KeyCode.Q)) ? 0 : (Input.GetKeyDown(KeyCode.E)) ? 0 : shoulderState;
-
-
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                doFirstPerson = !doFirstPerson;
+            }
+            if (!doTrackObject && !doFirstPerson)
+            {
+                if (shoulderState == 0)
+                    shoulderState = (Input.GetKeyDown(KeyCode.Q)) ? -1 : (Input.GetKeyDown(KeyCode.E)) ? 1 : shoulderState;
+                else shoulderState = (Input.GetKeyDown(KeyCode.Q)) ? 0 : (Input.GetKeyDown(KeyCode.E)) ? 0 : shoulderState;
+            }
+            if(doFirstPerson)
+            {
+                shoulderState = 0;
+                zDistanceGoal = -0.4f;
+            }
+            else { zDistanceGoal = zDistanceStart; }
 
 
 
 
             //******* PIVOT and CONTAINER POSITION
-            pivotOffset = positionTarget.transform.position;
-            pivotOffset.y = transform.position.y - positionTarget.transform.position.y;
+            pivotOffset = truePositionTarget.transform.position;
+            pivotOffset.y = transform.position.y - truePositionTarget.transform.position.y;
             pivotOffsetGoal = pivotOffsetStart;
 
             mvState = (int)positionTarget.GetComponent<Player>().mState;
             if (mvState == 5)
             {
-                pivotOffsetGoal.y = pivotOffsetStart.y - 0.5f;
+                pivotOffsetGoal.y = pivotOffsetStart.y - 0.75f; // how far to drop during crawl
             }
 
             // Set camera 3D position, with height offset.
@@ -121,9 +140,9 @@ public class CameraOperator : MonoBehaviour
             //truePivotOffset.x = Mathf.Lerp(pivotOffset.x, pivotOffsetGoal.x, Time.deltaTime);
             //truePivotOffset.z = Mathf.Lerp(pivotOffset.z, pivotOffsetGoal.z, Time.deltaTime);
             transform.position = new Vector3(
-                positionTarget.transform.position.x,
-                positionTarget.transform.position.y + truePivotGoal.y,
-                positionTarget.transform.position.z
+                truePositionTarget.transform.position.x,
+                truePositionTarget.transform.position.y + truePivotGoal.y,
+                truePositionTarget.transform.position.z
             );
 
 
@@ -131,14 +150,12 @@ public class CameraOperator : MonoBehaviour
 
             // ************** ROTATION
             // Set inputs
-            if (1==1) // !DoTracking
+            if (!doTrackObject)
             {
-                Debug.Log("YARP");
                 input.x = Input.GetAxis("Mouse X");
                 input.y = Input.GetAxis("Mouse Y");
 
                 // Cut out the vertical input if horizontal input is larger (this is nice, trust me)
-                // TODO: Make this nicer?
                 if (Mathf.Abs(Input.GetAxis("Mouse X")) > Mathf.Abs(Input.GetAxis("Mouse Y"))) axisDamper.y = 0f;
                 else axisDamper.y = 3f;
 
@@ -148,8 +165,6 @@ public class CameraOperator : MonoBehaviour
 
                 // Limit vertical angle
                 rotDelta.y = Mathf.Clamp(rotDelta.y, minVerticalAngle, maxVerticalAngle);
-
-                //TODO: Grab movement states for height change
 
                 // Set camera angle. DO THE THING!
                 aim = Quaternion.Euler(-rotDelta.y, rotDelta.x, 0);
@@ -163,7 +178,12 @@ public class CameraOperator : MonoBehaviour
         {
             targetFOV = 60f + (0.1f * distToTLookTarget);
         }
-        else if (!doTrackObject) targetFOV = defaultFOV;
+        else if(doFirstPerson)
+        {
+            // Boost FOV for first-person
+            targetFOV = defaultFOV + 10f;
+        }
+        else targetFOV = defaultFOV;
 
         // Slight widening of FOV for high/low angles
         trueTargetFOV = targetFOV + Mathf.Clamp(((Mathf.Pow(Mathf.Abs(rotDelta.y), 2)) / 200) - 8, 0, maxFOVTweak);
@@ -183,11 +203,9 @@ public class CameraOperator : MonoBehaviour
 	private void LateUpdate() {
         Vector3 pos = cam.transform.position;
 
-        if (!doCinematicMode && !doTrackObject)
+        if (!doTrackObject)
         {
-
-
-
+            cam.transform.localRotation = camRotStart;
 
             //********** Z CAMERA OFFSET
             RaycastHit hit;
@@ -232,6 +250,10 @@ public class CameraOperator : MonoBehaviour
             {
                 camOffsetGoal.x = 0;
                 camOffsetGoal.y = camOffsetStart.y + shoulderBumpUp;
+            }
+            if (doFirstPerson)
+            {
+                camOffsetGoal.y = 0.25f;
             }
 
             trueCamGoal.y = Mathf.Lerp(camOffset.y, camOffsetGoal.y, Time.deltaTime * 4);

@@ -43,8 +43,8 @@ public class EnemyBase : AEnemy
         mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);
     }
 }
-
-/*if (m_DetectPlayer.IsInView(m_target.position))
+/*
+if (m_DetectPlayer.IsInView(m_target.position))
 {
     if (m_DetectPlayer.IsVisible(m_target.position) && !isChasing)
     {
@@ -65,13 +65,13 @@ if (!isBlocked)
 else if (isBlocked)
 {
     transform.LookAt(m_target, Vector3.up);
-}*/
-/*
+}
+
 public void blockingAnim(string anim)
 {
     StartCoroutine(blockingAnimCo(anim));
-}*/
-/*IEnumerator blockingAnimCo(string anim)
+}
+IEnumerator blockingAnimCo(string anim)
 {
     if (!isBlocked)
     {
