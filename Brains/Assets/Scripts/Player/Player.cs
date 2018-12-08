@@ -32,11 +32,13 @@ public class Player : ACharacter
     StealthHandler m_scriptStealthHandler;
     GroanHandler m_scriptGroanHandler;
     BodyHandler m_scriptBodyHandler;
+    SpudSoundManager m_spudSoundManager;
 
     int m_animationKey;
     int m_moving;
     public GameObject limbToLookAt;
-    public float flingForce = 1;
+    public float flingForce = 2000;
+    private Vector3 outOfDeadSnapPosition;
 
     [HideInInspector]
     public int m_playDead;
@@ -56,6 +58,7 @@ public class Player : ACharacter
         m_scriptStealthHandler = GetComponent<StealthHandler>();
         m_scriptGroanHandler = GetComponent<GroanHandler>();
         m_scriptBodyHandler = GetComponent<BodyHandler>();
+        m_spudSoundManager = GetComponent<SpudSoundManager>();
         /****************************************************/
     }
 
@@ -75,6 +78,7 @@ public class Player : ACharacter
     // Update is called once per frame
     void Update()
     {
+        outOfDeadSnapPosition = limbToLookAt.transform.position;
         if (!m_gameState.m_gameOver)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -82,14 +86,18 @@ public class Player : ACharacter
                 m_moving = 0;
                 MvState = MovementState.Idling;
                 m_playDead = Mathf.Abs(1 - Convert.ToInt32(m_scriptPMove.RagDead()));
-                Vector3 outOfDeadSnapPosition = limbToLookAt.transform.position;
                 if (m_playDead == 1)
                 {
-                    //transform.position = outOfDeadSnapPosition;
+                    m_rbody.velocity = Vector3.zero;
+                    m_spudSoundManager.playDeadEvent();
                 }
+                else if(m_playDead == 0) { transform.position = outOfDeadSnapPosition; }
                 m_rbody.isKinematic = !m_rbody.isKinematic;
                 //limbToLookAt.GetComponent<Rigidbody>().AddForce(Vector3.up * flingForce);
             }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift)) { m_spudSoundManager.crawlStartEvent(); }
+            if (Input.GetKeyUp(KeyCode.LeftShift)) { m_spudSoundManager.crawlEndEvent(); }
 
             if (m_playDead == 0)
             {
@@ -137,6 +145,10 @@ public class Player : ACharacter
     }
     private void FixedUpdate()
     {
+        // Temp out-of-bounds band-aid
+        if (transform.position.y < -10 || transform.position.y > 150) {
+            SendToSpawn();
+        }
         if (!m_gameState.m_gameOver)
         {
             m_scriptPMove.Move(m_rbody);

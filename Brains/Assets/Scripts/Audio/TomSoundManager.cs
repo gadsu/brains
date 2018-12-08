@@ -10,17 +10,17 @@ public class TomSoundManager : MonoBehaviour {
     public bool doDebugPrint = false;
     private Animator anim;
     private float vel;
+    AudioClip chosen;
 
     // Use this for initialization
     void Start () {
-        AudioClip chosen;
         source = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        vel = anim.GetFloat("velocity");
+        vel = anim.GetFloat("Velocity");
     }
 
     void debugPrint(string msg)
@@ -33,7 +33,9 @@ public class TomSoundManager : MonoBehaviour {
 
     public void footEvent()
     {
-        //chosen = clips[Mathf.RoundToInt(Random.Range(1, clips.Length))];
+        source.volume = vel;
+        chosen = footstepClips[Mathf.RoundToInt(Random.Range(1, footstepClips.Length))];
+        source.PlayOneShot(chosen);
         debugPrint("tom footstep");
     }
 }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class GameStateHandler : MonoBehaviour
 {
-    private enum GameState
+    public enum GameState
     {
         InPlay = 0,
         Won = 1,
         Lost = 2,
         Paused = 3
     };
-    private GameState m_currentState;
+    public GameState m_currentState;
 
     [HideInInspector]
     public bool m_gameOver;

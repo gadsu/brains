@@ -10,6 +10,7 @@ public class GroanHandler : MonoBehaviour {
 
     public GameObject agentTester, groanSphere;
     public GameObject groanMeter;
+    private Image colorControl;
 
     [Range(.01f, .1f)]
     public float groanRate = .02f;
@@ -28,6 +29,7 @@ public class GroanHandler : MonoBehaviour {
         groanTransformScale.z = 1f;
         groaning = false;
         groanMeter = GameObject.Find("GP_UIGroanMeterFill");
+        colorControl = groanMeter.GetComponent<Image>();
         /*****************************************/
     }
 
@@ -42,6 +44,7 @@ public class GroanHandler : MonoBehaviour {
         currentAmount += (groanSpeed * Time.deltaTime);
         groanTransformScale.x = currentAmount;
         groanMeter.transform.localScale = groanTransformScale;
+        colorControl.color = new Color(colorControl.color.r, colorControl.color.g, colorControl.color.b,groanTransformScale.x);
         /**************************************************************/
 
         return (currentAmount > 1f) ? true : false; // tells us that it is time to groan.. or not.
