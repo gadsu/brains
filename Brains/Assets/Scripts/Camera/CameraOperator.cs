@@ -16,6 +16,7 @@ public class CameraOperator : MonoBehaviour
 	public float minVerticalAngle = -70f;
 	public Vector3 	rotSens = new Vector3(1.5f, 0.75f, 1f);
 	public float baseSens = 1f;
+    private float baseSensStart = 1f;
     private float distToTLookTarget = 0f;
     public bool doFirstPerson = false;
 
@@ -54,6 +55,7 @@ public class CameraOperator : MonoBehaviour
 	private int mvState;
     public float shoulderBumpUp= 0.3f;
     private Quaternion defaultCamRot;
+    private GameStateHandler gstate;
 
 	public int shoulderState = 0;
 
@@ -73,6 +75,9 @@ public class CameraOperator : MonoBehaviour
         camRotStart = cam.transform.localRotation;
         camOffsetGoal = camOffsetStart;
         defaultCamRot = cam.transform.rotation;
+        baseSensStart = baseSens;
+        gstate = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
+
         /*if (!positionTarget)
             positionTarget = GameObject.Find("GP_Spud");
         }*/
@@ -83,6 +88,24 @@ public class CameraOperator : MonoBehaviour
 
     private void Update()
     {
+        /*if (gstate.m_currentState == GameStateHandler.GameState.Paused)
+        {
+            baseSens = 0.5f;
+            Debug.Log("wskjuhig");
+        }*/
+        //else if(gstate.m_currentState == GameStateHandler.GameState.Lost || GameStateHandler.GameState.Won)
+        // Sens control TODO port to options menu
+        if (Input.GetKeyDown(KeyCode.LeftBracket))
+        {
+            if (baseSensStart >= 2) baseSensStart--;
+            Debug.Log("Decreacing sens to " + baseSensStart);
+        }
+        if (Input.GetKeyDown(KeyCode.RightBracket))
+        {
+            if (baseSensStart <= 15) baseSensStart++;
+            Debug.Log("Increasing sens to " + baseSensStart);
+        }
+
         // ******* Playdead tracking
         truePositionTarget = positionTarget;
         if (positionTarget.GetComponent<Player>())
@@ -176,7 +199,8 @@ public class CameraOperator : MonoBehaviour
         // ********** FIELD-OF-VIEW
         if (doTrackObject)
         {
-            targetFOV = 60f + (0.1f * distToTLookTarget);
+            targetFOV = defaultFOV + 10f - distToTLookTarget/2;
+            Mathf.Clamp(targetFOV, 10f, defaultFOV + 10f);
         }
         else if(doFirstPerson)
         {
