@@ -24,43 +24,33 @@ public class PathTo : MonoBehaviour
         m_agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
     }
-    void Start ()
+    void Start()
     {
         destinationI = 0;
         m_target = (path._destinations.Length > 0) ? path._destinations[destinationI]._destinationLocation : transform.position;
         m_agent.SetDestination(m_target);
         IsVisible = false;
-	}
+    }
 
-    private void UpdateDestination()
+    public Vector3 UpdateDestination(bool chasing, Vector3 p_currentDestination, float p_distanceFromPoint)
     {
-        if (path._destinations.Length > 0 && !IsVisible)
+        Vector3 l_destination = new Vector3();
+        if (!chasing)
         {
-            if (m_agent.destination != m_target)
-                m_agent.SetDestination(m_target);
-
-            if (Mathf.Abs(m_agent.remainingDistance) < .1f)
+            if (path._destinations.Length > 0)
             {
-                destinationI = (destinationI + 1 < path._destinations.Length - 1) ? destinationI + 1 : 0;
-                m_target = path._destinations[destinationI]._destinationLocation;
-                m_agent.SetDestination((m_target));
+                if (Mathf.Abs(p_distanceFromPoint) < .1f)
+                {
+                    destinationI = (destinationI + 1 < path._destinations.Length) ? destinationI + 1 : 0;
+                    l_destination = path._destinations[destinationI]._destinationLocation;
+                }
             }
         }
         else
         {
-            m_agent.SetDestination(GameObject.Find("Spud").transform.position);
+            l_destination = GameObject.Find("Spud").transform.position;
         }
-    }
 
-    public void SetVisible(bool p_visible)
-    {
-        IsVisible = p_visible;
+        return l_destination;
     }
-
-	void Update ()
-    {
-        UpdateDestination();
-        // ADDED STUFF HERE PAUL -----------------------------------------------------------------------------------------------
-        anim.SetFloat("Velocity", m_agent.velocity.magnitude);
-	}
 }
