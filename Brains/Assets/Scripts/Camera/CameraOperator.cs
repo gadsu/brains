@@ -97,13 +97,19 @@ public class CameraOperator : MonoBehaviour
         // Sens control TODO port to options menu
         if (Input.GetKeyDown(KeyCode.LeftBracket))
         {
-            if (baseSensStart >= 2) baseSensStart--;
-            Debug.Log("Decreacing sens to " + baseSensStart);
+            if (baseSens >= 2)
+            {
+                baseSens--;
+                Debug.Log("Decreasing sens to " + baseSens);
+            }
         }
-        if (Input.GetKeyDown(KeyCode.RightBracket))
+        else if (Input.GetKeyDown(KeyCode.RightBracket))
         {
-            if (baseSensStart <= 15) baseSensStart++;
-            Debug.Log("Increasing sens to " + baseSensStart);
+            if (baseSens <= 15)
+            {
+                baseSens++;
+                Debug.Log("Increasing sens to " + baseSens);
+            }
         }
 
         // ******* Playdead tracking
