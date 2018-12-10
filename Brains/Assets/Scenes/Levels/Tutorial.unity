@@ -102,7 +102,7 @@ NavMeshSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 60
-    agentClimb: 0.65
+    agentClimb: 0.6
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -3487,6 +3487,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 223127955}
+  - component: {fileID: 223127957}
+  - component: {fileID: 223127956}
   m_Layer: 0
   m_Name: R_hand
   m_TagString: Untagged
@@ -3510,6 +3512,30 @@ Transform:
   m_Father: {fileID: 1098409187}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &223127956
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223127954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.004767068, y: 0.00543278, z: 0.0044506574}
+  m_Center: {x: 0.00020137604, y: 0.0022163396, z: -0.0006317513}
+--- !u!114 &223127957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223127954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a7273d768ce71439b64c9635f68b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tah: {fileID: 1133445872}
 --- !u!1 &224318172
 GameObject:
   m_ObjectHideFlags: 0
@@ -10393,7 +10419,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMotionRoot: {fileID: 1531151674}
-  dangerZonePivot: {fileID: 864432386}
   frustumPyramid: {fileID: 1789591807}
   colors:
   - {r: 0.10355108, g: 0.11500533, b: 0.122641504, a: 1}
@@ -20399,6 +20424,7 @@ GameObject:
   - component: {fileID: 1133445870}
   - component: {fileID: 1133445869}
   - component: {fileID: 1133445871}
+  - component: {fileID: 1133445872}
   m_Layer: 0
   m_Name: Tom
   m_TagString: Untagged
@@ -20488,9 +20514,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destinations:
   - _destinationType: 1
-    _destinationLocation: {x: 6.111726, y: 0, z: 12.538733}
+    _destinationLocation: {x: 15.493726, y: 0, z: 14.053187}
   - _destinationType: 0
-    _destinationLocation: {x: 17.757713, y: 0, z: 21.422169}
+    _destinationLocation: {x: 23.494518, y: 0, z: 20.863844}
+  - _destinationType: 0
+    _destinationLocation: {x: 9.793963, y: 1.196084, z: 32.809677}
+  - _destinationType: 0
+    _destinationLocation: {x: -6.4634447, y: 1.2345586, z: 19.302893}
+  - _destinationType: 0
+    _destinationLocation: {x: -10.6277075, y: 0.11512518, z: 26.048925}
+  - _destinationType: 0
+    _destinationLocation: {x: -4.705228, y: 1.1666036, z: 26.653296}
+  - _destinationType: 0
+    _destinationLocation: {x: 16.544134, y: 0, z: 19.714397}
+  - _destinationType: 0
+    _destinationLocation: {x: 1.5459299, y: 0, z: 18.903214}
+  - _destinationType: 0
+    _destinationLocation: {x: 15.270496, y: 0.83356476, z: -10.482332}
 --- !u!136 &1133445866
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20694,6 +20734,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d09eb66b3a16394f8a95a5089e1bf99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isBlocked: 0
+--- !u!114 &1133445872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133445860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea9de848b4ae784cb33e9373d7e69d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _registerAttack: 0
 --- !u!1 &1135829226
 GameObject:
   m_ObjectHideFlags: 0
@@ -33252,7 +33305,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1799115842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.97, z: 21.23}
+  m_LocalPosition: {x: 0, y: 0.09, z: 21.23}
   m_LocalScale: {x: 100.000046, y: 100.000046, z: 100.00008}
   m_Children:
   - {fileID: 773238638}

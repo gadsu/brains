@@ -37,7 +37,7 @@ public class EnemyBase : AEnemy
 
     private void Update()
     {
-        if (mAEnemy_detecting.IsInView(m_target.position) || touched)
+        if ((mAEnemy_detecting.IsInView(m_target.position) || touched) && m_target.GetComponent<Player>().m_playDead == 0)
         {
             Enemy_Detection = DetectionLevel.Detecting;
 
