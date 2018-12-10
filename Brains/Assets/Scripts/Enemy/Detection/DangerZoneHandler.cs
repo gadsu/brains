@@ -5,7 +5,7 @@ using UnityEngine;
 public class DangerZoneHandler : MonoBehaviour {
 
     public GameObject cameraMotionRoot;
-    public GameObject dangerZonePivot;
+    //public GameObject dangerZonePivot;
     public GameObject frustumPyramid;
     public Color[] colors;
     private DetectPlayer m_detect;
@@ -31,20 +31,16 @@ public class DangerZoneHandler : MonoBehaviour {
     }
     private void FixedUpdate()
     {
+        frustumPyramid.GetComponent<Renderer>().material.SetColor("_TintColor", colors[0]);
+
         if (m_detect.m_inView)
         {
-            if(m_detect.m_isVisible)
+            frustumPyramid.GetComponent<Renderer>().material.SetColor("_TintColor", colors[1]);
+
+            if (m_detect.m_isVisible)
             {
                 frustumPyramid.GetComponent<Renderer>().material.SetColor("_TintColor",colors[2]);
             }
-            else
-            {
-                frustumPyramid.GetComponent<Renderer>().material.SetColor("_TintColor", colors[1]);
-            }
-        }
-        else
-        {
-            frustumPyramid.GetComponent<Renderer>().material.SetColor("_TintColor", colors[0]);
         }
     }
 }

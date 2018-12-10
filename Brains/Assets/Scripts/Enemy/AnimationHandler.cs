@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class AnimationHandler : MonoBehaviour
 {
     Animator _anim;
-    bool _isBlocked;
+    public bool _isBlocked;
 
     private void Awake()
     {
@@ -35,14 +35,12 @@ public class AnimationHandler : MonoBehaviour
             if (!_isBlocked)
             {
                 p_agent.speed = (p_chasing) ? p_speed * 2f : p_speed;
-            }
-
-            if (p_chasing) transform.LookAt(p_target, p_direction);
-            else
-            {
-                transform.LookAt(transform, transform.forward);
+                _anim.SetTrigger("toMove");
             }
         }
+
+        if (p_chasing) transform.LookAt(p_target, p_direction);
+        else transform.LookAt(transform, transform.forward);
     }
 
     IEnumerator BlockingAnimCo(string p_anim, NavMeshAgent p_agent)
@@ -64,7 +62,6 @@ public class AnimationHandler : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(time);
-            _anim.SetTrigger("toMove");
             _isBlocked = false;
         }
     }

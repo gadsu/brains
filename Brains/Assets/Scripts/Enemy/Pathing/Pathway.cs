@@ -17,11 +17,4 @@ public class Pathway : MonoBehaviour
             }
         }
     }
-    private void Awake()
-    {
-        foreach (Destination d in _destinations)
-        {
-            //d._destinationLocation = ;
-        }
-    }
 }

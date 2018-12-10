@@ -12,12 +12,10 @@ public class EnemyBase : AEnemy
     TomSoundManager m_sound;
     GameObject m_spud;
 
+    string animationToPlay = "";
     public float moveSpeedStart = 3f;
-    bool chasing;
-    bool surpised;
-    bool touched;
+    bool chasing, surpised, touched, blockAnimation;
     private float lastTouchedTime = 0f;
-    //private float musicDuckLevel = 0f;
 
     private void Awake()
     {
@@ -37,27 +35,11 @@ public class EnemyBase : AEnemy
         touched = false;
     }
 
-    /*private void FixUpdate()
-    {
-        switch(Enemy_Awareness) {
-        case AwarenessLevel.Aware: {
-            
-            break;
-            }
-        case AwarenessLevel.Unaware: {
-            
-            break;
-            }
-        }
-    }*/
-
     private void Update()
     {
         if (mAEnemy_detecting.IsInView(m_target.position) || touched)
         {
             Enemy_Detection = DetectionLevel.Detecting;
-            if (Enemy_Awareness != AwarenessLevel.Aware) { m_sound.musicDucking(0f, false); }
-            else { m_sound.musicDucking(1f, true); }
 
             mAEnemy_detecting.UpdateRayToPlayer(m_target.position);
             if (mAEnemy_detecting.IsVisible(m_target.position) || touched)
@@ -67,12 +49,17 @@ public class EnemyBase : AEnemy
                 {
                     chasing = true;
                     surpised = true;
+                    animationToPlay = "A_TomSurprise";
+                    blockAnimation = true;
+                    Debug.Log(true);
                 }
                 else
                 {
-                    if (touched == true)
+                    if (m_agent.remainingDistance < 5f)
                     {
-                        Debug.Log("PUNCH");
+                        animationToPlay = "A_TomAttack";
+                        blockAnimation = true;
+                        Debug.Log(false);
                     }
                 }
             }
@@ -96,36 +83,38 @@ public class EnemyBase : AEnemy
             else Enemy_Detection = DetectionLevel.Unseen;
         }
 
-        if (chasing)
+        /*if (chasing)
         {
-            m_sound.dangerMusic(1f, true);
-
-            if (surpised)
+            // m_sound.dangerMusic(1f, true);
+            if (!surpised)
             {
-                m_sound.detectionEvent();
-                //m_sound.dangerMusic(1f,false);
-                _animHandler.SetAnimation("A_TomSurprise", true, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
-            }
-            else
-            {
-                _animHandler.SetAnimation("A_TomWalk", false, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
+                if (animationToPlay != "A_TomAttack")
+                {
+                    animationToPlay = "A_TomWalk";
+                    blockAnimation = false;
+                }
             }
         }
         else
         {
-            _animHandler.SetAnimation("A_TomWalk", false, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
-        }
+            animationToPlay = "A_TomWalk";
+            blockAnimation = false;
+        }*/
 
         m_agent.SetDestination(mAEnemy_pathing.UpdateDestination(chasing, m_agent.destination, m_agent.remainingDistance));
-        if (m_target.position == m_agent.destination) Debug.Log(true);
+
+        _animHandler.SetAnimation(animationToPlay, blockAnimation, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
 
         //mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);
         surpised = false;
-        //Debug.Log(Mathf.Abs(lastTouchedTime - Time.time));
+        
         if (Mathf.Abs(lastTouchedTime - Time.time) > 3f)
         {
             touched = false;
         }
+
+        animationToPlay = "A_TomWalk";
+        blockAnimation = false;
     }
 
     private void OnCollisionStay(Collision collision)
@@ -139,6 +128,7 @@ public class EnemyBase : AEnemy
 
     private void LateUpdate()
     {
+        
         _animHandler.SetAnimationSpeed(m_agent.velocity.magnitude);
     }
 }

@@ -23,7 +23,7 @@ public class PathTo : MonoBehaviour
     void Start()
     {
         destinationI = 0;
-        m_agent.SetDestination(path._destinations[destinationI]._destinationLocation);
+        m_agent.SetDestination((path._destinations.Length > 0) ? path._destinations[destinationI]._destinationLocation : transform.position);
     }
 
     public Vector3 UpdateDestination(bool chasing, Vector3 p_currentDestination, float p_distanceFromPoint)
@@ -46,7 +46,7 @@ public class PathTo : MonoBehaviour
         }
         else
         {
-            l_destination = GameObject.Find("Spud").transform.position;
+            l_destination = GameObject.Find("Spud").GetComponent<Transform>().position;
         }
 
         return l_destination;
