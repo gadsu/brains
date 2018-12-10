@@ -15,7 +15,13 @@ public class Pathway : MonoBehaviour
                 Gizmos.color = d._destinationColor;
                 Gizmos.DrawSphere(d._destinationLocation, .25f);
             }
-
+        }
+    }
+    private void Awake()
+    {
+        foreach (Destination d in _destinations)
+        {
+            //d._destinationLocation = ;
         }
     }
 }

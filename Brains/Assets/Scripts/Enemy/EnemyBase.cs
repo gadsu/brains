@@ -9,15 +9,19 @@ public class EnemyBase : AEnemy
     Transform m_target;
     NavMeshAgent m_agent;
     AnimationHandler _animHandler;
+    TomSoundManager m_sound;
 
     public float moveSpeedStart = 3f;
     bool chasing;
     bool surpised;
+    bool touched;
+    private float musicDuckLevel = 0f;
 
     private void Awake()
     {
         mAEnemy_pathing = GetComponent<PathTo>();
         mAEnemy_detecting = GetComponent<DetectPlayer>();
+        m_sound = GetComponent<TomSoundManager>();
 
         m_target = GameObject.Find("Spud").GetComponent<Transform>();
         m_agent = GetComponent<NavMeshAgent>();
@@ -28,21 +32,24 @@ public class EnemyBase : AEnemy
     {
         chasing = false;
         surpised = false;
+        touched = false;
     }
 
     private void Update()
     {
-        if (mAEnemy_detecting.IsInView(m_target.position))
+        if (mAEnemy_detecting.IsInView(m_target.position) || touched)
         {
             Enemy_Detection = DetectionLevel.Detecting;
+            if (Enemy_Awareness != AwarenessLevel.Aware) { m_sound.musicDucking(0, false); }
+            else { m_sound.musicDucking(1, true); }
 
             mAEnemy_detecting.UpdateRayToPlayer(m_target.position);
-            if (mAEnemy_detecting.IsVisible(m_target.position))
+            if (mAEnemy_detecting.IsVisible(m_target.position) || touched)
             {
+                Enemy_Awareness = AwarenessLevel.Aware;
                 if (!chasing)
                 {
                     chasing = true;
-                    Enemy_Awareness = AwarenessLevel.Aware;
                     surpised = true;
                 }
                 else
@@ -54,11 +61,15 @@ public class EnemyBase : AEnemy
             {
                 if (Enemy_Awareness == AwarenessLevel.Aware) Enemy_Awareness = AwarenessLevel.Losing;
                 else Enemy_Awareness = AwarenessLevel.Unaware;
+
+                surpised = false;
             }
+            touched = false;
         }
         else
         {
             chasing = false;
+            surpised = false;
 
             if (Enemy_Detection == DetectionLevel.Detecting) Enemy_Detection = DetectionLevel.Searching;
             else if (Enemy_Detection == DetectionLevel.Searching) Enemy_Detection = DetectionLevel.Losing;
@@ -67,16 +78,35 @@ public class EnemyBase : AEnemy
 
         if (chasing)
         {
-            if (surpised) _animHandler.SetAnimation("A_TomSurprise", true, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
+            if (surpised)
+            {
+                m_sound.detectionEvent();
+                m_sound.dangerMusic(1f,false);
+                _animHandler.SetAnimation("A_TomSurprise", true, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
+            }
+            else
+            {
+                _animHandler.SetAnimation("A_TomWalk", false, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
+            }
+        }
+        else
+        {
+            m_sound.dangerMusic(0, true);
+            //_animHandler.SetAnimation("A_TomWalk", false, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
         }
 
         m_agent.SetDestination(mAEnemy_pathing.UpdateDestination(chasing, m_agent.destination, m_agent.remainingDistance));
+            //Debug.Log(m_agent.remainingDistance);
         mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);
     }
 
-    private void FixedUpdate()
+    private void OnCollisionEnter(Collision collision)
     {
-
+        Debug.Log(collision.gameObject.tag);
+        if(collision.gameObject.tag == "Player" && Enemy_Awareness == AwarenessLevel.Unaware)
+        {
+            touched = true;
+        }
     }
 
     private void LateUpdate()

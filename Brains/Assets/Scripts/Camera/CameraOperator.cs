@@ -206,7 +206,7 @@ public class CameraOperator : MonoBehaviour
         if (doTrackObject)
         {
             targetFOV = defaultFOV + 10f - distToTLookTarget/2;
-            Mathf.Clamp(targetFOV, 10f, defaultFOV + 10f);
+            Mathf.Clamp(targetFOV, 15f, defaultFOV + 10f);
         }
         else if(doFirstPerson)
         {

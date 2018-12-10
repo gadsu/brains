@@ -12,7 +12,7 @@ public class DetectPlayer : MonoBehaviour
     Ray m_ray;
     RaycastHit m_out;
 
-    bool m_inView, m_isVisible;
+    public bool m_inView, m_isVisible;
     public GameObject m_text_notice;
 
     [Range(1f, 5f)]
@@ -59,8 +59,9 @@ public class DetectPlayer : MonoBehaviour
     public bool IsVisible(Vector3 p_targetPosition)
     {
         if (Physics.Raycast(m_ray, out m_out, m_camera.farClipPlane))
-            if (m_out.transform.CompareTag("Player"))
+            if (m_out.transform.CompareTag("Player")) {
                 m_isVisible = true;
+            }
 
         return m_isVisible;
     }
@@ -75,13 +76,13 @@ public class DetectPlayer : MonoBehaviour
         if (m_detectionAmount > 100f)
         {
             m_detectionAmount = 0f;
-            Debug.Log("Detected");
+            //Debug.Log("Detected");
         }
 
         if (m_detectionAmount < 0f)
         {
             m_detectionAmount = 0f;
-            Debug.Log("Lost");
+            //Debug.Log("Lost");
         }
     }
     /*

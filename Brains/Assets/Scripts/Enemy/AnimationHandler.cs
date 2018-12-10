@@ -28,13 +28,13 @@ public class AnimationHandler : MonoBehaviour
     {
         if (p_blocking)
         {
-            BlockingAnimCo(p_name, p_agent);
+            StartCoroutine(BlockingAnimCo(p_name, p_agent));
         }
         else
         {
             if (!_isBlocked)
             {
-                p_agent.speed = (p_chasing) ? p_speed * 2f : p_speed;
+                _anim.SetTrigger("toMove");
             }
             else
             {
@@ -49,18 +49,19 @@ public class AnimationHandler : MonoBehaviour
         {
             _isBlocked = true;
             float time = 0;
+            
+            // Determine legnth of the animationClip
             AnimationClip[] clips = _anim.runtimeAnimatorController.animationClips;
             foreach (AnimationClip clip in clips)
             {
                 if (clip.name == p_anim)
                 {
-                    time = clip.length;
+                    time = clip.length+0.05f;
                     p_agent.speed = 0;
                     _anim.Play(p_anim);
                 }
             }
             yield return new WaitForSeconds(time);
-            _anim.SetTrigger("toMove");
             _isBlocked = false;
         }
     }
