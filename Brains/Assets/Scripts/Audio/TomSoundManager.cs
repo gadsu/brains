@@ -52,7 +52,7 @@ public class TomSoundManager : MonoBehaviour
 
     public void detectionEvent()
     {
-        source.PlayOneShot(detectionSound, 0.5f);
+        source.PlayOneShot(detectionSound, 0.3f);
         debugPrint("well whistle me dixie");
     }
 

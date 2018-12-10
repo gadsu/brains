@@ -46,7 +46,7 @@ public class PlayerDictionary : MonoBehaviour
 
         animationID = Animator.StringToHash(id); // gets the hashed id for the animator referece.
 
-        if (animationID != playingID)
+        if (animationID != playingID && id != "A_SpudPlayDead")
         { // checks to make sure that the animation is not already playing.
             anim.Play(animationID); // plays the animation.
             playingID = animationID; // updates the playing animation reference.

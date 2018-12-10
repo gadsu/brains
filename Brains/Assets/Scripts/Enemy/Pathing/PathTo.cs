@@ -37,7 +37,6 @@ public class PathTo : MonoBehaviour
                 {
                     destinationI = (destinationI + 1 < path._destinations.Length) ? destinationI + 1 : 0;
                     l_destination = path._destinations[destinationI]._destinationLocation;
-                    //Debug.Log(destinationI);
                 }
                 else
                 {

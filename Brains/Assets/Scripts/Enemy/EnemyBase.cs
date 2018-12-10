@@ -10,12 +10,14 @@ public class EnemyBase : AEnemy
     NavMeshAgent m_agent;
     AnimationHandler _animHandler;
     TomSoundManager m_sound;
+    GameObject m_spud;
 
     public float moveSpeedStart = 3f;
     bool chasing;
     bool surpised;
     bool touched;
-    private float musicDuckLevel = 0f;
+    private float lastTouchedTime = 0f;
+    //private float musicDuckLevel = 0f;
 
     private void Awake()
     {
@@ -35,13 +37,27 @@ public class EnemyBase : AEnemy
         touched = false;
     }
 
+    /*private void FixUpdate()
+    {
+        switch(Enemy_Awareness) {
+        case AwarenessLevel.Aware: {
+            
+            break;
+            }
+        case AwarenessLevel.Unaware: {
+            
+            break;
+            }
+        }
+    }*/
+
     private void Update()
     {
         if (mAEnemy_detecting.IsInView(m_target.position) || touched)
         {
             Enemy_Detection = DetectionLevel.Detecting;
-            if (Enemy_Awareness != AwarenessLevel.Aware) { m_sound.musicDucking(0, false); }
-            else { m_sound.musicDucking(1, true); }
+            if (Enemy_Awareness != AwarenessLevel.Aware) { m_sound.musicDucking(0f, false); }
+            else { m_sound.musicDucking(1f, true); }
 
             mAEnemy_detecting.UpdateRayToPlayer(m_target.position);
             if (mAEnemy_detecting.IsVisible(m_target.position) || touched)
@@ -54,7 +70,10 @@ public class EnemyBase : AEnemy
                 }
                 else
                 {
-                    surpised = false;
+                    if (touched == true)
+                    {
+                        Debug.Log("PUNCH");
+                    }
                 }
             }
             else
@@ -62,14 +81,15 @@ public class EnemyBase : AEnemy
                 if (Enemy_Awareness == AwarenessLevel.Aware) Enemy_Awareness = AwarenessLevel.Losing;
                 else Enemy_Awareness = AwarenessLevel.Unaware;
 
-                surpised = false;
+                Enemy_Awareness = AwarenessLevel.Unaware;
+
+                chasing = false;
             }
-            touched = false;
         }
         else
         {
             chasing = false;
-            surpised = false;
+            Enemy_Awareness = AwarenessLevel.Unaware;
 
             if (Enemy_Detection == DetectionLevel.Detecting) Enemy_Detection = DetectionLevel.Searching;
             else if (Enemy_Detection == DetectionLevel.Searching) Enemy_Detection = DetectionLevel.Losing;
@@ -78,10 +98,12 @@ public class EnemyBase : AEnemy
 
         if (chasing)
         {
+            m_sound.dangerMusic(1f, true);
+
             if (surpised)
             {
                 m_sound.detectionEvent();
-                m_sound.dangerMusic(1f,false);
+                //m_sound.dangerMusic(1f,false);
                 _animHandler.SetAnimation("A_TomSurprise", true, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
             }
             else
@@ -91,20 +113,26 @@ public class EnemyBase : AEnemy
         }
         else
         {
-            m_sound.dangerMusic(0, true);
-            //_animHandler.SetAnimation("A_TomWalk", false, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
+            _animHandler.SetAnimation("A_TomWalk", false, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
         }
 
         m_agent.SetDestination(mAEnemy_pathing.UpdateDestination(chasing, m_agent.destination, m_agent.remainingDistance));
-            //Debug.Log(m_agent.remainingDistance);
-        mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);
+        if (m_target.position == m_agent.destination) Debug.Log(true);
+
+        //mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);
+        surpised = false;
+        //Debug.Log(Mathf.Abs(lastTouchedTime - Time.time));
+        if (Mathf.Abs(lastTouchedTime - Time.time) > 3f)
+        {
+            touched = false;
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if(collision.gameObject.tag == "Player" && Enemy_Awareness == AwarenessLevel.Unaware)
         {
+            lastTouchedTime = Time.time;
             touched = true;
         }
     }

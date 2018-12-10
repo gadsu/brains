@@ -59,7 +59,7 @@ public class DetectPlayer : MonoBehaviour
     public bool IsVisible(Vector3 p_targetPosition)
     {
         if (Physics.Raycast(m_ray, out m_out, m_camera.farClipPlane))
-            if (m_out.transform.CompareTag("Player")) {
+            if (m_out.transform.CompareTag("Player") && ) {
                 m_isVisible = true;
             }
 

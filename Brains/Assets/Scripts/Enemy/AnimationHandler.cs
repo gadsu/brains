@@ -34,11 +34,13 @@ public class AnimationHandler : MonoBehaviour
         {
             if (!_isBlocked)
             {
-                _anim.SetTrigger("toMove");
+                p_agent.speed = (p_chasing) ? p_speed * 2f : p_speed;
             }
+
+            if (p_chasing) transform.LookAt(p_target, p_direction);
             else
             {
-                transform.LookAt(p_target, p_direction);
+                transform.LookAt(transform, transform.forward);
             }
         }
     }
@@ -62,6 +64,7 @@ public class AnimationHandler : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(time);
+            _anim.SetTrigger("toMove");
             _isBlocked = false;
         }
     }
