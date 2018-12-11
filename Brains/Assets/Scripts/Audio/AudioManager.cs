@@ -1,6 +1,7 @@
 ﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour {
 
@@ -40,6 +41,20 @@ public class AudioManager : MonoBehaviour {
         Play("BGMusic");
         Play("BGMusicHigh");
         setVol("BGMusicHigh", 0);
+    }
+
+    public void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            setVol("MMusic", 0.2f);
+            setVol("BGMusic", 0f);
+            setVol("BGMusicHigh", 0f);
+        }
+        else {
+            setVol("MMusic", 0f);
+            setVol("BGMusic", 0.1f);
+        } 
     }
 
     public void Play(string name)

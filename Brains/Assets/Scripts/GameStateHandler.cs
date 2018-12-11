@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameStateHandler : MonoBehaviour
 {
+    public GameObject winText;
     public enum GameState
     {
         InPlay = 0,
@@ -32,13 +33,18 @@ public class GameStateHandler : MonoBehaviour
                 break;
             case GameState.Won:
                 m_gameOver = true;
+                winText.SetActive(true);
                 break;
             case GameState.Lost:
+                GameObject.Find("Spud").GetComponent<Player>().m_playDead = 1;
                 m_gameOver = true;
+
                 break;
             default:
                 break;
         }
         m_currentState = ((GameState)p_state != m_currentState) ? (GameState)p_state : m_currentState; 
     }
+
+   // IEnumerator
 }

@@ -8,6 +8,8 @@ public class TomSoundManager : MonoBehaviour
 
     public AudioClip[] footstepClips;
     public AudioClip detectionSound;
+    public AudioClip swingSound;
+    public AudioClip punchHitSound;
     private AudioSource source;
     public bool doDebugPrint = false;
 
@@ -72,5 +74,15 @@ public class TomSoundManager : MonoBehaviour
     {
         if (returnTo) m_audioman.setVol("BGMusicHigh", 0f);
         else m_audioman.setVol("BGMusicHigh", vol);
+    }
+    public void swingEvent()
+    {
+        source.PlayOneShot(swingSound);
+        debugPrint("A-SWING");
+    }
+    public void punchHitEvent()
+    {
+        source.PlayOneShot(punchHitSound);
+        debugPrint("HIT");
     }
 }

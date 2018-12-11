@@ -5,15 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
+    private void Awake()
+    {
+        Cursor.visible = true;
+        GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("MMusic");
+    }
+
     public void PlayGame ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void LoadCredits()
     {
         Debug.Log("Loading Credits...");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene("Credits");
     }
 
     public void QuitGame()
