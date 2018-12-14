@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,6 +31,11 @@ public class DetectPlayer : MonoBehaviour
         m_ray = new Ray();
         m_targetPosition = new Vector3();
         m_detectionAmount = 0f;
+    }
+
+    internal void UpdatingDetectionAmountFromSound()
+    {
+        throw new NotImplementedException();
     }
 
     public bool IsInView(Vector3 p_targetPosition)

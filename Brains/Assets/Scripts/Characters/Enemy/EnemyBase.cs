@@ -14,7 +14,7 @@ public class EnemyBase : AEnemy
 
     string animationToPlay = "";
     public float moveSpeedStart = 3f;
-    bool chasing, surpised, touched, blockAnimation;
+    bool chasing = false, surpised = false, touched = false, blockAnimation = false;
     private float lastTouchedTime = 0f;
 
     private void Awake()
@@ -26,13 +26,6 @@ public class EnemyBase : AEnemy
         m_target = GameObject.Find("Spud").GetComponent<Transform>();
         m_agent = GetComponent<NavMeshAgent>();
         _animHandler = GetComponent<AnimationHandler>();
-    }
-
-    private void Start()
-    {
-        chasing = false;
-        surpised = false;
-        touched = false;
     }
 
     private void Update()
@@ -51,7 +44,6 @@ public class EnemyBase : AEnemy
                     surpised = true;
                     animationToPlay = "A_TomSurprise";
                     blockAnimation = true;
-                    Debug.Log(true);
                 }
                 else
                 {
@@ -59,7 +51,6 @@ public class EnemyBase : AEnemy
                     {
                         animationToPlay = "A_TomAttack";
                         blockAnimation = true;
-                        Debug.Log(false);
                     }
                 }
             }
@@ -83,43 +74,14 @@ public class EnemyBase : AEnemy
             else Enemy_Detection = DetectionLevel.Unseen;
         }
 
-        /*if (chasing)
-        {
-            // m_sound.dangerMusic(1f, true);
-            if (!surpised)
-            {
-                if (animationToPlay != "A_TomAttack")
-                {
-                    animationToPlay = "A_TomWalk";
-                    blockAnimation = false;
-                }
-            }
-        }
-        else
-        {
-            animationToPlay = "A_TomWalk";
-            blockAnimation = false;
-        }*/
-
         m_agent.SetDestination(mAEnemy_pathing.UpdateDestination(chasing, m_agent.destination, m_agent.remainingDistance));
 
-        _animHandler.SetAnimation(animationToPlay, blockAnimation, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
-
-        //mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);
-        surpised = false;
-        
-        if (Mathf.Abs(lastTouchedTime - Time.time) > 3f)
-        {
-            touched = false;
-        }
-
-        animationToPlay = "A_TomWalk";
-        blockAnimation = false;
+        //mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);        
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if(collision.gameObject.tag == "Player" && Enemy_Awareness == AwarenessLevel.Unaware)
+        if(collision.gameObject.CompareTag("Player") && Enemy_Awareness == AwarenessLevel.Unaware)
         {
             lastTouchedTime = Time.time;
             touched = true;
@@ -128,8 +90,14 @@ public class EnemyBase : AEnemy
 
     private void LateUpdate()
     {
-        
+        _animHandler.SetAnimation(animationToPlay, blockAnimation, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
         _animHandler.SetAnimationSpeed(m_agent.velocity.magnitude);
+
+        touched = (Mathf.Abs(lastTouchedTime - Time.time) > 3f) ? false : touched;
+
+        animationToPlay = "A_TomWalk";
+        blockAnimation = false;
+        surpised = false;
     }
 }
 /*

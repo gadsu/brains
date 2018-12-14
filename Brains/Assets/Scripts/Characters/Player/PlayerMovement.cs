@@ -18,9 +18,6 @@ public class PlayerMovement : MonoBehaviour {
     Vector3 m_playerRotation;
     float m_cameraY;
 
-    float _maxDepenetrationInitial;
-    bool ragdolling = false;
-
     private void Awake()
     {
         /* Initializes 'simple' data variablees. */
@@ -34,7 +31,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         m_cameraY = m_cameraTransform.rotation.y; // Gets the cameras rotation along the y-axis.
         transform.rotation = Quaternion.Euler(0f, m_cameraY, 0f); // Sets the current GameObject's rotation to face the same way as the ccamera.
-        _maxDepenetrationInitial = GetComponent<Rigidbody>().maxDepenetrationVelocity;
     }
 
     public PlayerMovement SetSpeed(int p_mvState)
@@ -88,14 +84,5 @@ public class PlayerMovement : MonoBehaviour {
         GetComponent<Animator>().enabled = !GetComponent<Animator>().enabled;
 
         return GetComponent<Animator>().enabled;
-
-        //Debug.Log(GetComponentInChildren<Rigidbody>().maxDepenetrationVelocity);
-        //GetComponentInChildren<Rigidbody>().maxDepenetrationVelocity = -_maxDepenetrationInitial;
-        //GetComponentInChildren<Rigidbody>().useGravity = false;
-        //GetComponentInChildren<CapsuleCollider>().enabled = false;
-
-        //GetComponent<Rigidbody>().maxDepenetrationVelocity = _maxDepenetrationInitial;
-        //GetComponent<Rigidbody>().useGravity = true;
-        //GetComponent<CapsuleCollider>().enabled = true;
     }
 }

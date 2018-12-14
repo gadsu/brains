@@ -13,10 +13,7 @@ public class TomSoundManager : MonoBehaviour
     private AudioSource source;
     public bool doDebugPrint = false;
 
-
-    private Animator anim;
     private AudioManager m_audioman;
-    private float vel;
     private EnemyBase m_enemy;
     AudioClip chosen;
     private float defaultMusVol;
@@ -26,7 +23,6 @@ public class TomSoundManager : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
-        anim = GetComponent<Animator>();
         m_enemy = GetComponent<EnemyBase>();
         m_audioman = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
         defaultMusVol = m_audioman.getSound("BGMusic").volume;

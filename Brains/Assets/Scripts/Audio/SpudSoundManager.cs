@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SpudSoundManager : MonoBehaviour
 {
-
     public AudioClip[] footstepClips;
     public AudioClip crawlStart;
     public AudioClip crawl;
@@ -13,21 +12,12 @@ public class SpudSoundManager : MonoBehaviour
     public AudioClip playDead;
     private AudioSource source;
     public bool doDebugPrint = false;
-    private Animator anim;
-    private float vel;
     AudioClip chosen;
 
     // Use this for initialization
     void Start()
     {
         source = GetComponent<AudioSource>();
-        anim = GetComponent<Animator>();
-    }
-
-    private void Update()
-    {
-        //vel = anim.GetFloat("Speed");
-        //source.volume = vel;
     }
 
     void debugPrint(string msg)

@@ -13,7 +13,7 @@ public class GroanSphereHandler : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Enemy") && groanInfo.groaning) // if an enemy is in range and the player is groaning then...
-            other.GetComponent<TutorialMoveTo>().PathTo(groanInfo.groanLocation); // set the path of the enemy to the groan location.
+        if (other.CompareTag("Enemy") && groanInfo.groaning) // if an enemy is in range and the player is groaning then...
+            other.GetComponent<DetectPlayer>().UpdatingDetectionAmountFromSound();
     }
 }
