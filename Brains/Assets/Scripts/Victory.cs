@@ -17,14 +17,6 @@ public class Victory : MonoBehaviour
         {
             Debug.Log("Victory");
             m_gameState.SetState(1);
-            StartCoroutine("PlayingVictory");
         }
-    }
-
-    private IEnumerator PlayingVictory()
-    {
-        yield return new WaitForSeconds(WaitForVictory);
-        Debug.Log("PlayCredits");
-        GameObject.Find("PauseCanvas").GetComponent<PauseMenu>().LoadCredits();
     }
 }

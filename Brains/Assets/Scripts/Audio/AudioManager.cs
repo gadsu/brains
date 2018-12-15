@@ -3,8 +3,8 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour {
-
+public class AudioManager : MonoBehaviour
+{
     public Sound[] sounds;
 
     public static AudioManager instance;
@@ -45,16 +45,23 @@ public class AudioManager : MonoBehaviour {
 
     public void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Menu")
+        SetActiveSceneAudio(SceneManager.GetActiveScene().name);
+    }
+
+    public void SetActiveSceneAudio(string p_SceneName)
+    {
+        switch (p_SceneName)
         {
-            setVol("MMusic", 0.2f);
-            setVol("BGMusic", 0f);
-            setVol("BGMusicHigh", 0f);
+            case "Menu":
+                setVol("MMusic", 0.2f);
+                setVol("BGMusic", 0f);
+                setVol("BGMusicHigh", 0f);
+                break;
+            default:
+                setVol("MMusic", 0f);
+                setVol("BGMusic", 0.1f);
+                break;
         }
-        else {
-            setVol("MMusic", 0f);
-            setVol("BGMusic", 0.1f);
-        } 
     }
 
     public void Play(string name)
