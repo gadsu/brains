@@ -25,8 +25,8 @@ public class TomSoundManager : MonoBehaviour
         source = GetComponent<AudioSource>();
         m_enemy = GetComponent<EnemyBase>();
         m_audioman = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
-        defaultMusVol = m_audioman.getSound("BGMusic").volume;
-        defaultHighMusVol = m_audioman.getSound("BGMusicHigh").volume;
+        defaultMusVol = m_audioman.GetSound("BGMusic").volume;
+        defaultHighMusVol = m_audioman.GetSound("BGMusicHigh").volume;
     }
 
     private void Update()
@@ -62,14 +62,14 @@ public class TomSoundManager : MonoBehaviour
 
     public void musicDucking(float vol, bool returnTo)
     {
-        if (returnTo) m_audioman.setVol("BGMusic", defaultMusVol);
-        else m_audioman.setVol("BGMusic", vol);
+        if (returnTo) m_audioman.SetVol("BGMusic", defaultMusVol);
+        else m_audioman.SetVol("BGMusic", vol);
     }
 
     public void dangerMusic(float vol, bool returnTo)
     {
-        if (returnTo) m_audioman.setVol("BGMusicHigh", 0f);
-        else m_audioman.setVol("BGMusicHigh", vol);
+        if (returnTo) m_audioman.SetVol("BGMusicHigh", 0f);
+        else m_audioman.SetVol("BGMusicHigh", vol);
     }
     public void swingEvent()
     {

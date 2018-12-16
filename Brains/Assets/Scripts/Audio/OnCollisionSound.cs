@@ -15,8 +15,6 @@ public class OnCollisionSound : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
-        AudioClip chosen;
         source = GetComponent<AudioSource>();
     }
 
