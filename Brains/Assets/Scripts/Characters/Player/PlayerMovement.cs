@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour {
     public Transform m_cameraTransform;
     [HideInInspector]
     public Vector3 m_playerDirection;
+    public float lastControllerV;
+    public float lastControllerH;
+    public float lastMouseV;
+    public float lastMouseH;
 
     [Range(1.0f, 5f)]
     public float m_speedRate = 2.5f;
@@ -42,8 +46,8 @@ public class PlayerMovement : MonoBehaviour {
     public void SetDirection()
     {
         /* Gets the Input axis in order to set direction. */
-        m_playerDirection.x = Input.GetAxis("Horizontal");
-        m_playerDirection.z = Input.GetAxis("Vertical");
+        m_playerDirection.x = Input.GetAxis("HorizontalTranslate");
+        m_playerDirection.z = Input.GetAxis("ForwardTranslate");
         /**************************************************/
     }
 
