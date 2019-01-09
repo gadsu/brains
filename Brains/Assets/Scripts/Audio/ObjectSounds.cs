@@ -30,4 +30,32 @@ public class ObjectSounds : ScriptableObject
             s.source.loop = s.loop;
         }
     }
+
+    public Sound GetSound(string p_name)
+    {
+        Sound l_sound = new Sound();
+
+        if (_dictSounds.TryGetValue(p_name, out l_sound))
+            return l_sound;
+
+        return null;
+    }
+
+    public void Play(Sound p_sound)
+    {
+
+    }
+
+    public void Play(Sound p_sound, float p_volume)
+    {
+
+    }
+
+    public void SetVolume(string p_name, float p_volume)
+    {
+        Sound s = GetSound(p_name);
+
+        if (s != null)
+            s.volume = p_volume;
+    }
 }
