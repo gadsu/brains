@@ -6,36 +6,68 @@ InputManager:
   serializedVersion: 2
   m_Axes:
   - serializedVersion: 3
-    m_Name: Horizontal
-    descriptiveName: 
-    descriptiveNegativeName: 
+    m_Name: HorizontalTranslate
+    descriptiveName: Right movement
+    descriptiveNegativeName: Left movement
     negativeButton: left
     positiveButton: right
     altNegativeButton: a
     altPositiveButton: d
     gravity: 3
-    dead: 0.001
-    sensitivity: 3
+    dead: 0.1
+    sensitivity: 1
     snap: 1
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 1
   - serializedVersion: 3
-    m_Name: Vertical
-    descriptiveName: 
-    descriptiveNegativeName: 
+    m_Name: HorizontalTranslate
+    descriptiveName: Right movement
+    descriptiveNegativeName: Left movement
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.5
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: ForwardTranslate
+    descriptiveName: Forward movement
+    descriptiveNegativeName: Backward movement
     negativeButton: down
     positiveButton: up
     altNegativeButton: s
     altPositiveButton: w
     gravity: 3
-    dead: 0.001
-    sensitivity: 3
+    dead: 0.1
+    sensitivity: 1
     snap: 1
     invert: 0
     type: 0
-    axis: 0
+    axis: 1
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: ForwardTranslate
+    descriptiveName: Forward movement
+    descriptiveNegativeName: Backward movement
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.5
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 1
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1
@@ -150,8 +182,8 @@ InputManager:
     axis: 2
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Horizontal
-    descriptiveName: 
+    m_Name: HorizontalCam
+    descriptiveName: Mouse horizontal
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -159,15 +191,31 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0.19
-    sensitivity: 1
+    sensitivity: 0.1
     snap: 0
     invert: 0
-    type: 2
+    type: 1
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Vertical
-    descriptiveName: 
+    m_Name: HorizontalCam
+    descriptiveName: JoystickLR
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.1
+    sensitivity: 0.9
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: VerticalCam
+    descriptiveName: Mouse vertical
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -175,11 +223,27 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0.19
-    sensitivity: 1
+    sensitivity: 0.1
+    snap: 0
+    invert: 0
+    type: 1
+    axis: 1
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: VerticalCam
+    descriptiveName: JoystickUpDown
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.1
+    sensitivity: 0.9
     snap: 0
     invert: 1
     type: 2
-    axis: 1
+    axis: 3
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1
@@ -230,13 +294,13 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Jump
-    descriptiveName: 
+    m_Name: Crawl
+    descriptiveName: Crawl
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 3
+    positiveButton: left shift
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 6
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -252,23 +316,7 @@ InputManager:
     negativeButton: 
     positiveButton: return
     altNegativeButton: 
-    altPositiveButton: joystick button 0
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: Submit
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: enter
-    altNegativeButton: 
-    altPositiveButton: space
+    altPositiveButton: joystick button 1
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -284,7 +332,71 @@ InputManager:
     negativeButton: 
     positiveButton: escape
     altNegativeButton: 
+    altPositiveButton: joystick button 2
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Dead
+    descriptiveName: Play Dead
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: space
+    altNegativeButton: 
     altPositiveButton: joystick button 1
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: LShoulder
+    descriptiveName: Left shoulderswap
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: q
+    altNegativeButton: 
+    altPositiveButton: joystick button 4
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: RShoulder
+    descriptiveName: Right shoulderswap
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: e
+    altNegativeButton: 
+    altPositiveButton: joystick button 5
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: FPerson
+    descriptiveName: First person camera toggle
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: p
+    altNegativeButton: 
+    altPositiveButton: joystick button 10
     gravity: 1000
     dead: 0.001
     sensitivity: 1000

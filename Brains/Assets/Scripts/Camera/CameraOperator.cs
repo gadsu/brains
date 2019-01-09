@@ -133,15 +133,15 @@ public class CameraOperator : MonoBehaviour
 
         if (!doCinematicMode)
         {
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetButtonDown("FPerson"))
             {
                 doFirstPerson = !doFirstPerson;
             }
             if (!doTrackObject && !doFirstPerson)
             {
                 if (shoulderState == 0)
-                    shoulderState = (Input.GetKeyDown(KeyCode.Q)) ? -1 : (Input.GetKeyDown(KeyCode.E)) ? 1 : shoulderState;
-                else shoulderState = (Input.GetKeyDown(KeyCode.Q)) ? 0 : (Input.GetKeyDown(KeyCode.E)) ? 0 : shoulderState;
+                    shoulderState = (Input.GetButtonDown("LShoulder")) ? -1 : (Input.GetButtonDown("RShoulder")) ? 1 : shoulderState;
+                else shoulderState = (Input.GetButtonDown("RShoulder")) ? 0 : (Input.GetButtonDown("LShoulder")) ? 0 : shoulderState;
             }
             if(doFirstPerson)
             {
@@ -181,8 +181,8 @@ public class CameraOperator : MonoBehaviour
             // Set inputs
             if (!doTrackObject)
             {
-                input.x = Input.GetAxis("Mouse X");
-                input.y = Input.GetAxis("Mouse Y");
+                input.x = Input.GetAxis("HorizontalCam");
+                input.y = Input.GetAxis("VerticalCam");
 
                 // Cut out the vertical input if horizontal input is larger (this is nice, trust me)
                 if (Mathf.Abs(Input.GetAxis("Mouse X")) > Mathf.Abs(Input.GetAxis("Mouse Y"))) axisDamper.y = 0f;

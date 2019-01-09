@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
-    protected Dictionary<string, Sound> audioDictionary;
     public ObjectSounds _sceneAudio;
 
     public static AudioManager instance;
@@ -22,33 +21,10 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        audioDictionary = new Dictionary<string, Sound>();
+        _sceneAudio.LoadDictionary(gameObject);
 
         DontDestroyOnLoad(gameObject);
-
-        for (int i = 0; i < _sceneAudio._objectSounds.Capacity; i++)
-        {
-            if (!audioDictionary.ContainsKey(_sceneAudio._objectSounds[i].name))
-            {
-                audioDictionary.Add(_sceneAudio._objectSounds[i].name, _sceneAudio._objectSounds[i]);
-            }
-            else { Debug.Log("<color=yellow>Key already exists!</color>"); }
-        }
-
-		foreach (Sound s in audioDictionary.Values)
-        {
-            //Use this function to play a certain sound in script
-            //FindObectOfType<AudioManager>().Play("name");
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
-
-        }
-
-	}
+    }
 
     public void Start ()
     {
@@ -81,7 +57,7 @@ public class AudioManager : MonoBehaviour
     public void Play(string name)
     {
         Sound s = new Sound();
-        if (audioDictionary.TryGetValue(name, out s))
+        if (_sceneAudio._dictSounds.TryGetValue(name, out s))
         {
             if (PauseMenu.GamePaused)
             {
@@ -91,11 +67,12 @@ public class AudioManager : MonoBehaviour
             s.source.Play();
         }
     }
+
     public void SetVol(string name, float vol)
     {
         vol = Mathf.Clamp(vol, 0, 1f);
         Sound s = new Sound();
-        if (audioDictionary.TryGetValue(name, out s))
+        if (_sceneAudio._dictSounds.TryGetValue(name, out s))
         {
             s.source.volume = vol;
         }
@@ -104,7 +81,7 @@ public class AudioManager : MonoBehaviour
     public Sound GetSound(string name)
     {
         Sound s = new Sound();
-        if (audioDictionary.TryGetValue(name, out s))
+        if (_sceneAudio._dictSounds.TryGetValue(name, out s))
         {
             return s;
         }

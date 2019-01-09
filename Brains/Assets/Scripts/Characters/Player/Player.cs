@@ -81,7 +81,7 @@ public class Player : ACharacter
         outOfDeadSnapPosition = limbToLookAt.transform.position;
         if (!m_gameState.m_gameOver)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetButtonDown("Dead"))
             { // Ignore all previous input and set the state for playing dead.
                 m_moving = 0;
                 MvState = MovementState.Idling;
@@ -109,7 +109,7 @@ public class Player : ACharacter
 
                 /* Overrides the default movement state if the condition is met. */
                 if (m_moving == 1) MvState = MovementState.Creeping;
-                if (Input.GetKey(KeyCode.LeftShift)) MvState = MovementState.Crawling; // (overrides the moving comparison in order to determine how movement is occuring.)
+                if (Input.GetButton("Crawl")) MvState = MovementState.Crawling; // (overrides the moving comparison in order to determine how movement is occuring.)
                                                                                        /*****************************************************************/
             }
 
@@ -133,7 +133,7 @@ public class Player : ACharacter
                 }
             }
 
-            m_scriptPDiction.SetAnimationSpeed(((m_rbody.velocity.magnitude / 1.4f) + 0.1f) * Mathf.Sign(Input.GetAxis("Vertical"))); // sets the speed and the direction of the animation.
+            m_scriptPDiction.SetAnimationSpeed(((m_rbody.velocity.magnitude / 1.4f) + 0.1f) * Mathf.Sign(Input.GetAxis("ForwardTranslate"))); // sets the speed and the direction of the animation.
         }
         else
         {
