@@ -28,13 +28,9 @@ public class AudioManager : MonoBehaviour
 
     public void Start ()
     {
-        Play("Background Music");
-        Play("Background Music High");
-        SetVol("Background Music High", 0);
-    }
-
-    public void Update()
-    {
+        _sceneAudio.Play("Background Music");
+        _sceneAudio.Play("Background Music High");
+        _sceneAudio.SetVolume("Background Music High", 0f);
         SetActiveSceneAudio(SceneManager.GetActiveScene().name);
     }
 
@@ -43,13 +39,13 @@ public class AudioManager : MonoBehaviour
         switch (p_SceneName)
         {
             case "Menu":
-                SetVol("Main Music", 0.2f);
-                SetVol("Background Music", 0f);
-                SetVol("Background Music High", 0f);
+                _sceneAudio.SetVolume("Main Music", 1f);
+                _sceneAudio.SetVolume("Background Music", 0f);
+                _sceneAudio.SetVolume("Background Music High", 0f);
                 break;
             default:
-                SetVol("Main Music", 0f);
-                SetVol("Background Music", 0.1f);
+                _sceneAudio.SetVolume("Main Music", 0f);
+                _sceneAudio.SetVolume("Background Music", 1f);
                 break;
         }
     }

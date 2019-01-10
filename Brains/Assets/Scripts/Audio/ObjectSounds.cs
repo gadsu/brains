@@ -33,22 +33,28 @@ public class ObjectSounds : ScriptableObject
 
     public Sound GetSound(string p_name)
     {
-        Sound l_sound = new Sound();
-
-        if (_dictSounds.TryGetValue(p_name, out l_sound))
-            return l_sound;
+        for (int i = 0; i < _objectSounds.Capacity; i++)
+        {
+            if (_objectSounds[i].name == p_name)
+                return _objectSounds[i];
+        }
 
         return null;
     }
 
-    public void Play(Sound p_sound)
+    public void Play(string name)
     {
-
+        GetSound(name).source.Play();
     }
 
-    public void Play(Sound p_sound, float p_volume)
+    public void Play(string name, float p_volume)
     {
-
+        Sound l_sound = GetSound(name);
+        if (l_sound != null)
+        {
+            l_sound.source.Play();
+            l_sound.source.volume = p_volume;
+        }
     }
 
     public void SetVolume(string p_name, float p_volume)
@@ -57,5 +63,7 @@ public class ObjectSounds : ScriptableObject
 
         if (s != null)
             s.volume = p_volume;
+
+        s.source.volume = s.volume;
     }
 }

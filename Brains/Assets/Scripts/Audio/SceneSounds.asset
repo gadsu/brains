@@ -14,8 +14,8 @@ MonoBehaviour:
   _objectSounds:
   - name: Main Music
     clip: {fileID: 8300000, guid: e34a542565491e24f9744fa820cbe389, type: 3}
-    volume: 1
-    pitch: 0.3
+    volume: 0
+    pitch: 1
     defaultVolume: 1
     volumeScale: 0
     loop: 0
@@ -24,16 +24,16 @@ MonoBehaviour:
   - name: Background Music
     clip: {fileID: 8300000, guid: 5eac3c0e67ab4a74eaa7ae18f0a5370c, type: 3}
     volume: 1
-    pitch: 0.3
-    defaultVolume: 1
-    volumeScale: 0
+    pitch: 1
+    defaultVolume: 0
+    volumeScale: 1
     loop: 0
     oneShot: 0
     source: {fileID: 0}
   - name: Background Music High
     clip: {fileID: 8300000, guid: 412c5bb4c34cf6246a92500360ad7741, type: 3}
     volume: 0
-    pitch: 0
+    pitch: 0.1
     defaultVolume: 1
     volumeScale: 0
     loop: 0
