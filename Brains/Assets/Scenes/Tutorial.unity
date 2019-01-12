@@ -399,6 +399,11 @@ Prefab:
       propertyPath: winText
       value: 
       objectReference: {fileID: 1117998949}
+    - target: {fileID: 114712530458612236, guid: 12294f91a03d19042846fd765af9a91e,
+        type: 2}
+      propertyPath: WaitForVictory
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12294f91a03d19042846fd765af9a91e, type: 2}
   m_IsPrefabAsset: 0

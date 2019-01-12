@@ -16,7 +16,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e34a542565491e24f9744fa820cbe389, type: 3}
     volume: 0
     pitch: 1
-    defaultVolume: 1
+    defaultVolume: 0.5
     volumeScale: 0
     loop: 0
     oneShot: 0
@@ -25,8 +25,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5eac3c0e67ab4a74eaa7ae18f0a5370c, type: 3}
     volume: 1
     pitch: 1
-    defaultVolume: 0
-    volumeScale: 1
+    defaultVolume: 1
+    volumeScale: 0.208
     loop: 0
     oneShot: 0
     source: {fileID: 0}
@@ -35,7 +35,7 @@ MonoBehaviour:
     volume: 0
     pitch: 0.1
     defaultVolume: 1
-    volumeScale: 0
+    volumeScale: 0.059
     loop: 0
     oneShot: 0
     source: {fileID: 0}
