@@ -62,13 +62,13 @@ public class PauseMenu : MonoBehaviour {
     {
         Time.timeScale = 1f;
         Debug.Log("Loading Credits...");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Scenes/Credits", LoadSceneMode.Single);
     }
 
     public void ReturnMenu()
     {
         Time.timeScale = 1f;
         Debug.Log("Returning to Menu...");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("Scenes/Menu", LoadSceneMode.Single);
     }
 }

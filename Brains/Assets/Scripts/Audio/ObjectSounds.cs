@@ -22,6 +22,21 @@ public class ObjectSounds : ScriptableObject
         }
     }
 
+    public void InitSounds(GameObject gameObject, AudioSource _aSource)
+    {
+        for (int i = 0; i < _objectSounds.Capacity; i++)
+        {
+            if (_objectSounds[i].source == null)
+            {
+                _objectSounds[i].source = _aSource;
+                _objectSounds[i].source.clip = _objectSounds[i].clip;
+                _objectSounds[i].source.volume = _objectSounds[i].defaultVolume;
+                _objectSounds[i].source.pitch = _objectSounds[i].pitch;
+                _objectSounds[i].source.loop = _objectSounds[i].loop;
+            }
+        }
+    }
+
     public Sound GetSound(string p_name)
     {
         for (int i = 0; i < _objectSounds.Capacity; i++)

@@ -16,16 +16,16 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            this._sceneAudio.InitSounds(this.gameObject);
+            _sceneAudio.InitSounds(gameObject);
         }
         else
         {
-            instance.SetActiveSceneAudio(this._sceneAudio);
+            instance.SetActiveSceneAudio(_sceneAudio);
             Destroy(gameObject);
             return;
         }
 
-        instance.SetActiveSceneAudio(this._sceneAudio);
+        instance.SetActiveSceneAudio(_sceneAudio);
 
         DontDestroyOnLoad(gameObject);
     }
