@@ -25,8 +25,8 @@ public class TomSoundManager : MonoBehaviour
         source = GetComponent<AudioSource>();
         m_enemy = GetComponent<EnemyBase>();
         m_audioman = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
-        defaultMusVol = m_audioman.GetSound("BGMusic").volume;
-        defaultHighMusVol = m_audioman.GetSound("BGMusicHigh").volume;
+        //defaultMusVol = m_audioman.GetSound("BGMusic").volume;
+        //defaultHighMusVol = m_audioman.GetSound("BGMusicHigh").volume;
     }
 
     private void Update()

@@ -6,28 +6,100 @@ using System.Collections.Generic;
 public class ObjectSounds : ScriptableObject
 {
     public List<Sound> _objectSounds;
-    public Dictionary<string, Sound> _dictSounds = new Dictionary<string, Sound>();
 
-    public void LoadDictionary(GameObject gameObject)
+    public void InitSounds(GameObject gameObject)
     {
         for (int i = 0; i < _objectSounds.Capacity; i++)
         {
-            if (!_dictSounds.ContainsKey(_objectSounds[i].name))
-                _dictSounds.Add(_objectSounds[i].name, _objectSounds[i]);
-            else
-                Debug.Log("<color=yellow>Key already present</color>");
+            if (_objectSounds[i].source == null)
+            {
+                _objectSounds[i].source = gameObject.AddComponent<AudioSource>();
+                _objectSounds[i].source.clip = _objectSounds[i].clip;
+                _objectSounds[i].source.volume = _objectSounds[i].defaultVolume;
+                _objectSounds[i].source.pitch = _objectSounds[i].pitch;
+                _objectSounds[i].source.loop = _objectSounds[i].loop;
+            }
         }
+    }
 
-        foreach (Sound s in _dictSounds.Values)
+    public Sound GetSound(string p_name)
+    {
+        for (int i = 0; i < _objectSounds.Capacity; i++)
         {
-            //Use this function to play a certain sound in script
-            //FindObectOfType<AudioManager>().Play("name");
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
+            if (_objectSounds[i].name == p_name)
+                return _objectSounds[i];
         }
+
+        return null;
+    }
+
+    public void Play(Sound s)
+    {
+        if (s == null)
+            return;
+
+        if (!s.source.isPlaying)
+        {
+            if (s.oneShot)
+                s.source.PlayOneShot(s.clip);
+            else
+                s.source.Play();
+        }
+    }
+
+    public void Play(string name)
+    {
+        Play(GetSound(name));
+    }
+
+    public void Play(string name, float p_volume)
+    {
+        Sound l_sound = GetSound(name);
+        if (l_sound != null)
+        {
+            l_sound.source.volume = p_volume;
+            l_sound.volume = p_volume;
+            Play(l_sound);
+        }
+    }
+
+    public void Play(string name, float p_volume, float pitch)
+    {
+        Sound l_sound = GetSound(name);
+        l_sound.volume = p_volume;
+        l_sound.pitch = pitch;
+        l_sound.source.volume = p_volume;
+        l_sound.source.pitch = pitch;
+    }
+
+    public void SetVolume(string p_name, float p_volume)
+    {
+        Sound s = GetSound(p_name);
+
+        if (s != null)
+        {
+            s.volume = p_volume;
+            s.source.volume = s.volume;
+        }
+    }
+
+    public float GetVolume(string name)
+    {
+        return (GetSound(name) != null) ? GetSound(name).volume : 0f;
+    }
+
+    public void SetPitch(string p_name, float p_pitch)
+    {
+        Sound s = GetSound(p_name);
+        if (s != null)
+        {
+            s.pitch = p_pitch;
+            s.source.pitch = s.pitch;
+        }
+    }
+
+    public float GetPitch(string name)
+    {
+        return (GetSound(name) != null) ? GetSound(name).pitch : 0f;
     }
 }
