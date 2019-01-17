@@ -6,6 +6,7 @@ public class CharacterSoundManager : MonoBehaviour
 {
     public ObjectSounds _sounds;
     public ObjectSounds _footSounds;
+
     private void Awake()
     {
         _sounds.InitSounds(gameObject, GetComponent<AudioSource>());
@@ -14,15 +15,11 @@ public class CharacterSoundManager : MonoBehaviour
 
     public void FootEvent()
     {
-        _footSounds.Play(_footSounds._objectSounds[Mathf.RoundToInt(Random.Range(1, _footSounds._objectSounds.Capacity))]);
+        _footSounds.Play(_footSounds._objectSounds[Mathf.RoundToInt(Random.Range(0, _footSounds._objectSounds.Capacity))]);
     }
 
     public void PlayChSoundEvent(string name, float? volume)
     {
-        if (volume != null)
-        {
-            _sounds.Play(name, (float)volume);
-            return;
-        }
+        _sounds.Play(name, volume ?? _sounds.GetSound(name).volume);
     }
 }

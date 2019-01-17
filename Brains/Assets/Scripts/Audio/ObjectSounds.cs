@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class ObjectSounds : ScriptableObject
 {
     public List<Sound> _objectSounds;
+    KeyNotFoundException _soundException = new KeyNotFoundException("<color=blue>Sound not found: ");
 
     public void InitSounds(GameObject gameObject)
     {
@@ -39,13 +40,23 @@ public class ObjectSounds : ScriptableObject
 
     public Sound GetSound(string p_name)
     {
-        for (int i = 0; i < _objectSounds.Capacity; i++)
+        Sound _s = null;
+        try
         {
-            if (_objectSounds[i].name == p_name)
-                return _objectSounds[i];
+            for (int i = 0; i < _objectSounds.Capacity; i++)
+            {
+                if (_objectSounds[i].name == p_name)
+                    _s = _objectSounds[i];
+            }
+
+            if(_s == null) throw _soundException;
+        }
+        catch (KeyNotFoundException k)
+        {
+            Debug.LogAssertion(k + p_name + "</color>");
         }
 
-        return null;
+        return _s;
     }
 
     public void Play(Sound s)

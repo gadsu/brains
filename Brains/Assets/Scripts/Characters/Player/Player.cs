@@ -152,7 +152,7 @@ public class Player : ACharacter
         if (!m_gameState.m_gameOver)
         {
             m_scriptPMove.Move(m_rbody);
-            m_scriptStealthHandler.UpdateStealthState(m_playDead, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), (int)MvState);
+            m_scriptStealthHandler.UpdateStealthState(m_playDead, (int)MvState);
             m_scriptGroanHandler.SetGroanSpeed((int)MvState, m_scriptPMove.M_MoveSpeed);
         }
         else

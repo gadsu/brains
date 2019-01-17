@@ -29,10 +29,6 @@ public class TomSoundManager : MonoBehaviour
         //defaultHighMusVol = m_audioman.GetSound("BGMusicHigh").volume;
     }
 
-    private void Update()
-    {
-
-    }
     void debugPrint(string msg)
     {
         if (doDebugPrint)

@@ -9,7 +9,6 @@ public class EnemyBase : AEnemy
     Transform m_target;
     NavMeshAgent m_agent;
     AnimationHandler _animHandler;
-    TomSoundManager m_sound;
 
     string animationToPlay = "";
     public float moveSpeedStart = 3f;
@@ -20,7 +19,6 @@ public class EnemyBase : AEnemy
     {
         mAEnemy_pathing = GetComponent<PathTo>();
         mAEnemy_detecting = GetComponent<DetectPlayer>();
-        m_sound = GetComponent<TomSoundManager>();
 
         m_target = GameObject.Find("Spud").GetComponent<Transform>();
         m_agent = GetComponent<NavMeshAgent>();

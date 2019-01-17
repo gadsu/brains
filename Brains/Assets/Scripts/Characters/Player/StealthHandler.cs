@@ -23,11 +23,12 @@ public class StealthHandler : MonoBehaviour
         hidden = (state) ? 1f : 0f; // allows for places such as a pile of dead bodies to set the hidden state to true.
     }
 
-    public void UpdateStealthState(int playDead, int arms, int legs, int mvState)
+    public void UpdateStealthState(int playDead, int mvState)
     {
         offset = (hidden > 0f && mvState != 5) ? 1f : 0f; // offsets the value of the states if not crawling.
 
-        stealth_val = 
-            (hidden - playDead * (arms + legs)) + (((hidden - 1) * Mathf.Abs(5 - mvState) + 5 * playDead) / 2) - offset; // calculates the new stealth rate value.
+        stealth_val =
+            (hidden - 1) * (-(Mathf.Abs(5 - mvState) * (playDead - 1)) + hidden);
+            //(hidden - playDead * (arms + legs)) + (((hidden - 1) * Mathf.Abs(5 - mvState) + 5 * playDead) / 2) - offset; // calculates the new stealth rate value.
     }
 }
