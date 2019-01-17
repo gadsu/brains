@@ -39,12 +39,10 @@ public class AnimationDictionary : MonoBehaviour
 
     public string ReadFromDictionary(int id)
     {
-        //Debug.Log("<color=red>Attempting to read from dictionary</color>");
         try
         {
             if (charAnimation.TryGetValue(id, out m_Anim))
             {
-                //Debug.Log("<color=blue>" + m_Anim.ToString() + "</color>");
                 tempAnim = m_Anim;
             }
             else
