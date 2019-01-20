@@ -18,12 +18,12 @@ MonoBehaviour:
     pitch: 1
     defaultVolume: 0.5
     volumeScale: 0
-    loop: 0
+    loop: 1
     oneShot: 0
     source: {fileID: 0}
   - name: Background Music
     clip: {fileID: 8300000, guid: 5eac3c0e67ab4a74eaa7ae18f0a5370c, type: 3}
-    volume: 1
+    volume: 0.208
     pitch: 1
     defaultVolume: 1
     volumeScale: 0.208
@@ -32,7 +32,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Background Music High
     clip: {fileID: 8300000, guid: 412c5bb4c34cf6246a92500360ad7741, type: 3}
-    volume: 0
+    volume: 0.059
     pitch: 0.1
     defaultVolume: 1
     volumeScale: 0.059
