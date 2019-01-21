@@ -22,11 +22,13 @@ ExportedObj/
 *.booproj
 *.svd
 *.pdb
+
 LastSceneManagerSetup.txt
 CurrentLayout.dwlt
 
 # Unity3D generated meta files
 *.pidb.meta
+*.pdb.meta
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
