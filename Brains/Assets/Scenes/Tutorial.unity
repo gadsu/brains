@@ -15944,6 +15944,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &910160802 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114643239719289184, guid: b4aa991eebbb6524995ddf5c6db57762,
+    type: 2}
+  m_PrefabInternal: {fileID: 1141968786}
+  m_Script: {fileID: 11500000, guid: 1d89d91350267e149b377171cadb9d0b, type: 3}
 --- !u!1001 &912488430
 Prefab:
   m_ObjectHideFlags: 0
@@ -20522,6 +20528,36 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682831445561708, guid: b4aa991eebbb6524995ddf5c6db57762,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 910160802}
+    - target: {fileID: 114682831445561708, guid: b4aa991eebbb6524995ddf5c6db57762,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741882200834642, guid: b4aa991eebbb6524995ddf5c6db57762,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 910160802}
+    - target: {fileID: 114741882200834642, guid: b4aa991eebbb6524995ddf5c6db57762,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadCredits
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328455340671656, guid: b4aa991eebbb6524995ddf5c6db57762,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 910160802}
+    - target: {fileID: 114328455340671656, guid: b4aa991eebbb6524995ddf5c6db57762,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4aa991eebbb6524995ddf5c6db57762, type: 2}
