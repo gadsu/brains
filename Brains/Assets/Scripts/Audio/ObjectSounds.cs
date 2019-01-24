@@ -53,7 +53,6 @@ public class ObjectSounds : ScriptableObject
         }
         catch (KeyNotFoundException k)
         {
-            Debug.Log(k + p_name + "</color>");
             Debug.LogAssertion(k + p_name + "</color>");
         }
 
