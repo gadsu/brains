@@ -31,7 +31,7 @@ public class EnemyBase : AEnemy
         {
             Enemy_Detection = DetectionLevel.Detecting;
 
-            mAEnemy_detecting.UpdateRayToPlayer(m_target.position);
+            mAEnemy_detecting.UpdateRayToPlayer(m_target.position, m_target.GetComponent<Player>().m_playDead);
             if (mAEnemy_detecting.IsVisible(m_target.position) || touched)
             {
                 Enemy_Awareness = AwarenessLevel.Aware;
