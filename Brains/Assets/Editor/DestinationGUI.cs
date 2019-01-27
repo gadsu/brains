@@ -5,23 +5,23 @@ using UnityEditor;
 
 
 [ExecuteInEditMode]
-[CustomEditor(typeof(Pathway))]
+[CustomEditor(typeof(Pathway))] // Tells the Editor to only run this class if an Object has a Pathway Script.
 public class DestinationGUI : Editor
 {
     Pathway ptw;
-    private void OnEnable()
+    private void OnEnable() // Runs the the first time this script is called by the Editor in succession.
     {
         ptw = (Pathway)target;
     }
 
-    public override void OnInspectorGUI()
+    public override void OnInspectorGUI() 
     {
-        base.OnInspectorGUI();
+        base.OnInspectorGUI();// Displays all of the public information as the default format.
     }
 
     private void OnSceneGUI()
     {
-        if (ptw._destinations.Length > 0)
+        if (ptw._destinations.Length > 0) // Makes sure the list isn't empty before being called.
         {
             foreach (Destination d in ptw._destinations)
             {
