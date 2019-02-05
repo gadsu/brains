@@ -95,6 +95,7 @@ public class Player : ACharacter
                 else if(m_playDead == 0) { transform.position = outOfDeadSnapPosition;}
 
                 m_rbody.isKinematic = !m_rbody.isKinematic;
+                GetComponentInParent<CharacterJoint>().enableProjection = !GetComponentInParent<CharacterJoint>().enableProjection;
                 //limbToLookAt.GetComponent<Rigidbody>().AddForce(Vector3.up * flingForce);
             }
 
