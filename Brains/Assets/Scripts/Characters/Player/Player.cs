@@ -90,9 +90,15 @@ public class Player : ACharacter
                 {
                     m_rbody.velocity = Vector3.zero;
                     m_spudSoundManager.playDeadEvent();
+                    m_rbody.maxDepenetrationVelocity = .1f;
                 }
-                else if(m_playDead == 0) { transform.position = outOfDeadSnapPosition; }
+                else if(m_playDead == 0) { transform.position = outOfDeadSnapPosition;}
+
                 m_rbody.isKinematic = !m_rbody.isKinematic;
+                foreach (CharacterJoint cJ in GetComponentsInChildren<CharacterJoint>())
+                {
+                    cJ.enableProjection = !cJ.enableProjection;
+                }
                 //limbToLookAt.GetComponent<Rigidbody>().AddForce(Vector3.up * flingForce);
             }
 

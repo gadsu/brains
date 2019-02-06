@@ -51,12 +51,15 @@ public class DetectPlayer : MonoBehaviour
         return m_inView;
     }
 
-    public void UpdateRayToPlayer(Vector3 p_targetPosition)
+    public void UpdateRayToPlayer(Vector3 p_targetPosition, int pPlayDead)
     {
         m_ray.origin = m_camera.transform.position;
         m_targetPosition = p_targetPosition;
         m_targetPosition.x = m_targetPosition.x - m_ray.origin.x;
-        m_targetPosition.y = (m_targetPosition.y - m_ray.origin.y) + (.5f * m_playerSizeY);
+        if (pPlayDead == 0)
+            m_targetPosition.y = (m_targetPosition.y - m_ray.origin.y) + (.5f * m_playerSizeY);
+        else
+            m_targetPosition.y = (m_targetPosition.y - m_ray.origin.y) - (m_playerSizeY) + .2f;
         m_targetPosition.z -= m_ray.origin.z;
 
         m_ray.direction = Vector3.RotateTowards(m_ray.origin, m_targetPosition, Mathf.Infinity, Mathf.Infinity);

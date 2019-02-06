@@ -6,12 +6,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public Transform m_cameraTransform;
+    public SlopeTester _slope;
     [HideInInspector]
     public Vector3 m_playerDirection;
-    public float lastControllerV;
-    public float lastControllerH;
-    public float lastMouseV;
-    public float lastMouseH;
 
     [Range(1.0f, 5f)]
     public float m_speedRate = 2.5f;
@@ -80,7 +77,9 @@ public class PlayerMovement : MonoBehaviour {
         if (p_rbody.velocity.magnitude < 1f * m_moveSpeed)
             p_rbody.AddForce(((l_newCameraDirection * m_playerDirection.z) + (m_cameraTransform.right * m_playerDirection.x)) * m_moveSpeed, ForceMode.Impulse);  // moves the player according to the updated camera and move direction.
 
-        p_rbody.angularVelocity = Vector3.up * m_moveSpeed;
+        if (_slope.IsOnSlope && p_rbody.velocity.y < 1f)
+            p_rbody.AddForce(Vector3.up, ForceMode.Impulse);
+        //p_rbody.angularVelocity = Vector3.up * m_moveSpeed;
     }
 
     public bool RagDead()
