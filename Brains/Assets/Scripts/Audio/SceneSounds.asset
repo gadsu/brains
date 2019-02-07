@@ -27,7 +27,7 @@ MonoBehaviour:
     pitch: 1
     defaultVolume: 1
     volumeScale: 0.208
-    loop: 0
+    loop: 1
     oneShot: 0
     source: {fileID: 0}
   - name: Background Music High
