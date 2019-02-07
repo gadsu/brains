@@ -39,6 +39,7 @@ public class Player : ACharacter
     public GameObject limbToLookAt;
     public float flingForce = 2000;
     private Vector3 outOfDeadSnapPosition;
+    public CapsuleCollider[] colliders;
 
     [HideInInspector]
     public int m_playDead;
@@ -70,7 +71,11 @@ public class Player : ACharacter
         m_animationKey = 0;
         m_moving = 0;
         m_playDead = 0;
+        m_rbody.maxDepenetrationVelocity = .1f;
         /***********************************/
+
+        colliders[0].enabled = true;
+        colliders[1].enabled = false;
 
         m_rbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; // To prevent the gameObject from turning along the x and z rotation axis when moving.
 	}
@@ -86,11 +91,11 @@ public class Player : ACharacter
                 m_moving = 0;
                 MvState = MovementState.Idling;
                 m_playDead = Mathf.Abs(1 - Convert.ToInt32(m_scriptPMove.RagDead()));
+
                 if (m_playDead == 1)
                 {
                     m_rbody.velocity = Vector3.zero;
                     m_spudSoundManager.playDeadEvent();
-                    m_rbody.maxDepenetrationVelocity = .1f;
                 }
                 else if(m_playDead == 0) { transform.position = outOfDeadSnapPosition;}
 
@@ -124,19 +129,13 @@ public class Player : ACharacter
 
             if (MvState == MovementState.Crawling)
             {
-                if (GetComponent<CapsuleCollider>().direction != 2 ^ Input.GetKey(KeyCode.Space))
-                {
-                    GetComponent<CapsuleCollider>().center = Vector3.up * .35f;
-                    GetComponent<CapsuleCollider>().direction = 2;
-                }
+                colliders[1].enabled = true;
+                colliders[0].enabled = false;
             }
             else
             {
-                if (GetComponent<CapsuleCollider>().direction != 1)
-                {
-                    GetComponent<CapsuleCollider>().center = Vector3.up * .9f;
-                    GetComponent<CapsuleCollider>().direction = 1;
-                }
+                colliders[0].enabled = true;
+                colliders[1].enabled = false;
             }
 
             m_scriptPDiction.SetAnimationSpeed(((m_rbody.velocity.magnitude / 1.4f) + 0.1f) * Mathf.Sign(Input.GetAxis("ForwardTranslate"))); // sets the speed and the direction of the animation.
