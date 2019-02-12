@@ -35,7 +35,6 @@ public class AnimationHandler : MonoBehaviour
             if (!_isBlocked)
             {
                 p_agent.speed = (p_chasing) ? p_speed * 2f : p_speed;
-                _anim.SetTrigger("toMove");
             }
         }
 
@@ -63,6 +62,7 @@ public class AnimationHandler : MonoBehaviour
             }
             yield return new WaitForSeconds(time);
             _isBlocked = false;
+            _anim.SetTrigger("toMove");
         }
     }
 }

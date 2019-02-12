@@ -38,9 +38,12 @@ public class EnemyBase : AEnemy
                 if (!chasing)
                 {
                     chasing = true;
-                    surpised = true;
-                    animationToPlay = "A_TomSurprise";
-                    blockAnimation = true;
+                    if (!surpised)
+                    {
+                        surpised = true;
+                        animationToPlay = "A_TomSurprise";
+                        blockAnimation = true;
+                    }
                 }
                 else
                 {
@@ -72,7 +75,8 @@ public class EnemyBase : AEnemy
         }
 
         m_agent.SetDestination(mAEnemy_pathing.UpdateDestination(chasing, m_agent.destination, m_agent.remainingDistance));
-
+        _animHandler.SetAnimation(animationToPlay, blockAnimation, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
+        _animHandler.SetAnimationSpeed(m_agent.velocity.magnitude);
         //mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);        
     }
 
@@ -86,14 +90,10 @@ public class EnemyBase : AEnemy
     }
 
     private void LateUpdate()
-    {
-        _animHandler.SetAnimation(animationToPlay, blockAnimation, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
-        _animHandler.SetAnimationSpeed(m_agent.velocity.magnitude);
-
+    { 
         touched = (Mathf.Abs(lastTouchedTime - Time.time) > 3f) ? false : touched;
 
         animationToPlay = "A_TomWalk";
         blockAnimation = false;
-        surpised = false;
     }
 }

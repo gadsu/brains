@@ -10727,7 +10727,7 @@ Prefab:
         type: 2}
       propertyPath: colliders.Array.data[0]
       value: 
-      objectReference: {fileID: 1730467437}
+      objectReference: {fileID: 1730467443}
     - target: {fileID: 136102971824661344, guid: 081cb1ca92a5a824ba412361a5dc43ca,
         type: 2}
       propertyPath: m_IsTrigger
@@ -10737,7 +10737,7 @@ Prefab:
         type: 2}
       propertyPath: colliders.Array.data[1]
       value: 
-      objectReference: {fileID: 1730467443}
+      objectReference: {fileID: 1730467437}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 081cb1ca92a5a824ba412361a5dc43ca, type: 2}
   m_IsPrefabAsset: 0
@@ -30520,7 +30520,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1730467436}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 2
@@ -30661,7 +30661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a31463b068a061409fe50da76e950bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnSlope: 1
+  IsOnSlope: 0
   IsOnGround: 1
 --- !u!4 &1735626241 stripped
 Transform:
