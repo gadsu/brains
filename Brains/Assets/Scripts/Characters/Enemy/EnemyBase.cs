@@ -27,6 +27,8 @@ public class EnemyBase : AEnemy
 
     private void Update()
     {
+        if (touched) mAEnemy_detecting.m_detectionAmount = 100f;
+
         if ((mAEnemy_detecting.IsInView(m_target.position) || touched) && m_target.GetComponent<Player>().m_playDead == 0)
         {
             Enemy_Detection = DetectionLevel.Detecting;
@@ -77,7 +79,7 @@ public class EnemyBase : AEnemy
         m_agent.SetDestination(mAEnemy_pathing.UpdateDestination(chasing, m_agent.destination, m_agent.remainingDistance));
         _animHandler.SetAnimation(animationToPlay, blockAnimation, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
         _animHandler.SetAnimationSpeed(m_agent.velocity.magnitude);
-        //mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);        
+        mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);
     }
 
     private void OnCollisionStay(Collision collision)
