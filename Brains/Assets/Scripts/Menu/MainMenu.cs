@@ -9,7 +9,6 @@ public class MainMenu : MonoBehaviour
     private void Awake()
     {
         Cursor.visible = true;
-        GameObject.Find("AudioManager").GetComponent<AudioManager>().Play("MMusic");
     }
 
     public void PlayGame ()
