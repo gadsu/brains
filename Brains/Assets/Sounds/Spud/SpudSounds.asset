@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectSounds:
   - name: Groan
-    clip: {fileID: 8300000, guid: 577dc5878730af7469edb50cca67799d, type: 3}
+    clip: {fileID: 8300000, guid: 661040c1776b5ef42931ad2296606ce8, type: 3}
     volume: 0.49
-    pitch: 0.3
+    pitch: 1
     defaultVolume: 1
     volumeScale: 1
     loop: 0
