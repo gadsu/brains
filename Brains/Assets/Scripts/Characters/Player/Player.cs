@@ -45,7 +45,7 @@ public class Player : ACharacter
     /**************************************/
 
     Vector3 spawn; // For sending this game object back to it's spawn when out of bounds.
-
+    public ObjectSounds spudSounds;
 	public MovementState mState{get{return MvState;}}
 
     private void Awake()
@@ -60,6 +60,8 @@ public class Player : ACharacter
         m_scriptBodyHandler = GetComponent<BodyHandler>();
         m_spudSoundManager = GetComponent<SpudSoundManager>();
         /****************************************************/
+
+        spudSounds.InitSounds(gameObject);
     }
 
     void Start ()
