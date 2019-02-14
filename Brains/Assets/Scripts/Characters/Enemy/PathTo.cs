@@ -88,7 +88,6 @@ public class PathTo : MonoBehaviour
 
     private IEnumerator Idling(float pIdleTime)
     {
-        Debug.Log("Here we go!");
         yield return new WaitForSeconds(pIdleTime);
         checking = false;
     }

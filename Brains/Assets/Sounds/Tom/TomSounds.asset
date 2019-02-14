@@ -16,23 +16,35 @@ MonoBehaviour:
     clip: {fileID: 0}
     volume: 0
     pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
     loop: 0
+    oneShot: 0
     source: {fileID: 0}
   - name: 
     clip: {fileID: 0}
     volume: 0
     pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
     loop: 0
+    oneShot: 0
     source: {fileID: 0}
   - name: 
     clip: {fileID: 0}
     volume: 0
     pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
     loop: 0
+    oneShot: 0
     source: {fileID: 0}
   - name: 
     clip: {fileID: 0}
     volume: 0
     pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
     loop: 0
+    oneShot: 0
     source: {fileID: 0}

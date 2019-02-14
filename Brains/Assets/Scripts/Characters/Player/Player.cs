@@ -107,11 +107,7 @@ public class Player : ACharacter
                     {
                         cJ.enableProjection = !cJ.enableProjection;
                     }
-                    //limbToLookAt.GetComponent<Rigidbody>().AddForce(Vector3.up * flingForce);
                 }
-
-                if (Input.GetKeyDown(KeyCode.LeftShift)) { m_spudSoundManager.crawlStartEvent(); }
-                if (Input.GetKeyUp(KeyCode.LeftShift)) { m_spudSoundManager.crawlEndEvent(); }
 
                 if (m_playDead == 0)
                 {
@@ -123,8 +119,7 @@ public class Player : ACharacter
 
                     /* Overrides the default movement state if the condition is met. */
                     if (m_moving == 1) MvState = MovementState.Creeping;
-                    if (Input.GetButton("Crawl")) MvState = MovementState.Crawling; // (overrides the moving comparison in order to determine how movement is occuring.)
-                                                                                    /*****************************************************************/
+                    if (Input.GetButton("Crawl")) MvState = MovementState.Crawling; // (overrides the moving comparison in order to determine how movement is occuring.)                                                              /*****************************************************************/
                 }
 
                 m_scriptPMove.SetSpeed((int)MvState)
@@ -177,6 +172,9 @@ public class Player : ACharacter
 
     private void LateUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift)) { spudSounds.Play("CrawlStart"); }
+        if (Input.GetKeyUp(KeyCode.LeftShift)) { spudSounds.Play("Uncrawl"); }
+
         if (Time.deltaTime > 0)
         {
             if (!m_gameState.m_gameOver)

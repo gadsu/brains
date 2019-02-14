@@ -22,7 +22,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: PlayDead
-    clip: {fileID: 8300000, guid: 233ea5a7f48c7864585873ac57510a0f, type: 3}
+    clip: {fileID: 8300000, guid: c04b8a09ba27bf94b863dc4a5386b89b, type: 3}
     volume: 0.49
     pitch: 0.3
     defaultVolume: 1
@@ -30,21 +30,30 @@ MonoBehaviour:
     loop: 0
     oneShot: 1
     source: {fileID: 0}
-  - name: Crawl
+  - name: CrawlStart
     clip: {fileID: 8300000, guid: c04b8a09ba27bf94b863dc4a5386b89b, type: 3}
     volume: 0.49
-    pitch: 0.3
+    pitch: 1
     defaultVolume: 1
     volumeScale: 1
-    loop: 1
-    oneShot: 0
+    loop: 0
+    oneShot: 1
     source: {fileID: 0}
   - name: Uncrawl
+    clip: {fileID: 8300000, guid: 9cda59610e4048947bd32dfd8a640899, type: 3}
+    volume: 0.49
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Crawl
     clip: {fileID: 8300000, guid: 233ea5a7f48c7864585873ac57510a0f, type: 3}
     volume: 0.49
     pitch: 0.3
     defaultVolume: 1
     volumeScale: 1
-    loop: 1
-    oneShot: 0
+    loop: 0
+    oneShot: 1
     source: {fileID: 0}
