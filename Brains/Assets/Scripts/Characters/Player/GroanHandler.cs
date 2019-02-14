@@ -6,14 +6,12 @@ using UnityEngine.UI;
 
 public class GroanHandler : MonoBehaviour {
     private float currentAmount, groanSpeed;
+    private readonly float groanRate = .02f;
     private Vector3 groanTransformScale;
 
-    public GameObject agentTester, groanSphere;
+    public GameObject groanSphere;
     public GameObject groanMeter;
     private Image colorControl;
-
-    [Range(.01f, .1f)]
-    public float groanRate = .02f;
 
     [HideInInspector]
     public Vector3 groanLocation;

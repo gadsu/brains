@@ -5,7 +5,7 @@ using UnityEngine;
 public class SlopeTester : MonoBehaviour
 {
     public bool IsOnSlope = false;
-    private float SlopeLimit = 45f;
+    private readonly float SlopeLimit = 45f;
     public bool IsOnGround = false;
 
     private void OnCollisionStay(Collision collision)
