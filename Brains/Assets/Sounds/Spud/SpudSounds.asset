@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c2d62f2d28d1c47900ad8414c4e204, type: 3}
+  m_Name: SpudSounds
+  m_EditorClassIdentifier: 
+  _objectSounds:
+  - name: Groan
+    clip: {fileID: 8300000, guid: 661040c1776b5ef42931ad2296606ce8, type: 3}
+    volume: 0.49
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: PlayDead
+    clip: {fileID: 8300000, guid: c04b8a09ba27bf94b863dc4a5386b89b, type: 3}
+    volume: 0.49
+    pitch: 0.3
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: CrawlStart
+    clip: {fileID: 8300000, guid: c04b8a09ba27bf94b863dc4a5386b89b, type: 3}
+    volume: 0.49
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Uncrawl
+    clip: {fileID: 8300000, guid: 9cda59610e4048947bd32dfd8a640899, type: 3}
+    volume: 0.49
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Crawl
+    clip: {fileID: 8300000, guid: 233ea5a7f48c7864585873ac57510a0f, type: 3}
+    volume: 0.49
+    pitch: 0.3
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}

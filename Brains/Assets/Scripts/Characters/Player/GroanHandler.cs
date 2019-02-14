@@ -52,6 +52,7 @@ public class GroanHandler : MonoBehaviour {
     {
         /* Sets the states for groaning. */
         currentAmount = 0f;
+        GetComponent<Player>().spudSounds.Play("Groan");
         groaning = true;
         /*********************************/
 
@@ -64,7 +65,6 @@ public class GroanHandler : MonoBehaviour {
         int x = 0; // acts as the length of the groan.
         groanLocation = transform.position;
         groanLocation.y += 1.5f; // sets the groan location to approximately spuds throat.
-        FindObjectOfType<AudioManager>().Play("Groan"); //calls groan sound
 
         /******************************************/
 
