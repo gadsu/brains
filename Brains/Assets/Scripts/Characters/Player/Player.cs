@@ -46,6 +46,7 @@ public class Player : ACharacter
 
     Vector3 spawn; // For sending this game object back to it's spawn when out of bounds.
     public ObjectSounds spudSounds;
+    public ObjectSounds _footSounds;
 	public MovementState mState{get{return MvState;}}
 
     private void Awake()
@@ -62,6 +63,7 @@ public class Player : ACharacter
         /****************************************************/
 
         spudSounds.InitSounds(gameObject);
+        _footSounds.InitSounds(gameObject);
     }
 
     void Start ()
@@ -187,6 +189,11 @@ public class Player : ACharacter
                 m_scriptPDiction.Animate(m_animationKey, m_scriptPMove.M_MoveSpeed); // inserts the key into the dictionary then animates accordingly.
             }
         }
+    }
+
+    public void FootEvent()
+    {
+        _footSounds.Play(_footSounds._objectSounds[Mathf.RoundToInt(UnityEngine.Random.Range(0, _footSounds._objectSounds.Capacity - 1))]);
     }
 
     public void SendToSpawn()

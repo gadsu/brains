@@ -268,14 +268,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0.44482687
-        functionName: footEvent
+        functionName: FootEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 1
-        functionName: footEvent
+        functionName: FootEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -338,28 +338,28 @@ ModelImporter:
       curves: []
       events:
       - time: 0.26582277
-        functionName: footEvent
+        functionName: FootEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.5021097
-        functionName: footEvent
+        functionName: FootEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.7341772
-        functionName: footEvent
+        functionName: FootEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 1
-        functionName: footEvent
+        functionName: FootEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
