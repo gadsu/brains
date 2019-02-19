@@ -100,7 +100,7 @@ public class Player : ACharacter
                     if (m_playDead == 1)
                     {
                         m_rbody.velocity = Vector3.zero;
-                        m_spudSoundManager.playDeadEvent();
+                        spudSounds.Play("PlayDead");
                     }
                     else if (m_playDead == 0) { transform.position = outOfDeadSnapPosition; }
 
