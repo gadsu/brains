@@ -32,7 +32,6 @@ public class Player : ACharacter
     StealthHandler m_scriptStealthHandler;
     GroanHandler m_scriptGroanHandler;
     BodyHandler m_scriptBodyHandler;
-    SpudSoundManager m_spudSoundManager;
 
     int m_animationKey;
     int m_moving;
@@ -59,10 +58,9 @@ public class Player : ACharacter
         m_scriptStealthHandler = GetComponent<StealthHandler>();
         m_scriptGroanHandler = GetComponent<GroanHandler>();
         m_scriptBodyHandler = GetComponent<BodyHandler>();
-        m_spudSoundManager = GetComponent<SpudSoundManager>();
         /****************************************************/
 
-        spudSounds.InitSounds(gameObject);
+        spudSounds.InitSounds(gameObject, GetComponent<AudioSource>());
         _footSounds.InitSounds(gameObject);
     }
 
@@ -86,7 +84,7 @@ public class Player : ACharacter
     // Update is called once per frame
     void Update()
     {
-        if (Time.deltaTime > 0)
+        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().m_currentState == GameStateHandler.GameState.InPlay)
         {
             outOfDeadSnapPosition = limbToLookAt.transform.position;
             if (!m_gameState.m_gameOver)
@@ -151,7 +149,7 @@ public class Player : ACharacter
     }
     private void FixedUpdate()
     {
-        if (Time.deltaTime > 0)
+        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().m_currentState == GameStateHandler.GameState.InPlay)
         {
             // Temp out-of-bounds band-aid
             if (transform.position.y < -10 || transform.position.y > 150)
@@ -177,7 +175,7 @@ public class Player : ACharacter
         if (Input.GetKeyDown(KeyCode.LeftShift)) { spudSounds.Play("CrawlStart"); }
         if (Input.GetKeyUp(KeyCode.LeftShift)) { spudSounds.Play("Uncrawl"); }
 
-        if (Time.deltaTime > 0)
+        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().m_currentState == GameStateHandler.GameState.InPlay)
         {
             if (!m_gameState.m_gameOver)
             {
