@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class DetectPlayer : MonoBehaviour
 {
@@ -22,6 +21,7 @@ public class DetectPlayer : MonoBehaviour
 
     [HideInInspector]
     public float m_detectionAmount;
+    private bool hearing = false;
 
     private void Start()
     {
@@ -33,9 +33,13 @@ public class DetectPlayer : MonoBehaviour
         m_detectionAmount = 0f;
     }
 
-    internal void UpdatingDetectionAmountFromSound()
+    public void UpdatingDetectionAmountFromSound(float objectHearability)
     {
-        throw new NotImplementedException();
+        if (!hearing)
+        {
+            m_detectionAmount += (gameObject.GetComponent<EnemyBase>().mAEnemy_hearValue * (objectHearability/3f) + objectHearability);
+        }
+        hearing = true;
     }
 
     public bool IsInView(Vector3 p_targetPosition)
@@ -93,25 +97,9 @@ public class DetectPlayer : MonoBehaviour
 
         Debug.Log("<color=orange>" + m_detectionAmount + "</color>");
     }
-    /*
-    private void OnCollisionEnter(Collision collision)
+
+    public void NotHearing()
     {
-        if(collision.collider.CompareTag("Player") && !failing)
-        {
-            failing = true;
-            FindObjectOfType<AudioManager>().Play("Fail");
-            FindObjectOfType<AudioManager>().setVol("BGMusicHigh", 0.75f);
-            m_text_notice.SetActive(true);
-            GetComponent<EnemyBase>().blockingAnim("A_TomAttack");
-            StartCoroutine(ReloadScene(SceneManager.GetActiveScene(), xtime));  
-        }
+        hearing = false;
     }
-    
-    private IEnumerator ReloadScene(Scene _scene, float _time)
-    {
-        yield return new WaitForSecondsRealtime(_time);
-        FindObjectOfType<AudioManager>().Start();
-        SceneManager.LoadScene(_scene.name);
-    }
-    */
 }

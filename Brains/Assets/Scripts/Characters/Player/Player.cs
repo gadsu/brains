@@ -72,7 +72,7 @@ public class Player : ACharacter
         m_animationKey = 0;
         m_moving = 0;
         m_playDead = 0;
-        m_rbody.maxDepenetrationVelocity = .1f;
+        m_rbody.maxDepenetrationVelocity = 1f;
         /***********************************/
 
         colliders[0].enabled = true;

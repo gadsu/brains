@@ -8,12 +8,28 @@ public class GroanSphereHandler : MonoBehaviour
 
     private void Awake()
     {
-        groanInfo = GameObject.FindGameObjectWithTag("Player").GetComponent<GroanHandler>(); // Attaches the players groan script to this sphere.
+        groanInfo = gameObject.GetComponentInParent<GroanHandler>(); // Attaches the players groan script to this sphere.
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Enemy") && groanInfo.groaning) // if an enemy is in range and the player is groaning then...
-            other.GetComponent<DetectPlayer>().UpdatingDetectionAmountFromSound();
+        if (other.CompareTag("Enemy"))
+        {
+            if (!groanInfo.groaning)
+                other.GetComponent<DetectPlayer>().NotHearing();
+            else
+            {
+                other.GetComponent<DetectPlayer>().UpdatingDetectionAmountFromSound(15f);
+            }
+
+        }            
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<DetectPlayer>().NotHearing();
+        }
     }
 }
