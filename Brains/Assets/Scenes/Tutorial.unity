@@ -13726,7 +13726,7 @@ Prefab:
     - target: {fileID: 2300000, guid: f405391ccf16ed346aeb7af911bf8b0b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d0f67af79f729ef46916ed7b594fb94b, type: 2}
+      objectReference: {fileID: 2100000, guid: 6cf523103f45c204b93832e231e25356, type: 2}
     - target: {fileID: 100000, guid: f405391ccf16ed346aeb7af911bf8b0b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -22055,7 +22055,7 @@ Prefab:
     - target: {fileID: 2300000, guid: f405391ccf16ed346aeb7af911bf8b0b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d0f67af79f729ef46916ed7b594fb94b, type: 2}
+      objectReference: {fileID: 2100000, guid: 6cf523103f45c204b93832e231e25356, type: 2}
     - target: {fileID: 100000, guid: f405391ccf16ed346aeb7af911bf8b0b, type: 3}
       propertyPath: m_Name
       value: S_Dirtmound (4)
@@ -29350,7 +29350,7 @@ Prefab:
     - target: {fileID: 2300000, guid: f405391ccf16ed346aeb7af911bf8b0b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d0f67af79f729ef46916ed7b594fb94b, type: 2}
+      objectReference: {fileID: 2100000, guid: 6cf523103f45c204b93832e231e25356, type: 2}
     - target: {fileID: 100000, guid: f405391ccf16ed346aeb7af911bf8b0b, type: 3}
       propertyPath: m_Name
       value: VictoryMound
@@ -30203,7 +30203,7 @@ Prefab:
     - target: {fileID: 2300000, guid: f405391ccf16ed346aeb7af911bf8b0b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d0f67af79f729ef46916ed7b594fb94b, type: 2}
+      objectReference: {fileID: 2100000, guid: 6cf523103f45c204b93832e231e25356, type: 2}
     - target: {fileID: 100000, guid: f405391ccf16ed346aeb7af911bf8b0b, type: 3}
       propertyPath: m_Name
       value: S_Dirtmound (3)
@@ -34118,7 +34118,7 @@ Prefab:
     - target: {fileID: 2300000, guid: f405391ccf16ed346aeb7af911bf8b0b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d0f67af79f729ef46916ed7b594fb94b, type: 2}
+      objectReference: {fileID: 2100000, guid: 6cf523103f45c204b93832e231e25356, type: 2}
     - target: {fileID: 100000, guid: f405391ccf16ed346aeb7af911bf8b0b, type: 3}
       propertyPath: m_Name
       value: S_Dirtmound (2)
