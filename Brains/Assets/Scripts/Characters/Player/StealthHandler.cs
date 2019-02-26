@@ -18,7 +18,7 @@ public class StealthHandler : MonoBehaviour
         /****************************************/
     }
 
-    private void UpdateHiddenState(bool state)
+    public void UpdateHiddenState(bool state)
     {
         hidden = (state) ? 1f : 0f; // allows for places such as a pile of dead bodies to set the hidden state to true.
     }
