@@ -12,6 +12,7 @@ public class GameStateHandler : MonoBehaviour
         Lost = 2,
         Paused = 3
     };
+    public string _levelToLoad;
 
     public GameState m_currentState;
 
@@ -55,8 +56,13 @@ public class GameStateHandler : MonoBehaviour
 
     private IEnumerator PlayingVictory()
     {
+
+
         yield return new WaitForSeconds(WaitForVictory);
-        GameObject.Find("PauseCanvas").GetComponent<PauseMenu>().LoadCredits();
+
+
+
+            GameObject.Find("PauseCanvas").GetComponent<PauseMenu>().LoadLevelLevel(_levelToLoad);
     }
 
     // IEnumerator

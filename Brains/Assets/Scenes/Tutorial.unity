@@ -470,6 +470,11 @@ Prefab:
       propertyPath: WaitForVictory
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114712530458612236, guid: 12294f91a03d19042846fd765af9a91e,
+        type: 2}
+      propertyPath: _levelToLoad
+      value: Level 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12294f91a03d19042846fd765af9a91e, type: 2}
   m_IsPrefabAsset: 0
@@ -6758,7 +6763,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 413764206}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.762, y: 0, z: 0}
+  m_LocalPosition: {x: 2.762, y: 0, z: -0.007}
   m_LocalScale: {x: 0.28000003, y: 1, z: 0.28}
   m_Children: []
   m_Father: {fileID: 572980708}
@@ -28352,7 +28357,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1591253098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.007}
   m_LocalScale: {x: 0.28000003, y: 1, z: 0.28}
   m_Children: []
   m_Father: {fileID: 572980708}
@@ -35796,7 +35801,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Suprise me Q
+  m_Text: Hmm this grave doesn't feel right...
 --- !u!222 &2125089105
 CanvasRenderer:
   m_ObjectHideFlags: 0
