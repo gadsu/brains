@@ -48,6 +48,8 @@ public class Player : ACharacter
     public ObjectSounds _footSounds;
 	public MovementState mState{get{return MvState;}}
 
+    public bool mustCrawl = false;
+
     private void Awake()
     {
         /* Initializes references to gameObject components. */
@@ -72,13 +74,13 @@ public class Player : ACharacter
         m_animationKey = 0;
         m_moving = 0;
         m_playDead = 0;
-        m_rbody.maxDepenetrationVelocity = 1f;
+        m_rbody.maxDepenetrationVelocity = .1f;
         /***********************************/
 
         colliders[0].enabled = true;
         colliders[1].enabled = false;
 
-        m_rbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; // To prevent the gameObject from turning along the x and z rotation axis when moving.
+        m_rbody.constraints = RigidbodyConstraints.FreezeRotation;// To prevent the gameObject from turning along the x and z rotation axis when moving.
 	}
 
     // Update is called once per frame
@@ -119,7 +121,9 @@ public class Player : ACharacter
 
                     /* Overrides the default movement state if the condition is met. */
                     if (m_moving == 1) MvState = MovementState.Creeping;
-                    if (Input.GetButton("Crawl")) MvState = MovementState.Crawling; // (overrides the moving comparison in order to determine how movement is occuring.)                                                              /*****************************************************************/
+                    if (Input.GetButton("Crawl")) MvState = MovementState.Crawling; // (overrides the moving comparison in order to determine how movement is occuring.)
+                    if (mustCrawl) MvState = MovementState.Crawling;
+                    /*****************************************************************/
                 }
 
                 m_scriptPMove.SetSpeed((int)MvState)

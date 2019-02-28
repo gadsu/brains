@@ -15,72 +15,72 @@ MonoBehaviour:
   - name: 0
     clip: {fileID: 8300000, guid: adf14031e99dff24f83cdf0205f4074a, type: 3}
     volume: 0.55
-    pitch: 0.3
+    pitch: 1
     defaultVolume: 1
     volumeScale: 1
     loop: 0
-    oneShot: 0
+    oneShot: 1
     source: {fileID: 0}
   - name: 1
     clip: {fileID: 8300000, guid: 9b758ecec5b40674f84a442b138647fa, type: 3}
     volume: 0.55
-    pitch: 0.3
+    pitch: 1
     defaultVolume: 1
     volumeScale: 1
     loop: 0
-    oneShot: 0
+    oneShot: 1
     source: {fileID: 0}
   - name: 2
     clip: {fileID: 8300000, guid: 0b7b25c645b9e0844ba19270fedb232d, type: 3}
     volume: 0.55
-    pitch: 0.3
+    pitch: 1
     defaultVolume: 1
     volumeScale: 1
     loop: 0
-    oneShot: 0
+    oneShot: 1
     source: {fileID: 0}
   - name: 3
     clip: {fileID: 8300000, guid: 18c1bc670c89dac45afd178858672666, type: 3}
     volume: 0.55
-    pitch: 0.3
+    pitch: 1
     defaultVolume: 1
     volumeScale: 1
     loop: 0
-    oneShot: 0
+    oneShot: 1
     source: {fileID: 0}
   - name: 4
     clip: {fileID: 8300000, guid: a83b1ea88b69101418402373ae946da6, type: 3}
     volume: 0.55
-    pitch: 0.3
+    pitch: 1
     defaultVolume: 1
     volumeScale: 1
     loop: 0
-    oneShot: 0
+    oneShot: 1
     source: {fileID: 0}
   - name: 5
     clip: {fileID: 8300000, guid: 1c99925ddb8298a4eb09883bde00926f, type: 3}
     volume: 0.55
-    pitch: 0.3
+    pitch: 1
     defaultVolume: 1
     volumeScale: 1
     loop: 0
-    oneShot: 0
+    oneShot: 1
     source: {fileID: 0}
   - name: 6
     clip: {fileID: 8300000, guid: cfd92be8fea569a4fa1bf4a6e0e7ab23, type: 3}
     volume: 0.55
-    pitch: 0.3
+    pitch: 1
     defaultVolume: 1
     volumeScale: 1
     loop: 0
-    oneShot: 0
+    oneShot: 1
     source: {fileID: 0}
   - name: 7
     clip: {fileID: 8300000, guid: 9cebfad4cad6bfd46a3b62235ef9d0e6, type: 3}
     volume: 0.55
-    pitch: 0.3
+    pitch: 1
     defaultVolume: 1
     volumeScale: 1
     loop: 0
-    oneShot: 0
+    oneShot: 1
     source: {fileID: 0}

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Name: MainMenu
   m_EditorClassIdentifier: 
   _objectSounds:
-  - name: MainMenu
-    clip: {fileID: 8300000, guid: 5eac3c0e67ab4a74eaa7ae18f0a5370c, type: 3}
-    volume: 0.25
-    pitch: 0.5
-    defaultVolume: 0.5
-    volumeScale: 0.5
+  - name: Main Music
+    clip: {fileID: 8300000, guid: e34a542565491e24f9744fa820cbe389, type: 3}
+    volume: 0.7
+    pitch: 1
+    defaultVolume: 0.7
+    volumeScale: 0.7
     loop: 1
     oneShot: 0
     source: {fileID: 0}

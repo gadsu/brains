@@ -12,39 +12,12 @@ MonoBehaviour:
   m_Name: TomSounds
   m_EditorClassIdentifier: 
   _objectSounds:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    defaultVolume: 0
-    volumeScale: 0
+  - name: Punch
+    clip: {fileID: 8300000, guid: 4349fab28f9ed134aabe6357d9495da8, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
     loop: 0
-    oneShot: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    defaultVolume: 0
-    volumeScale: 0
-    loop: 0
-    oneShot: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    defaultVolume: 0
-    volumeScale: 0
-    loop: 0
-    oneShot: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    defaultVolume: 0
-    volumeScale: 0
-    loop: 0
-    oneShot: 0
+    oneShot: 1
     source: {fileID: 0}

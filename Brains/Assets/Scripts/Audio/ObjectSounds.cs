@@ -3,7 +3,6 @@
  * Original Author: Paul Manley
  * Modified by:
 */
-using UnityEngine.Audio;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -132,5 +131,28 @@ public class ObjectSounds : ScriptableObject
     public float GetPitch(string name)
     { // returns the current pitch of the sound.
         return (GetSound(name) != null) ? GetSound(name).pitch : 0f;
+    }
+
+    public bool AddSoundToList(Sound pSound)
+    {
+        bool soundExists = false;
+        foreach (Sound s in _objectSounds)
+        {
+            if (s.source.clip.name == pSound.source.clip.name)
+            {
+                s.name = pSound.name;
+                s.volume = pSound.volume;
+                s.volumeScale = pSound.volumeScale;
+                s.source.volume = s.volume * s.volumeScale;
+                Play(s);
+                soundExists = true;
+            }
+        }
+        if (!soundExists)
+        {
+            _objectSounds.Add(pSound);
+        }
+
+        return !soundExists;
     }
 }
