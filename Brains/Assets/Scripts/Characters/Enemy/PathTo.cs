@@ -8,25 +8,25 @@ using UnityEditor;
 [RequireComponent(typeof(Pathway))]
 public class PathTo : MonoBehaviour
 {
-    private Pathway path;
+    private Pathway _path;
 
-    NavMeshAgent m_agent;
-    Vector3 m_target;
-    int destinationI;
-    bool isIdle, checking;
+    NavMeshAgent _agent;
+    Vector3 _target;
+    int _destinationI;
+    bool _isIdle, _checking;
 
     // Use this for initialization
     private void Awake()
     {
-        path = GetComponent<Pathway>();
-        m_agent = GetComponent<NavMeshAgent>();
+        _path = GetComponent<Pathway>();
+        _agent = GetComponent<NavMeshAgent>();
     }
     void Start()
     {
-        destinationI = 0;
-        m_agent.SetDestination((path._destinations.Length > 0) ? path._destinations[destinationI]._destinationLocation : transform.position);
-        isIdle = false;
-        checking = false;
+        _destinationI = 0;
+        _agent.SetDestination((_path.destinations.Length > 0) ? _path.destinations[_destinationI].location : transform.position);
+        _isIdle = false;
+        _checking = false;
     }
 
     public Vector3 UpdateDestination(bool chasing, Vector3 p_currentDestination, float p_distanceFromPoint)
@@ -34,32 +34,32 @@ public class PathTo : MonoBehaviour
         Vector3? l_destination = null;
         if (!chasing)
         {
-            if (path._destinations.Length > 0)
+            if (_path.destinations.Length > 0)
             {
                 if (p_distanceFromPoint < .1f)
                 {
-                    if(!checking)
+                    if(!_checking)
                     {
-                        switch (path._destinations[destinationI]._destinationType)
+                        switch (_path.destinations[_destinationI].type)
                         {
                             case Destination.DestinationType.Pass:
-                                checking = false;
-                                isIdle = false;
+                                _checking = false;
+                                _isIdle = false;
                                 break;
                             case Destination.DestinationType.Stop:
-                                checking = true;
-                                isIdle = false;
+                                _checking = true;
+                                _isIdle = false;
                                 break;
                             case Destination.DestinationType.Idle:
-                                if (!isIdle)
+                                if (!_isIdle)
                                 {
-                                    checking = true;
-                                    isIdle = true;
-                                    StartCoroutine(Idling(path._destinations[destinationI].idleTime));
+                                    _checking = true;
+                                    _isIdle = true;
+                                    StartCoroutine(Idling(_path.destinations[_destinationI].idleTime));
                                 }
                                 else
                                 {
-                                    isIdle = false;
+                                    _isIdle = false;
                                 }
                                 break;
                             default:
@@ -67,10 +67,10 @@ public class PathTo : MonoBehaviour
                         }
                     }
 
-                    if (!checking)
+                    if (!_checking)
                     {
-                        destinationI = (destinationI + 1 < path._destinations.Length) ? destinationI + 1 : 0;
-                        l_destination = path._destinations[destinationI]._destinationLocation;
+                        _destinationI = (_destinationI + 1 < _path.destinations.Length) ? _destinationI + 1 : 0;
+                        l_destination = _path.destinations[_destinationI].location;
                     }
                 }
             }
@@ -81,7 +81,7 @@ public class PathTo : MonoBehaviour
         }
 
         if (l_destination == null)
-            l_destination = path._destinations[destinationI]._destinationLocation;
+            l_destination = _path.destinations[_destinationI].location;
 
         return (Vector3)l_destination;
     }
@@ -89,6 +89,6 @@ public class PathTo : MonoBehaviour
     private IEnumerator Idling(float pIdleTime)
     {
         yield return new WaitForSeconds(pIdleTime);
-        checking = false;
+        _checking = false;
     }
 }

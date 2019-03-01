@@ -5,97 +5,97 @@ using UnityEngine;
 
 public class DetectPlayer : MonoBehaviour
 {
-    public Camera m_camera;
-    Vector3 m_targetPosition, worldView;
+    public Camera tempCamera;
+    Vector3 _targetPosition, _worldView;
 
 
-    Ray m_ray;
-    RaycastHit m_out;
+    Ray _ray;
+    RaycastHit _out;
 
-    public bool m_inView, m_isVisible;
-    public GameObject m_text_notice;
+    public bool inView, isVisible;
+    public GameObject textNotice;
 
     [Range(1f, 5f)]
     public float xtime;
-    public float m_playerSizeY;
+    public float playerSizeY;
 
     [HideInInspector]
-    public float m_detectionAmount;
+    public float detectionAmount;
     private bool hearing = false;
 
     private void Start()
     {
-        m_camera.enabled = false;
-        m_inView = false;
-        m_isVisible = false;
-        m_ray = new Ray();
-        m_targetPosition = new Vector3();
-        m_detectionAmount = 0f;
+        tempCamera.enabled = false;
+        inView = false;
+        isVisible = false;
+        _ray = new Ray();
+        _targetPosition = new Vector3();
+        detectionAmount = 0f;
     }
 
     public void UpdatingDetectionAmountFromSound(float objectHearability)
     {
         if (!hearing)
         {
-            m_detectionAmount += (gameObject.GetComponent<EnemyBase>().mAEnemy_hearValue * (objectHearability/3f) + objectHearability);
+            detectionAmount += (gameObject.GetComponent<EnemyBase>().mHearValue * (objectHearability/3f) + objectHearability);
         }
         hearing = true;
     }
 
     public bool IsInView(Vector3 p_targetPosition)
     {
-        worldView = m_camera.WorldToViewportPoint(p_targetPosition);
+        _worldView = tempCamera.WorldToViewportPoint(p_targetPosition);
 
-        m_inView = (worldView.z < m_camera.farClipPlane && worldView.z > m_camera.nearClipPlane) ?
-            (worldView.x < 1f && worldView.x > 0f) ? true : false :
+        inView = (_worldView.z < tempCamera.farClipPlane && _worldView.z > tempCamera.nearClipPlane) ?
+            (_worldView.x < 1f && _worldView.x > 0f) ? true : false :
             false;
 
-        m_isVisible = false;
+        isVisible = false;
 
-        return m_inView;
+        return inView;
     }
 
     public void UpdateRayToPlayer(Vector3 p_targetPosition, int pPlayDead)
     {
-        m_ray.origin = m_camera.transform.position;
-        m_targetPosition = p_targetPosition;
-        m_targetPosition.x = m_targetPosition.x - m_ray.origin.x;
+        _ray.origin = tempCamera.transform.position;
+        _targetPosition = p_targetPosition;
+        _targetPosition.x = _targetPosition.x - _ray.origin.x;
         if (pPlayDead == 0)
-            m_targetPosition.y = (m_targetPosition.y - m_ray.origin.y) + (.5f * m_playerSizeY);
+            _targetPosition.y = (_targetPosition.y - _ray.origin.y) + (.5f * playerSizeY);
         else
-            m_targetPosition.y = (m_targetPosition.y - m_ray.origin.y) - (m_playerSizeY) + .2f;
-        m_targetPosition.z -= m_ray.origin.z;
+            _targetPosition.y = (_targetPosition.y - _ray.origin.y) - (playerSizeY) + .2f;
+        _targetPosition.z -= _ray.origin.z;
 
-        m_ray.direction = Vector3.RotateTowards(m_ray.origin, m_targetPosition, Mathf.Infinity, Mathf.Infinity);
+        _ray.direction = Vector3.RotateTowards(_ray.origin, _targetPosition, Mathf.Infinity, Mathf.Infinity);
     }
 
     public bool IsVisible(Vector3 p_targetPosition)
     {
-        if (Physics.Raycast(m_ray, out m_out, m_camera.farClipPlane))
-            if (m_out.transform.CompareTag("Player")) m_isVisible = true;
+        if (Physics.Raycast(_ray, out _out, tempCamera.farClipPlane))
+            if (_out.transform.CompareTag("Player")) isVisible = true;
 
-        return m_isVisible;
+        return isVisible;
     }
 
     public void UpdatingDetectionAmount(int p_sight, int p_hear, Transform p_player, int p_detection, int p_awareness)
     {
         float _s = p_player.GetComponent<StealthHandler>().Stealth_val;
-        m_detectionAmount += ((((p_detection - 3) + p_awareness) - _s) + p_sight - 1.5f) * .25f;
+        detectionAmount += ((((p_detection - 3) + p_awareness) - _s) + p_sight - 1.5f) * .25f;
 
 
-        if (m_detectionAmount > 100f)
+        if (detectionAmount > 100f)
         {
-            m_detectionAmount = 100f;
+            detectionAmount = 100f;
             Debug.Log("Detected");
         }
 
-        if (m_detectionAmount < 0f)
+        if (detectionAmount < 0f)
         {
-            m_detectionAmount = 0f;
+            detectionAmount = 0f;
             Debug.Log("Lost");
         }
 
-        Debug.Log("<color=orange>" + m_detectionAmount + "</color>");
+        Debug.Log("<color=orange>" + detectionAmount + "</color>");
     }
 
     public void NotHearing()

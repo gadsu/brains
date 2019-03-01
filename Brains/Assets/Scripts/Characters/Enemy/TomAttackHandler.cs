@@ -5,14 +5,14 @@ using UnityEngine;
 public class TomAttackHandler : MonoBehaviour
 {
     [HideInInspector]
-    public bool _registerAttack = false;
+    public bool registerAttack = false;
     public void StartAttackCheck()
     {
-        _registerAttack = true;
+        registerAttack = true;
     }
 
     public void EndAttackCheck()
     {
-        _registerAttack = false;
+        registerAttack = false;
     }
 }

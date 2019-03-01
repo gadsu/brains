@@ -6,50 +6,50 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerDictionary : MonoBehaviour
 {
-    AnimationDictionary diction;
-    Animator anim;
+    AnimationDictionary _diction;
+    Animator _anim;
 
-    string id;
-    int animationID, playingID;
+    string _id;
+    int _animationID, _playingID;
     private void Awake()
     {
         /* Initialize references. */
-        diction = GameObject.Find("Dictionary").GetComponent<AnimationDictionary>(); // reference to another GameObject component.
-        anim = GetComponent<Animator>(); // reference to this gameObjects Animator component.
+        _diction = GameObject.Find("Dictionary").GetComponent<AnimationDictionary>(); // reference to another GameObject component.
+        _anim = GetComponent<Animator>(); // reference to this gameObjects Animator component.
         /*************************/
     }
 
     private void Start()
     {
         /* Initializes 'simple' data variables. */
-        animationID = 0;
-        id = "";
-        playingID = -1;
+        _animationID = 0;
+        _id = "";
+        _playingID = -1;
         /****************************************/
     }
 
-    public int RetrieveKey(int moving, int mvState, int arms, int legs, int playDead)
+    public int RetrieveKey(int pMoving, int pMvState, int pArms, int pLegs, int pPlayDead)
     {
-        return ((moving * 10000) + (mvState * 1000) + (arms*100) + (legs*10) + (playDead)); // sends back the formatted key.
+        return ((pMoving * 10000) + (pMvState * 1000) + (pArms*100) + (pLegs*10) + (pPlayDead)); // sends back the formatted key.
     }
 
     public void SetAnimationSpeed(float p_speed)
     {
-        anim.SetFloat("Speed", p_speed);
+        _anim.SetFloat("Speed", p_speed);
     }
 
-    public void Animate(int p_id, float speed)
+    public void Animate(int pId, float pSpeed)
     {
-        id = diction.ReadFromDictionary(p_id); // reads back the string stored name of the animation.
+        _id = _diction.ReadFromDictionary(pId); // reads back the string stored name of the animation.
 
-        if (speed == 0f) speed = 1f; // makes sure the animation plays
+        if (pSpeed == 0f) pSpeed = 1f; // makes sure the animation plays
 
-        animationID = Animator.StringToHash(id); // gets the hashed id for the animator referece.
+        _animationID = Animator.StringToHash(_id); // gets the hashed id for the animator referece.
 
-        if (animationID != playingID && id != "A_SpudPlayDead")
+        if (_animationID != _playingID && _id != "A_SpudPlayDead")
         { // checks to make sure that the animation is not already playing.
-            anim.Play(animationID); // plays the animation.
-            playingID = animationID; // updates the playing animation reference.
+            _anim.Play(_animationID); // plays the animation.
+            _playingID = _animationID; // updates the playing animation reference.
         }
     }
 }

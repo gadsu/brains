@@ -4,138 +4,138 @@ using UnityEngine;
 
 public class BodyHandler : MonoBehaviour
 {
-    private int m_val;
+    private int _val;
 
     protected struct Body
     {
-        public  int body_arms, body_legs;
-        public string body_hands, body_feet;
-        public bool m_updatedBody;
+        public int bodyArms, bodyLegs;
+        public string bodyHands, bodyFeet;
+        public bool updatedBody;
 
-        public bool UpdateArms(int limb, string side)
+        public bool UpdateArms(int pLimb, string pSide)
         {
-            switch (body_arms + limb)
+            switch (bodyArms + pLimb)
             {
                 case 1:
-                    if (side == "Right")
-                        body_hands = "Left";
+                    if (pSide == "Right")
+                        bodyHands = "Left";
                     else
                     {
-                        body_hands = "Right";
+                        bodyHands = "Right";
                     }
                     break;
                 case 2:
-                    body_hands = "both";
+                    bodyHands = "both";
                     break;
                 default:
-                    m_updatedBody = false;
+                    updatedBody = false;
                     break;
             }
 
-            if (m_updatedBody)
-                body_arms = body_arms + limb;
+            if (updatedBody)
+                bodyArms = bodyArms + pLimb;
 
-            return m_updatedBody;
+            return updatedBody;
         }
 
-        public bool UpdateLegs(int limb, string side)
+        public bool UpdateLegs(int pLimb, string pSide)
         {
-            switch (body_legs + limb)
+            switch (bodyLegs + pLimb)
             {
                 case 0:
-                    body_feet = "Neither";
+                    bodyFeet = "Neither";
                     break;
                 case 1:
-                    if (side == "Right")
-                        body_feet = "Left";
+                    if (pSide == "Right")
+                        bodyFeet = "Left";
                     else
-                        body_feet = "Right";
+                        bodyFeet = "Right";
                     break;
                 case 2:
-                    body_feet = "Both";
+                    bodyFeet = "Both";
                     break;
                 default:
-                    m_updatedBody = false;
+                    updatedBody = false;
                     break;
             }
 
-            if (m_updatedBody)
-                body_legs = body_legs + limb;
+            if (updatedBody)
+                bodyLegs = bodyLegs + pLimb;
 
-            return m_updatedBody;
+            return updatedBody;
         }
     };
 
-    protected Body playerBody;
+    protected Body mPlayerBody;
 
     private void Awake()
     {
         /* Initialize 'simple' data variables*/
-        m_val = 0;
+        _val = 0;
         /*************************************/
 
         /* Initialize 'complex' data variables. */
-        playerBody = new Body
+        mPlayerBody = new Body
         { // Keeps track of the updated body state.
-            m_updatedBody = false,
-            body_arms = 2,
-            body_legs = 2,
-            body_hands = "Both",
-            body_feet = "Both"
+            updatedBody = false,
+            bodyArms = 2,
+            bodyLegs = 2,
+            bodyHands = "Both",
+            bodyFeet = "Both"
         };
         /****************************************/
     }
 
-    public bool UpdateLimbs(int limb, string side, string part)
+    public bool UpdateLimbs(int pLimb, string pSide, string pPart)
     {
-       playerBody.m_updatedBody = true;
+       mPlayerBody.updatedBody = true;
 
-        if (part == "Arms") playerBody.UpdateArms(limb, side);
-        else if (part == "Legs") playerBody.UpdateLegs(limb, side);
+        if (pPart == "Arms") mPlayerBody.UpdateArms(pLimb, pSide);
+        else if (pPart == "Legs") mPlayerBody.UpdateLegs(pLimb, pSide);
 
-        return playerBody.m_updatedBody;
+        return mPlayerBody.updatedBody;
     }
 
     public int GetLegs()
     {
-        m_val = 0;
-        switch (playerBody.body_legs)
+        _val = 0;
+        switch (mPlayerBody.bodyLegs)
         {
             case 0:
-                m_val = 0;
+                _val = 0;
                 break;
             case 1:
-                m_val = 1;
-                if (playerBody.body_feet == "Right")
-                    m_val += 2;
+                _val = 1;
+                if (mPlayerBody.bodyFeet == "Right")
+                    _val += 2;
                 break;
             case 2:
-                m_val = 2;
+                _val = 2;
                 break;
             default:
                 break;
         }
 
-        return m_val;
+        return _val;
     }
 
     public int GetArms()
     {
-        m_val = 0;
-        switch (playerBody.body_arms)
+        _val = 0;
+        switch (mPlayerBody.bodyArms)
         {
             case 1:
-                m_val = 1;
-                if (playerBody.body_hands == "Right")
-                    m_val += 2;
+                _val = 1;
+                if (mPlayerBody.bodyHands == "Right")
+                    _val += 2;
                 break;
             case 2:
-                m_val = 2;
+                _val = 2;
                 break;   
             default:
                 break;
         }
 
-        return m_val;
+        return _val;
     }
 }

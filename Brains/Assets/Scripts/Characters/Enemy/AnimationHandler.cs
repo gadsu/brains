@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class AnimationHandler : MonoBehaviour
 {
     Animator _anim;
-    public bool _isBlocked;
+    public bool isBlocked;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class AnimationHandler : MonoBehaviour
 
     private void Start()
     {
-        _isBlocked = false;
+        isBlocked = false;
     }
 
     public void SetAnimationSpeed(float p_speed)
@@ -24,44 +24,44 @@ public class AnimationHandler : MonoBehaviour
         _anim.SetFloat("Velocity", p_speed);
     }
 
-    public void SetAnimation(string p_name, bool p_blocking, bool p_chasing, NavMeshAgent p_agent, float p_speed, Transform p_target, Vector3 p_direction)
+    public void SetAnimation(string pName, bool pBlocking, bool pChasing, NavMeshAgent pAgent, float pSpeed, Transform pTarget, Vector3 pDirection)
     {
-        if (p_blocking)
+        if (pBlocking)
         {
-            StartCoroutine(BlockingAnimCo(p_name, p_agent));
+            StartCoroutine(BlockingAnimCo(pName, pAgent));
         }
         else
         {
-            if (!_isBlocked)
+            if (!isBlocked)
             {
-                p_agent.speed = (p_chasing) ? p_speed * 2f : p_speed;
+                pAgent.speed = (pChasing) ? pSpeed * 2f : pSpeed;
             }
         }
 
-        if (p_chasing) transform.LookAt(p_target, p_direction);
+        if (pChasing) transform.LookAt(pTarget, pDirection);
         else transform.LookAt(transform, transform.forward);
     }
 
-    IEnumerator BlockingAnimCo(string p_anim, NavMeshAgent p_agent)
+    IEnumerator BlockingAnimCo(string pAnim, NavMeshAgent pAgent)
     {
-        if (!_isBlocked)
+        if (!isBlocked)
         {
-            _isBlocked = true;
+            isBlocked = true;
             float time = 0;
             
             // Determine legnth of the animationClip
             AnimationClip[] clips = _anim.runtimeAnimatorController.animationClips;
             foreach (AnimationClip clip in clips)
             {
-                if (clip.name == p_anim)
+                if (clip.name == pAnim)
                 {
                     time = clip.length+0.05f;
-                    p_agent.speed = 0;
-                    _anim.Play(p_anim);
+                    pAgent.speed = 0;
+                    _anim.Play(pAnim);
                 }
             }
             yield return new WaitForSeconds(time);
-            _isBlocked = false;
+            isBlocked = false;
             _anim.SetTrigger("toMove");
         }
     }

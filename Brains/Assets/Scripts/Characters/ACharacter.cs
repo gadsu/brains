@@ -12,8 +12,6 @@ public abstract class ACharacter : MonoBehaviour
     }
 
     private MovementState mvState;
-    //private Animation _anim;
-    //private bool animStateChange;
 
     protected MovementState MvState
     {
@@ -27,28 +25,4 @@ public abstract class ACharacter : MonoBehaviour
             mvState = value;
         }
     }
-    /*protected Animation Anim
-    {
-        get
-        {
-            return _anim;
-        }
-
-        set
-        {
-            _anim = value;
-        }
-    }
-    protected bool AnimStateChange
-    {
-        get
-        {
-            return animStateChange;
-        }
-
-        set
-        {
-            animStateChange = value;
-        }
-    }*/
 }

@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class AnimationDictionary : MonoBehaviour
 {
-    protected Dictionary<int, string> charAnimation;
-    string m_Anim;
-    string tempAnim;
-    KeyNotFoundException knfe;
+    protected Dictionary<int, string> mCharAnimation;
+    string _anim;
+    string _tempAnim;
+    KeyNotFoundException _knfe;
 
     void Awake()
     {
-        charAnimation = new Dictionary<int, string>();
-        knfe = new KeyNotFoundException("<color=yellow>Animation Key Error</color>");
-        m_Anim = "";
-        tempAnim = "";
+        mCharAnimation = new Dictionary<int, string>();
+        _knfe = new KeyNotFoundException("<color=yellow>Animation Key Error</color>");
+        _anim = "";
+        _tempAnim = "";
 
         AddSpudAnimations();
         DontDestroyOnLoad(gameObject);
@@ -24,12 +24,12 @@ public class AnimationDictionary : MonoBehaviour
     {
         try
         {
-            if (!charAnimation.ContainsKey(id))
+            if (!mCharAnimation.ContainsKey(id))
             {
-                charAnimation.Add(id, p_Anim);
+                mCharAnimation.Add(id, p_Anim);
             }
             else
-                throw knfe;
+                throw _knfe;
         }
         catch (KeyNotFoundException k)
         {
@@ -41,12 +41,12 @@ public class AnimationDictionary : MonoBehaviour
     {
         try
         {
-            if (charAnimation.TryGetValue(id, out m_Anim))
+            if (mCharAnimation.TryGetValue(id, out _anim))
             {
-                tempAnim = m_Anim;
+                _tempAnim = _anim;
             }
             else
-                throw knfe;
+                throw _knfe;
         }
         catch (KeyNotFoundException k)
         {
@@ -54,7 +54,7 @@ public class AnimationDictionary : MonoBehaviour
         }
 
         //Debug.Log("<color=orange>" + tempAnim + "</color>");
-        return tempAnim;
+        return _tempAnim;
     }
 
     private void AddSpudAnimations()

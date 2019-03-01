@@ -4,53 +4,53 @@ using UnityEngine.AI;
 [RequireComponent(typeof(AnimationHandler))]
 public class EnemyBase : AEnemy
 {
-    Transform m_target;
-    NavMeshAgent m_agent;
+    Transform _target;
+    NavMeshAgent _agent;
     AnimationHandler _animHandler;
 
-    string animationToPlay = "";
+    string _animationToPlay = "";
     public float moveSpeedStart = 3f;
-    bool chasing = false, surpised = false, touched = false, blockAnimation = false;
-    private float lastTouchedTime = 0f;
+    bool _chasing = false, _surpised = false, _touched = false, _blockAnimation = false;
+    private float _lastTouchedTime = 0f;
 
     private void Awake()
     {
-        mAEnemy_pathing = GetComponent<PathTo>();
-        mAEnemy_detecting = GetComponent<DetectPlayer>();
+        mPathing = GetComponent<PathTo>();
+        mDetecting = GetComponent<DetectPlayer>();
 
-        m_target = GameObject.Find("Spud").GetComponent<Transform>();
-        m_agent = GetComponent<NavMeshAgent>();
+        _target = GameObject.Find("Spud").GetComponent<Transform>();
+        _agent = GetComponent<NavMeshAgent>();
         _animHandler = GetComponent<AnimationHandler>();
     }
 
     private void Update()
     {
-        if (touched) mAEnemy_detecting.m_detectionAmount = 100f;
+        if (_touched) mDetecting.detectionAmount = 100f;
 
-        if ((mAEnemy_detecting.IsInView(m_target.position) || touched) && m_target.GetComponent<Player>().m_playDead == 0)
+        if ((mDetecting.IsInView(_target.position) || _touched) && _target.GetComponent<Player>().playDead == 0)
         {
             Enemy_Detection = DetectionLevel.Detecting;
 
-            mAEnemy_detecting.UpdateRayToPlayer(m_target.position, m_target.GetComponent<Player>().m_playDead);
-            if (mAEnemy_detecting.IsVisible(m_target.position) || touched)
+            mDetecting.UpdateRayToPlayer(_target.position, _target.GetComponent<Player>().playDead);
+            if (mDetecting.IsVisible(_target.position) || _touched)
             {
                 Enemy_Awareness = AwarenessLevel.Aware;
-                if (!chasing)
+                if (!_chasing)
                 {
-                    chasing = true;
-                    if (!surpised)
+                    _chasing = true;
+                    if (!_surpised)
                     {
-                        surpised = true;
-                        animationToPlay = "A_TomSurprise";
-                        blockAnimation = true;
+                        _surpised = true;
+                        _animationToPlay = "A_TomSurprise";
+                        _blockAnimation = true;
                     }
                 }
                 else
                 {
-                    if (m_agent.remainingDistance < 5f)
+                    if (_agent.remainingDistance < 5f)
                     {
-                        animationToPlay = "A_TomAttack";
-                        blockAnimation = true;
+                        _animationToPlay = "A_TomAttack";
+                        _blockAnimation = true;
                     }
                 }
             }
@@ -61,12 +61,12 @@ public class EnemyBase : AEnemy
 
                 Enemy_Awareness = AwarenessLevel.Unaware;
 
-                chasing = false;
+                _chasing = false;
             }
         }
         else
         {
-            chasing = false;
+            _chasing = false;
             Enemy_Awareness = AwarenessLevel.Unaware;
 
             if (Enemy_Detection == DetectionLevel.Detecting) Enemy_Detection = DetectionLevel.Searching;
@@ -74,26 +74,26 @@ public class EnemyBase : AEnemy
             else Enemy_Detection = DetectionLevel.Unseen;
         }
 
-        m_agent.SetDestination(mAEnemy_pathing.UpdateDestination(chasing, m_agent.destination, m_agent.remainingDistance));
-        _animHandler.SetAnimation(animationToPlay, blockAnimation, chasing, m_agent, moveSpeedStart, m_target, Vector3.up);
-        _animHandler.SetAnimationSpeed(m_agent.velocity.magnitude);
-        mAEnemy_detecting.UpdatingDetectionAmount(mAEnemy_sightValue, mAEnemy_hearValue, m_target, (int)Enemy_Detection, (int)Enemy_Awareness);
+        _agent.SetDestination(mPathing.UpdateDestination(_chasing, _agent.destination, _agent.remainingDistance));
+        _animHandler.SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);
+        _animHandler.SetAnimationSpeed(_agent.velocity.magnitude);
+        mDetecting.UpdatingDetectionAmount(mSightValue, mHearValue, _target, (int)Enemy_Detection, (int)Enemy_Awareness);
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if(collision.gameObject.CompareTag("Player") && Enemy_Awareness == AwarenessLevel.Unaware)
         {
-            lastTouchedTime = Time.time;
-            touched = true;
+            _lastTouchedTime = Time.time;
+            _touched = true;
         }
     }
 
     private void LateUpdate()
     { 
-        touched = (Mathf.Abs(lastTouchedTime - Time.time) > 3f) ? false : touched;
+        _touched = (Mathf.Abs(_lastTouchedTime - Time.time) > 3f) ? false : _touched;
 
-        animationToPlay = "A_TomWalk";
-        blockAnimation = false;
+        _animationToPlay = "A_TomWalk";
+        _blockAnimation = false;
     }
 }

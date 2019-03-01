@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Pathway : MonoBehaviour
 {
-    public Destination[] _destinations;
+    public Destination[] destinations;
 
     private void OnDrawGizmosSelected()
     {
-        if (_destinations.Length > 0)
+        if (destinations.Length > 0)
         {
-            foreach (Destination d in _destinations)
+            foreach (Destination d in destinations)
             {
-                Gizmos.color = d._destinationColor;
-                Gizmos.DrawSphere(d._destinationLocation, .25f);
+                Gizmos.color = d.color;
+                Gizmos.DrawSphere(d.location, .25f);
             }
         }
     }

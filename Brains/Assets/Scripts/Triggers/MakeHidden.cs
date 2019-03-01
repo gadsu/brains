@@ -8,7 +8,7 @@ public class MakeHidden : MonoBehaviour
     {
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
-            if(other.GetComponent<Player>().m_playDead == 1)
+            if(other.GetComponent<Player>().playDead == 1)
                 other.GetComponent<StealthHandler>().UpdateHiddenState(true);
             else
                 other.GetComponent<StealthHandler>().UpdateHiddenState(false);

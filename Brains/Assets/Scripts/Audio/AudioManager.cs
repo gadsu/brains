@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string name)
     {
-        if (PauseMenu.GamePaused) sceneAudio.SetPitch(name, sceneAudio.GetPitch(name) * 3f);
+        if (PauseMenu.gamePaused) sceneAudio.SetPitch(name, sceneAudio.GetPitch(name) * 3f);
 
         sceneAudio.Play(name);
     }

@@ -12,19 +12,19 @@ public class GameStateHandler : MonoBehaviour
         Lost = 2,
         Paused = 3
     };
-    public string _levelToLoad;
+    public string levelToLoad;
 
-    public GameState m_currentState;
+    public GameState currentState;
 
     [HideInInspector]
-    public bool m_gameOver;
+    public bool gameOver;
 
     public float WaitForVictory;
 
     private void Awake()
     {
-        m_gameOver = false;
-        SetState((int)m_currentState);
+        gameOver = false;
+        SetState((int)currentState);
     }
 
     public void SetState(int p_state)
@@ -38,31 +38,26 @@ public class GameStateHandler : MonoBehaviour
                 Time.timeScale = 0f;
                 break;
             case GameState.Won:
-                m_gameOver = true;
+                gameOver = true;
                 winText.SetActive(true);
                 Time.timeScale = .5f;
                 StartCoroutine("PlayingVictory");
                 break;
             case GameState.Lost:
-                GameObject.Find("Spud").GetComponent<Player>().m_playDead = 1;
-                m_gameOver = true;
+                GameObject.Find("Spud").GetComponent<Player>().playDead = 1;
+                gameOver = true;
                 Time.timeScale = .5f;
                 break;
             default:
                 break;
         }
-        m_currentState = ((GameState)p_state != m_currentState) ? (GameState)p_state : m_currentState; 
+        currentState = ((GameState)p_state != currentState) ? (GameState)p_state : currentState; 
     }
 
     private IEnumerator PlayingVictory()
     {
-
-
         yield return new WaitForSeconds(WaitForVictory);
-
-
-
-            GameObject.Find("PauseCanvas").GetComponent<PauseMenu>().LoadLevelLevel(_levelToLoad);
+        GameObject.Find("PauseCanvas").GetComponent<PauseMenu>().LoadLevelLevel(levelToLoad);
     }
 
     // IEnumerator

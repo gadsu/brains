@@ -3,37 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
 
-    public static bool GamePaused = false;
+    public static bool gamePaused = false;
     public GameObject pauseMenuUI;
     public enum ButtonFunction { Pause, Resume, LoadScene, LoadScreen };
-
-    /*[System.Serializable]
-    public class MenuOption
-    {
-        //public string buttonText = "";
-        public ButtonFunction buttonFunction;
-        public GameObject buttonLink;
-        //public string buttonArg = "";
-    }
-    public MenuOption[] buttonsList;
-
-    private void Awake()
-    {
-        for(int i = 0; i < buttonsList.Length-1; i++)
-        {
-            switch(buttonsList[i].buttonFunction)
-            { case ButtonFunction.Pause: buttonsList[i].buttonLink.GetComponent<Button>().addListener(Pause); break;
-                default: break;
-            }
-        }
-    }*/
 
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.visible = !Cursor.visible;
             
-            if (GamePaused)
+            if (gamePaused)
             {
                 Resume();
             }
@@ -48,14 +27,14 @@ public class PauseMenu : MonoBehaviour {
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        GamePaused = false;
+        gamePaused = false;
     }
 
     void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        GamePaused = true;
+        gamePaused = true;
     }
     
     public void LoadCredits()

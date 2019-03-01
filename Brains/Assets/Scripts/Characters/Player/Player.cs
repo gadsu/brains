@@ -24,110 +24,110 @@ using UnityEngine;
 public class Player : ACharacter
 {
     /* Sets up repeatedly used variables. */
-    Rigidbody m_rbody;
+    Rigidbody _rbody;
 
-    GameStateHandler m_gameState;
-    PlayerMovement m_scriptPMove; 
-    PlayerDictionary m_scriptPDiction;
-    StealthHandler m_scriptStealthHandler;
-    GroanHandler m_scriptGroanHandler;
-    BodyHandler m_scriptBodyHandler;
+    GameStateHandler _gameState;
+    PlayerMovement _scriptPMove; 
+    PlayerDictionary _scriptPDiction;
+    StealthHandler _scriptStealthHandler;
+    GroanHandler _scriptGroanHandler;
+    BodyHandler _scriptBodyHandler;
 
-    int m_animationKey;
-    int m_moving;
+    int _animationKey;
+    int _moving;
     public GameObject limbToLookAt;
-    private Vector3 outOfDeadSnapPosition;
+    private Vector3 _outOfDeadSnapPosition;
     public CapsuleCollider[] colliders;
 
     [HideInInspector]
-    public int m_playDead;
+    public int playDead;
     /**************************************/
 
-    Vector3 spawn; // For sending this game object back to it's spawn when out of bounds.
+    Vector3 _spawn; // For sending this game object back to it's spawn when out of bounds.
     public ObjectSounds spudSounds;
-    public ObjectSounds _footSounds;
-	public MovementState mState{get{return MvState;}}
+    public ObjectSounds footSounds;
+	public MovementState MState{get{return MvState;}}
 
     public bool mustCrawl = false;
 
     private void Awake()
     {
         /* Initializes references to gameObject components. */
-        m_gameState = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
-        m_rbody = GetComponent<Rigidbody>();
-        m_scriptPMove = GetComponent<PlayerMovement>();
-        m_scriptPDiction = GetComponent<PlayerDictionary>();
-        m_scriptStealthHandler = GetComponent<StealthHandler>();
-        m_scriptGroanHandler = GetComponent<GroanHandler>();
-        m_scriptBodyHandler = GetComponent<BodyHandler>();
+        _gameState = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
+        _rbody = GetComponent<Rigidbody>();
+        _scriptPMove = GetComponent<PlayerMovement>();
+        _scriptPDiction = GetComponent<PlayerDictionary>();
+        _scriptStealthHandler = GetComponent<StealthHandler>();
+        _scriptGroanHandler = GetComponent<GroanHandler>();
+        _scriptBodyHandler = GetComponent<BodyHandler>();
         /****************************************************/
 
         spudSounds.InitSounds(gameObject, GetComponent<AudioSource>());
-        _footSounds.InitSounds(gameObject);
+        footSounds.InitSounds(gameObject);
     }
 
     void Start ()
     {
         /* Initializes 'simple' data types.*/
         MvState = MovementState.Idling;
-        spawn = transform.position;
-        m_animationKey = 0;
-        m_moving = 0;
-        m_playDead = 0;
-        m_rbody.maxDepenetrationVelocity = .1f;
+        _spawn = transform.position;
+        _animationKey = 0;
+        _moving = 0;
+        playDead = 0;
+        _rbody.maxDepenetrationVelocity = .1f;
         /***********************************/
 
         colliders[0].enabled = true;
         colliders[1].enabled = false;
 
-        m_rbody.constraints = RigidbodyConstraints.FreezeRotation;// To prevent the gameObject from turning along the x and z rotation axis when moving.
+        _rbody.constraints = RigidbodyConstraints.FreezeRotation;// To prevent the gameObject from turning along the x and z rotation axis when moving.
 	}
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().m_currentState == GameStateHandler.GameState.InPlay)
+        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().currentState == GameStateHandler.GameState.InPlay)
         {
-            outOfDeadSnapPosition = limbToLookAt.transform.position;
-            if (!m_gameState.m_gameOver)
+            _outOfDeadSnapPosition = limbToLookAt.transform.position;
+            if (!_gameState.gameOver)
             {
                 if (Input.GetButtonDown("Dead"))
                 { // Ignore all previous input and set the state for playing dead.
-                    m_moving = 0;
+                    _moving = 0;
                     MvState = MovementState.Idling;
-                    m_playDead = Mathf.Abs(1 - Convert.ToInt32(m_scriptPMove.RagDead()));
+                    playDead = Mathf.Abs(1 - Convert.ToInt32(_scriptPMove.RagDead()));
 
-                    if (m_playDead == 1)
+                    if (playDead == 1)
                     {
-                        m_rbody.velocity = Vector3.zero;
+                        _rbody.velocity = Vector3.zero;
                         spudSounds.Play("PlayDead");
                     }
-                    else if (m_playDead == 0) { transform.position = outOfDeadSnapPosition; }
+                    else if (playDead == 0) { transform.position = _outOfDeadSnapPosition; }
 
-                    m_rbody.isKinematic = !m_rbody.isKinematic;
+                    _rbody.isKinematic = !_rbody.isKinematic;
                     foreach (CharacterJoint cJ in GetComponentsInChildren<CharacterJoint>())
                     {
                         cJ.enableProjection = !cJ.enableProjection;
                     }
                 }
 
-                if (m_playDead == 0)
+                if (playDead == 0)
                 {
                     MvState = MovementState.Idling; // sets the default movement state to idle.
 
-                    m_scriptPMove.SetDirection();
+                    _scriptPMove.SetDirection();
 
-                    m_moving = (m_scriptPMove.m_playerDirection != Vector3.zero) ? 1 : 0; // is the player moving?
+                    _moving = (_scriptPMove.playerDirection != Vector3.zero) ? 1 : 0; // is the player moving?
 
                     /* Overrides the default movement state if the condition is met. */
-                    if (m_moving == 1) MvState = MovementState.Creeping;
+                    if (_moving == 1) MvState = MovementState.Creeping;
                     if (Input.GetButton("Crawl")) MvState = MovementState.Crawling; // (overrides the moving comparison in order to determine how movement is occuring.)
                     if (mustCrawl) MvState = MovementState.Crawling;
                     /*****************************************************************/
                 }
 
-                m_scriptPMove.SetSpeed((int)MvState)
-                    .RotatePlayer(m_playDead);
+                _scriptPMove.SetSpeed((int)MvState)
+                    .RotatePlayer(playDead);
 
                 if (MvState == MovementState.Crawling)
                 {
@@ -140,36 +140,36 @@ public class Player : ACharacter
                     colliders[1].enabled = false;
                 }
 
-                m_scriptPDiction.SetAnimationSpeed(((m_rbody.velocity.magnitude / 1.4f) + 0.1f) * Mathf.Sign(Input.GetAxis("ForwardTranslate"))); // sets the speed and the direction of the animation.
+                _scriptPDiction.SetAnimationSpeed(((_rbody.velocity.magnitude / 1.4f) + 0.1f) * Mathf.Sign(Input.GetAxis("ForwardTranslate"))); // sets the speed and the direction of the animation.
             }
             else
             {
-                m_scriptPMove.SetSpeed((int)MovementState.Idling)
+                _scriptPMove.SetSpeed((int)MovementState.Idling)
                     .RotatePlayer(1);
 
-                m_scriptPDiction.SetAnimationSpeed(((m_rbody.velocity.magnitude / 1.4f) + 0.1f)); // sets the speed and the direction of the animation.
+                _scriptPDiction.SetAnimationSpeed(((_rbody.velocity.magnitude / 1.4f) + 0.1f)); // sets the speed and the direction of the animation.
             }
         }
     }
     private void FixedUpdate()
     {
-        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().m_currentState == GameStateHandler.GameState.InPlay)
+        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().currentState == GameStateHandler.GameState.InPlay)
         {
             // Temp out-of-bounds band-aid
             if (transform.position.y < -10 || transform.position.y > 150)
             {
                 SendToSpawn();
             }
-            if (!m_gameState.m_gameOver)
+            if (!_gameState.gameOver)
             {
-                m_scriptPMove.Move(m_rbody);
-                m_scriptStealthHandler.UpdateStealthState(m_playDead, (int)MvState);
-                m_scriptGroanHandler.SetGroanSpeed((int)MvState, m_scriptPMove.M_MoveSpeed);
+                _scriptPMove.Move(_rbody);
+                _scriptStealthHandler.UpdateStealthState(playDead, (int)MvState);
+                _scriptGroanHandler.SetGroanSpeed((int)MvState, _scriptPMove.MoveSpeed);
             }
             else
             {
-                m_scriptGroanHandler.SetGroanSpeed((int)MovementState.Idling, 0);
-                m_rbody.velocity = Vector3.zero;
+                _scriptGroanHandler.SetGroanSpeed((int)MovementState.Idling, 0);
+                _rbody.velocity = Vector3.zero;
             }
         }
     }
@@ -179,27 +179,27 @@ public class Player : ACharacter
         if (Input.GetKeyDown(KeyCode.LeftShift)) { spudSounds.Play("CrawlStart"); }
         if (Input.GetKeyUp(KeyCode.LeftShift)) { spudSounds.Play("Uncrawl"); }
 
-        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().m_currentState == GameStateHandler.GameState.InPlay)
+        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().currentState == GameStateHandler.GameState.InPlay)
         {
-            if (!m_gameState.m_gameOver)
+            if (!_gameState.gameOver)
             {
-                if (m_scriptGroanHandler.UpdateGroanAmount()) // if spud has to groan.
-                    m_scriptGroanHandler.Groan(); // then groan.*/
+                if (_scriptGroanHandler.UpdateGroanAmount()) // if spud has to groan.
+                    _scriptGroanHandler.Groan(); // then groan.*/
 
-                m_animationKey =
-                    m_scriptPDiction.RetrieveKey(m_moving, (int)MvState, m_scriptBodyHandler.GetArms(), m_scriptBodyHandler.GetLegs(), m_playDead); // Gets the key
-                m_scriptPDiction.Animate(m_animationKey, m_scriptPMove.M_MoveSpeed); // inserts the key into the dictionary then animates accordingly.
+                _animationKey =
+                    _scriptPDiction.RetrieveKey(_moving, (int)MvState, _scriptBodyHandler.GetArms(), _scriptBodyHandler.GetLegs(), playDead); // Gets the key
+                _scriptPDiction.Animate(_animationKey, _scriptPMove.MoveSpeed); // inserts the key into the dictionary then animates accordingly.
             }
         }
     }
 
     public void FootEvent()
     {
-        _footSounds.Play(_footSounds.objectSounds[Mathf.RoundToInt(UnityEngine.Random.Range(0, _footSounds.objectSounds.Capacity - 1))]);
+        footSounds.Play(footSounds.objectSounds[Mathf.RoundToInt(UnityEngine.Random.Range(0, footSounds.objectSounds.Capacity - 1))]);
     }
 
     public void SendToSpawn()
     {
-        transform.position = spawn;
+        transform.position = _spawn;
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SlopeTester : MonoBehaviour
 {
-    public bool IsOnSlope = false;
-    private readonly float SlopeLimit = 45f;
-    public bool IsOnGround = false;
+    public bool isOnSlope = false;
+    private readonly float _slopeLimit = 45f;
+    public bool isOnGround = false;
 
     private void OnCollisionStay(Collision collision)
     {
@@ -26,16 +26,16 @@ public class SlopeTester : MonoBehaviour
             * otherwise it is a surface higher than the ground*/
             if (c.point.y < minHeight)
             {
-                IsOnGround = true;
+                isOnGround = true;
             }
             else
-                IsOnGround = false;
+                isOnGround = false;
         }
-        IsOnSlope = (angle > SlopeLimit && IsOnGround) ? true : false;
+        isOnSlope = (angle > _slopeLimit && isOnGround) ? true : false;
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        IsOnSlope = false;
+        isOnSlope = false;
     }
 }

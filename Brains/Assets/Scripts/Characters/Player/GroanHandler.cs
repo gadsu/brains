@@ -5,13 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GroanHandler : MonoBehaviour {
-    private float currentAmount, groanSpeed;
-    private readonly float groanRate = .02f;
-    private Vector3 groanTransformScale;
+    private float _currentAmount, _groanSpeed;
+    private readonly float _groanRate = .02f;
+    private Vector3 _groanTransformScale;
 
     public GameObject groanSphere;
     public GameObject groanMeter;
-    private Image colorControl;
+    private Image _colorControl;
 
     [HideInInspector]
     public Vector3 groanLocation;
@@ -21,37 +21,37 @@ public class GroanHandler : MonoBehaviour {
     private void Awake()
     {
         /* Initializing 'simple' data variables. */
-        currentAmount = 0f;
-        groanTransformScale = Vector3.zero;
-        groanTransformScale.y = 1f;
-        groanTransformScale.z = 1f;
+        _currentAmount = 0f;
+        _groanTransformScale = Vector3.zero;
+        _groanTransformScale.y = 1f;
+        _groanTransformScale.z = 1f;
         groaning = false;
         groanMeter = GameObject.Find("GP_UIGroanMeterFill");
-        colorControl = groanMeter.GetComponent<Image>();
+        _colorControl = groanMeter.GetComponent<Image>();
         /*****************************************/
     }
 
     public void SetGroanSpeed(int mvState, float mvSpeed)
     {
-        groanSpeed = groanRate + (.5f * groanRate)*(mvSpeed * Mathf.Log(mvState + 1)); // manipulates the groan speed by the movement state and speed.
+        _groanSpeed = _groanRate + (.5f * _groanRate)*(mvSpeed * Mathf.Log(mvState + 1)); // manipulates the groan speed by the movement state and speed.
     }
 
     public bool UpdateGroanAmount()
     {
         /* Updates the current amount both data-wise and visual-wise. */
-        currentAmount += (groanSpeed * Time.deltaTime);
-        groanTransformScale.x = currentAmount;
-        groanMeter.transform.localScale = groanTransformScale;
-        colorControl.color = new Color(colorControl.color.r, colorControl.color.g, colorControl.color.b,groanTransformScale.x);
+        _currentAmount += (_groanSpeed * Time.deltaTime);
+        _groanTransformScale.x = _currentAmount;
+        groanMeter.transform.localScale = _groanTransformScale;
+        _colorControl.color = new Color(_colorControl.color.r, _colorControl.color.g, _colorControl.color.b,_groanTransformScale.x);
         /**************************************************************/
 
-        return (currentAmount > 1f) ? true : false; // tells us that it is time to groan.. or not.
+        return (_currentAmount > 1f) ? true : false; // tells us that it is time to groan.. or not.
     }
 
     public void Groan()
     {
         /* Sets the states for groaning. */
-        currentAmount = 0f;
+        _currentAmount = 0f;
         GetComponent<Player>().spudSounds.Play("Groan");
         groaning = true;
         /*********************************/

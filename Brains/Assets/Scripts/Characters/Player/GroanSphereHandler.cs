@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class GroanSphereHandler : MonoBehaviour
 {
-    private GroanHandler groanInfo;
+    private GroanHandler _groanInfo;
 
     private void Awake()
     {
-        groanInfo = gameObject.GetComponentInParent<GroanHandler>(); // Attaches the players groan script to this sphere.
+        _groanInfo = gameObject.GetComponentInParent<GroanHandler>(); // Attaches the players groan script to this sphere.
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            if (!groanInfo.groaning)
+            if (!_groanInfo.groaning)
                 other.GetComponent<DetectPlayer>().NotHearing();
             else
             {

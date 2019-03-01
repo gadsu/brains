@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class CharacterSoundManager : MonoBehaviour
 {
-    public ObjectSounds _sounds;
-    public ObjectSounds _footSounds;
+    public ObjectSounds sounds;
+    public ObjectSounds footSounds;
 
     private void Awake()
     {
-        _sounds.InitSounds(gameObject, GetComponent<AudioSource>());
-        _footSounds.InitSounds(gameObject, GetComponent<AudioSource>());
+        sounds.InitSounds(gameObject, GetComponent<AudioSource>());
+        footSounds.InitSounds(gameObject, GetComponent<AudioSource>());
     }
 
     public void FootEvent()
     {
-        _footSounds.Play(_footSounds.objectSounds[Mathf.RoundToInt(Random.Range(0, _footSounds.objectSounds.Capacity))]);
+        footSounds.Play(footSounds.objectSounds[Mathf.RoundToInt(Random.Range(0, footSounds.objectSounds.Capacity))]);
     }
 
     public void PlayChSoundEvent(string name, float? volume)
     {
-        _sounds.Play(name, volume ?? _sounds.GetSound(name).volume);
+        sounds.Play(name, volume ?? sounds.GetSound(name).volume);
     }
 }

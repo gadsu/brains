@@ -21,22 +21,22 @@ public class DestinationGUI : Editor
 
     private void OnSceneGUI()
     {
-        if (ptw._destinations.Length > 0) // Makes sure the list isn't empty before being called.
+        if (ptw.destinations.Length > 0) // Makes sure the list isn't empty before being called.
         {
-            foreach (Destination d in ptw._destinations)
+            foreach (Destination d in ptw.destinations)
             {
-                if (ptw._destinations[0] == d)
-                    Handles.Label(d._destinationLocation + Vector3.up, "Start");
+                if (ptw.destinations[0] == d)
+                    Handles.Label(d.location + Vector3.up, "Start");
 
-                if (ptw._destinations[ptw._destinations.Length - 1] == d)
-                    Handles.Label(d._destinationLocation + Vector3.up, "End");
-                d._destinationLocation = Handles.PositionHandle(d._destinationLocation, Quaternion.identity);
+                if (ptw.destinations[ptw.destinations.Length - 1] == d)
+                    Handles.Label(d.location + Vector3.up, "End");
+                d.location = Handles.PositionHandle(d.location, Quaternion.identity);
             }
 
-            for (int i = 0; i < ptw._destinations.Length - 1; i++)
+            for (int i = 0; i < ptw.destinations.Length - 1; i++)
             {
-                if(i+1 < ptw._destinations.Length)
-                    Handles.DrawLine(ptw._destinations[i]._destinationLocation, ptw._destinations[i + 1]._destinationLocation);
+                if(i+1 < ptw.destinations.Length)
+                    Handles.DrawLine(ptw.destinations[i].location, ptw.destinations[i + 1].location);
             }
         }
     }

@@ -8,11 +8,11 @@ public class DangerZoneHandler : MonoBehaviour {
     //public GameObject dangerZonePivot;
     public GameObject frustumPyramid;
     public Color[] colors;
-    private DetectPlayer m_detect;
+    private DetectPlayer _detect;
 
     // Use this for initialization
     void Start () {
-        m_detect = GetComponentInParent<DetectPlayer>();
+        _detect = GetComponentInParent<DetectPlayer>();
         if (colors.Length < 3) throw new System.Exception("Please choose three colors!");
 	}
 	
@@ -33,11 +33,11 @@ public class DangerZoneHandler : MonoBehaviour {
     {
         frustumPyramid.GetComponent<Renderer>().material.SetColor("_TintColor", colors[0]);
 
-        if (m_detect.m_inView)
+        if (_detect.inView)
         {
             frustumPyramid.GetComponent<Renderer>().material.SetColor("_TintColor", colors[1]);
 
-            if (m_detect.m_isVisible)
+            if (_detect.isVisible)
             {
                 frustumPyramid.GetComponent<Renderer>().material.SetColor("_TintColor",colors[2]);
             }

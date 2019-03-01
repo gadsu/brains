@@ -37,12 +37,12 @@ public class AEnemy : ACharacter
         set { m_awareness = value; }
     }
 
-    protected PathTo mAEnemy_pathing;
-    protected DetectPlayer mAEnemy_detecting;
+    protected PathTo mPathing;
+    protected DetectPlayer mDetecting;
 
     [Range(-1, 1)]
-    public int mAEnemy_hearValue;
+    public int mHearValue;
 
     [Range(-1, 1)]
-    public int mAEnemy_sightValue;
+    public int mSightValue;
 }

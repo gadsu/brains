@@ -9,7 +9,7 @@ public class AttackHitting : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && tah._registerAttack && other.transform.name == "Spud")
+        if (other.CompareTag("Player") && tah.registerAttack && other.transform.name == "Spud")
         {
             tsm.punchHitEvent();
             Debug.Log("hitting");

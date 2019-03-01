@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Victory : MonoBehaviour
 {
-    GameStateHandler m_gameState;
-    public float WaitForVictory;
+    GameStateHandler _gameState;
+    public float waitForVictory;
 
     private void Awake()
     {
-        m_gameState = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
+        _gameState = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
     }
     private void OnTriggerStay(Collider other)
     {
-        if (!m_gameState.m_gameOver)
+        if (!_gameState.gameOver)
         {
             Debug.Log("Victory");
-            m_gameState.SetState(1);
+            _gameState.SetState(1);
         }
     }
 }
