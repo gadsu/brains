@@ -10,21 +10,19 @@ public class TomSoundManager : MonoBehaviour
     public AudioClip detectionSound;
     public AudioClip swingSound;
     public AudioClip punchHitSound;
-    private AudioSource source;
     public bool doDebugPrint = false;
+    private AudioSource _source;
 
-    private AudioManager m_audioman;
-    private EnemyBase m_enemy;
-    AudioClip chosen;
-    private float defaultMusVol;
-    private float defaultHighMusVol;
+    private AudioManager _audioman;
+    private EnemyBase _enemy;
+    private float _defaultMusVol = 1f;
 
     // Use this for initialization
     void Start()
     {
-        source = GetComponent<AudioSource>();
-        m_enemy = GetComponent<EnemyBase>();
-        m_audioman = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
+        _source = GetComponent<AudioSource>();
+        _enemy = GetComponent<EnemyBase>();
+        _audioman = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
         //defaultMusVol = m_audioman.GetSound("BGMusic").volume;
         //defaultHighMusVol = m_audioman.GetSound("BGMusicHigh").volume;
     }
@@ -39,42 +37,41 @@ public class TomSoundManager : MonoBehaviour
 
     public void footEvent()
     {
-        chosen = footstepClips[Mathf.RoundToInt(Random.Range(1, footstepClips.Length))];
-        source.PlayOneShot(chosen);
+        _source.PlayOneShot(footstepClips[Mathf.RoundToInt(Random.Range(1, footstepClips.Length))]);
         debugPrint("tom footstep");
     }
 
     public void detectionEvent()
     {
-        source.PlayOneShot(detectionSound, 0.3f);
+        _source.PlayOneShot(detectionSound, 0.3f);
         debugPrint("well whistle me dixie");
     }
 
     public void failUIEvent()
     {
-        m_audioman.Play("Fail");
+        _audioman.Play("Fail");
         debugPrint("kuhPANG");
     }
 
     public void musicDucking(float vol, bool returnTo)
     {
-        if (returnTo) m_audioman.SetVol("BGMusic", defaultMusVol);
-        else m_audioman.SetVol("BGMusic", vol);
+        if (returnTo) _audioman.SetVol("BGMusic", _defaultMusVol);
+        else _audioman.SetVol("BGMusic", vol);
     }
 
     public void dangerMusic(float vol, bool returnTo)
     {
-        if (returnTo) m_audioman.SetVol("BGMusicHigh", 0f);
-        else m_audioman.SetVol("BGMusicHigh", vol);
+        if (returnTo) _audioman.SetVol("BGMusicHigh", 0f);
+        else _audioman.SetVol("BGMusicHigh", vol);
     }
     public void swingEvent()
     {
-        source.PlayOneShot(swingSound);
+        _source.PlayOneShot(swingSound);
         debugPrint("A-SWING");
     }
     public void punchHitEvent()
     {
-        source.PlayOneShot(punchHitSound);
+        _source.PlayOneShot(punchHitSound);
         debugPrint("HIT");
     }
 }

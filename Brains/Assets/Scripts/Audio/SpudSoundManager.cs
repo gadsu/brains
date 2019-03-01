@@ -10,14 +10,14 @@ public class SpudSoundManager : MonoBehaviour
     public AudioClip crawl;
     public AudioClip crawlEnd;
     public AudioClip playDead;
-    private AudioSource source;
+    private AudioSource _source;
     public bool doDebugPrint = false;
-    AudioClip chosen;
+    AudioClip _chosen;
 
     // Use this for initialization
     void Start()
     {
-        source = GetComponent<AudioSource>();
+        _source = GetComponent<AudioSource>();
     }
 
     void debugPrint(string msg)
@@ -30,30 +30,30 @@ public class SpudSoundManager : MonoBehaviour
 
     public void footEvent()
     {
-        chosen = footstepClips[Mathf.RoundToInt(Random.Range(1, footstepClips.Length))];
-        source.PlayOneShot(chosen);
+        _chosen = footstepClips[Mathf.RoundToInt(Random.Range(1, footstepClips.Length))];
+        _source.PlayOneShot(_chosen);
         debugPrint("spud footstep");
     }
     public void crawlStartEvent()
     {
-        source.PlayOneShot(crawlStart);
-        source.volume = 1;
+        _source.PlayOneShot(crawlStart);
+        _source.volume = 1;
         debugPrint("spud crawl start");
     }
     public void crawlEndEvent()
     {
-        source.PlayOneShot(crawlEnd);
-        source.volume = 1;
+        _source.PlayOneShot(crawlEnd);
+        _source.volume = 1;
         debugPrint("spud crawl end");
     }
     public void playDeadEvent()
     {
-        source.PlayOneShot(playDead);
+        _source.PlayOneShot(playDead);
         debugPrint("spud playdead test");
     }
     public void crawlEvent()
     {
-        source.PlayOneShot(crawl);
+        _source.PlayOneShot(crawl);
         debugPrint("spud crawl test");
     }
 }

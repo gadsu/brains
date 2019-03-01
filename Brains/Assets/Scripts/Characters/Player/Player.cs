@@ -195,7 +195,7 @@ public class Player : ACharacter
 
     public void FootEvent()
     {
-        _footSounds.Play(_footSounds._objectSounds[Mathf.RoundToInt(UnityEngine.Random.Range(0, _footSounds._objectSounds.Capacity - 1))]);
+        _footSounds.Play(_footSounds.objectSounds[Mathf.RoundToInt(UnityEngine.Random.Range(0, _footSounds.objectSounds.Capacity - 1))]);
     }
 
     public void SendToSpawn()

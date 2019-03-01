@@ -8,14 +8,14 @@ public class OnCollisionSound : MonoBehaviour
 {
 
     public AudioClip[] clips;
-    private AudioSource source;
     public Vector3 direction;
     public float magnitude;
+    private AudioSource _source;
 
     // Use this for initialization
     void Start()
     {
-        source = GetComponent<AudioSource>();
+        _source = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider collider)

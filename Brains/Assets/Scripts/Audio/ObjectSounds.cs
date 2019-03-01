@@ -9,35 +9,35 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Object Sounds")] // Allows for this ScriptableObject to be created by going to the Create -> Asset -> ObjectSounds in the menu. Or right click and got to create in Project Folders.
 public class ObjectSounds : ScriptableObject
 {
-    public List<Sound> _objectSounds; // the list of sounds stored in this ScriptableObject.
-    KeyNotFoundException _soundException = new KeyNotFoundException("<color=blue>Sound not found: "); // my Specialied KeyNotFoundException.
+    public List<Sound> objectSounds; // the list of sounds stored in this ScriptableObject.
+    readonly KeyNotFoundException _soundException = new KeyNotFoundException("<color=blue>Sound not found: "); // my Specialied KeyNotFoundException.
 
     public void InitSounds(GameObject gameObject)
     {// Allows the InitSounds to run and set audio to a new source, attatched to the passed GameObject, if one is not already provided.
-        for (int i = 0; i < _objectSounds.Capacity; i++)
+        for (int i = 0; i < objectSounds.Capacity; i++)
         {
-            if (_objectSounds[i].source == null)
+            if (objectSounds[i].source == null)
             {
-                _objectSounds[i].source = gameObject.AddComponent<AudioSource>();
-                _objectSounds[i].source.clip = _objectSounds[i].clip;
-                _objectSounds[i].source.volume = _objectSounds[i].defaultVolume;
-                _objectSounds[i].source.pitch = _objectSounds[i].pitch;
-                _objectSounds[i].source.loop = _objectSounds[i].loop;
+                objectSounds[i].source = gameObject.AddComponent<AudioSource>();
+                objectSounds[i].source.clip = objectSounds[i].clip;
+                objectSounds[i].source.volume = objectSounds[i].defaultVolume;
+                objectSounds[i].source.pitch = objectSounds[i].pitch;
+                objectSounds[i].source.loop = objectSounds[i].loop;
             }
         }
     }
 
     public void InitSounds(GameObject gameObject, AudioSource _aSource)
     {// Allows the InitSounds to run and set audio to the passed source.
-        for (int i = 0; i < _objectSounds.Capacity; i++)
+        for (int i = 0; i < objectSounds.Capacity; i++)
         {
-            if (_objectSounds[i].source == null)
+            if (objectSounds[i].source == null)
             {
-                _objectSounds[i].source = _aSource;
-                _objectSounds[i].source.clip = _objectSounds[i].clip;
-                _objectSounds[i].source.volume = _objectSounds[i].defaultVolume;
-                _objectSounds[i].source.pitch = _objectSounds[i].pitch;
-                _objectSounds[i].source.loop = _objectSounds[i].loop;
+                objectSounds[i].source = _aSource;
+                objectSounds[i].source.clip = objectSounds[i].clip;
+                objectSounds[i].source.volume = objectSounds[i].defaultVolume;
+                objectSounds[i].source.pitch = objectSounds[i].pitch;
+                objectSounds[i].source.loop = objectSounds[i].loop;
             }
         }
     }
@@ -47,10 +47,10 @@ public class ObjectSounds : ScriptableObject
         Sound _s = null;
         try
         {
-            for (int i = 0; i < _objectSounds.Capacity; i++)
+            for (int i = 0; i < objectSounds.Capacity; i++)
             {
-                if (_objectSounds[i].name == p_name)
-                    _s = _objectSounds[i];
+                if (objectSounds[i].name == p_name)
+                    _s = objectSounds[i];
             }
 
             if(_s == null) throw _soundException;
@@ -136,7 +136,7 @@ public class ObjectSounds : ScriptableObject
     public bool AddSoundToList(Sound pSound)
     {
         bool soundExists = false;
-        foreach (Sound s in _objectSounds)
+        foreach (Sound s in objectSounds)
         {
             if (s.source.clip.name == pSound.source.clip.name)
             {
@@ -150,7 +150,7 @@ public class ObjectSounds : ScriptableObject
         }
         if (!soundExists)
         {
-            _objectSounds.Add(pSound);
+            objectSounds.Add(pSound);
         }
 
         return !soundExists;

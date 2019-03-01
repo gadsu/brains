@@ -15,7 +15,7 @@ public class CharacterSoundManager : MonoBehaviour
 
     public void FootEvent()
     {
-        _footSounds.Play(_footSounds._objectSounds[Mathf.RoundToInt(Random.Range(0, _footSounds._objectSounds.Capacity))]);
+        _footSounds.Play(_footSounds.objectSounds[Mathf.RoundToInt(Random.Range(0, _footSounds.objectSounds.Capacity))]);
     }
 
     public void PlayChSoundEvent(string name, float? volume)
