@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -212,7 +212,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -30.97}
-  m_SizeDelta: {x: 229.7, y: 25.800003}
+  m_SizeDelta: {x: 400, y: 25.800003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &482736409
 MonoBehaviour:
@@ -246,7 +246,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lead Designer - Julian
+  m_Text: 'Lead Designer - Julian Buettgenback
+
+'
 --- !u!222 &482736410
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -418,7 +420,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -123.2}
-  m_SizeDelta: {x: 268.1, y: 25.8}
+  m_SizeDelta: {x: 400, y: 25.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811243999
 MonoBehaviour:
@@ -452,7 +454,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QA Tester - Quinton
+  m_Text: QA Tester - Quinton Halliday
 --- !u!222 &811244000
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -693,7 +695,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -100.5}
-  m_SizeDelta: {x: 268.1, y: 25.8}
+  m_SizeDelta: {x: 400, y: 25.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963841603
 MonoBehaviour:
@@ -727,7 +729,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Project Lead - Sam
+  m_Text: Project Lead - Sam Beinlich
 --- !u!222 &963841604
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -951,7 +953,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -78.4}
-  m_SizeDelta: {x: 268.1, y: 25.8}
+  m_SizeDelta: {x: 400, y: 25.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603141573
 MonoBehaviour:
@@ -985,7 +987,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Art - Shane, Detrian
+  m_Text: Art - Shane Beranek, Detrian Hallem
 --- !u!222 &1603141574
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1026,7 +1028,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -144.9}
-  m_SizeDelta: {x: 268.1, y: 25.8}
+  m_SizeDelta: {x: 400, y: 25.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1629016313
 MonoBehaviour:
@@ -1060,7 +1062,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Marketing Lead - Tristen
+  m_Text: 'Marketing Lead - Tristen Brinkman
+
+'
 --- !u!222 &1629016314
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1176,7 +1180,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -54.92}
-  m_SizeDelta: {x: 268.1, y: 25.8}
+  m_SizeDelta: {x: 400, y: 25.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2025128879
 MonoBehaviour:
@@ -1210,7 +1214,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lead Programmer - Paul
+  m_Text: Lead Programmer - Paul Manley
 --- !u!222 &2025128880
 CanvasRenderer:
   m_ObjectHideFlags: 0
