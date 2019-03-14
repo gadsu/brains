@@ -91,11 +91,11 @@ public class EnemyBase : AEnemy
 
         if (Enemy_Awareness != AwarenessLevel.Aware && knownLocation != null)
         {
+            Debug.Log("Setting Destination to knownlocation");
             _agent.SetDestination((Vector3)knownLocation);
 
-            if (_agent.destination == knownLocation)
-                if (_agent.remainingDistance < .5f)
-                    knownLocation = null;
+            if (_agent.remainingDistance < 5f)
+                knownLocation = null;
         }
         _animHandler.SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);
         _animHandler.SetAnimationSpeed(_agent.velocity.magnitude);

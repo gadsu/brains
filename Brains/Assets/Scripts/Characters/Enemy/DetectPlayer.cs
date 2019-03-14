@@ -96,7 +96,7 @@ public class DetectPlayer : MonoBehaviour
             Debug.Log("Lost");
         }
 
-        Debug.Log("<color=orange>" + detectionAmount + "</color>");
+        //Debug.Log("<color=orange>" + detectionAmount + "</color>");
     }
 
     public void NotHearing()
