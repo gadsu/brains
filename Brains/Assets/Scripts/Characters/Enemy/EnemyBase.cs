@@ -11,10 +11,13 @@ public class EnemyBase : AEnemy
 
     public EnemyAnimationKeys animationKeys;
     public Dictionary<string, string> animationGenerics = new Dictionary<string, string>();
-    string _animationToPlay = "";
     public float moveSpeedStart = 3f;
-    bool _chasing = false, _surpised = false, _touched = false, _blockAnimation = false;
+
+    private string _animationToPlay = "";
+    private bool _chasing = false, _surpised = false, _touched = false, _blockAnimation = false;
     private float _lastTouchedTime = 0f;
+
+    private Vector3? knownLocation;
 
     private void Awake()
     {
@@ -29,6 +32,8 @@ public class EnemyBase : AEnemy
         {
             animationGenerics.Add(animationKeys.keys[i], animationKeys.values[i]);
         }
+
+        knownLocation = null;
     }
 
     private void Update()
@@ -36,12 +41,11 @@ public class EnemyBase : AEnemy
         if (_touched) mDetecting.detectionAmount = 100f;
 
         if ((mDetecting.IsInView(_target.position) || _touched) && _target.GetComponent<Player>().playDead == 0)
-        {
-            Enemy_Detection = DetectionLevel.Detecting;
-
+        { 
             mDetecting.UpdateRayToPlayer(_target.position, _target.GetComponent<Player>().playDead);
             if (mDetecting.IsVisible(_target.position) || _touched)
             {
+                Enemy_Detection = DetectionLevel.Detecting;
                 Enemy_Awareness = AwarenessLevel.Aware;
                 if (!_chasing)
                 {
@@ -55,6 +59,7 @@ public class EnemyBase : AEnemy
                 }
                 else
                 {
+                    knownLocation = _target.transform.position;
                     if (_agent.remainingDistance < 5f)
                     {
                         _animationToPlay = animationGenerics["Attack"];
@@ -83,6 +88,15 @@ public class EnemyBase : AEnemy
         }
 
         _agent.SetDestination(mPathing.UpdateDestination(_chasing, _agent.destination, _agent.remainingDistance));
+
+        if (Enemy_Awareness != AwarenessLevel.Aware && knownLocation != null)
+        {
+            _agent.SetDestination((Vector3)knownLocation);
+
+            if (_agent.destination == knownLocation)
+                if (_agent.remainingDistance < .5f)
+                    knownLocation = null;
+        }
         _animHandler.SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);
         _animHandler.SetAnimationSpeed(_agent.velocity.magnitude);
         mDetecting.UpdatingDetectionAmount(mSightValue, mHearValue, _target, (int)Enemy_Detection, (int)Enemy_Awareness);
