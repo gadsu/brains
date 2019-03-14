@@ -8,6 +8,7 @@ public class DetectPlayer : MonoBehaviour
     public Camera tempCamera;
     Vector3 _targetPosition, _worldView;
 
+    public Dictionary<string, string> animationGenericCalls;
 
     Ray _ray;
     RaycastHit _out;

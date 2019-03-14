@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(AnimationHandler))]
 public class EnemyBase : AEnemy
@@ -8,6 +9,8 @@ public class EnemyBase : AEnemy
     NavMeshAgent _agent;
     AnimationHandler _animHandler;
 
+    public EnemyAnimationKeys animationKeys;
+    public Dictionary<string, string> animationGenerics = new Dictionary<string, string>();
     string _animationToPlay = "";
     public float moveSpeedStart = 3f;
     bool _chasing = false, _surpised = false, _touched = false, _blockAnimation = false;
@@ -21,6 +24,11 @@ public class EnemyBase : AEnemy
         _target = GameObject.Find("Spud").GetComponent<Transform>();
         _agent = GetComponent<NavMeshAgent>();
         _animHandler = GetComponent<AnimationHandler>();
+
+        for (int i = 0; i < animationKeys.keys.Capacity; i++)
+        {
+            animationGenerics.Add(animationKeys.keys[i], animationKeys.values[i]);
+        }
     }
 
     private void Update()
@@ -41,7 +49,7 @@ public class EnemyBase : AEnemy
                     if (!_surpised)
                     {
                         _surpised = true;
-                        _animationToPlay = "A_TomSurprise";
+                        _animationToPlay = animationGenerics["Surprise"];
                         _blockAnimation = true;
                     }
                 }
@@ -49,7 +57,7 @@ public class EnemyBase : AEnemy
                 {
                     if (_agent.remainingDistance < 5f)
                     {
-                        _animationToPlay = "A_TomAttack";
+                        _animationToPlay = animationGenerics["Attack"];
                         _blockAnimation = true;
                     }
                 }
@@ -93,7 +101,7 @@ public class EnemyBase : AEnemy
     { 
         _touched = (Mathf.Abs(_lastTouchedTime - Time.time) > 3f) ? false : _touched;
 
-        _animationToPlay = "A_TomWalk";
+        _animationToPlay = animationGenerics["Walk"];
         _blockAnimation = false;
     }
 }

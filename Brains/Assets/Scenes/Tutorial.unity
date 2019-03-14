@@ -23063,6 +23063,12 @@ Prefab:
       propertyPath: destinations.Array.data[8].idleTime
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114921539726774330, guid: 54faec6a6cd643f41b1a69a9fdb67d9e,
+        type: 2}
+      propertyPath: animationKeys
+      value: 
+      objectReference: {fileID: 11400000, guid: e3b6395ed0e6de44bb2aed0d3ae117e0,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54faec6a6cd643f41b1a69a9fdb67d9e, type: 2}
   m_IsPrefabAsset: 0
