@@ -86,10 +86,10 @@ public class Player : ACharacter
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().currentState == GameStateHandler.GameState.InPlay)
+        _outOfDeadSnapPosition = limbToLookAt.transform.position;
+        if (!_gameState.gameOver)
         {
-            _outOfDeadSnapPosition = limbToLookAt.transform.position;
-            if (!_gameState.gameOver)
+            if (_gameState.currentState == GameStateHandler.GameState.InPlay)
             {
                 if (Input.GetButtonDown("Dead"))
                 { // Ignore all previous input and set the state for playing dead.
@@ -150,17 +150,40 @@ public class Player : ACharacter
                 _scriptPDiction.SetAnimationSpeed(((_rbody.velocity.magnitude / 1.4f) + 0.1f)); // sets the speed and the direction of the animation.
             }
         }
+        else
+        {
+            if (playDead == 1)
+            {
+                Debug.Log("Game Over");
+                _moving = 0;
+                MvState = MovementState.Idling;
+                _rbody.velocity = Vector3.zero;
+                GetComponent<Animator>().enabled = false;
+                spudSounds.Play("PlayDead");
+                _rbody.isKinematic = true;
+
+                foreach (CharacterJoint cJ in GetComponentsInChildren<CharacterJoint>())
+                {
+                    cJ.enableProjection = !cJ.enableProjection;
+                }
+
+                _scriptPMove.SetSpeed((int)MvState)
+                    .RotatePlayer(playDead);
+
+                _scriptPDiction.SetAnimationSpeed(((_rbody.velocity.magnitude / 1.4f) + 0.1f) * Mathf.Sign(Input.GetAxis("ForwardTranslate")));
+            }
+        }
     }
     private void FixedUpdate()
     {
-        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().currentState == GameStateHandler.GameState.InPlay)
+        if (!_gameState.gameOver)
         {
             // Temp out-of-bounds band-aid
             if (transform.position.y < -10 || transform.position.y > 150)
             {
                 SendToSpawn();
             }
-            if (!_gameState.gameOver)
+            if (_gameState.currentState == GameStateHandler.GameState.InPlay)
             {
                 _scriptPMove.Move(_rbody);
                 _scriptStealthHandler.UpdateStealthState(playDead, (int)MvState);
@@ -176,12 +199,12 @@ public class Player : ACharacter
 
     private void LateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) { spudSounds.Play("CrawlStart"); }
-        if (Input.GetKeyUp(KeyCode.LeftShift)) { spudSounds.Play("Uncrawl"); }
-
-        if (GameObject.Find("GameStateController").GetComponent<GameStateHandler>().currentState == GameStateHandler.GameState.InPlay)
+        if (!_gameState.gameOver)
         {
-            if (!_gameState.gameOver)
+            if (Input.GetKeyDown(KeyCode.LeftShift)) { spudSounds.Play("CrawlStart"); }
+            if (Input.GetKeyUp(KeyCode.LeftShift)) { spudSounds.Play("Uncrawl"); }
+
+            if (_gameState.currentState == GameStateHandler.GameState.InPlay)
             {
                 if (_scriptGroanHandler.UpdateGroanAmount()) // if spud has to groan.
                     _scriptGroanHandler.Groan(); // then groan.*/

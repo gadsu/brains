@@ -12,7 +12,7 @@ public class GameStateHandler : MonoBehaviour
         Lost = 2,
         Paused = 3
     };
-    public string levelToLoad;
+    public string levelToLoad, thisScene;
 
     public GameState currentState;
 
@@ -47,6 +47,7 @@ public class GameStateHandler : MonoBehaviour
                 GameObject.Find("Spud").GetComponent<Player>().playDead = 1;
                 gameOver = true;
                 Time.timeScale = .5f;
+                StartCoroutine("PlayingLoss");
                 break;
             default:
                 break;
@@ -58,6 +59,12 @@ public class GameStateHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(WaitForVictory);
         GameObject.Find("PauseCanvas").GetComponent<PauseMenu>().LoadLevelLevel(levelToLoad);
+    }
+
+    private IEnumerator PlayingLoss()
+    {
+        yield return new WaitForSeconds(WaitForVictory);
+        GameObject.Find("PauseCanvas").GetComponent<PauseMenu>().LoadLevelLevel(thisScene);
     }
 
     // IEnumerator
