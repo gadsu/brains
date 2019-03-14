@@ -40,6 +40,7 @@ public class DetectPlayer : MonoBehaviour
         {
             detectionAmount += (gameObject.GetComponent<EnemyBase>().mHearValue * (objectHearability/3f) + objectHearability);
         }
+        GetComponent<EnemyBase>().knownLocation = GameObject.Find("Spud").transform.position;
         hearing = true;
     }
 
