@@ -17,7 +17,7 @@ public class EnemyBase : AEnemy
     private bool _chasing = false, _surpised = false, _touched = false, _blockAnimation = false;
     private float _lastTouchedTime = 0f;
 
-    private Vector3? knownLocation;
+    public Vector3? knownLocation;
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public class EnemyBase : AEnemy
                 else
                 {
                     knownLocation = _target.transform.position;
-                    if (_agent.remainingDistance < 5f)
+                    if (_agent.remainingDistance < 4f)
                     {
                         _animationToPlay = animationGenerics["Attack"];
                         _blockAnimation = true;
@@ -91,10 +91,10 @@ public class EnemyBase : AEnemy
 
         if (Enemy_Awareness != AwarenessLevel.Aware && knownLocation != null)
         {
-            Debug.Log("Setting Destination to knownlocation");
+            //Debug.Log("Setting Destination to knownlocation");
             _agent.SetDestination((Vector3)knownLocation);
 
-            if (_agent.remainingDistance < 5f)
+            if (_agent.remainingDistance < 3f)
                 knownLocation = null;
         }
         _animHandler.SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);

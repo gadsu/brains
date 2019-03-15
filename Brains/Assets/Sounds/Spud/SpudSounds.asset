@@ -11,18 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c2d62f2d28d1c47900ad8414c4e204, type: 3}
   m_Name: SpudSounds
   m_EditorClassIdentifier: 
-  _objectSounds:
-  - name: Groan
-    clip: {fileID: 8300000, guid: 577dc5878730af7469edb50cca67799d, type: 3}
-    volume: 1
-    pitch: 1.2
-    defaultVolume: 1
-    volumeScale: 0.7
-    loop: 0
-    oneShot: 1
-    source: {fileID: 0}
-  - name: PlayDead
-    clip: {fileID: 8300000, guid: f2b9fedd155d6844581776a7882754b1, type: 3}
+  objectSounds:
+  - name: CrawlStart
+    clip: {fileID: 8300000, guid: c04b8a09ba27bf94b863dc4a5386b89b, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -30,8 +21,8 @@ MonoBehaviour:
     loop: 0
     oneShot: 1
     source: {fileID: 0}
-  - name: CrawlStart
-    clip: {fileID: 8300000, guid: c04b8a09ba27bf94b863dc4a5386b89b, type: 3}
+  - name: Crawl
+    clip: {fileID: 8300000, guid: 233ea5a7f48c7864585873ac57510a0f, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -48,8 +39,17 @@ MonoBehaviour:
     loop: 0
     oneShot: 1
     source: {fileID: 0}
-  - name: Crawl
-    clip: {fileID: 8300000, guid: 233ea5a7f48c7864585873ac57510a0f, type: 3}
+  - name: Groan
+    clip: {fileID: 8300000, guid: 577dc5878730af7469edb50cca67799d, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: PlayDead
+    clip: {fileID: 8300000, guid: 93ec49f29a2a58a4787ec443488a0959, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
