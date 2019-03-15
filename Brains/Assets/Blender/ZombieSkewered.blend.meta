@@ -1,0 +1,218 @@
+fileFormatVersion: 2
+guid: 60b02e15ee744be4d996a37ee78b4b0e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: eye_target
+    100002: face_jaw
+    100004: face_upper_lip
+    100006: head
+    100008: HIP_ROOT
+    100010: L_arm
+    100012: L_ARM_IK
+    100014: L_ARM_POLE
+    100016: L_eye
+    100018: L_eye_aim
+    100020: L_face_brow_inner
+    100022: L_face_brow_outer
+    100024: L_face_browctrl
+    100026: L_face_lowerlidctrl
+    100028: L_face_mouthctrl
+    100030: L_face_upperlidctrl
+    100032: L_finglove
+    100034: L_foot
+    100036: L_forearm
+    100038: L_foreleg
+    100040: L_hand
+    100042: L_hip_branch
+    100044: L_leg
+    100046: L_LEG_IK
+    100048: L_LEG_POLE
+    100050: L_shoulder
+    100052: L_thumb
+    100054: L_toes
+    100056: neck
+    100058: R_arm
+    100060: R_ARM_IK
+    100062: R_ARM_POLE
+    100064: R_eye
+    100066: R_eye_aim
+    100068: R_face_brow_inner
+    100070: R_face_brow_outer
+    100072: R_face_browctrl
+    100074: R_face_lowerlidctrl
+    100076: R_face_mouthctrl
+    100078: R_face_upperlidctrl
+    100080: R_finglove
+    100082: R_foot
+    100084: R_forearm
+    100086: R_foreleg
+    100088: R_hand
+    100090: R_hip_branch
+    100092: R_leg
+    100094: R_LEG_IK
+    100096: R_LEG_POLE
+    100098: R_shoulder
+    100100: R_thumb
+    100102: R_toes
+    100104: RIG_Spud
+    100106: shirt_flex
+    100108: SK_Spud
+    100110: spine_mid
+    100112: spine_upper
+    100114: //RootNode
+    400000: eye_target
+    400002: face_jaw
+    400004: face_upper_lip
+    400006: head
+    400008: HIP_ROOT
+    400010: L_arm
+    400012: L_ARM_IK
+    400014: L_ARM_POLE
+    400016: L_eye
+    400018: L_eye_aim
+    400020: L_face_brow_inner
+    400022: L_face_brow_outer
+    400024: L_face_browctrl
+    400026: L_face_lowerlidctrl
+    400028: L_face_mouthctrl
+    400030: L_face_upperlidctrl
+    400032: L_finglove
+    400034: L_foot
+    400036: L_forearm
+    400038: L_foreleg
+    400040: L_hand
+    400042: L_hip_branch
+    400044: L_leg
+    400046: L_LEG_IK
+    400048: L_LEG_POLE
+    400050: L_shoulder
+    400052: L_thumb
+    400054: L_toes
+    400056: neck
+    400058: R_arm
+    400060: R_ARM_IK
+    400062: R_ARM_POLE
+    400064: R_eye
+    400066: R_eye_aim
+    400068: R_face_brow_inner
+    400070: R_face_brow_outer
+    400072: R_face_browctrl
+    400074: R_face_lowerlidctrl
+    400076: R_face_mouthctrl
+    400078: R_face_upperlidctrl
+    400080: R_finglove
+    400082: R_foot
+    400084: R_forearm
+    400086: R_foreleg
+    400088: R_hand
+    400090: R_hip_branch
+    400092: R_leg
+    400094: R_LEG_IK
+    400096: R_LEG_POLE
+    400098: R_shoulder
+    400100: R_thumb
+    400102: R_toes
+    400104: RIG_Spud
+    400106: shirt_flex
+    400108: SK_Spud
+    400110: spine_mid
+    400112: spine_upper
+    400114: //RootNode
+    2100000: lambert1
+    4300000: SK_Spud
+    7400000: Default Take
+    7400002: A_spud_braaains
+    7400004: A_SpudCrawl
+    7400006: A_SpudCrawlIdle
+    7400008: A_SpudCreep
+    7400010: A_SpudIdle
+    7400012: A_TomIdle
+    7400014: A_TomWalk
+    7400016: Armature_mixamo_com_Layer0
+    7400018: PoseLib
+    9500000: //RootNode
+    13700000: SK_Spud
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
