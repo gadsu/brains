@@ -56,8 +56,10 @@ public class CameraOperator : MonoBehaviour
     public float shoulderBumpUp= 0.3f;
     private Quaternion _defaultCamRot;
     private GameStateHandler _gstate;
+    private Player m_player;
+    private bool wasCrawling = false;
 
-	public int shoulderState = 0;
+    public int shoulderState = 0;
 
 	public Vector3 tempLookAtRayPoint = Vector3.zero;
 
@@ -77,6 +79,7 @@ public class CameraOperator : MonoBehaviour
         _defaultCamRot = cam.transform.rotation;
         _baseSensStart = baseSens;
         _gstate = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
+        m_player = positionTarget.GetComponent<Player>();
 
         /*if (!positionTarget)
             positionTarget = GameObject.Find("GP_Spud");
@@ -116,7 +119,6 @@ public class CameraOperator : MonoBehaviour
         _truePositionTarget = positionTarget;
         if (positionTarget.GetComponent<Player>())
         {
-            Player m_player = positionTarget.GetComponent<Player>();
             if (m_player.playDead == 1)
             {
                 _doTrackObject = true;
@@ -133,10 +135,25 @@ public class CameraOperator : MonoBehaviour
 
         if (!doCinematicMode)
         {
-            if (Input.GetButtonDown("FPerson"))
+            if ( m_player.mustCrawl)
             {
-                doFirstPerson = !doFirstPerson;
+                wasCrawling = true;
+                doFirstPerson = true;
             }
+            else
+            {
+                if(wasCrawling)
+                {
+                    wasCrawling = false;
+                    doFirstPerson = false;
+                }
+                if(Input.GetButtonDown("FPerson"))
+                {
+                    doFirstPerson = !doFirstPerson;
+                }
+            }
+
+
             if (!_doTrackObject && !doFirstPerson)
             {
                 if (shoulderState == 0)
@@ -146,7 +163,7 @@ public class CameraOperator : MonoBehaviour
             if(doFirstPerson)
             {
                 shoulderState = 0;
-                zDistanceGoal = -0.4f;
+                zDistanceGoal = -0.5f;
             }
             else { zDistanceGoal = zDistanceStart; }
 
