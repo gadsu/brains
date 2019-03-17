@@ -11,31 +11,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c2d62f2d28d1c47900ad8414c4e204, type: 3}
   m_Name: SceneSounds
   m_EditorClassIdentifier: 
-  _objectSounds:
-  - name: Main Music
-    clip: {fileID: 8300000, guid: e34a542565491e24f9744fa820cbe389, type: 3}
-    volume: 0
+  objectSounds:
+  - name: Victory
+    clip: {fileID: 8300000, guid: 6af1f5e2caa2b46eb8126d26ff514ffb, type: 3}
+    volume: 1
     pitch: 1
-    defaultVolume: 0
+    defaultVolume: 1
     volumeScale: 1
-    loop: 1
-    oneShot: 0
+    loop: 0
+    oneShot: 1
     source: {fileID: 0}
-  - name: Scene Music
-    clip: {fileID: 8300000, guid: 5eac3c0e67ab4a74eaa7ae18f0a5370c, type: 3}
-    volume: 0.7
+  - name: Loss
+    clip: {fileID: 8300000, guid: 2bbf7e90f999d40a786ef87cce8b483c, type: 3}
+    volume: 1
     pitch: 1
-    defaultVolume: 0.7
-    volumeScale: 0.7
-    loop: 1
-    oneShot: 0
-    source: {fileID: 0}
-  - name: Background Music
-    clip: {fileID: 8300000, guid: 412c5bb4c34cf6246a92500360ad7741, type: 3}
-    volume: 0
-    pitch: 1
-    defaultVolume: 0
+    defaultVolume: 1
     volumeScale: 1
-    loop: 1
-    oneShot: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Enter
+    clip: {fileID: 8300000, guid: 442b69a5b9e594b87a263c054a267b93, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: BrainShow
+    clip: {fileID: 8300000, guid: 13ad6c4a3e2754217be8a8ee9cadd68e, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: BrainHide
+    clip: {fileID: 8300000, guid: 49a5b59cdcb7f4b9fbc71b9ee914ad20, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
     source: {fileID: 0}

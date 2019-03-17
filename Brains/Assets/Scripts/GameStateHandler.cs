@@ -19,12 +19,22 @@ public class GameStateHandler : MonoBehaviour
     public bool gameOver;
     public float WaitForVictory;
 
-    // @paul sorry if these don't belong here, feel free to relocate them. :)
+    // Aesthetic stuff
     private TextSetter bigText;
+    public ObjectSounds eventSounds;
     public string[] loseLines;
     public string[] winLines;
     public Color winColor;
     public Color loseColor;
+
+    public GameObject gameOverTint;
+    public GameObject gameWonTint;
+    public GameObject uiPeriphery;
+    public GameObject groanMeter;
+    public GameObject cameraContainer;
+    public GameObject pauseMenuContainer;
+    public GameObject pauseMenu;
+    /////////////////////////
 
     private int lastState = -1337;
 
@@ -34,6 +44,18 @@ public class GameStateHandler : MonoBehaviour
         bigText = GetComponent<TextSetter>();
         SetState((int)currentState);
         bigText.Show(false);
+        eventSounds.InitSounds(gameObject, GetComponent<AudioSource>());
+        // These Finds will NOT work whatever I do. So we have a disgustingly large list of 
+        /*uiPeriphery = Canvas.f .Find("UI_Periphery");
+        groanMeter = GameObject.Find("Groan Meter");
+        cameraContainer = GameObject.Find("Camera Container");
+        pauseMenuContainer = GameObject.Find("PauseMenuContainer");
+        gameOverTint = GameObject.Find("Game Over Tint");
+        gameWonTint = GameObject.Find("Game Won Tint");*/
+        gameOverTint.SetActive(false);
+        gameWonTint.SetActive(false);
+
+        GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>().Restart();
     }
 
     public void SetState(int p_state)
@@ -44,28 +66,60 @@ public class GameStateHandler : MonoBehaviour
             switch ((GameState)p_state)
             {
                 case GameState.InPlay:
+                    pauseMenuContainer.SetActive(false);
+                    cameraContainer.GetComponent<CameraOperator>().doCinematicMode = false;
                     bigText.Show(false);
+                    uiPeriphery.SetActive(true);
+                    groanMeter.SetActive(true);
                     Time.timeScale = 1f;
                     break;
-                case GameState.Paused:
-                    bigText.Show(false);
-                    Time.timeScale = 0f;
-                    break;
+
+
+
                 case GameState.Won:
                     gameOver = true;
+
                     bigText.Show(true);
                     bigText.Set(winLines[Random.Range(0, winLines.Length)], winColor);
+                    gameWonTint.SetActive(true);
+                    uiPeriphery.SetActive(false);
+                    groanMeter.SetActive(false);
+                    eventSounds.Play("Victory");
+
                     Time.timeScale = .5f;
                     StartCoroutine("PlayingVictory");
                     break;
+
+
+
                 case GameState.Lost:
                     GameObject.Find("Spud").GetComponent<Player>().playDead = 1;
                     gameOver = true;
+
                     bigText.Show(true);
                     bigText.Set(loseLines[Random.Range(0, loseLines.Length)], loseColor);
+                    gameOverTint.SetActive(true);
+                    uiPeriphery.SetActive(false);
+                    groanMeter.SetActive(false);
+                    eventSounds.Play("Loss");
+
                     Time.timeScale = .5f;
                     StartCoroutine("PlayingLoss");
                     break;
+
+
+
+                case GameState.Paused:
+                    pauseMenuContainer.SetActive(true);
+                    cameraContainer.GetComponent<CameraOperator>().doCinematicMode = true;
+                    bigText.Show(false);
+                    uiPeriphery.SetActive(false);
+                    groanMeter.SetActive(false);
+                    Time.timeScale = 0f;
+                    break;
+
+
+
                 default:
                     break;
             }
@@ -77,13 +131,13 @@ public class GameStateHandler : MonoBehaviour
     private IEnumerator PlayingVictory()
     {
         yield return new WaitForSeconds(WaitForVictory);
-        GameObject.Find("PauseCanvas").GetComponent<PauseMenu>().LoadLevelLevel(levelToLoad);
+        pauseMenu.GetComponent<PauseMenu>().LoadLevelLevel(levelToLoad);
     }
 
     private IEnumerator PlayingLoss()
     {
         yield return new WaitForSeconds(WaitForVictory);
-        GameObject.Find("PauseCanvas").GetComponent<PauseMenu>().LoadLevelLevel(thisScene);
+        pauseMenu.GetComponent<PauseMenu>().LoadLevelLevel(thisScene);
     }
 
     // IEnumerator

@@ -26,7 +26,7 @@ public class GroanHandler : MonoBehaviour {
         _groanTransformScale.y = 1f;
         _groanTransformScale.z = 1f;
         groaning = false;
-        groanMeter = GameObject.Find("GP_UIGroanMeterFill");
+        groanMeter = GameObject.Find("Groan Meter Fill");
         _colorControl = groanMeter.GetComponent<Image>();
         /*****************************************/
     }

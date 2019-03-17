@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectSounds:
   - name: 0
-    clip: {fileID: 8300000, guid: adf14031e99dff24f83cdf0205f4074a, type: 3}
+    clip: {fileID: 8300000, guid: cb9ace60fe7134ffe95c4cab2deec877, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -22,7 +22,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: 1
-    clip: {fileID: 8300000, guid: 9b758ecec5b40674f84a442b138647fa, type: 3}
+    clip: {fileID: 8300000, guid: 67fc43084e62f423c994b5f65b28de28, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -31,7 +31,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: 2
-    clip: {fileID: 8300000, guid: 0b7b25c645b9e0844ba19270fedb232d, type: 3}
+    clip: {fileID: 8300000, guid: 86f9328c941f546ad86cbd3921348d73, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -40,7 +40,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: 3
-    clip: {fileID: 8300000, guid: 18c1bc670c89dac45afd178858672666, type: 3}
+    clip: {fileID: 8300000, guid: 71a64c5c0bfc548c390fa8fae7cea1d8, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -49,7 +49,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: 4
-    clip: {fileID: 8300000, guid: a83b1ea88b69101418402373ae946da6, type: 3}
+    clip: {fileID: 8300000, guid: c236af41f52964297810d7dba782a952, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -58,7 +58,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: 5
-    clip: {fileID: 8300000, guid: 1c99925ddb8298a4eb09883bde00926f, type: 3}
+    clip: {fileID: 8300000, guid: 1cff74fa265f746aeab9177c9b5d9d6d, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -67,7 +67,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: 6
-    clip: {fileID: 8300000, guid: cfd92be8fea569a4fa1bf4a6e0e7ab23, type: 3}
+    clip: {fileID: 8300000, guid: 1a3f5c5cb93d04153943528675de7c49, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -76,7 +76,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: 7
-    clip: {fileID: 8300000, guid: 9cebfad4cad6bfd46a3b62235ef9d0e6, type: 3}
+    clip: {fileID: 8300000, guid: 8a853b8b4d029407c9589157d66d7eca, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1

@@ -4,39 +4,35 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour {
 
     public static bool gamePaused = false;
-    public GameObject pauseMenuUI;
+    private GameStateHandler gstate;
     public enum ButtonFunction { Pause, Resume, LoadScene, LoadScreen };
+
+    private void Awake()
+    {
+        gstate = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
+    }
 
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.visible = !Cursor.visible;
-            
-            if (gamePaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            if (gamePaused) Resume();
+            else Pause();
         }
 	}
 
-    public void Resume()
+    public void Pause()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        gamePaused = false;
+        gamePaused = true;
+        gstate.SetState(3);
     }
 
-    void Pause()
+    public void Resume()
     {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        gamePaused = true;
+        gamePaused = false;
+        gstate.SetState(0);
     }
-    
+
     public void LoadCredits()
     {
         Time.timeScale = 1f;

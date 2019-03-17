@@ -154,12 +154,12 @@ public class Player : ACharacter
         {
             if (playDead == 1)
             {
-                Debug.Log("Game Over");
+                //Debug.Log("Game Over");
                 _moving = 0;
                 MvState = MovementState.Idling;
                 _rbody.velocity = Vector3.zero;
                 GetComponent<Animator>().enabled = false;
-                spudSounds.Play("PlayDead");
+                //spudSounds.Play("PlayDead");
                 _rbody.isKinematic = true;
 
                 foreach (CharacterJoint cJ in GetComponentsInChildren<CharacterJoint>())
@@ -225,5 +225,10 @@ public class Player : ACharacter
     public void SendToSpawn()
     {
         transform.position = _spawn;
+    }
+
+    public void SendToPoint(Vector3 point)
+    {
+        transform.position = point;
     }
 }

@@ -79,6 +79,7 @@ public class ObjectSounds : ScriptableObject
 
     public void Play(string name)
     { // Plays the sound by first getting it then sending it to the original Play() function.
+        //Debug.Log(name);
         Play(GetSound(name));
     }
 

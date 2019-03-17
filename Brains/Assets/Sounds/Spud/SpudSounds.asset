@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectSounds:
   - name: CrawlStart
-    clip: {fileID: 8300000, guid: c04b8a09ba27bf94b863dc4a5386b89b, type: 3}
+    clip: {fileID: 8300000, guid: 228f0e88293f04e78a6ae4a5d2ac92f6, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -22,7 +22,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: Crawl
-    clip: {fileID: 8300000, guid: 233ea5a7f48c7864585873ac57510a0f, type: 3}
+    clip: {fileID: 8300000, guid: e4c193ef77b804a6590481ee5729f8e1, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -31,7 +31,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: Uncrawl
-    clip: {fileID: 8300000, guid: 9cda59610e4048947bd32dfd8a640899, type: 3}
+    clip: {fileID: 8300000, guid: e4c193ef77b804a6590481ee5729f8e1, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1

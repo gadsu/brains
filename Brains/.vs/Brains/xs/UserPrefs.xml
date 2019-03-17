@@ -1,10 +1,8 @@
 ﻿<Properties StartupConfiguration="{8EA58B6B-9E08-1D09-934A-7C34619183A3}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Audio/TomSoundManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameStateHandler.cs">
     <Files>
-      <File FileName="Assets/Scripts/Camera/CameraOperator.cs" Line="144" Column="112" />
-      <File FileName="Assets/Scripts/Characters/Player/PlayerMovement.cs" Line="50" Column="65" />
-      <File FileName="Assets/Scripts/Characters/Player/Player.cs" Line="136" Column="1" />
-      <File FileName="Assets/Scripts/Audio/TomSoundManager.cs" Line="40" Column="1" />
+      <File FileName="Assets/Scripts/GameStateHandler.cs" Line="84" Column="49" />
+      <File FileName="Assets/PersistentStateController.cs" Line="29" Column="56" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
