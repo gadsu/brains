@@ -24,13 +24,13 @@ public class PauseMenu : MonoBehaviour {
     public void Pause()
     {
         gamePaused = true;
-        gstate.SetState(3);
+        gstate.SetState(GameStateHandler.GameState.Paused);
     }
 
     public void Resume()
     {
         gamePaused = false;
-        gstate.SetState(0);
+        gstate.SetState(GameStateHandler.GameState.InPlay);
     }
 
     public void LoadCredits()

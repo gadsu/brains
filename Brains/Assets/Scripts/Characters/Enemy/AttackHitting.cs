@@ -12,8 +12,8 @@ public class AttackHitting : MonoBehaviour
         if (other.CompareTag("Player") && tah.registerAttack && other.transform.name == "Spud")
         {
             //tsm.punchHitEvent();
-            Debug.Log("hitting");
-            GameObject.Find("GameStateController").GetComponent<GameStateHandler>().SetState(2);
+            //Debug.Log("hitting");
+            GameObject.Find("GameStateController").GetComponent<GameStateHandler>().SetState(GameStateHandler.GameState.Lost);
         }
     }
 }

@@ -42,14 +42,14 @@ public class GameStateHandler : MonoBehaviour
     {
         gameOver = false;
         bigText = GetComponent<TextSetter>();
-        SetState((int)currentState);
+        SetState(currentState);
         bigText.Show(false);
         eventSounds.InitSounds(gameObject, GetComponent<AudioSource>());
         // These Finds will NOT work whatever I do. So we have a disgustingly large list of 
         /*uiPeriphery = Canvas.f .Find("UI_Periphery");
         groanMeter = GameObject.Find("Groan Meter");
         cameraContainer = GameObject.Find("Camera Container");
-        pauseMenuContainer = GameObject.Find("PauseMenuContainer");
+        
         gameOverTint = GameObject.Find("Game Over Tint");
         gameWonTint = GameObject.Find("Game Won Tint");*/
         gameOverTint.SetActive(false);
@@ -58,12 +58,12 @@ public class GameStateHandler : MonoBehaviour
         GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>().Restart();
     }
 
-    public void SetState(int p_state)
+    public void SetState(GameState pState)
     {
         // So we don't switch to the same state as before
-        if(p_state != lastState)
+        if((int)pState != lastState)
         {
-            switch ((GameState)p_state)
+            switch (pState)
             {
                 case GameState.InPlay:
                     pauseMenuContainer.SetActive(false);
@@ -123,9 +123,9 @@ public class GameStateHandler : MonoBehaviour
                 default:
                     break;
             }
-            lastState = p_state;
+            lastState = (int)pState;
         }
-        currentState = ((GameState)p_state != currentState) ? (GameState)p_state : currentState; 
+        currentState = (pState != currentState) ? pState : currentState; 
     }
 
     private IEnumerator PlayingVictory()

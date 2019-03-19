@@ -15,8 +15,8 @@ public class Victory : MonoBehaviour
     {
         if (!_gameState.gameOver)
         {
-            Debug.Log("Victory");
-            _gameState.SetState(1);
+            //Debug.Log("Victory");
+            _gameState.SetState(GameStateHandler.GameState.Won);
         }
     }
 }
