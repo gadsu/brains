@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame ()
     {
+        Debug.Log("Test Play button.");
         SceneManager.LoadScene("Tutorial");
     }
 
