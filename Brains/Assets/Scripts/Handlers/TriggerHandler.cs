@@ -4,6 +4,12 @@ public class TriggerHandler : MonoBehaviour
 {
     public TriggerEvent[] events;
 
+    private void Awake()
+    {
+        for (int i = 0; i < events.Length; i++)
+            events[i].CustomAwake(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     { // Calls all of the CustomEnter trigger events for all of of the TriggerEvent events
         for (int i = 0; i < events.Length; i++)
