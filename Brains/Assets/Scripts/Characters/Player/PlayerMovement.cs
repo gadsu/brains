@@ -42,8 +42,8 @@ public class PlayerMovement : MonoBehaviour {
     public void SetDirection()
     {
         /* Gets the Input axis in order to set direction. */
-        playerDirection.x = Input.GetAxis("HorizontalTranslate");
-        playerDirection.z = Input.GetAxis("ForwardTranslate");
+        playerDirection.x = Input.GetAxis("Horizontal");
+        playerDirection.z = Input.GetAxis("Vertical");
         /**************************************************/
     }
 

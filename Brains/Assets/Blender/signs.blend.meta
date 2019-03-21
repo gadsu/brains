@@ -3,46 +3,33 @@ guid: 95705483eacda784aab8a3fb972fed30
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cylinder
-    100002: Cylinder_001
-    100004: Cylinder_002
-    100006: //RootNode
-    100008: S_Signs_1
-    100010: S_Signs_2
-    100012: S_Signs_3
-    400000: Cylinder
-    400002: Cylinder_001
-    400004: Cylinder_002
-    400006: //RootNode
-    400008: S_Signs_1
-    400010: S_Signs_2
-    400012: S_Signs_3
-    2100000: unnamed
-    2100002: None__stopsign
-    2300000: Cylinder
-    2300002: Cylinder_001
-    2300004: Cylinder_002
-    2300006: S_Signs_1
-    2300008: S_Signs_2
-    2300010: S_Signs_3
-    3300000: Cylinder
-    3300002: Cylinder_001
-    3300004: Cylinder_002
-    3300006: S_Signs_1
-    3300008: S_Signs_2
-    3300010: S_Signs_3
-    4300000: Cylinder_002
-    4300002: Cylinder_001
-    4300004: Cylinder
-    4300006: S_Signs_3
-    4300008: S_Signs_2
-    4300010: S_Signs_1
+    100000: //RootNode
+    100002: S_Signs_1
+    100004: S_Signs_2
+    100006: S_Signs_3
+    400000: //RootNode
+    400002: S_Signs_1
+    400004: S_Signs_2
+    400006: S_Signs_3
+    2100000: None__lamppost
+    2300000: //RootNode
+    2300002: S_Signs_1
+    2300004: S_Signs_2
+    2300006: S_Signs_3
+    3300000: //RootNode
+    3300002: S_Signs_1
+    3300004: S_Signs_2
+    3300006: S_Signs_3
+    4300000: Cylinder
+    4300002: S_Signs_3
+    4300004: S_Signs_2
+    4300006: S_Signs_1
     7400000: Default Take
     9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -76,10 +63,10 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
+    importCameras: 0
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -98,7 +85,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -117,7 +104,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

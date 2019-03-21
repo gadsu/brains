@@ -3,58 +3,44 @@ guid: e3526c365e62b3a489797ef3c42e2663
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: barricade
-    100002: //RootNode
-    100004: fence1
-    100006: fence2
-    100008: BarricadeHP
-    100010: S_Barricade
-    100012: S_GuardFence_LOD0
-    100014: S_GuardFence_LOD1
-    100016: S_TarpFence
-    400000: barricade
-    400002: //RootNode
-    400004: fence1
-    400006: fence2
-    400008: BarricadeHP
-    400010: S_Barricade
-    400012: S_GuardFence_LOD0
-    400014: S_GuardFence_LOD1
-    400016: S_TarpFence
-    2100000: unnamed
-    2100002: Material_001
-    2100004: Material
-    2300000: barricade
-    2300002: fence1
-    2300004: fence2
-    2300006: BarricadeHP
-    2300008: S_Barricade
-    2300010: S_GuardFence_LOD0
-    2300012: S_GuardFence_LOD1
-    2300014: S_TarpFence
-    3300000: barricade
-    3300002: fence1
-    3300004: fence2
-    3300006: BarricadeHP
-    3300008: S_Barricade
-    3300010: S_GuardFence_LOD0
-    3300012: S_GuardFence_LOD1
-    3300014: S_TarpFence
-    4300000: barricade
-    4300002: fence2
-    4300004: fence1
-    4300006: BarricadeHP
-    4300008: S_GuardFence_LOD1
-    4300010: S_Barricade
-    4300012: S_TarpFence
-    4300014: S_GuardFence_LOD0
+    100000: //RootNode
+    100002: BarricadeHP
+    100004: S_Barricade
+    100006: S_GuardFence_LOD0
+    100008: S_GuardFence_LOD1
+    100010: S_TarpFence
+    400000: //RootNode
+    400002: BarricadeHP
+    400004: S_Barricade
+    400006: S_GuardFence_LOD0
+    400008: S_GuardFence_LOD1
+    400010: S_TarpFence
+    2100000: None__lamppost
+    2300000: //RootNode
+    2300002: BarricadeHP
+    2300004: S_Barricade
+    2300006: S_GuardFence_LOD0
+    2300008: S_GuardFence_LOD1
+    2300010: S_TarpFence
+    3300000: //RootNode
+    3300002: BarricadeHP
+    3300004: S_Barricade
+    3300006: S_GuardFence_LOD0
+    3300008: S_GuardFence_LOD1
+    3300010: S_TarpFence
+    4300000: Cylinder
+    4300002: BarricadeHP
+    4300004: S_GuardFence_LOD1
+    4300006: S_Barricade
+    4300008: S_TarpFence
+    4300010: S_GuardFence_LOD0
     7400000: Default Take
     9500000: //RootNode
     20500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -90,10 +76,10 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
+    importCameras: 0
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -112,7 +98,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -131,7 +117,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

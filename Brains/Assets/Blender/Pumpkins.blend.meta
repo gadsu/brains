@@ -4,13 +4,11 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: //RootNode
-    100004: S_Pumpkin
-    100006: S_Pumpkin_2
+    100002: S_Pumpkin
+    100004: S_Pumpkin_2
     400000: //RootNode
-    400002: //RootNode
-    400004: S_Pumpkin
-    400006: S_Pumpkin_2
+    400002: S_Pumpkin
+    400004: S_Pumpkin_2
     2100000: None__lamppost
     2300000: //RootNode
     2300002: S_Pumpkin
