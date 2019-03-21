@@ -140,7 +140,7 @@ public class Player : ACharacter
                     colliders[1].enabled = false;
                 }
 
-                _scriptPDiction.SetAnimationSpeed(((_rbody.velocity.magnitude / 1.4f) + 0.1f) * Mathf.Sign(Input.GetAxis("ForwardTranslate"))); // sets the speed and the direction of the animation.
+                _scriptPDiction.SetAnimationSpeed(((_rbody.velocity.magnitude / 1.4f) + 0.1f) * Mathf.Sign(Input.GetAxis("Vertical"))); // sets the speed and the direction of the animation.
             }
             else
             {
