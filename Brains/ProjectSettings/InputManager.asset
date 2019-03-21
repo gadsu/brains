@@ -6,7 +6,7 @@ InputManager:
   serializedVersion: 2
   m_Axes:
   - serializedVersion: 3
-    m_Name: HorizontalTranslate
+    m_Name: Horizontal
     descriptiveName: Right movement
     descriptiveNegativeName: Left movement
     negativeButton: left
@@ -22,7 +22,7 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: HorizontalTranslate
+    m_Name: Horizontal
     descriptiveName: Right movement
     descriptiveNegativeName: Left movement
     negativeButton: 
@@ -38,7 +38,7 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: ForwardTranslate
+    m_Name: Vertical
     descriptiveName: Forward movement
     descriptiveNegativeName: Backward movement
     negativeButton: down
@@ -54,7 +54,7 @@ InputManager:
     axis: 1
     joyNum: 0
   - serializedVersion: 3
-    m_Name: ForwardTranslate
+    m_Name: Vertical
     descriptiveName: Forward movement
     descriptiveNegativeName: Backward movement
     negativeButton: 
