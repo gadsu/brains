@@ -26,15 +26,17 @@ public class AnimationHandler : MonoBehaviour
 
     public void SetAnimation(string pName, bool pBlocking, bool pChasing, NavMeshAgent pAgent, float pSpeed, Transform pTarget, Vector3 pDirection)
     {
-        if (pBlocking)
+        if (isBlocked == false)
         {
-            StartCoroutine(BlockingAnimCo(pName, pAgent));
-        }
-        else
-        {
-            if (!isBlocked)
+            pAgent.speed = (pChasing) ? pSpeed * 2f : pSpeed;
+
+            if (pBlocking)
             {
-                pAgent.speed = (pChasing) ? pSpeed * 2f : pSpeed;
+                StartCoroutine(BlockingAnimCo(pName, pAgent));
+            }
+            else
+            {
+                _anim.Play(pName);
             }
         }
 
@@ -44,25 +46,23 @@ public class AnimationHandler : MonoBehaviour
 
     IEnumerator BlockingAnimCo(string pAnim, NavMeshAgent pAgent)
     {
-        if (!isBlocked)
-        {
-            isBlocked = true;
-            float time = 0;
+        isBlocked = true;
+        float time = 0;
             
-            // Determine legnth of the animationClip
-            AnimationClip[] clips = _anim.runtimeAnimatorController.animationClips;
-            foreach (AnimationClip clip in clips)
+        // Determine legnth of the animationClip
+        AnimationClip[] clips = _anim.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
+        {
+            if (clip.name == pAnim)
             {
-                if (clip.name == pAnim)
-                {
-                    time = clip.length+0.05f;
-                    pAgent.speed = 0;
-                    _anim.Play(pAnim);
-                }
+                time = clip.length+0.05f;
+
+                Debug.Log("Clip time: <color=yellow>" + clip.length + "</color> Clip name: <color=blue>" + clip.name + "</color>");
+                pAgent.speed = 0;
+                _anim.Play(pAnim);
             }
-            yield return new WaitForSeconds(time);
-            isBlocked = false;
-            _anim.SetTrigger("toMove");
         }
+        yield return new WaitForSeconds(time);
+        isBlocked = false;
     }
 }
