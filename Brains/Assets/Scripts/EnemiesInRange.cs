@@ -20,11 +20,10 @@ public class EnemiesInRange : MonoBehaviour
             case "Mac ":
             case "Sean": enemies.Add(other.gameObject);
                 enemies.TrimExcess();
+                Debug.Log("<color=cyan>" + other.gameObject.name + "</color>");
                 break;
             default: break;
         }
-
-        Debug.Log("<color=cyan></color>" + other.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)

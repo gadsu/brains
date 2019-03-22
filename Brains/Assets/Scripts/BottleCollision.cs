@@ -18,11 +18,16 @@ public class BottleCollision : MonoBehaviour
         // if the player is the collision.
         if (collision.collider.CompareTag("Player") && collision.gameObject.name == "Spud")
         {
+            Debug.Log("Player");
             // if there is a rigidbody associate with this gameObject.
             if (GetComponent<Rigidbody>() != null)
             {
+                Debug.Log("Rigidbody");
                 GetComponent<Rigidbody>().
-                    AddForce(GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
+                    AddForce(collision.collider.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
+
+                Debug.Log(collision.collider.GetComponent<Rigidbody>().velocity);
+                Debug.Log("<color=red>" + GetComponent<Rigidbody>().velocity + "</color>");
 
                 if (sounds.objectSounds.Capacity > 0)
                     sounds.Play(sounds.objectSounds[Random.Range(0, sounds.objectSounds.Capacity - 1)]);
