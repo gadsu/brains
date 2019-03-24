@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4666afc7a39a8554eacb731acbaeaa0b, type: 3}
   m_Name: BrainHint-T3
   m_EditorClassIdentifier: 
-  words: 
-  eventSounds: {fileID: 0}
+  words: 'Brought to You by Zomb Inc:
+
+    Use the Deadly Art of Playing Dead (SPACE) to hide from potential foes'
+  eventSounds: {fileID: 11400000, guid: 05d82a724cbd6fb4f99aa9a113d3bdec, type: 2}
