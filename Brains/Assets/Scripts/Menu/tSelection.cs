@@ -1,9 +1,10 @@
 ﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class level1Selection : MonoBehaviour
+public class tSelection : MonoBehaviour
 {
 
     private void Awake()
@@ -13,8 +14,8 @@ public class level1Selection : MonoBehaviour
 
     public void PlayGame()
     {
-        Debug.Log("Test Play button.");
-        SceneManager.LoadScene("Level 1");
+        Debug.Log("Test Tutorial button.");
+        SceneManager.LoadScene("Tutorial");
     }
 
 }

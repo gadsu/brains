@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class tutorialSelection : MonoBehaviour
+public class level1Selection : MonoBehaviour
 {
 
     private void Awake()
@@ -13,8 +13,8 @@ public class tutorialSelection : MonoBehaviour
 
     public void PlayGame()
     {
-        Debug.Log("Test Tutorial button.");
-        SceneManager.LoadScene("Tutorial");
+        Debug.Log("Test Play button.");
+        SceneManager.LoadScene("Level 1");
     }
 
 }
