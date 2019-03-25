@@ -11,8 +11,8 @@ public class PathGUI : Editor
 {
     Path _path;
     List<bool> _toggleGroup;
-    [SerializeField]
-    private static CustomColorList colors; // The color handle representation of the points. Made static so all points are consistent and easy to identify across all instances.
+
+    public static CustomColorList colors; // The color handle representation of the points. Made static so all points are consistent and easy to identify across all instances.
 
     private void OnEnable()
     { // Makes sure no necessary data types are empty and if they are then make a new one of it.
@@ -20,6 +20,16 @@ public class PathGUI : Editor
 
         _path = (Path)target;
         EditorUtility.SetDirty(_path);
+
+        CustomColorList[] _colors = Resources.FindObjectsOfTypeAll<CustomColorList>();
+
+        for (int i = 0; i < _colors.Length; i++)
+        {
+            if (_colors[i].name == "PathColors")
+            {
+                colors = _colors[i];
+            }
+        }
 
         if (_path.pathPoints == null)
             _path.pathPoints = new List<PathPoint>();
@@ -120,7 +130,7 @@ public class PathGUI : Editor
     {
         for (int i = 0; i < _path.pathPoints.Capacity; i++)
         { // Makes each point show in the scene view and you can edit them using the position handles.
-            if(colors._colors[(int)_path.pathPoints[i].beviourAtPoint] != null)
+            if((int)_path.pathPoints[i].beviourAtPoint < colors._colors.Length && (int)_path.pathPoints[i].beviourAtPoint >= 0)
                 Handles.color = colors._colors[(int)_path.pathPoints[i].beviourAtPoint];
 
             if (_toggleGroup[i]) // makes it so that only if the point detail is visible in the inspector then it is adjustable.

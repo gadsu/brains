@@ -21,6 +21,7 @@ public class PathPoint
     }
     public PointBehavior beviourAtPoint; // this specific type of point behaviour.
     public Vector3 location; // the location that this point is at.
+    public float idleTime; // how long something stays still
     #endregion
 
     #region Constructors
