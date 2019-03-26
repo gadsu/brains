@@ -69,7 +69,9 @@ public class EnemyBase : AEnemy
     private void Update()
     {
         throttle++;
-        if (_touched) mDetecting.detectionAmount = 100f;
+
+        if (_touched)
+            mDetecting.detectionAmount = 100f;
 
         if ((mDetecting.IsInView(_target.position) || _touched) && _target.GetComponent<Player>().playDead == 0)
         { 
@@ -101,7 +103,8 @@ public class EnemyBase : AEnemy
             }
             else
             {
-                if (Enemy_Awareness == AwarenessLevel.Aware) Enemy_Awareness = AwarenessLevel.Losing;
+                if (Enemy_Awareness == AwarenessLevel.Aware)
+                    Enemy_Awareness = AwarenessLevel.Losing;
                 else {
                     Enemy_Awareness = AwarenessLevel.Unaware;
                 };
@@ -116,9 +119,12 @@ public class EnemyBase : AEnemy
             _chasing = false;
             Enemy_Awareness = AwarenessLevel.Unaware;
 
-            if (Enemy_Detection == DetectionLevel.Detecting) Enemy_Detection = DetectionLevel.Searching;
-            else if (Enemy_Detection == DetectionLevel.Searching) {Enemy_Detection = DetectionLevel.Losing; }
-            else { Enemy_Detection = DetectionLevel.Unseen; }
+            if (Enemy_Detection == DetectionLevel.Detecting)
+                Enemy_Detection = DetectionLevel.Searching;
+            else if (Enemy_Detection == DetectionLevel.Searching)
+                Enemy_Detection = DetectionLevel.Losing; 
+            else
+                Enemy_Detection = DetectionLevel.Unseen; 
         }
 
         _agent.SetDestination(mPathing.UpdateDestination(_chasing, _agent.destination, _agent.remainingDistance));
@@ -134,6 +140,7 @@ public class EnemyBase : AEnemy
         _animHandler.SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);
         _animHandler.SetAnimationSpeed(_agent.velocity.magnitude);
         mDetecting.UpdatingDetectionAmount(mSightValue, mHearValue, _target, (int)Enemy_Detection, (int)Enemy_Awareness);
+
         if(throttle > 100)
         {
             footSounds.SetVolume((_agent.velocity.magnitude/3)+0.5f);
@@ -181,6 +188,6 @@ public class EnemyBase : AEnemy
     public void FootEvent()
     {
         if (footSounds.objectSounds.Count > 0)
-            footSounds.Play(footSounds.objectSounds[Mathf.RoundToInt(UnityEngine.Random.Range(0, footSounds.objectSounds.Capacity - 1))]);
+            footSounds.Play(footSounds.objectSounds[Mathf.RoundToInt(Random.Range(0, footSounds.objectSounds.Capacity - 1))]);
     }
 }

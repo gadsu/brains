@@ -320,7 +320,8 @@ ModelImporter:
       - time: 0.03909258
         functionName: FootEvent
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 1494647922463130, guid: 54faec6a6cd643f41b1a69a9fdb67d9e,
+          type: 2}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

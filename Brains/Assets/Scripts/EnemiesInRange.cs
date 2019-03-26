@@ -16,9 +16,9 @@ public class EnemiesInRange : MonoBehaviour
     {
         switch (other.gameObject.name.Substring(0, 3))
         {
-            case "Tom ":
-            case "Mac ":
-            case "Sean": enemies.Add(other.gameObject);
+            case "Tom":
+            case "Mac":
+            case "Sea": enemies.Add(other.gameObject);
                 enemies.TrimExcess();
                 Debug.Log("<color=cyan>" + other.gameObject.name + "</color>");
                 break;
