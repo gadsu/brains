@@ -22,7 +22,7 @@ MonoBehaviour:
     location: {x: -0.0999791, y: 0, z: -0.9060004}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -10.174671, y: 3.407246, z: -2.8989215}
+    location: {x: -10.174671, y: 3.1243143, z: -2.8989215}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: -10.226328, y: 3.3176055, z: -10.234682}
