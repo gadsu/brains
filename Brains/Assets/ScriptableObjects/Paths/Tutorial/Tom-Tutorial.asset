@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Tom-Tutorial
   m_EditorClassIdentifier: 
   pathPoints:
-  - beviourAtPoint: 2
+  - beviourAtPoint: 0
     location: {x: 16.052631, y: 0, z: 15.331981}
     idleTime: 0
   - beviourAtPoint: 2
@@ -20,4 +20,19 @@ MonoBehaviour:
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: 9.891021, y: 0, z: 22.349386}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 0, y: 0.8875885, z: 36.71384}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -5.2964773, y: 1.1624296, z: 35.09599}
+    idleTime: 0
+  - beviourAtPoint: 1
+    location: {x: -4.98839, y: 1.1862762, z: 27.469835}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -6.349805, y: -0.09543276, z: 22.299675}
+    idleTime: 0
+  - beviourAtPoint: 4
+    location: {x: -9.135454, y: 0, z: 19.303934}
     idleTime: 0

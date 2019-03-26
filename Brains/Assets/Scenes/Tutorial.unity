@@ -30996,6 +30996,23 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 5a7b1d679eba1fc4784800a113defbfa, type: 3}
+--- !u!1 &1714573797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1758032591744068, guid: ca311d8c7cfd93943a585ec882aa97ca,
+    type: 2}
+  m_PrefabInternal: {fileID: 1786578151}
+--- !u!65 &1714573799
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1714573797}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.357804, y: 1.6371795, z: 0.10484387}
+  m_Center: {x: 4.6647887, y: 0.7535293, z: 0.014813653}
 --- !u!4 &1714592339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd,
@@ -34403,6 +34420,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2bc186a08e3f3514f926056046c44f8d,
     type: 3}
   m_PrefabInternal: {fileID: 1366316074}
+--- !u!1 &1960825788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1758032591744068, guid: ca311d8c7cfd93943a585ec882aa97ca,
+    type: 2}
+  m_PrefabInternal: {fileID: 1217809347}
+--- !u!65 &1960825790
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1960825788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.674109, y: 1.5910809, z: 0.1760808}
+  m_Center: {x: -4.3532605, y: 0.76925516, z: 0.009886572}
 --- !u!1001 &1967863055
 Prefab:
   m_ObjectHideFlags: 0
@@ -36035,7 +36069,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2060638418}
   m_LocalRotation: {x: -0, y: 0.70824695, z: -0, w: 0.7059648}
-  m_LocalPosition: {x: -10.04, y: 0, z: 21.87}
+  m_LocalPosition: {x: -10, y: 0, z: 21.87}
   m_LocalScale: {x: 26.233664, y: 1, z: 1.2045796}
   m_Children: []
   m_Father: {fileID: 497088363}
