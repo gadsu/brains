@@ -3141,7 +3141,6 @@ GameObject:
   - component: {fileID: 2028679429}
   - component: {fileID: 2028679431}
   - component: {fileID: 2028679430}
-  - component: {fileID: 2028679432}
   m_Layer: 5
   m_Name: SceneSelection
   m_TagString: Untagged
@@ -3178,7 +3177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2028679427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3705a9c5759d23a42964f1ac6e156aac, type: 3}
+  m_Script: {fileID: 11500000, guid: 61df46cdfaa1446088b37c29168aa360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2028679430
@@ -3189,7 +3188,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2028679427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9724352256dee44abddd79418cc814a, type: 3}
+  m_Script: {fileID: 11500000, guid: 34d24fd591fa04725881cc1c79680c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2028679431
@@ -3200,18 +3199,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2028679427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1793075707035504ea4d7f141f064512, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2028679432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2028679427}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc8cab648bfc247469d3821c18a330b5, type: 3}
+  m_Script: {fileID: 11500000, guid: f9a0f4940ac07495ab1f47e0f4d94da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2081446485
