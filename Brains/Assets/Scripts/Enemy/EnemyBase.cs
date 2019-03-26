@@ -94,8 +94,9 @@ public class EnemyBase : AEnemy
                 else
                 {
                     knownLocation = _target.transform.position;
-                    if (_agent.remainingDistance < 4f)
+                    if (_agent.remainingDistance < _agent.speed - (1f/2f)*moveSpeedStart)
                     {
+                        Debug.Log("<color=red>" + _agent.speed + "</color>");
                         _animationToPlay = animationGenerics["Attack"];
                         _blockAnimation = true;
                     }

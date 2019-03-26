@@ -5,10 +5,10 @@ using UnityEngine.AI;
 using UnityEditor;
 
 [RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(Pathway))]
+//[RequireComponent(typeof(Pathway))]
 public class PathTo : MonoBehaviour
 {
-    private Pathway _path;
+    //private Pathway _path;
     public Path path;
 
     NavMeshAgent _agent;
@@ -19,13 +19,14 @@ public class PathTo : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
-        _path = GetComponent<Pathway>();
+        //_path = GetComponent<Pathway>();
         _agent = GetComponent<NavMeshAgent>();
     }
     void Start()
     {
         _destinationI = 0;
-        _agent.SetDestination((_path.destinations.Length > 0) ? _path.destinations[_destinationI].location : transform.position);
+        //_agent.SetDestination((_path.destinations.Length > 0) ? _path.destinations[_destinationI].location : transform.position);
+        _agent.SetDestination((path.pathPoints.Capacity > 0) ? path.pathPoints[_destinationI].location : transform.position);
         _isIdle = false;
         _checking = false;
     }
