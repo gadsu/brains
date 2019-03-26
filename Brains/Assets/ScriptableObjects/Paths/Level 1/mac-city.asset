@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: mac-city
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 2
+    location: {x: -9.297668, y: 0, z: -83.38359}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -33.041542, y: 0.40923786, z: -97.065674}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -54.65442, y: 0, z: -89.74449}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -84.338554, y: 0.796885, z: -87.82668}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -84.237946, y: 1.297585, z: -72.720985}
+    idleTime: 0
+  - beviourAtPoint: 1
+    location: {x: -78.46834, y: 1.3406465, z: -60.364048}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -82.98564, y: 0, z: -33.742992}
+    idleTime: 0
+  - beviourAtPoint: 4
+    location: {x: -73.23111, y: 0, z: -25.945787}
+    idleTime: 0
