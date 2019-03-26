@@ -21,6 +21,7 @@ public class EnemyBase : AEnemy
 
     // The bone of the enemy's rig that the attack hitbox will be attached to.
     public string boneToAttachHitbox;
+    public string boneToAttachFXOverride;
     public Vector3 attackHitboxSize;
     // Spiky, swooshy particle fx for tom's fists of fury.
     private Transform attackFX;
@@ -61,7 +62,13 @@ public class EnemyBase : AEnemy
             attached.AddComponent<AttackHitting>();
             attached.GetComponent<AttackHitting>().tah = GetComponent<EnemyBase>();
             attackFX = transform.Find("Attack FX");
-            attackFX.SetParent(attached.transform);
+            // Quick patch for Mac misplaced attack fx.
+            if(boneToAttachFXOverride != "")
+            {
+                GameObject fxroot = transform.FindChildByRecursion(boneToAttachFXOverride).gameObject;
+                attackFX.SetParent(fxroot.transform);
+            }
+            else attackFX.SetParent(attached.transform);
         }
         else throw new System.Exception("Attack hitbox bone not found.");
     }

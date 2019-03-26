@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectSounds:
   - name: Hit
-    clip: {fileID: 8300000, guid: 5ecc24911672044818920e3c1acc65f8, type: 3}
+    clip: {fileID: 8300000, guid: afc43d2efb63c455c8491806dc6df309, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -22,7 +22,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: Detect
-    clip: {fileID: 8300000, guid: 649d20075c2664925a6136e4ea70ed5d, type: 3}
+    clip: {fileID: 8300000, guid: db1ba6292d85a4b108dab81a4b1fac1b, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -31,7 +31,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: Swipe
-    clip: {fileID: 8300000, guid: 113915178aab042fb92f1b2f180577a1, type: 3}
+    clip: {fileID: 8300000, guid: 45d6d6f3a459d4603b877bb606365d4a, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -40,7 +40,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: Lost
-    clip: {fileID: 8300000, guid: d690898a4ae3d4487ac205e428de6c70, type: 3}
+    clip: {fileID: 8300000, guid: c6b0ad649283744fe96c9e2d635b621f, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -49,7 +49,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: Touched
-    clip: {fileID: 8300000, guid: 6114b2df1f7f842258872d25d0e2d625, type: 3}
+    clip: {fileID: 8300000, guid: 4aa7a2188325e4617b3a855123a627bc, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -58,7 +58,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: Victory
-    clip: {fileID: 8300000, guid: 847fb4768604b4abc97eeb46775ae766, type: 3}
+    clip: {fileID: 8300000, guid: 7252432df5e0a41bc9250ea2061e1f27, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
@@ -67,7 +67,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: Windup
-    clip: {fileID: 8300000, guid: 312827127394541259bca81ff7626390, type: 3}
+    clip: {fileID: 8300000, guid: 2ab3a86dbe09d4523a305e12f6adb568, type: 3}
     volume: 1
     pitch: 1
     defaultVolume: 1
