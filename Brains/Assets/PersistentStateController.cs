@@ -32,7 +32,7 @@ public class PersistentStateController : MonoBehaviour {
         if (!levelAttempts.ContainsKey(activeLevel)) {
             levelAttempts.Add(activeLevel, 0);
         }
-        Debug.Log(levelAttempts[activeLevel]);
+        //Debug.Log(levelAttempts[activeLevel]);
         levelAttempts[activeLevel]+= 1;
 
         gstate = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();

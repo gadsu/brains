@@ -23,6 +23,8 @@ public class ObjectSounds : ScriptableObject
                 objectSounds[i].source.volume = objectSounds[i].defaultVolume;
                 objectSounds[i].source.pitch = objectSounds[i].pitch;
                 objectSounds[i].source.loop = objectSounds[i].loop;
+                //TODO FIX 3D SOUND SETTINGS
+                //objectSounds[i].source.spatialBlend = 1;
             }
         }
     }
@@ -101,6 +103,16 @@ public class ObjectSounds : ScriptableObject
         l_sound.pitch = pitch;
         l_sound.source.volume = p_volume;
         l_sound.source.pitch = pitch;
+    }
+
+    /////////////////////////////////////////////////////// MISTAH PAUL
+    /// I added this to set the vol of all the sounds in the objectSounds (for the footstep sounds).
+    public void SetVolume(float p_volume)
+    {// Directly modifies the sound volume.
+        for (int i = 0; i < objectSounds.Capacity; i++)
+        {
+            objectSounds[i].source.volume = p_volume;
+        }
     }
 
     public void SetVolume(string p_name, float p_volume)

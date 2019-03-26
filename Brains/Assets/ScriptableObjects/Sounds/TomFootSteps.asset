@@ -11,4 +11,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c2d62f2d28d1c47900ad8414c4e204, type: 3}
   m_Name: TomFootSteps
   m_EditorClassIdentifier: 
-  objectSounds: []
+  objectSounds:
+  - name: Step 1
+    clip: {fileID: 8300000, guid: 2dbc34009766e4e92bc1bb2afa3f02de, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Step 2
+    clip: {fileID: 8300000, guid: cd0e7fe6a554049f2ae09c4b61ee1257, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Step 3
+    clip: {fileID: 8300000, guid: 2451a0a69f04042eb9eced372f667e13, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Step 4
+    clip: {fileID: 8300000, guid: 23d62982fe5534568b85d0a2ec56abbd, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Step 5
+    clip: {fileID: 8300000, guid: 458b8f817e65141e6a1d7fa3b47041b1, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Step 6
+    clip: {fileID: 8300000, guid: 9496d14d28cb04e6eafb708bb0ff252c, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
