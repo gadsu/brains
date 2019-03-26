@@ -170,7 +170,7 @@ public class Player : ACharacter
                 _scriptPMove.SetSpeed((int)MvState)
                     .RotatePlayer(playDead);
 
-                _scriptPDiction.SetAnimationSpeed(((_rbody.velocity.magnitude / 1.4f) + 0.1f) * Mathf.Sign(Input.GetAxis("ForwardTranslate")));
+                _scriptPDiction.SetAnimationSpeed(((_rbody.velocity.magnitude / 1.4f) + 0.1f) * Mathf.Sign(Input.GetAxis("Vertical")));
             }
         }
     }

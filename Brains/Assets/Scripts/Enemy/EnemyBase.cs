@@ -18,6 +18,9 @@ public class EnemyBase : AEnemy
     private float _lastTouchedTime = 0f;
 
     public Vector3? knownLocation;
+    // The bone of the enemy's rig that the attack hitbox will be attached to.
+    public string boneToAttachHitbox;
+    public Vector3 attackHitboxSize;
 
     private void Awake()
     {
@@ -34,6 +37,17 @@ public class EnemyBase : AEnemy
         }
 
         knownLocation = null;
+        GameObject attached = transform.FindChildByRecursion(boneToAttachHitbox).gameObject;
+        if (attached)
+        {
+            attached.AddComponent<BoxCollider>();
+            attached.GetComponent<BoxCollider>().size = attackHitboxSize;
+            attached.GetComponent<BoxCollider>().isTrigger = true;
+            attached.AddComponent<AttackHitting>();
+            attached.GetComponent<AttackHitting>().tah = GetComponent<TomAttackHandler>();
+        }
+        else throw new System.Exception("Attack hitbox bone not found.");
+
     }
 
     private void Update()
