@@ -25,11 +25,8 @@ public class StealthHandler : MonoBehaviour
 
     public void UpdateStealthState(int playDead, int mvState)
     {
-        //offset = (hidden > 0f && mvState != 5) ? 1f : 0f; // offsets the value of the states if not crawling.
 
         stealth_val =
             (_hidden - 1) * (-(Mathf.Abs(5 - mvState) * (playDead - 1)) + _hidden);
-        //(hidden - playDead * (arms + legs)) + (((hidden - 1) * Mathf.Abs(5 - mvState) + 5 * playDead) / 2) - offset; // calculates the new stealth rate value.
-        //Debug.Log("<color=cyan>" + stealth_val + "</color>");
     }
 }
