@@ -1,19 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MakeCrawl : MonoBehaviour
+[CreateAssetMenu(menuName = "Make Crawl")]
+public class MakeCrawl : TriggerEvent
 {
-    private void OnTriggerEnter(Collider other)
+    public override void CustomEnter(Collider other)
     {
+        base.CustomEnter(other);
+
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
             other.GetComponent<Player>().mustCrawl = true;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public override void CustomExit(Collider other)
     {
+        base.CustomExit(other);
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
             other.GetComponent<Player>().mustCrawl = false;
