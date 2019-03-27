@@ -88,13 +88,13 @@ public class DetectPlayer : MonoBehaviour
         if (detectionAmount > 100f)
         {
             detectionAmount = 100f;
-            Debug.Log("Detected");
+            //Debug.Log("Detected");
         }
 
         if (detectionAmount < 0f)
         {
             detectionAmount = 0f;
-            Debug.Log("Lost");
+            //Debug.Log("Lost");
         }
 
         //Debug.Log("<color=orange>" + detectionAmount + "</color>");

@@ -41,6 +41,14 @@ public class DangerZoneHandler : MonoBehaviour {
             {
                 frustumPyramid.GetComponent<Renderer>().material.SetColor("_TintColor", new Color(0.34f, 0.14f, 0.18f));//87,36,47
             }
+            else
+            {
+                GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>().Duck(true);
+            }
+        }
+        else
+        {
+            GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>().Duck(false);
         }
     }
 }

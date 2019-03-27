@@ -57,12 +57,3 @@ MonoBehaviour:
     loop: 0
     oneShot: 1
     source: {fileID: 0}
-  - name: Punched
-    clip: {fileID: 8300000, guid: 064176667cc4c427db8e05714c4d305b, type: 3}
-    volume: 1
-    pitch: 1
-    defaultVolume: 1
-    volumeScale: 1
-    loop: 0
-    oneShot: 1
-    source: {fileID: 0}
