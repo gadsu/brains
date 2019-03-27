@@ -78,11 +78,4 @@ public class PlayerMovement : MonoBehaviour {
                 (cameraTransform.right * playerDirection.x)) *
                 _moveSpeed, ForceMode.Impulse);  // moves the player according to the updated camera and move direction.
     }
-
-    public bool RagDead()
-    {
-        GetComponent<Animator>().enabled = !GetComponent<Animator>().enabled;
-
-        return GetComponent<Animator>().enabled;
-    }
 }
