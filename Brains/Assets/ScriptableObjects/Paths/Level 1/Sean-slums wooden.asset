@@ -12,18 +12,15 @@ MonoBehaviour:
   m_Name: Sean-slums wooden
   m_EditorClassIdentifier: 
   pathPoints:
-  - beviourAtPoint: 0
-    location: {x: 47.649994, y: 10.126932, z: -89.67986}
+  - beviourAtPoint: 2
+    location: {x: 47.649994, y: 10.051683, z: -90.03422}
     idleTime: 0
-  - beviourAtPoint: 1
-    location: {x: 44.905197, y: 10.063078, z: -92.60382}
+  - beviourAtPoint: 2
+    location: {x: 44.905197, y: 10.011424, z: -92.60382}
     idleTime: 0
-  - beviourAtPoint: 1
+  - beviourAtPoint: 2
     location: {x: 44.379395, y: 10.188509, z: -80.77415}
     idleTime: 0
-  - beviourAtPoint: 1
+  - beviourAtPoint: 2
     location: {x: 49.97513, y: 10.171293, z: -86.12268}
-    idleTime: 0
-  - beviourAtPoint: 4
-    location: {x: 47.32743, y: 10.324208, z: -89.85313}
     idleTime: 0

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: Tom-Bar
   m_EditorClassIdentifier: 
   pathPoints:
-  - beviourAtPoint: 0
-    location: {x: 10.703335, y: 0, z: -24.990616}
+  - beviourAtPoint: 2
+    location: {x: 10.703335, y: 0.3592081, z: -24.990616}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 12.35848, y: 0, z: -4.5991745}
+    location: {x: 12.35848, y: 0.3274374, z: -9.140324}
     idleTime: 0
   - beviourAtPoint: 1
     location: {x: -0.0999791, y: 0, z: -0.9060004}
@@ -28,8 +28,11 @@ MonoBehaviour:
     location: {x: -10.226328, y: 3.3176055, z: -10.234682}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -3.1593547, y: -0.21289623, z: -10.369133}
+    location: {x: -3.1593547, y: 0.5621029, z: -10.369133}
     idleTime: 0
-  - beviourAtPoint: 4
-    location: {x: 8.791964, y: 0, z: -7.1589737}
+  - beviourAtPoint: 2
+    location: {x: 8.791964, y: 0, z: -7.668192}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 13.008207, y: 0.49127555, z: -10.178225}
     idleTime: 0

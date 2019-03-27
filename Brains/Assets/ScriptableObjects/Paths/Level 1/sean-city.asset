@@ -12,27 +12,24 @@ MonoBehaviour:
   m_Name: sean-city
   m_EditorClassIdentifier: 
   pathPoints:
-  - beviourAtPoint: 0
-    location: {x: -19.686626, y: 0, z: -81.52353}
+  - beviourAtPoint: 2
+    location: {x: -21.493456, y: 0.24028635, z: -84.9685}
     idleTime: 0
-  - beviourAtPoint: 1
-    location: {x: -35.515373, y: 0, z: -101.54997}
+  - beviourAtPoint: 2
+    location: {x: -35.515373, y: -0.006608963, z: -101.54997}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: -79.57822, y: 0, z: -84.005226}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -48.18, y: 1.5572643, z: -89.60837}
+    location: {x: -48.18, y: 0.15897274, z: -89.60837}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -86.24949, y: 1.297585, z: -65.33457}
-    idleTime: 0
-  - beviourAtPoint: 1
-    location: {x: -77.38549, y: 0.4156797, z: -39.518265}
+    location: {x: -85.45899, y: -0.13871002, z: -79.935135}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: -71.6606, y: 0, z: -91.31124}
     idleTime: 0
-  - beviourAtPoint: 4
+  - beviourAtPoint: 2
     location: {x: -87.24682, y: 0, z: -90.21124}
     idleTime: 0

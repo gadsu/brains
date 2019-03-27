@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Name: sean-slums first part
   m_EditorClassIdentifier: 
   pathPoints:
-  - beviourAtPoint: 0
-    location: {x: 27.93906, y: 1.9190502, z: -72.21878}
+  - beviourAtPoint: 2
+    location: {x: 27.93906, y: 1.415205, z: -72.21878}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 29.940357, y: 0, z: -60.04938}
+    location: {x: 20.85113, y: 0, z: -52.64759}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 29.960827, y: 0, z: -39.800972}
+    location: {x: 19.269283, y: 0, z: -40.051582}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 46.494644, y: 0.37768698, z: -39.22261}
+    location: {x: 46.494644, y: 0.37768698, z: -38.008186}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: 48.644638, y: 0.29538202, z: -59.043903}
     idleTime: 0
-  - beviourAtPoint: 4
-    location: {x: 28.442806, y: 0.09280181, z: -61.591236}
+  - beviourAtPoint: 2
+    location: {x: 24.077078, y: 0.09280181, z: -62.128586}
     idleTime: 0

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: Mac-Slums Upper
   m_EditorClassIdentifier: 
   pathPoints:
-  - beviourAtPoint: 0
-    location: {x: 93.85628, y: 0.48461127, z: -151.84105}
+  - beviourAtPoint: 2
+    location: {x: 93.85628, y: 0.13688064, z: -151.84105}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 99.075195, y: 1.213133, z: -142.06848}
+    location: {x: 99.075195, y: 0.72985995, z: -142.06848}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: 91.133286, y: 3.9812756, z: -104.51692}
@@ -28,11 +28,11 @@ MonoBehaviour:
     location: {x: 70.26316, y: 3.8531718, z: -113.14964}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 49.639694, y: 4.2879114, z: -106.335175}
+    location: {x: 49.639694, y: 3.8158913, z: -106.335175}
     idleTime: 0
   - beviourAtPoint: 1
     location: {x: 46.455498, y: 4.1387825, z: -108.30238}
     idleTime: 0
-  - beviourAtPoint: 4
+  - beviourAtPoint: 2
     location: {x: 41.55015, y: 0, z: -109.91044}
     idleTime: 0

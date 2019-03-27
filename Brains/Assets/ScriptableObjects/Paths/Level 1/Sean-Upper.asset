@@ -12,27 +12,27 @@ MonoBehaviour:
   m_Name: Sean-Upper
   m_EditorClassIdentifier: 
   pathPoints:
-  - beviourAtPoint: 0
-    location: {x: 92.31293, y: 4.481736, z: -109.17588}
+  - beviourAtPoint: 2
+    location: {x: 92.31293, y: 4.2714834, z: -109.17588}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: 81.49999, y: 4.4877434, z: -89.7182}
     idleTime: 0
-  - beviourAtPoint: 1
-    location: {x: 79.7592, y: 4.3316774, z: -106.84681}
+  - beviourAtPoint: 2
+    location: {x: 79.7592, y: 3.9780464, z: -106.84681}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 72.1865, y: 4.8835454, z: -111.53567}
+    location: {x: 72.1865, y: 4.0751333, z: -111.53567}
     idleTime: 0
-  - beviourAtPoint: 1
-    location: {x: 57.678032, y: 4.6063466, z: -101.77374}
+  - beviourAtPoint: 2
+    location: {x: 57.678032, y: 3.8745036, z: -101.77374}
     idleTime: 0
-  - beviourAtPoint: 1
+  - beviourAtPoint: 2
     location: {x: 50.880783, y: 3.892268, z: -104.22174}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: 43.862225, y: 4.158242, z: -104.272194}
     idleTime: 0
-  - beviourAtPoint: 4
-    location: {x: 56.11666, y: 4.4674373, z: -107.708595}
+  - beviourAtPoint: 2
+    location: {x: 56.11666, y: 3.9035811, z: -107.708595}
     idleTime: 0
