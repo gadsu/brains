@@ -77,7 +77,7 @@ public class Player : ACharacter
         colliders[0].enabled = true;
         colliders[1].enabled = false;
 
-        _rbody.constraints = RigidbodyConstraints.FreezeRotation;// To prevent the gameObject from turning along the x and z rotation axis when moving.
+        _rbody.constraints = RigidbodyConstraints.FreezeRotation;
 	}
 
     // Update is called once per frame
@@ -110,36 +110,38 @@ public class Player : ACharacter
 							cJ.enableProjection = false;
                             cJ.GetComponent<Rigidbody>().drag = 0f;
 						}
-					}else
+					} // End of playDead == 0
+                    else
                         spudSounds.Play("PlayDead");
                 }
 				
 				if(playDead == 0)
-				{
+				{ // Sets InPlay standards when not playing dead.
 					_scriptPMove.SetDirection();
+
 					if(_scriptPMove.playerDirection != Vector3.zero)
-					{
+					{ // Sets standard movement information.
 						_moving = 1;
 						MvState = MovementState.Creeping;
 					}
 
                     if (Input.GetButtonDown("Crawl"))
-                    {
+                    { // Sets standard crawling information.
                         MvState = MovementState.Crawling;
                         colliders[1].enabled = true;
                         colliders[0].enabled = false;
                         spudSounds.Play("CrawlStart");
                     }
                     else if(Input.GetButton("Crawl") || mustCrawl)
-                    {
+                    { // Keeps crawl state persistent.
                         MvState = MovementState.Crawling;
 					}else if(Input.GetButtonUp("Crawl"))
-					{
+					{ // Sets standards for when crawling stops.
                         spudSounds.Play("Uncrawl");
                         colliders[0].enabled = true;
 						colliders[1].enabled = false;
 					}
-				}
+				} // End of playDead == 0
 				
 				_scriptPMove.SetSpeed((int)MvState)
 					.RotatePlayer(playDead);
@@ -154,7 +156,7 @@ public class Player : ACharacter
 
             default:
                 break;
-		}
+		} // end of switch(_gameState.currentState)
 
 		if (playDead == 1)
 		{
@@ -169,7 +171,7 @@ public class Player : ACharacter
             }
 
 			_scriptPDiction.SetAnimationSpeed((_rbody.velocity.magnitude / 1.4f + 0.1f) * Mathf.Sign(Input.GetAxis("Vertical")));
-		}
+		} // End of playDead == 1
 	}
     private void FixedUpdate()
     {
@@ -183,13 +185,13 @@ public class Player : ACharacter
                 _scriptPMove.Move(_rbody);
                 _scriptStealthHandler.UpdateStealthState(playDead, (int)MvState);
                 _scriptGroanHandler.SetGroanSpeed((int)MvState, _scriptPMove.MoveSpeed);
-                break;
+                break; // End of InPlay case
             default:
                 _scriptGroanHandler.SetGroanSpeed((int)MovementState.Idling, 0);
                 _rbody.velocity = Vector3.zero;
-                break;
+                break; // End of default case
 
-        }
+        } // End of switch(_gameState.currentState)
     }
 
     private void LateUpdate()
@@ -201,13 +203,13 @@ public class Player : ACharacter
                     _scriptGroanHandler.Groan(); // then groan.
 
                 _animationKey =
-                    _scriptPDiction.RetrieveKey(_moving, (int)MvState, playDead); // Gets the key
+                    _scriptPDiction.RetrieveKey(_moving, (int)MvState, playDead); 
 
-                _scriptPDiction.Animate(_animationKey, _scriptPMove.MoveSpeed); // inserts the key into the dictionary then animates accordingly.
-                break;
+                _scriptPDiction.Animate(_animationKey, _scriptPMove.MoveSpeed); 
+                break; // End of InPlay case
             default:
                 break;
-        }
+        } // End of switch(_gameState.currentState)
     }
 
     public void FootEvent()
