@@ -15,7 +15,6 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerDictionary))] 
 [RequireComponent(typeof(StealthHandler))]
 [RequireComponent(typeof(GroanHandler))]
-[RequireComponent(typeof(BodyHandler))]
 /******************************************************************/
 
     //TODO: Figure out how to do this:
@@ -31,7 +30,6 @@ public class Player : ACharacter
     PlayerDictionary _scriptPDiction;
     StealthHandler _scriptStealthHandler;
     GroanHandler _scriptGroanHandler;
-    BodyHandler _scriptBodyHandler;
 
     int _animationKey;
     int _moving;
@@ -59,7 +57,6 @@ public class Player : ACharacter
         _scriptPDiction = GetComponent<PlayerDictionary>();
         _scriptStealthHandler = GetComponent<StealthHandler>();
         _scriptGroanHandler = GetComponent<GroanHandler>();
-        _scriptBodyHandler = GetComponent<BodyHandler>();
         /****************************************************/
 
         spudSounds.InitSounds(gameObject, GetComponent<AudioSource>());
@@ -111,6 +108,7 @@ public class Player : ACharacter
                         foreach (CharacterJoint cJ in GetComponentsInChildren<CharacterJoint>())
 						{
 							cJ.enableProjection = false;
+                            cJ.GetComponent<Rigidbody>().drag = 0f;
 						}
 					}else
                         spudSounds.Play("PlayDead");
@@ -167,7 +165,8 @@ public class Player : ACharacter
 			foreach (CharacterJoint cJ in GetComponentsInChildren<CharacterJoint>())
 			{
 				cJ.enableProjection = true;
-			}
+                cJ.GetComponent<Rigidbody>().drag = 1f;
+            }
 
 			_scriptPDiction.SetAnimationSpeed((_rbody.velocity.magnitude / 1.4f + 0.1f) * Mathf.Sign(Input.GetAxis("Vertical")));
 		}
@@ -202,7 +201,7 @@ public class Player : ACharacter
                     _scriptGroanHandler.Groan(); // then groan.
 
                 _animationKey =
-                    _scriptPDiction.RetrieveKey(_moving, (int)MvState, _scriptBodyHandler.GetArms(), _scriptBodyHandler.GetLegs(), playDead); // Gets the key
+                    _scriptPDiction.RetrieveKey(_moving, (int)MvState, playDead); // Gets the key
 
                 _scriptPDiction.Animate(_animationKey, _scriptPMove.MoveSpeed); // inserts the key into the dictionary then animates accordingly.
                 break;

@@ -28,9 +28,9 @@ public class PlayerDictionary : MonoBehaviour
         /****************************************/
     }
 
-    public int RetrieveKey(int pMoving, int pMvState, int pArms, int pLegs, int pPlayDead)
+    public int RetrieveKey(int pMoving, int pMvState, int pPlayDead)
     {
-        return ((pMoving * 10000) + (pMvState * 1000) + (pArms*100) + (pLegs*10) + (pPlayDead)); // sends back the formatted key.
+        return ((pMoving * 100) + (pMvState * 10) + (pPlayDead)); // sends back the formatted key.
     }
 
     public void SetAnimationSpeed(float p_speed)

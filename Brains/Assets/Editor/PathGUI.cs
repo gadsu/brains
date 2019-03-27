@@ -101,7 +101,7 @@ public class PathGUI : Editor
         #endregion
 
         for (int i = 0; i < _path.pathPoints.Capacity; i++)
-        { // Displayes the point information via the toggle group.
+        { // Displays the point information via the toggle group.
             GUILayout.BeginHorizontal();
             _toggleGroup[i] = EditorGUILayout.Foldout(_toggleGroup[i], "Point: " + i + "  -  " + _path.pathPoints[i].beviourAtPoint.ToString(), true);
             if (GUILayout.Button("Remove point!", GUILayout.Width(Screen.width / 3)))
@@ -120,7 +120,17 @@ public class PathGUI : Editor
                 GUILayout.Label("Point Behavior: ");
                 _path.pathPoints[i].beviourAtPoint = (PathPoint.PointBehavior)EditorGUILayout.EnumPopup(_path.pathPoints[i].beviourAtPoint);
                 GUILayout.EndHorizontal();
-
+                switch (_path.pathPoints[i].beviourAtPoint)
+                {
+                    case PathPoint.PointBehavior.Idle:
+                        GUILayout.BeginHorizontal();
+                        GUILayout.Label("Idle time: ");
+                        _path.pathPoints[i].idleTime = EditorGUILayout.FloatField(_path.pathPoints[i].idleTime);
+                        GUILayout.EndHorizontal();
+                        break;
+                    default:
+                        break;
+                }
                 _path.pathPoints[i].location = EditorGUILayout.Vector3Field("", _path.pathPoints[i].location);
             }
         }
