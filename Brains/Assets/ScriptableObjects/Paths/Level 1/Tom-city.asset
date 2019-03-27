@@ -12,27 +12,27 @@ MonoBehaviour:
   m_Name: Tom-city
   m_EditorClassIdentifier: 
   pathPoints:
-  - beviourAtPoint: 0
-    location: {x: -10.427023, y: 0.79824734, z: -84.08675}
+  - beviourAtPoint: 2
+    location: {x: -10.427023, y: 0.5342798, z: -84.08675}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -37.867294, y: 0.17815113, z: -83.88579}
+    location: {x: -37.867294, y: 0.42252994, z: -83.88579}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -45.214516, y: 0.8473382, z: -90.40329}
+    location: {x: -45.214516, y: 0.24780035, z: -90.40329}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -64.130264, y: 1.5572643, z: -93.22309}
+    location: {x: -64.130264, y: 0.34588194, z: -93.22309}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -31.054375, y: 1.297585, z: -98.14752}
+    location: {x: -31.054375, y: 0.24660206, z: -98.14752}
     idleTime: 0
   - beviourAtPoint: 1
-    location: {x: -17.663326, y: 1.3406465, z: -86.31561}
+    location: {x: -17.663326, y: 0.1821096, z: -86.31561}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -12.206691, y: 0, z: -77.89563}
+    location: {x: -12.206691, y: 0.5676594, z: -77.89563}
     idleTime: 0
-  - beviourAtPoint: 4
-    location: {x: -1.6550603, y: 0, z: -91.35009}
+  - beviourAtPoint: 2
+    location: {x: -0.12430191, y: 0.4454633, z: -91.35009}
     idleTime: 0
