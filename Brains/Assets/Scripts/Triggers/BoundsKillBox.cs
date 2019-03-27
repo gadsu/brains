@@ -6,7 +6,7 @@ public class BoundsKillBox : MonoBehaviour
 {
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-            other.GetComponent<Player>().SendToSpawn();
+        //if (other.CompareTag("Player"))
+        //    other.GetComponent<Player>().SendToSpawn();
     }
 }

@@ -22,7 +22,6 @@ using UnityEngine;
 
 public class Player : ACharacter
 {
-    /* Sets up repeatedly used variables. */
     Rigidbody _rbody;
 
     GameStateHandler _gameState;
@@ -39,7 +38,6 @@ public class Player : ACharacter
 
     [HideInInspector]
     public int playDead;
-    /**************************************/
 
     Vector3 _spawn; // For sending this game object back to it's spawn when out of bounds.
     public ObjectSounds spudSounds;
@@ -64,15 +62,13 @@ public class Player : ACharacter
     }
 
     void Start ()
-    {
-        /* Initializes 'simple' data types.*/
+    { // Sets all of the default states.
         MvState = MovementState.Idling;
         _spawn = transform.position;
         _animationKey = 0;
         _moving = 0;
         playDead = 0;
         _rbody.maxDepenetrationVelocity = .1f;
-        /***********************************/
 
         colliders[0].enabled = true;
         colliders[1].enabled = false;
@@ -80,7 +76,7 @@ public class Player : ACharacter
         _rbody.constraints = RigidbodyConstraints.FreezeRotation;
 	}
 
-    // Update is called once per frame
+    // Update is called once per frame, at the beginning.
 	void Update()
 	{
 		_moving = 0;
@@ -98,7 +94,8 @@ public class Player : ACharacter
 			case GameStateHandler.GameState.InPlay:
 				if(Input.GetButtonDown("Dead"))
 				{
-					playDead = Mathf.Abs(1 - Convert.ToInt32(_scriptPMove.RagDead()));
+                    GetComponent<Animator>().enabled = !GetComponent<Animator>().enabled;
+					playDead = Convert.ToInt32(!GetComponent<Animator>().enabled);
 					
 					if(playDead == 0)
 					{ // Is set here because it only happens when exiting the playDead state.
@@ -172,7 +169,9 @@ public class Player : ACharacter
 
 			_scriptPDiction.SetAnimationSpeed((_rbody.velocity.magnitude / 1.4f + 0.1f) * Mathf.Sign(Input.GetAxis("Vertical")));
 		} // End of playDead == 1
-	}
+	} // End of Update
+
+    // FixedUpdate is called at a regular interval. (Not frame dependent.)
     private void FixedUpdate()
     {
         switch (_gameState.currentState)
@@ -180,8 +179,9 @@ public class Player : ACharacter
             case GameStateHandler.GameState.InPlay:
                 if (transform.position.y < -10 || transform.position.y > 150)
                 {
-                    SendToSpawn();
+                    transform.position = _spawn;
                 }
+
                 _scriptPMove.Move(_rbody);
                 _scriptStealthHandler.UpdateStealthState(playDead, (int)MvState);
                 _scriptGroanHandler.SetGroanSpeed((int)MvState, _scriptPMove.MoveSpeed);
@@ -192,8 +192,9 @@ public class Player : ACharacter
                 break; // End of default case
 
         } // End of switch(_gameState.currentState)
-    }
+    } // End of FixedUpdate
 
+    // Late Update is called once per frame, at the end.
     private void LateUpdate()
     {
         switch (_gameState.currentState)
@@ -210,7 +211,7 @@ public class Player : ACharacter
             default:
                 break;
         } // End of switch(_gameState.currentState)
-    }
+    } // End of LateUpdate
 
     public void FootEvent()
     {
@@ -218,13 +219,8 @@ public class Player : ACharacter
             footSounds.Play(footSounds.objectSounds[Mathf.RoundToInt(UnityEngine.Random.Range(0, footSounds.objectSounds.Capacity - 1))]);
     }
 
-    public void SendToSpawn()
-    {
-        transform.position = _spawn;
-    }
-
     public void SendToPoint(Vector3 point)
-    {
+    { // Code for when the player dies after reaching a checkpoint.
         transform.position = point;
     }
 }
