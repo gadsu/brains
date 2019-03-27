@@ -14,7 +14,8 @@ public class EnemyBase : AEnemy
     public float moveSpeedStart = 3f;
 
     private string _animationToPlay = "";
-    private bool _chasing = false, _surpised = false, _touched = false, _blockAnimation = false;
+    private bool _surpised = false, _touched = false, _blockAnimation = false;
+    public bool _chasing;
     private float _lastTouchedTime = 0f;
 
     public Vector3? knownLocation;
@@ -90,6 +91,7 @@ public class EnemyBase : AEnemy
                 if (!_chasing)
                 {
                     _chasing = true;
+                    GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>().AddEnemyToList(gameObject);
                     if (!_surpised)
                     {
                         _surpised = true;
@@ -132,7 +134,8 @@ public class EnemyBase : AEnemy
             else if (Enemy_Detection == DetectionLevel.Searching)
                 Enemy_Detection = DetectionLevel.Losing; 
             else
-                Enemy_Detection = DetectionLevel.Unseen; 
+                Enemy_Detection = DetectionLevel.Unseen;
+            GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>().RemoveEnemyFromList(gameObject);
         }
 
         _agent.SetDestination(mPathing.UpdateDestination(_chasing, _agent.destination, _agent.remainingDistance));
