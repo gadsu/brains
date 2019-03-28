@@ -5,7 +5,7 @@ public class MakeCrawl : TriggerEvent
 {
     public override void CustomEnter(Collider other)
     {
-        base.CustomEnter(other);
+        //base.CustomEnter(other);
 
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
@@ -15,7 +15,7 @@ public class MakeCrawl : TriggerEvent
 
     public override void CustomExit(Collider other)
     {
-        base.CustomExit(other);
+        //base.CustomExit(other);
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
             other.GetComponent<Player>().mustCrawl = false;

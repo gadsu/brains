@@ -76,92 +76,115 @@ public class EnemyBase : AEnemy
 
     private void Update()
     {
-        throttle++;
-
-        if (_touched)
-            mDetecting.detectionAmount = 100f;
-
-        if ((mDetecting.IsInView(_target.position) || _touched) && _target.GetComponent<Player>().playDead == 0)
-        { 
+        if (mDetecting.IsInView(_target.position))
+        {
             mDetecting.UpdateRayToPlayer(_target.position, _target.GetComponent<Player>().playDead);
-            if (mDetecting.IsVisible(_target.position) || _touched)
-            {
-                Enemy_Detection = DetectionLevel.Detecting;
-                Enemy_Awareness = AwarenessLevel.Aware;
-                if (!_chasing)
-                {
-                    _chasing = true;
-                    GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>().AddEnemyToList(gameObject);
-                    if (!_surpised)
-                    {
-                        _surpised = true;
-                        _animationToPlay = animationGenerics["Surprise"];
-                        enemySounds.Play("Detect");
-                        _blockAnimation = true;
-                    }
-                }
-                else
-                {
-                    knownLocation = _target.transform.position;
-                    if (_agent.remainingDistance < _agent.speed - (1f/2f)*moveSpeedStart)
-                    {
-                        Debug.Log("<color=red>" + _agent.speed + "</color>");
-                        _animationToPlay = animationGenerics["Attack"];
-                        _blockAnimation = true;
-                    }
-                }
-            }
-            else
-            {
-                if (Enemy_Awareness == AwarenessLevel.Aware)
-                    Enemy_Awareness = AwarenessLevel.Losing;
-                else {
-                    Enemy_Awareness = AwarenessLevel.Unaware;
-                };
-
-                Enemy_Awareness = AwarenessLevel.Unaware;
-
-                _chasing = false;
-            }
-        }
+            Enemy_Detection = DetectionLevel.Detecting;
+        } // End of mDetecting.IsInView
         else
         {
-            _chasing = false;
-            Enemy_Awareness = AwarenessLevel.Unaware;
-
-            if (Enemy_Detection == DetectionLevel.Detecting)
+            if (Enemy_Detection == DetectionLevel.Pursuing)
                 Enemy_Detection = DetectionLevel.Searching;
-            else if (Enemy_Detection == DetectionLevel.Searching)
-                Enemy_Detection = DetectionLevel.Losing; 
-            else
+        } // End of !mDetecting.IsInView
+
+        if (_touched)
+        {
+            mDetecting.detectionAmount = 100f;
+            Enemy_Detection = DetectionLevel.Pursuing;
+            Enemy_Awareness = AwarenessLevel.Aware;
+        } // End of _touched
+
+        if (mDetecting.IsVisible(_target.position))
+            Enemy_Awareness = AwarenessLevel.Aware;
+
+        switch (Enemy_Detection)
+        {
+            case DetectionLevel.Pursuing:
+                GameObject.Find("PersistentStateController")
+                    .GetComponent<PersistentStateController>().AddEnemyToList(gameObject);
+
+                _chasing = true;
+
+                if (_agent.remainingDistance < (_agent.speed - moveSpeedStart))
+                {
+                    _animationToPlay = animationGenerics["Attack"];
+                    _blockAnimation = true;
+                } // End of Attack check
+
+                knownLocation = _target.transform.position;
+                break; // End of Pursuing case
+            case DetectionLevel.Detecting:
+                break; // End of Detecting case
+            case DetectionLevel.Searching:
+                _chasing = false;
+
+                if (_agent.remainingDistance < 1f)
+                {
+                    knownLocation = null;
+                    Enemy_Awareness = AwarenessLevel.Losing;
+                } // End of knownLocation check
+                
+                break; // End of Searching case
+            case DetectionLevel.Losing:
+                Enemy_Awareness = AwarenessLevel.Unaware;
+                GameObject.Find("PersistentStateController")
+                    .GetComponent<PersistentStateController>().RemoveEnemyFromList(gameObject);
+                break; // End of Losing case
+            case DetectionLevel.Unseen:
+                break; // End of Unseen case
+            default:
+                break; // End of default case
+        } // End of switch(Enemy_Detection)
+
+        switch (Enemy_Awareness)
+        {
+            case AwarenessLevel.Aware:
+                Enemy_Detection = DetectionLevel.Pursuing;
+                if (!_surpised)
+                {
+                    _surpised = true;
+                    _animationToPlay = animationGenerics["Surprise"];
+                    enemySounds.Play("Detect");
+                    _blockAnimation = true;
+                } // End of Surprised check
+
+                knownLocation = _target.transform.position;
+                break; // End of Aware case
+            case AwarenessLevel.Losing:
+                Enemy_Detection = DetectionLevel.Losing;
+                break; // End of Losing case
+            case AwarenessLevel.Unaware:
                 Enemy_Detection = DetectionLevel.Unseen;
-            GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>().RemoveEnemyFromList(gameObject);
-        }
+                break; // End of Unaware
+            default:
+                break; // End of default case
+        } // End of switch(Enemy_Awareness)
 
-        _agent.SetDestination(mPathing.UpdateDestination(_chasing, _agent.destination, _agent.remainingDistance));
+        _agent.SetDestination((knownLocation != null) ? (Vector3)knownLocation :
+            mPathing.UpdateDestination(_chasing, _agent.destination, _agent.remainingDistance));
 
-        if (Enemy_Awareness != AwarenessLevel.Aware && knownLocation != null)
+        _animHandler.
+            SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);
+        _animHandler.
+            SetAnimationSpeed(_agent.velocity.magnitude);
+        mDetecting.
+            UpdatingDetectionAmount(mSightValue, mHearValue, _target, (int)Enemy_Detection, (int)Enemy_Awareness);
+
+        throttle++;
+
+        if (throttle > 100)
         {
-            //Debug.Log("Setting Destination to knownlocation");
-            _agent.SetDestination((Vector3)knownLocation);
-
-            if (_agent.remainingDistance < 3f)
-            { knownLocation = null; }
-        }
-        _animHandler.SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);
-        _animHandler.SetAnimationSpeed(_agent.velocity.magnitude);
-        mDetecting.UpdatingDetectionAmount(mSightValue, mHearValue, _target, (int)Enemy_Detection, (int)Enemy_Awareness);
-
-        if(throttle > 100)
-        {
-            footSounds.SetVolume((_agent.velocity.magnitude/3)+0.5f);
+            footSounds.SetVolume((_agent.velocity.magnitude / 3) + 0.5f);
             throttle = 0;
-        }
-    }
+        } // End of adjust Footstep sound check
+
+        Debug.Log("<color=red>" + Enemy_Awareness.ToString() + "</color>");
+        Debug.Log("<color=blue>" + Enemy_Detection.ToString() + "</color>");
+    } // End of Update
 
     private void OnCollisionStay(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player") && Enemy_Awareness == AwarenessLevel.Unaware)
+        if(collision.gameObject.CompareTag("Player"))
         {
             _lastTouchedTime = Time.time;
             _touched = true;
@@ -199,6 +222,8 @@ public class EnemyBase : AEnemy
     public void FootEvent()
     {
         if (footSounds.objectSounds.Count > 0)
-            footSounds.Play(footSounds.objectSounds[Mathf.RoundToInt(Random.Range(0, footSounds.objectSounds.Capacity - 1))]);
+            footSounds.Play(footSounds
+                .objectSounds[Mathf.RoundToInt(Random.Range(0, footSounds
+                .objectSounds.Capacity - 1))]);
     }
 }
