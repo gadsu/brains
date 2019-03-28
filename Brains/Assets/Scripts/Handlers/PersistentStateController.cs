@@ -23,12 +23,17 @@ public class PersistentStateController : MonoBehaviour {
         if (objs.Length > 1) { Destroy(gameObject); }
         else { DontDestroyOnLoad(gameObject); }
         musicSounds.InitSounds(gameObject);
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            musicSounds.Play("Menu");
+        }
     }
 	
 
 
 	// GameStateController hook that plays intro cutscene / sounds if needed.
 	public void Restart() {
+        musicSounds.SetVolume("Menu", 0f);
         detectedList = new List<GameObject>();
         musicSounds.Play("Gameplay");
         musicSounds.Play("Cool");
