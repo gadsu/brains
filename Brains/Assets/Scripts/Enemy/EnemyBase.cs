@@ -165,7 +165,7 @@ public class EnemyBase : AEnemy
                 break; // End of default case
         } // End of switch(Enemy_Awareness)
 
-        if (_animationToPlay != animationGenerics["Attack"] ^ _animationToPlay != animationGenerics["Surprise"])
+        if (_animationToPlay != animationGenerics["Attack"] || _animationToPlay != animationGenerics["Surprise"])
         {
             if (knownLocation != null)
             {
@@ -180,6 +180,8 @@ public class EnemyBase : AEnemy
             _agent.destination = transform.position;
 
         if (!_agent.SetDestination(_agent.destination)) throw new System.Exception("Error setting new path");
+        else
+            _agent.SetDestination(_agent.destination);
 
         _animHandler.
             SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);

@@ -14,7 +14,7 @@ public class PathTo : MonoBehaviour
     NavMeshAgent _agent;
     Vector3 _target;
     int _destinationI;
-    bool _isIdle, _checking;
+    bool _checking;
 
     // Use this for initialization
     private void Awake()
@@ -26,8 +26,7 @@ public class PathTo : MonoBehaviour
     {
         _destinationI = 0;
         //_agent.SetDestination((_path.destinations.Length > 0) ? _path.destinations[_destinationI].location : transform.position);
-        _agent.SetDestination((path.pathPoints.Capacity > 0) ? path.pathPoints[_destinationI].location : transform.position);
-        _isIdle = false;
+        //_agent.SetDestination((path.pathPoints.Capacity > 0) ? path.pathPoints[_destinationI].location : transform.position);
         _checking = false;
     }
 
@@ -52,30 +51,20 @@ public class PathTo : MonoBehaviour
                     switch (path.pathPoints[_destinationI].beviourAtPoint)
                     {
                         case PathPoint.PointBehavior.Start:
-                            _checking = false;
-                            _isIdle = false;
                             break;
                         case PathPoint.PointBehavior.PassThrough:
-                            _checking = false;
-                            _isIdle = false;
                             break;
                         case PathPoint.PointBehavior.End:
                             _checking = true;
-                            _isIdle = false;
                             break;
                         case PathPoint.PointBehavior.Idle:
-                            _isIdle = !_isIdle;
-                            if (_isIdle)
-                            {
-                                _checking = true;
                                 StartCoroutine(Idling(path.pathPoints[_destinationI].idleTime));
-                            }
                             break;
                     }
 
                     _destinationI += 1;
 
-                    if(_destinationI > path.pathPoints.Capacity)
+                    if(_destinationI >= path.pathPoints.Capacity)
                     {
                         _destinationI = 0;
                         if (path.pathPoints[_destinationI].beviourAtPoint == PathPoint.PointBehavior.Start)
@@ -92,54 +81,9 @@ public class PathTo : MonoBehaviour
 
     private IEnumerator Idling(float pIdleTime)
     {
-        yield return new WaitForSeconds(pIdleTime);
+        _checking = true;
+        Debug.Log(pIdleTime);
+        yield return new WaitForSecondsRealtime(pIdleTime);
         _checking = false;
     }
 }
-
-//if (_path.destinations.Length <= 0)
-//    return _path.destinations[_destinationI].location;
-
-//if (!chasing)
-//{
-//    if (p_distanceFromPoint < .1f)
-//    {
-//        if (!_checking)
-//        {
-//            switch (_path.destinations[_destinationI].type)
-//            {
-//                case Destination.DestinationType.Pass:
-//                    _checking = false;
-//                    _isIdle = false;
-//                    break;
-//                case Destination.DestinationType.Stop:
-//                    _checking = true;
-//                    _isIdle = false;
-//                    break;
-//                case Destination.DestinationType.Idle:
-//                    _isIdle = !_isIdle;
-//                    if (_isIdle)
-//                    {
-//                        _checking = true;
-//                        StartCoroutine(Idling(_path.destinations[_destinationI].idleTime));
-//                    }
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
-
-//        if (!_checking)
-//        {
-//            _destinationI = (_destinationI + 1 < _path.destinations.Length) ? _destinationI + 1 : 0;
-//            l_destination = _path.destinations[_destinationI].location;
-//        }
-//    }
-//}
-//else
-//{
-//    l_destination = GameObject.Find("Spud").GetComponent<Transform>().position;
-//}
-
-//if (l_destination == null)
-//    l_destination = _path.destinations[_destinationI].location;
