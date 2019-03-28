@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathPoints:
   - beviourAtPoint: 2
-    location: {x: -10.427023, y: 0.5342798, z: -84.08675}
+    location: {x: -11.759157, y: 0.5342798, z: -84.08675}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: -37.867294, y: 0.42252994, z: -83.88579}
@@ -25,14 +25,14 @@ MonoBehaviour:
     location: {x: -64.130264, y: 0.34588194, z: -93.22309}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -31.054375, y: 0.24660206, z: -98.14752}
+    location: {x: -35.991127, y: 0.24660206, z: -96.53853}
     idleTime: 0
   - beviourAtPoint: 1
-    location: {x: -17.663326, y: 0.1821096, z: -86.31561}
+    location: {x: -44.712376, y: 0.1821096, z: -89.69805}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -12.206691, y: 0.5676594, z: -77.89563}
+    location: {x: -52.32196, y: -0.028761387, z: -86.37051}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -0.12430191, y: 0.4454633, z: -91.35009}
+    location: {x: -65.274506, y: -0.09352291, z: -87.27105}
     idleTime: 0

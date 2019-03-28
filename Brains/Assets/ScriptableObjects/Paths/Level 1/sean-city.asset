@@ -16,7 +16,7 @@ MonoBehaviour:
     location: {x: -21.493456, y: 0.24028635, z: -84.9685}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -35.515373, y: -0.006608963, z: -101.54997}
+    location: {x: -48.55854, y: -0.006608963, z: -96.872055}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: -79.57822, y: 0, z: -84.005226}
@@ -31,5 +31,5 @@ MonoBehaviour:
     location: {x: -71.6606, y: 0, z: -91.31124}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -87.24682, y: 0, z: -90.21124}
+    location: {x: -55.62452, y: 0, z: -82.707886}
     idleTime: 0
