@@ -13,13 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathPoints:
   - beviourAtPoint: 2
-    location: {x: 16.052631, y: 0.06769061, z: 15.331981}
+    location: {x: 16.052631, y: 0.22918773, z: 15.331981}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: 22.6062, y: 0, z: 23.267664}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 9.891021, y: 0, z: 22.349386}
+    location: {x: 11.202007, y: 0.27668762, z: 22.349386}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: 0, y: 0.8875885, z: 36.71384}

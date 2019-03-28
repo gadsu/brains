@@ -39,6 +39,7 @@ public class EnemyBase : AEnemy
     {
         mPathing = GetComponent<PathTo>();
         mDetecting = GetComponent<DetectPlayer>();
+        _chasing = false;
 
         
         _agent = GetComponent<NavMeshAgent>();

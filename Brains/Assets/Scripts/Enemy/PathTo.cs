@@ -43,7 +43,7 @@ public class PathTo : MonoBehaviour
             {
                 l_destination = path.pathPoints[_destinationI].location;
 
-                if (Vector3.Distance(p_currentDestination, path.pathPoints[_destinationI].location) < .3f && p_distanceFromPoint < .1f)
+                if (Vector3.Distance(p_currentDestination, path.pathPoints[_destinationI].location) < 1f && p_distanceFromPoint < .2f)
                 {
                     Debug.Log("Is close enough");
                     switch (path.pathPoints[_destinationI].beviourAtPoint)
