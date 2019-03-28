@@ -12,18 +12,20 @@ public class MakeHidden : TriggerEvent
                 other.GetComponent<StealthHandler>().UpdateHiddenState(true);
             else
                 other.GetComponent<StealthHandler>().UpdateHiddenState(false);
-        }
-    }
+        } // End of UpdateHiddenState true ^ false
+    } // End of CustomEnter
 
     public override void CustomStay(Collider other)
     {
         //base.CustomStay(other);
-
-        if (other.GetComponent<Player>().playDead == 1)
-            other.GetComponent<StealthHandler>().UpdateHiddenState(true);
-        else
-            other.GetComponent<StealthHandler>().UpdateHiddenState(false);
-    }
+        if (other.CompareTag("Player") && other.transform.name == "Spud")
+        {
+            if (other.GetComponent<Player>().playDead == 1)
+                other.GetComponent<StealthHandler>().UpdateHiddenState(true);
+            else
+                other.GetComponent<StealthHandler>().UpdateHiddenState(false);
+        } // End of UpdateHiddenState true ^ false
+    } // End of CustomStay
 
     public override void CustomExit(Collider other)
     {
@@ -31,6 +33,6 @@ public class MakeHidden : TriggerEvent
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
             other.GetComponent<StealthHandler>().UpdateHiddenState(false);
-        }
+        } // UpdateHiddenState false
     }
 }
