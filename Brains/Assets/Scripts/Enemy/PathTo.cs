@@ -75,7 +75,7 @@ public class PathTo : MonoBehaviour
 
                     _destinationI += 1;
 
-                    if(_destinationI >= path.pathPoints.Capacity)
+                    if(_destinationI > path.pathPoints.Capacity)
                     {
                         _destinationI = 0;
                         if (path.pathPoints[_destinationI].beviourAtPoint == PathPoint.PointBehavior.Start)

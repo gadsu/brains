@@ -40,7 +40,7 @@ public class EnemyBase : AEnemy
         mPathing = GetComponent<PathTo>();
         mDetecting = GetComponent<DetectPlayer>();
 
-        _target = GameObject.Find("Spud").GetComponent<Transform>();
+        
         _agent = GetComponent<NavMeshAgent>();
         _animHandler = GetComponent<AnimationHandler>();
 
@@ -73,13 +73,21 @@ public class EnemyBase : AEnemy
         }
         else throw new System.Exception("Attack hitbox bone not found.");
     }
+    private void Start()
+    {
+        _target = GameObject.Find("Spud").GetComponent<Transform>();
+    }
 
     private void Update()
     {
         if (mDetecting.IsInView(_target.position))
         {
             mDetecting.UpdateRayToPlayer(_target.position, _target.GetComponent<Player>().playDead);
+
             Enemy_Detection = DetectionLevel.Detecting;
+
+            if (mDetecting.IsVisible(_target.position))
+                Enemy_Awareness = AwarenessLevel.Aware;
         } // End of mDetecting.IsInView
         else
         {
@@ -93,9 +101,6 @@ public class EnemyBase : AEnemy
             Enemy_Detection = DetectionLevel.Pursuing;
             Enemy_Awareness = AwarenessLevel.Aware;
         } // End of _touched
-
-        if (mDetecting.IsVisible(_target.position))
-            Enemy_Awareness = AwarenessLevel.Aware;
 
         switch (Enemy_Detection)
         {
@@ -160,8 +165,21 @@ public class EnemyBase : AEnemy
                 break; // End of default case
         } // End of switch(Enemy_Awareness)
 
-        _agent.SetDestination((knownLocation != null) ? (Vector3)knownLocation :
-            mPathing.UpdateDestination(_chasing, _agent.destination, _agent.remainingDistance));
+        if (_animationToPlay != animationGenerics["Attack"] ^ _animationToPlay != animationGenerics["Surprise"])
+        {
+            if (knownLocation != null)
+            {
+                _agent.destination = (Vector3)knownLocation;
+            }
+            else
+            {
+                _agent.destination = mPathing.UpdateDestination(_chasing, _agent.destination, _agent.remainingDistance);
+            }
+        }
+        else
+            _agent.destination = transform.position;
+
+        if (!_agent.SetDestination(_agent.destination)) throw new System.Exception("Error setting new path");
 
         _animHandler.
             SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);
