@@ -3781,6 +3781,7 @@ Transform:
   - {fileID: 1175687198}
   - {fileID: 737453225}
   - {fileID: 157758488}
+  - {fileID: 2041005743}
   m_Father: {fileID: 0}
   m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36916,6 +36917,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: f1f919b6c3c0dfc4eaec7d39f0b5e834,
     type: 3}
   m_PrefabInternal: {fileID: 2037892161}
+--- !u!1001 &2041005742
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 224318173}
+    m_Modifications:
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 12.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 30.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7120265
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.013822271
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.01557261
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.70184386
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_RootOrder
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.0040295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.3556706
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.3556705
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.837
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 10.944992
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -8.562012
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637103688847986, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+      propertyPath: m_Name
+      value: Tarp Fence (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 510bab5f4478c1f449b00458ee93f5bd, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &2041005743 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4915165090493998, guid: 510bab5f4478c1f449b00458ee93f5bd,
+    type: 2}
+  m_PrefabInternal: {fileID: 2041005742}
 --- !u!4 &2048613484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 77d67108c1977a142bed525c024976ed,
