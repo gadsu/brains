@@ -46,12 +46,6 @@ public class GameStateHandler : MonoBehaviour
         SetState(currentState);
         bigText.Show(false);
         eventSounds.InitSounds(gameObject, GetComponent<AudioSource>());
-        // These Finds will NOT work whatever I do. So we have a disgustingly large list of public vars
-        /*uiPeriphery = Canvas.f .Find("UI_Periphery");
-        groanMeter = GameObject.Find("Groan Meter");
-        cameraContainer = GameObject.Find("Camera Container");
-        gameOverTint = GameObject.Find("Game Over Tint");
-        gameWonTint = GameObject.Find("Game Won Tint");*/
         gameOverTint.SetActive(false);
         gameWonTint.SetActive(false);
 
@@ -67,6 +61,7 @@ public class GameStateHandler : MonoBehaviour
             switch (pState)
             {
                 case GameState.InPlay:
+                    pauseMenu.SetActive(false);
                     pauseMenuContainer.SetActive(false);
                     cameraContainer.GetComponent<CameraOperator>().doCinematicMode = false;
                     bigText.Show(false);
@@ -113,6 +108,7 @@ public class GameStateHandler : MonoBehaviour
 
 
                 case GameState.Paused:
+                    pauseMenu.SetActive(true);
                     pauseMenuContainer.SetActive(true);
                     cameraContainer.GetComponent<CameraOperator>().doCinematicMode = true;
                     bigText.Show(false);

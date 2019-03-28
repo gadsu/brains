@@ -1,8 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEditor;
 
 [RequireComponent(typeof(NavMeshAgent))]
 //[RequireComponent(typeof(Pathway))]
@@ -82,7 +80,6 @@ public class PathTo : MonoBehaviour
     private IEnumerator Idling(float pIdleTime)
     {
         _checking = true;
-        Debug.Log(pIdleTime);
         yield return new WaitForSecondsRealtime(pIdleTime);
         _checking = false;
     }
