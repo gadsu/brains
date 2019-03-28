@@ -2,7 +2,6 @@
 
 public class MakeHidden : MonoBehaviour
 {
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && other.transform.name == "Spud")

@@ -167,7 +167,18 @@ public class EnemyBase : AEnemy
         } // End of switch(Enemy_Awareness)
 
 
-        if (_animationToPlay != animationGenerics["Attack"] || _animationToPlay != animationGenerics["Surprise"])
+        if (_chasing)
+        {
+            if (_animationToPlay != animationGenerics["Attack"] || _animationToPlay != animationGenerics["Surprise"])
+            {
+                if (_agent.destination != _target.position)
+                {
+                    _agent.SetDestination(_target.position);
+                    _agent.destination = _target.position;
+                }
+            }
+        }
+        else
         {
             if (knownLocation != null && knownLocation != _agent.destination && !_chasing)
             {
@@ -184,10 +195,6 @@ public class EnemyBase : AEnemy
                     _agent.destination = tempLocation;
                 }
             }
-        }
-        else
-        {
-            _agent.SetDestination(transform.position);
         }
 
         _animHandler.

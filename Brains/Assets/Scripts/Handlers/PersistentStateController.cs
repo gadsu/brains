@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,7 +13,6 @@ public class PersistentStateController : MonoBehaviour {
     public ObjectSounds eventSounds;
     public ObjectSounds musicSounds;
     private List<GameObject> detectedList;
-    private int detectedCount;
     private bool detectedOnce;
 
     // Use this for initialization
@@ -23,6 +21,7 @@ public class PersistentStateController : MonoBehaviour {
         if (objs.Length > 1) { Destroy(gameObject); }
         else { DontDestroyOnLoad(gameObject); }
         musicSounds.InitSounds(gameObject);
+        detectedList = new List<GameObject>();
         if (SceneManager.GetActiveScene().name == "Menu")
         {
             musicSounds.Play("Menu");
@@ -95,6 +94,7 @@ public class PersistentStateController : MonoBehaviour {
         if(!detectedList.Contains(obj)) { 
             detectedList.Add(obj);
             detectedList.TrimExcess();
+            Debug.Log(detectedList.Capacity);
         }
         DetectionMusic();
         detectedOnce = true;
