@@ -165,23 +165,29 @@ public class EnemyBase : AEnemy
                 break; // End of default case
         } // End of switch(Enemy_Awareness)
 
+
         if (_animationToPlay != animationGenerics["Attack"] || _animationToPlay != animationGenerics["Surprise"])
         {
-            if (knownLocation != null)
+            if (knownLocation != null && knownLocation != _agent.destination && !_chasing)
             {
+                _agent.SetDestination((Vector3)knownLocation);
                 _agent.destination = (Vector3)knownLocation;
             }
             else
             {
-                _agent.destination = mPathing.UpdateDestination(_chasing, _agent.destination, _agent.remainingDistance);
+                Vector3 tempLocation = mPathing.UpdateDestination(_chasing, _agent.destination, _agent.remainingDistance);
+
+                if (_agent.destination != tempLocation)
+                {
+                    _agent.SetDestination(tempLocation);
+                    _agent.destination = tempLocation;
+                }
             }
         }
         else
-            _agent.destination = transform.position;
-
-        if (!_agent.SetDestination(_agent.destination)) throw new System.Exception("Error setting new path");
-        else
-            _agent.SetDestination(_agent.destination);
+        {
+            _agent.SetDestination(transform.position);
+        }
 
         _animHandler.
             SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);

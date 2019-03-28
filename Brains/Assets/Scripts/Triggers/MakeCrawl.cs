@@ -1,24 +1,21 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Make Crawl")]
-public class MakeCrawl : TriggerEvent
+public class MakeCrawl : MonoBehaviour
 {
-    public override void CustomEnter(Collider other)
-    {
-        //base.CustomEnter(other);
 
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
             other.GetComponent<Player>().mustCrawl = true;
-        }
-    }
+        } // End of mustCrawl = true
+    } // End of OnTriggerEnter
 
-    public override void CustomExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        //base.CustomExit(other);
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
             other.GetComponent<Player>().mustCrawl = false;
-        }
-    }
+        } // End of mustCrawl = false
+    } // End of OnTriggerExit
 }

@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Make Hidden")]
-public class MakeHidden : TriggerEvent
+public class MakeHidden : MonoBehaviour
 {
-    public override void CustomEnter(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
-        //base.CustomEnter(other);
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
             if (other.GetComponent<Player>().playDead == 1)
@@ -13,11 +12,10 @@ public class MakeHidden : TriggerEvent
             else
                 other.GetComponent<StealthHandler>().UpdateHiddenState(false);
         } // End of UpdateHiddenState true ^ false
-    } // End of CustomEnter
+    } // End of OnTriggerEnter
 
-    public override void CustomStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        //base.CustomStay(other);
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
             if (other.GetComponent<Player>().playDead == 1)
@@ -25,14 +23,13 @@ public class MakeHidden : TriggerEvent
             else
                 other.GetComponent<StealthHandler>().UpdateHiddenState(false);
         } // End of UpdateHiddenState true ^ false
-    } // End of CustomStay
+    } // End of OnTriggerStay
 
-    public override void CustomExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        //base.CustomExit(other);
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
             other.GetComponent<StealthHandler>().UpdateHiddenState(false);
         } // UpdateHiddenState false
-    }
+    } // End of OnTriggerExit
 }
