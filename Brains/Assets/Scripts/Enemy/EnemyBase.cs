@@ -78,6 +78,7 @@ public class EnemyBase : AEnemy
     private void Start()
     {
         _target = GameObject.Find("Spud").GetComponent<Transform>();
+        GetComponent<Rigidbody>().drag = 1;
     }
 
     private void Update()
