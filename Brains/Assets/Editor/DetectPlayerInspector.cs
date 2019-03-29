@@ -12,7 +12,7 @@ public class DetectPlayerInspector : Editor
     {
         _target = (DetectPlayer)target;
 
-        SceneView.onSceneGUIDelegate += OnSceneGUI;
+       // SceneView.onSceneGUIDelegate += OnSceneGUI;
     }
 
     public override void OnInspectorGUI()
