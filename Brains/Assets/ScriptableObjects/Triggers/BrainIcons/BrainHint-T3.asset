@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4666afc7a39a8554eacb731acbaeaa0b, type: 3}
+  m_Name: BrainHint-T3
+  m_EditorClassIdentifier: 
+  words: 'Brought to You by Zomb Inc:
+
+    Use the Deadly Art of Playing Dead (SPACE) to hide from potential foes'
+  eventSounds: {fileID: 11400000, guid: 05d82a724cbd6fb4f99aa9a113d3bdec, type: 2}

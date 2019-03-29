@@ -1,0 +1,446 @@
+fileFormatVersion: 2
+guid: c642541ddd0894a0897bcfea81dbb4b9
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: bat
+    100004: bat_smear_mid
+    100006: bat_smear_top
+    100008: //RootNode
+    100010: eye_target
+    100012: face_jaw
+    100014: face_upper_lip
+    100016: head
+    100018: HIP_ROOT
+    100020: L_arm
+    100022: L_ARM_IK
+    100024: L_ARM_POLE
+    100026: L_eye
+    100028: L_eye_aim
+    100030: L_face_brow_inner
+    100032: L_face_brow_outer
+    100034: L_face_browctrl
+    100036: L_face_lowerlidctrl
+    100038: L_face_mouthctrl
+    100040: L_face_upperlidctrl
+    100042: L_finglove
+    100044: L_foot
+    100046: L_forearm
+    100048: L_foreleg
+    100050: L_hand
+    100052: L_hip_branch
+    100054: L_leg
+    100056: L_LEG_IK
+    100058: L_LEG_POLE
+    100060: L_shoulder
+    100062: L_thumb
+    100064: L_toes
+    100066: neck
+    100068: R_arm
+    100070: R_ARM_IK
+    100072: R_ARM_POLE
+    100074: R_eye
+    100076: R_eye_aim
+    100078: R_face_brow_inner
+    100080: R_face_brow_outer
+    100082: R_face_browctrl
+    100084: R_face_lowerlidctrl
+    100086: R_face_mouthctrl
+    100088: R_face_upperlidctrl
+    100090: R_finglove
+    100092: R_foot
+    100094: R_forearm
+    100096: R_foreleg
+    100098: R_hand
+    100100: R_hip_branch
+    100102: R_leg
+    100104: R_LEG_IK
+    100106: R_LEG_POLE
+    100108: R_shoulder
+    100110: R_thumb
+    100112: R_toes
+    100114: RIG_Mac
+    100116: SK_Mac
+    100118: spine_mid
+    100120: spine_upper
+    100122: tail_mid
+    100124: tail_root
+    100126: tail_tip
+    400000: //RootNode
+    400002: bat
+    400004: bat_smear_mid
+    400006: bat_smear_top
+    400008: //RootNode
+    400010: eye_target
+    400012: face_jaw
+    400014: face_upper_lip
+    400016: head
+    400018: HIP_ROOT
+    400020: L_arm
+    400022: L_ARM_IK
+    400024: L_ARM_POLE
+    400026: L_eye
+    400028: L_eye_aim
+    400030: L_face_brow_inner
+    400032: L_face_brow_outer
+    400034: L_face_browctrl
+    400036: L_face_lowerlidctrl
+    400038: L_face_mouthctrl
+    400040: L_face_upperlidctrl
+    400042: L_finglove
+    400044: L_foot
+    400046: L_forearm
+    400048: L_foreleg
+    400050: L_hand
+    400052: L_hip_branch
+    400054: L_leg
+    400056: L_LEG_IK
+    400058: L_LEG_POLE
+    400060: L_shoulder
+    400062: L_thumb
+    400064: L_toes
+    400066: neck
+    400068: R_arm
+    400070: R_ARM_IK
+    400072: R_ARM_POLE
+    400074: R_eye
+    400076: R_eye_aim
+    400078: R_face_brow_inner
+    400080: R_face_brow_outer
+    400082: R_face_browctrl
+    400084: R_face_lowerlidctrl
+    400086: R_face_mouthctrl
+    400088: R_face_upperlidctrl
+    400090: R_finglove
+    400092: R_foot
+    400094: R_forearm
+    400096: R_foreleg
+    400098: R_hand
+    400100: R_hip_branch
+    400102: R_leg
+    400104: R_LEG_IK
+    400106: R_LEG_POLE
+    400108: R_shoulder
+    400110: R_thumb
+    400112: R_toes
+    400114: RIG_Mac
+    400116: SK_Mac
+    400118: spine_mid
+    400120: spine_upper
+    400122: tail_mid
+    400124: tail_root
+    400126: tail_tip
+    2100000: None__lamppost
+    2300000: //RootNode
+    2300002: SK_Mac
+    3300000: //RootNode
+    3300002: SK_Mac
+    4300000: Cylinder
+    4300002: SK_Mac
+    7400000: Default Take
+    7400002: A_MacAttack
+    7400004: A_MacIdle
+    7400006: A_MacSurprise
+    7400008: A_MacSurprise2
+    7400010: A_MacTest
+    7400012: A_MacWalk
+    7400014: RIG_MacAction
+    7400016: RIG_Tom_RIG_Tom_A_TomWalk_RIG_Tom_A_TomWalk
+    7400018: RIG_Tom_RIG_Tom_PoseLib_L_Lib_001_RIG_Tom_PoseLib_L_Lib_001
+    9500000: //RootNode
+    13700000: SK_Mac
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: A_MacAttack
+      takeName: A_MacAttack
+      firstFrame: -1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.17021276
+        functionName: SoundEvent
+        data: Windup
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8228041
+        functionName: StartAttackCheck
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.84081066
+        functionName: SoundEvent
+        data: Swipe
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9953528
+        functionName: EndAttackCheck
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: A_MacIdle
+      takeName: A_MacIdle
+      firstFrame: -1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: A_MacSurprise
+      takeName: A_MacSurprise
+      firstFrame: -1
+      lastFrame: 75
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: A_MacSurprise2
+      takeName: A_MacSurprise2
+      firstFrame: -1
+      lastFrame: 64
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: A_MacTest
+      takeName: A_MacTest
+      firstFrame: -1
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: A_MacWalk
+      takeName: A_MacWalk
+      firstFrame: -1
+      lastFrame: 18
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.04494385
+        functionName: FootEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5513662
+        functionName: FootEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -3,6 +3,13 @@
 public class CollisionHandler : MonoBehaviour
 {
     public CollisionEvent[] events;
+
+    private void Awake()
+    { // Calls all of the CustomAwake startup events for all of of the CollisionEvent events
+        for (int i = 0; i < events.Length; i++)
+            events[i].CustomAwake(gameObject);
+    }
+
     private void OnCollisionEnter(Collision collision)
     { // Calls all of the CustomEnter collision events for all of of the CollisionEvent events
         for (int i = 0; i < events.Length; i++)

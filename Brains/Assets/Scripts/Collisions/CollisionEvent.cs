@@ -3,6 +3,10 @@
 [CreateAssetMenu(fileName = "BaseCollisionEvent", menuName = "Base Collision Event")]
 public class CollisionEvent : ScriptableObject
 {
+    public virtual void CustomAwake(GameObject pThisGameObject)
+    {
+        Debug.Log("<color=blue>Awake</color> CustomAwake: " + name);
+    }
     public virtual void CustomEnter(Collision collision)
     {
         Debug.Log("<color=blue>Collision</color> CustomEnter: " + name);

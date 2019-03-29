@@ -1,0 +1,428 @@
+fileFormatVersion: 2
+guid: b545a5bdac778439284b23ef62679808
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: base_shape
+    100004: //RootNode
+    100006: Clothes_prebind
+    100008: eye_target
+    100010: face_jaw
+    100012: face_upper_lip
+    100014: hat
+    100016: head
+    100018: HIP_ROOT
+    100020: IK_handle_shape
+    100022: IK_pole_shape
+    100024: L_arm
+    100026: L_ARM_IK
+    100028: L_ARM_POLE
+    100030: L_eye
+    100032: L_eye_aim
+    100034: L_face_brow_inner
+    100036: L_face_brow_outer
+    100038: L_face_browctrl
+    100040: L_face_lowerlidctrl
+    100042: L_face_mouthctrl
+    100044: L_face_upperlidctrl
+    100046: L_finglove
+    100048: L_foot
+    100050: L_forearm
+    100052: L_foreleg
+    100054: L_hand
+    100056: L_hip_branch
+    100058: L_lapel_overlap
+    100060: L_leg
+    100062: L_LEG_IK
+    100064: L_LEG_POLE
+    100066: L_shoulder
+    100068: L_thumb
+    100070: L_toes
+    100072: neck
+    100074: R_arm
+    100076: R_ARM_IK
+    100078: R_ARM_POLE
+    100080: R_eye
+    100082: R_eye_aim
+    100084: R_face_brow_inner
+    100086: R_face_brow_outer
+    100088: R_face_browctrl
+    100090: R_face_lowerlidctrl
+    100092: R_face_mouthctrl
+    100094: R_face_upperlidctrl
+    100096: R_finglove
+    100098: R_foot
+    100100: R_forearm
+    100102: R_foreleg
+    100104: R_hand
+    100106: R_hip_branch
+    100108: R_lapel_overlap
+    100110: R_leg
+    100112: R_LEG_IK
+    100114: R_LEG_POLE
+    100116: R_shoulder
+    100118: R_thumb
+    100120: R_toes
+    100122: RIG_Tom
+    100124: SK_Tom
+    100126: spine_mid
+    100128: spine_upper
+    100130: Tom_prebind
+    400000: //RootNode
+    400002: base_shape
+    400004: //RootNode
+    400006: Clothes_prebind
+    400008: eye_target
+    400010: face_jaw
+    400012: face_upper_lip
+    400014: hat
+    400016: head
+    400018: HIP_ROOT
+    400020: IK_handle_shape
+    400022: IK_pole_shape
+    400024: L_arm
+    400026: L_ARM_IK
+    400028: L_ARM_POLE
+    400030: L_eye
+    400032: L_eye_aim
+    400034: L_face_brow_inner
+    400036: L_face_brow_outer
+    400038: L_face_browctrl
+    400040: L_face_lowerlidctrl
+    400042: L_face_mouthctrl
+    400044: L_face_upperlidctrl
+    400046: L_finglove
+    400048: L_foot
+    400050: L_forearm
+    400052: L_foreleg
+    400054: L_hand
+    400056: L_hip_branch
+    400058: L_lapel_overlap
+    400060: L_leg
+    400062: L_LEG_IK
+    400064: L_LEG_POLE
+    400066: L_shoulder
+    400068: L_thumb
+    400070: L_toes
+    400072: neck
+    400074: R_arm
+    400076: R_ARM_IK
+    400078: R_ARM_POLE
+    400080: R_eye
+    400082: R_eye_aim
+    400084: R_face_brow_inner
+    400086: R_face_brow_outer
+    400088: R_face_browctrl
+    400090: R_face_lowerlidctrl
+    400092: R_face_mouthctrl
+    400094: R_face_upperlidctrl
+    400096: R_finglove
+    400098: R_foot
+    400100: R_forearm
+    400102: R_foreleg
+    400104: R_hand
+    400106: R_hip_branch
+    400108: R_lapel_overlap
+    400110: R_leg
+    400112: R_LEG_IK
+    400114: R_LEG_POLE
+    400116: R_shoulder
+    400118: R_thumb
+    400120: R_toes
+    400122: RIG_Tom
+    400124: SK_Tom
+    400126: spine_mid
+    400128: spine_upper
+    400130: Tom_prebind
+    2100000: None__lamppost
+    2300000: //RootNode
+    2300002: base_shape
+    2300004: Clothes_prebind
+    2300006: IK_handle_shape
+    2300008: IK_pole_shape
+    2300010: SK_Tom
+    2300012: Tom_prebind
+    3300000: //RootNode
+    3300002: base_shape
+    3300004: Clothes_prebind
+    3300006: IK_handle_shape
+    3300008: IK_pole_shape
+    3300010: SK_Tom
+    3300012: Tom_prebind
+    4300000: Cylinder
+    4300002: Clothes_prebind
+    4300004: SK_Tom
+    4300006: Tom_prebind
+    4300008: base_shape
+    4300010: IK_pole_shape
+    4300012: IK_handle_shape
+    7400000: Default Take
+    7400002: A_TomAttack
+    7400004: Armature_mixamo_com_Layer0
+    7400006: A_TomIdle
+    7400008: A_TomWalk
+    7400010: A_TomSurprise
+    9500000: //RootNode
+    13700000: SK_Tom
+    2186277476908879412: ImportLogs
+    2186277476908879414: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: A_TomAttack
+      takeName: A_TomAttack
+      firstFrame: -1
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: SoundEvent
+        data: Windup
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.28627452
+        functionName: StartAttackCheck
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.29411766
+        functionName: SoundEvent
+        data: Swipe
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.35686272
+        functionName: EndAttackCheck
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.36731997
+        functionName: FootEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6943502
+        functionName: FootEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: A_TomIdle
+      takeName: A_TomIdle
+      firstFrame: -1
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: A_TomWalk
+      takeName: A_TomWalk
+      firstFrame: -1
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.03909258
+        functionName: FootEvent
+        data: 
+        objectReferenceParameter: {fileID: 1494647922463130, guid: 54faec6a6cd643f41b1a69a9fdb67d9e,
+          type: 2}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5803922
+        functionName: FootEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: A_TomSurprise
+      takeName: A_TomSurprise
+      firstFrame: -1
+      lastFrame: 33
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.61960787
+        functionName: FootEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0.000941664, y: -0.70710623, z: -0.00094133615, w: 0.70710623}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

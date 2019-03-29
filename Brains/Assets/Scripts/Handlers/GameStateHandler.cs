@@ -34,6 +34,7 @@ public class GameStateHandler : MonoBehaviour
     public GameObject cameraContainer;
     public GameObject pauseMenuContainer;
     public GameObject pauseMenu;
+    private PersistentStateController psc;
     /////////////////////////
 
     private int lastState = -1337;
@@ -45,17 +46,11 @@ public class GameStateHandler : MonoBehaviour
         SetState(currentState);
         bigText.Show(false);
         eventSounds.InitSounds(gameObject, GetComponent<AudioSource>());
-        // These Finds will NOT work whatever I do. So we have a disgustingly large list of 
-        /*uiPeriphery = Canvas.f .Find("UI_Periphery");
-        groanMeter = GameObject.Find("Groan Meter");
-        cameraContainer = GameObject.Find("Camera Container");
-        
-        gameOverTint = GameObject.Find("Game Over Tint");
-        gameWonTint = GameObject.Find("Game Won Tint");*/
         gameOverTint.SetActive(false);
         gameWonTint.SetActive(false);
 
-        GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>().Restart();
+        psc = GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>();
+        psc.Restart();
     }
 
     public void SetState(GameState pState)
@@ -66,6 +61,7 @@ public class GameStateHandler : MonoBehaviour
             switch (pState)
             {
                 case GameState.InPlay:
+                    pauseMenu.SetActive(false);
                     pauseMenuContainer.SetActive(false);
                     cameraContainer.GetComponent<CameraOperator>().doCinematicMode = false;
                     bigText.Show(false);
@@ -84,6 +80,7 @@ public class GameStateHandler : MonoBehaviour
                     gameWonTint.SetActive(true);
                     uiPeriphery.SetActive(false);
                     groanMeter.SetActive(false);
+                    psc.SilenceMusic();
                     eventSounds.Play("Victory");
 
                     Time.timeScale = .5f;
@@ -101,6 +98,7 @@ public class GameStateHandler : MonoBehaviour
                     gameOverTint.SetActive(true);
                     uiPeriphery.SetActive(false);
                     groanMeter.SetActive(false);
+                    psc.SilenceMusic();
                     eventSounds.Play("Loss");
 
                     Time.timeScale = .5f;
@@ -110,6 +108,7 @@ public class GameStateHandler : MonoBehaviour
 
 
                 case GameState.Paused:
+                    pauseMenu.SetActive(true);
                     pauseMenuContainer.SetActive(true);
                     cameraContainer.GetComponent<CameraOperator>().doCinematicMode = true;
                     bigText.Show(false);

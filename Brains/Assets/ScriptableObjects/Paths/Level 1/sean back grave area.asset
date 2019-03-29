@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: sean back grave area
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 2
+    location: {x: 25.737175, y: 0.32277966, z: -133.42445}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 24.70401, y: -0.13196683, z: -146.92949}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 29.26316, y: 0.24780035, z: -148.13985}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 25.720816, y: 0.34588194, z: -129.68419}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 22.954063, y: 0.24660206, z: -117.80257}
+    idleTime: 0
+  - beviourAtPoint: 1
+    location: {x: 21.063698, y: 0.1821096, z: -116.57974}
+    idleTime: 3
+  - beviourAtPoint: 2
+    location: {x: 22.861275, y: -0.028761387, z: -130.6001}
+    idleTime: 0

@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c2d62f2d28d1c47900ad8414c4e204, type: 3}
+  m_Name: Music
+  m_EditorClassIdentifier: 
+  objectSounds:
+  - name: Gameplay
+    clip: {fileID: 8300000, guid: 4fce4b7d621004df0bf60b7bc7890ad6, type: 3}
+    volume: 0.5
+    pitch: 1
+    defaultVolume: 0.5
+    volumeScale: 0.5
+    loop: 1
+    oneShot: 0
+    source: {fileID: 0}
+  - name: Danger
+    clip: {fileID: 8300000, guid: 5013967022ce74a4cb9842f2edfd9ec7, type: 3}
+    volume: 0
+    pitch: 1
+    defaultVolume: 0.75
+    volumeScale: 0.75
+    loop: 1
+    oneShot: 0
+    source: {fileID: 0}
+  - name: Cool
+    clip: {fileID: 8300000, guid: faf7f26b5085f480096f7eb0e93ceed4, type: 3}
+    volume: 0.85
+    pitch: 1
+    defaultVolume: 0.85
+    volumeScale: 0.85
+    loop: 1
+    oneShot: 0
+    source: {fileID: 0}
+  - name: Menu
+    clip: {fileID: 8300000, guid: e34a542565491e24f9744fa820cbe389, type: 3}
+    volume: 0.75
+    pitch: 1
+    defaultVolume: 0.75
+    volumeScale: 0.75
+    loop: 1
+    oneShot: 0
+    source: {fileID: 0}

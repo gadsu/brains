@@ -3,6 +3,11 @@
 [CreateAssetMenu(fileName = "BaseTriggerEvent", menuName = "Base Trigger Event")]
 public class TriggerEvent : ScriptableObject
 {
+    public virtual void CustomAwake(GameObject pThisGameObject)
+    {
+        Debug.Log("<color=red>Trigger</color> CustomAwake: " + name);
+    }
+
     public virtual void CustomEnter(Collider other)
     {
         Debug.Log("<color=red>Trigger</color> CustomEnter: " + name);

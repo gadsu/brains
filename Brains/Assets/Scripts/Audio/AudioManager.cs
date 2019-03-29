@@ -1,20 +1,18 @@
-﻿using UnityEngine.Audio;
-using System;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections.Generic;
+﻿using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     public ObjectSounds sceneAudio;
 
     //public static AudioManager instance;
+    protected GameStateHandler gstate;
 
 	// Use this for initialization
 	void Awake () {
 
         sceneAudio.InitSounds(gameObject);
         SetActiveSceneAudio(sceneAudio);
+        gstate = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
     }
 
     public void SetActiveSceneAudio(ObjectSounds p_sceneAudio)
@@ -32,7 +30,7 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string name)
     {
-        if (PauseMenu.gamePaused) sceneAudio.SetPitch(name, sceneAudio.GetPitch(name) * 3f);
+        if (gstate.currentState == GameStateHandler.GameState.Paused) sceneAudio.SetPitch(name, sceneAudio.GetPitch(name) * 3f);
 
         sceneAudio.Play(name);
     }

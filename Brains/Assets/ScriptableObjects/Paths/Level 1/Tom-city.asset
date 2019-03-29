@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: Tom-city
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 2
+    location: {x: -11.759157, y: 0.5342798, z: -84.08675}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -37.867294, y: 0.42252994, z: -83.88579}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -45.214516, y: 0.24780035, z: -90.40329}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -64.130264, y: 0.34588194, z: -93.22309}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -35.991127, y: 0.24660206, z: -96.53853}
+    idleTime: 0
+  - beviourAtPoint: 1
+    location: {x: -44.712376, y: 0.1821096, z: -89.69805}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -52.32196, y: -0.028761387, z: -86.37051}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -65.274506, y: -0.09352291, z: -87.27105}
+    idleTime: 0

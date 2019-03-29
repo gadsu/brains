@@ -3,7 +3,16 @@ guid: 959a4274d6ec362479599948588e0c31
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - eventSounds: {instanceID: 0}
+  - musicSounds: {instanceID: 0}
+  - gameOverTint: {instanceID: 0}
+  - gameWonTint: {instanceID: 0}
+  - uiPeriphery: {instanceID: 0}
+  - groanMeter: {instanceID: 0}
+  - cameraContainer: {instanceID: 0}
+  - pauseMenuContainer: {instanceID: 0}
+  - pauseMenu: {instanceID: 0}
   executionOrder: 100
   icon: {instanceID: 0}
   userData: 

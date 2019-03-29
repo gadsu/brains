@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour {
-
-    public static bool gamePaused = false;
+public class PauseMenu : MonoBehaviour
+{
     private GameStateHandler gstate;
     public enum ButtonFunction { Pause, Resume, LoadScene, LoadScreen };
 
@@ -15,21 +14,26 @@ public class PauseMenu : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Cursor.visible = !Cursor.visible;
-            if (gamePaused) Resume();
-            else Pause();
+            if (gstate.currentState == GameStateHandler.GameState.Paused)
+            {
+                Cursor.visible = false;
+                Resume();
+            }
+            else
+            {
+                Cursor.visible = true;
+                Pause();
+            }
         }
 	}
 
     public void Pause()
     {
-        gamePaused = true;
         gstate.SetState(GameStateHandler.GameState.Paused);
     }
 
     public void Resume()
     {
-        gamePaused = false;
         gstate.SetState(GameStateHandler.GameState.InPlay);
     }
 
