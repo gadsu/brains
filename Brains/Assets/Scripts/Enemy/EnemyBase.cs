@@ -177,9 +177,13 @@ public class EnemyBase : AEnemy
                 {
                     _agent.SetDestination(_target.position);
                     _agent.destination = _target.position;
-                }
-            }
-        }
+                } // End of if we are not already at the player location.
+            } // End of if animation doesn't block movement
+            else
+            {
+                _agent.isStopped = true;
+            } // End of if animation does block movement
+        } // End of _chasing
         else
         {
             if (knownLocation != null && knownLocation != _agent.destination && !_chasing)
@@ -189,7 +193,7 @@ public class EnemyBase : AEnemy
             }
             else
             {
-                Vector3 tempLocation = mPathing.UpdateDestination(_chasing, _agent.destination, _agent.remainingDistance);
+                Vector3 tempLocation = mPathing.UpdateDestination(_agent.destination, _agent.remainingDistance);
 
                 if (_agent.destination != tempLocation)
                 {
@@ -197,10 +201,7 @@ public class EnemyBase : AEnemy
                     _agent.destination = tempLocation;
                 }
             }
-        }
-
-        if (_blockAnimation == true)
-            _agent.isStopped = true;
+        } // End of !_chasing
 
         _animHandler.
             SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);

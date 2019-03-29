@@ -28,47 +28,40 @@ public class PathTo : MonoBehaviour
         _checking = false;
     }
 
-    public Vector3 UpdateDestination(bool chasing, Vector3 p_currentDestination, float p_distanceFromPoint)
+    public Vector3 UpdateDestination(Vector3 p_currentDestination, float p_distanceFromPoint)
     {
         Vector3 l_destination = transform.position;
 
-        if (chasing)
+
+        if (!_checking)
         {
-            l_destination = GameObject.Find("Spud").transform.position;
-        }
-        else
-        {
-            Debug.Log("!chasing");
-            if (!_checking)
+            l_destination = path.pathPoints[_destinationI].location;
+
+            if (Vector3.Distance(p_currentDestination, path.pathPoints[_destinationI].location) < 1f && p_distanceFromPoint < .2f)
             {
-                l_destination = path.pathPoints[_destinationI].location;
-
-                if (Vector3.Distance(p_currentDestination, path.pathPoints[_destinationI].location) < 1f && p_distanceFromPoint < .2f)
+                Debug.Log("Is close enough");
+                switch (path.pathPoints[_destinationI].beviourAtPoint)
                 {
-                    Debug.Log("Is close enough");
-                    switch (path.pathPoints[_destinationI].beviourAtPoint)
-                    {
-                        case PathPoint.PointBehavior.Start:
-                            break;
-                        case PathPoint.PointBehavior.PassThrough:
-                            break;
-                        case PathPoint.PointBehavior.End:
-                            _checking = true;
-                            break;
-                        case PathPoint.PointBehavior.Idle:
-                                StartCoroutine(Idling(path.pathPoints[_destinationI].idleTime));
-                            break;
-                    }
+                    case PathPoint.PointBehavior.Start:
+                        break;
+                    case PathPoint.PointBehavior.PassThrough:
+                        break;
+                    case PathPoint.PointBehavior.End:
+                        _checking = true;
+                        break;
+                    case PathPoint.PointBehavior.Idle:
+                            StartCoroutine(Idling(path.pathPoints[_destinationI].idleTime));
+                        break;
+                }
 
-                    _destinationI += 1;
+                _destinationI += 1;
 
-                    if(_destinationI >= path.pathPoints.Capacity)
+                if(_destinationI >= path.pathPoints.Capacity)
+                {
+                    _destinationI = 0;
+                    if (path.pathPoints[_destinationI].beviourAtPoint == PathPoint.PointBehavior.Start)
                     {
-                        _destinationI = 0;
-                        if (path.pathPoints[_destinationI].beviourAtPoint == PathPoint.PointBehavior.Start)
-                        {
-                            _destinationI++;
-                        }
+                        _destinationI++;
                     }
                 }
             }

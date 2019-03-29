@@ -7,6 +7,7 @@ public class DetectPlayer : MonoBehaviour
 {
     public Camera tempCamera;
     Vector3 _targetPosition, _worldView;
+    public Transform targetTransform;
 
     public Dictionary<string, string> animationGenericCalls;
 
@@ -59,16 +60,20 @@ public class DetectPlayer : MonoBehaviour
 
     public void UpdateRayToPlayer(Vector3 p_targetPosition, int pPlayDead)
     {
-        _ray.origin = tempCamera.transform.position;
-        _targetPosition = p_targetPosition;
-        _targetPosition.x = _targetPosition.x - _ray.origin.x;
-        if (pPlayDead == 0)
-            _targetPosition.y = (_targetPosition.y - _ray.origin.y) + (.5f * playerSizeY);
-        else
-            _targetPosition.y = (_targetPosition.y - _ray.origin.y) - (playerSizeY) + .2f;
-        _targetPosition.z -= _ray.origin.z;
+        //_ray.origin = tempCamera.transform.position;
+        //_targetPosition = p_targetPosition;
+        //_targetPosition.x = _targetPosition.x - _ray.origin.x;
+        //if (pPlayDead == 0)
+        //    _targetPosition.y = (_targetPosition.y - _ray.origin.y) + (.5f * playerSizeY);
+        //else
+        //    _targetPosition.y = (_targetPosition.y - _ray.origin.y) - (playerSizeY) + .2f;
+        //_targetPosition.z -= _ray.origin.z;
 
-        _ray.direction = Vector3.RotateTowards(_ray.origin, _targetPosition, Mathf.Infinity, Mathf.Infinity);
+        //_ray.direction = Vector3.RotateTowards(_ray.origin, _targetPosition, Mathf.Infinity, Mathf.Infinity);
+
+        _ray.origin = tempCamera.transform.position;
+        _ray.direction = Vector3.RotateTowards(
+            _ray.origin, tempCamera.transform.forward* Vector3.Angle(tempCamera.transform.position, targetTransform.position), Mathf.Infinity, Mathf.Infinity);
     }
 
     public bool IsVisible(Vector3 p_targetPosition)
@@ -103,5 +108,19 @@ public class DetectPlayer : MonoBehaviour
     public void NotHearing()
     {
         hearing = false;
+    }
+
+    private void OnGUI()
+    {
+        Ray lRay = new Ray();
+        lRay.origin = tempCamera.transform.position;
+
+        lRay.direction = Vector3.RotateTowards(
+            _ray.origin, 
+            tempCamera.transform.forward * Vector3.Angle(tempCamera.transform.position, targetTransform.position),
+            Mathf.Infinity, Mathf.Infinity);
+
+        //Debug.DrawRay(lRay.origin, lRay.direction, Color.red);
+        Debug.DrawLine(tempCamera.transform.position, tempCamera.transform.forward * 100f, Color.red);
     }
 }
