@@ -19,6 +19,7 @@ public class EnemyBase : AEnemy
     private float _lastTouchedTime = 0f;
 
     public Vector3? knownLocation;
+    public float rangeToAttack = 1f;
 
     // The bone of the enemy's rig that the attack hitbox will be attached to.
     public string boneToAttachHitbox;
@@ -111,7 +112,7 @@ public class EnemyBase : AEnemy
 
                 _chasing = true;
 
-                if (_agent.remainingDistance < (_agent.speed - moveSpeedStart))
+                if (_agent.remainingDistance < rangeToAttack)
                 {
                     _animationToPlay = animationGenerics["Attack"];
                     _blockAnimation = true;
@@ -196,6 +197,9 @@ public class EnemyBase : AEnemy
                 }
             }
         }
+
+        if (_blockAnimation == true)
+            _agent.isStopped = true;
 
         _animHandler.
             SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);

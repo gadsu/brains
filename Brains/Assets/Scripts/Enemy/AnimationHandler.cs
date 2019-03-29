@@ -64,5 +64,6 @@ public class AnimationHandler : MonoBehaviour
         }
         yield return new WaitForSeconds(time);
         isBlocked = false;
+        pAgent.isStopped = false;
     }
 }
