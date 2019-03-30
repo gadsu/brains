@@ -241,6 +241,9 @@ public class EnemyBase : AEnemy
         mDetecting.
             UpdatingDetectionAmount(mSightValue, mHearValue, _target, (int)Enemy_Detection, (int)Enemy_Awareness);
 
+        if (mDetecting.detectionAmount < 1f)
+            knownLocation = null;
+
         _touched = (Mathf.Abs(_lastTouchedTime - Time.time) > 3f) ? false : _touched;
         /*************************/
 

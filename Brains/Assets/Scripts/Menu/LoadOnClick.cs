@@ -24,7 +24,7 @@ public class LoadOnClick : MonoBehaviour {
                 break;
         }
         loadingImage.SetActive(true);
-        Application.LoadLevel(level);
+        SceneManager.LoadScene(level);
     }
 }
 
