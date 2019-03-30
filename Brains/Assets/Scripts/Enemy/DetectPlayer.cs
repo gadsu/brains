@@ -39,13 +39,15 @@ public class DetectPlayer : MonoBehaviour
     {
         if (!hearing)
         {
-            detectionAmount += (gameObject.GetComponent<EnemyBase>().mHearValue * (objectHearability/3f) + objectHearability);
-            Debug.Log(detectionAmount);
-            if (detectionAmount >= 20f)
-            {
+            detectionAmount +=
+                gameObject.GetComponent<EnemyBase>().mHearValue *
+                (objectHearability / 3f) +
+                objectHearability;
+
+            if (detectionAmount > 15f)
                 GetComponent<EnemyBase>().knownLocation = GameObject.Find("Spud").transform.position;
-            }
         }
+
         hearing = true;
     }
 
@@ -84,7 +86,11 @@ public class DetectPlayer : MonoBehaviour
     public void UpdatingDetectionAmount(int p_sight, int p_hear, Transform p_player, int p_detection, int p_awareness)
     {
         float _s = p_player.GetComponent<StealthHandler>().Stealth_val;
-        detectionAmount += ((((p_detection - 3) + p_awareness) - _s) + p_sight - 1.5f) * .25f;
+        if (!isVisible)
+            detectionAmount -= .1f;
+        else
+            detectionAmount += .3f;
+        //detectionAmount += (p_detection - 3 + p_awareness - _s + p_sight - 1.5f) * .025f;
 
 
         if (detectionAmount > 100f)
@@ -105,20 +111,6 @@ public class DetectPlayer : MonoBehaviour
     public void NotHearing()
     {
         hearing = false;
-    }
-
-    private void OnGUI()
-    {
-        Ray lRay = new Ray();
-        lRay.origin = tempCamera.transform.position;
-
-        lRay.direction = Vector3.RotateTowards(
-            _ray.origin, 
-            tempCamera.transform.forward * Vector3.Angle(tempCamera.transform.position, targetTransform.position),
-            Mathf.Infinity, Mathf.Infinity);
-
-        //Debug.DrawRay(lRay.origin, lRay.direction, Color.red);
-        Debug.DrawLine(tempCamera.transform.position, tempCamera.transform.forward * 100f, Color.red);
     }
 }
 
