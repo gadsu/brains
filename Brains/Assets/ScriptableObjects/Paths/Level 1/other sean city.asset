@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: other sean city
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 1
+    location: {x: -25.385323, y: 0.24028635, z: -95.669785}
+    idleTime: 1
+  - beviourAtPoint: 2
+    location: {x: -38.324295, y: -0.006608963, z: -83.61614}
+    idleTime: 2
+  - beviourAtPoint: 1
+    location: {x: -27.368748, y: 0, z: -89.92864}
+    idleTime: 2
+  - beviourAtPoint: 1
+    location: {x: -19.116726, y: 0.15897274, z: -85.42904}
+    idleTime: 3
+  - beviourAtPoint: 2
+    location: {x: -38.451496, y: 0, z: -91.38552}
+    idleTime: 2

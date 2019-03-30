@@ -12,27 +12,15 @@ MonoBehaviour:
   m_Name: mac-city
   m_EditorClassIdentifier: 
   pathPoints:
+  - beviourAtPoint: 1
+    location: {x: -59.143425, y: 0.22766304, z: -94.63906}
+    idleTime: 3
+  - beviourAtPoint: 1
+    location: {x: -54.660553, y: 0.40923786, z: -94.808876}
+    idleTime: 3
   - beviourAtPoint: 2
-    location: {x: -9.297668, y: 0.22766304, z: -83.38359}
+    location: {x: -50.57108, y: 0, z: -104.67506}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -33.041542, y: 0.40923786, z: -97.065674}
-    idleTime: 0
-  - beviourAtPoint: 2
-    location: {x: -54.65442, y: 0, z: -89.74449}
-    idleTime: 0
-  - beviourAtPoint: 2
-    location: {x: -84.338554, y: -0.03564024, z: -87.82668}
-    idleTime: 0
-  - beviourAtPoint: 2
-    location: {x: -84.237946, y: 0.29229355, z: -72.720985}
-    idleTime: 0
-  - beviourAtPoint: 2
-    location: {x: -78.46834, y: 0.23142648, z: -60.364048}
-    idleTime: 0
-  - beviourAtPoint: 2
-    location: {x: -79.69946, y: 0, z: -41.35652}
-    idleTime: 0
-  - beviourAtPoint: 2
-    location: {x: -73.23111, y: 0, z: -28.386597}
+    location: {x: -55.772995, y: -0.03564024, z: -99.154335}
     idleTime: 0
