@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: Tom in the back
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 1
+    location: {x: 43.173676, y: 0.44480634, z: -36.67479}
+    idleTime: 3
+  - beviourAtPoint: 2
+    location: {x: 52.800312, y: -0.2997713, z: -35.90064}
+    idleTime: 0
+  - beviourAtPoint: 1
+    location: {x: 50.212967, y: 0, z: -47.357437}
+    idleTime: 3
+  - beviourAtPoint: 2
+    location: {x: 57.391144, y: -0.137496, z: -37.603252}
+    idleTime: 0

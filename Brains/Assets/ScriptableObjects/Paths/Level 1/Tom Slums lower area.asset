@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: Tom Slums lower area
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 1
+    location: {x: 27.677782, y: 1.7464018, z: -73.14065}
+    idleTime: 3
+  - beviourAtPoint: 2
+    location: {x: 25.701527, y: -0.2997713, z: -64.20246}
+    idleTime: 0
+  - beviourAtPoint: 1
+    location: {x: 41.348396, y: 0, z: -58.35546}
+    idleTime: 3
+  - beviourAtPoint: 2
+    location: {x: 25.620094, y: -0.137496, z: -64.06981}
+    idleTime: 0
