@@ -9,14 +9,14 @@ public class TextSetter : MonoBehaviour
     private GameObject text;
     private Text wordTarget;
     private Color defaultColor;
-    private int defaultSize;
+    //private int defaultSize; unused variable
 
     private void Awake()
     {
         text = GameObject.Find(nameOfGameObject);
         if(!text) { throw new Exception("No text with name \""+nameOfGameObject+"\" found. Check spelling, and make sure the object is visible."); }
         wordTarget = text.GetComponent<Text>();
-        defaultSize = wordTarget.fontSize;
+        //defaultSize = wordTarget.fontSize;
         defaultColor = wordTarget.color;//TODO This is assigned to 0,0,0,0 for some reason.
     }
 

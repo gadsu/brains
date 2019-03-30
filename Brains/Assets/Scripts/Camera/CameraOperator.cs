@@ -16,7 +16,7 @@ public class CameraOperator : MonoBehaviour
 	public float minVerticalAngle = -70f;
 	public Vector3 	rotSens = new Vector3(1.5f, 0.75f, 1f);
 	public float baseSens = 1f;
-    private float _baseSensStart = 1f;
+    //private float _baseSensStart = 1f;
     private float _distToTLookTarget = 0f;
     public bool doFirstPerson = false;
 
@@ -33,7 +33,7 @@ public class CameraOperator : MonoBehaviour
 
 	private Vector3 _rotDelta = Vector3.zero;		// Amount of rotation. Input.getAxis multiplied by sensitivity.
 	private Quaternion _aim;
-	private float _aimRatio = 0f;
+	//private float _aimRatio = 0f;
 	private Vector2 _axisDamper = new Vector2(3f, 3f);
 	private Vector2 _input = Vector2.zero;
 	public GameObject cam;
@@ -54,7 +54,7 @@ public class CameraOperator : MonoBehaviour
 	private float _trueZDistanceGoal;
 	private int _mvState;
     public float shoulderBumpUp= 0.3f;
-    private Quaternion _defaultCamRot;
+    //private Quaternion _defaultCamRot;
     private GameStateHandler _gstate;
     private Player m_player;
     private bool wasCrawling = false;
@@ -76,8 +76,8 @@ public class CameraOperator : MonoBehaviour
         camOffsetStart.y = 0.25f; // sort of a hack. <_<
         camRotStart = cam.transform.localRotation;
         camOffsetGoal = camOffsetStart;
-        _defaultCamRot = cam.transform.rotation;
-        _baseSensStart = baseSens;
+        //_defaultCamRot = cam.transform.rotation; is unused
+        //_baseSensStart = baseSens; is unused
         _gstate = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
         m_player = positionTarget.GetComponent<Player>();
 

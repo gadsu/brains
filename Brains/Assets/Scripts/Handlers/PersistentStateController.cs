@@ -81,7 +81,7 @@ public class PersistentStateController : MonoBehaviour {
     {
         if(ind > currentCheckpointIndex)
         {
-            Debug.Log(currentCheckpointIndex + " to " + ind);
+            //Debug.Log(currentCheckpointIndex + " to " + ind);
             currentCheckpointTransform = trans;
             currentCheckpointIndex = ind;
         }

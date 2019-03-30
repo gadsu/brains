@@ -25,7 +25,7 @@ public class PathTo : MonoBehaviour
 
             if (Vector3.Distance(p_currentDestination, path.pathPoints[_destinationI].location) < 1f && p_distanceFromPoint < .2f)
             {
-                Debug.Log("Is close enough");
+                //Debug.Log("Is close enough");
                 switch (path.pathPoints[_destinationI].beviourAtPoint)
                 {
                     case PathPoint.PointBehavior.Start:
