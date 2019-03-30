@@ -8,8 +8,8 @@ public class CameraOperator : MonoBehaviour
     private GameObject _truePositionTarget;
     public GameObject lookTarget;					// Object to look at.
     private GameObject _trueLookTarget;
-    public bool doCinematicMode = false;
-    private bool _doTrackObject = false;
+    public bool doDisableControls = false;
+    public bool _doTrackObject;
     //private Vector3 targetPos, pos, dist, camTarget, camRotation;
 
 	public float maxVerticalAngle = 60f;
@@ -49,7 +49,7 @@ public class CameraOperator : MonoBehaviour
 	private float _camPushRayLength = 0f;
 	private float _zDistanceMin = 0.1f;
 	private float _zDistanceMax = 10f;
-	public int zDistanceInvert = -1;
+	public float zOrbitDistance = -1;
 	public float zDistanceGoal;
 	private float _trueZDistanceGoal;
 	private int _mvState;
@@ -119,21 +119,21 @@ public class CameraOperator : MonoBehaviour
         _truePositionTarget = positionTarget;
         if (positionTarget.GetComponent<Player>())
         {
-            if (m_player.playDead == 1)
+            if (m_player.playDead == 1 && _gstate.currentState == GameStateHandler.GameState.InPlay)
             {
-                _doTrackObject = true;
+                //_doTrackObject = true;
                 _trueLookTarget = m_player.limbToLookAt;
                 //truePositionTarget = m_player.limbToLookAt;
                 _distToTLookTarget = Vector3.Distance(cam.transform.position, _trueLookTarget.transform.position);
             }
             else
             {
-                _doTrackObject = false;
+                //_doTrackObject = false;
                 _trueLookTarget = lookTarget;
             }
         }
 
-        if (!doCinematicMode)
+        if (!doDisableControls)
         {
             if ( m_player.mustCrawl)
             {
@@ -179,6 +179,10 @@ public class CameraOperator : MonoBehaviour
             if (_mvState == 5)
             {
                 _pivotOffsetGoal.y = _pivotOffsetStart.y - 0.75f; // how far to drop during crawl
+            }
+            else if (m_player.playDead == 1)
+            {
+                _pivotOffsetGoal.y = 0f; // drop height during playdead
             }
 
             // Set camera 3D position, with height offset.
@@ -235,8 +239,8 @@ public class CameraOperator : MonoBehaviour
         // Slight widening of FOV for high/low angles
         _trueTargetFOV = _targetFOV + Mathf.Clamp(((Mathf.Pow(Mathf.Abs(_rotDelta.y), 2)) / 200) - 8, 0, maxFOVTweak);
 
-        // Slight widening of FOV for crawling
-        if (_mvState == 5)
+        // Slight widening of FOV for crawling and playdead
+        if (_mvState == 5 || m_player.playDead == 1)
         {
             _trueTargetFOV += 5f;
         }
@@ -278,7 +282,7 @@ public class CameraOperator : MonoBehaviour
 
             // Set z distance. DO THE THINGY
             Vector3 derp = cam.transform.localPosition;
-            cam.transform.localPosition = new Vector3(derp.x, derp.y, _trueZDistanceGoal * zDistanceInvert);
+            cam.transform.localPosition = new Vector3(derp.x, derp.y, _trueZDistanceGoal * zOrbitDistance);
 
 
 
