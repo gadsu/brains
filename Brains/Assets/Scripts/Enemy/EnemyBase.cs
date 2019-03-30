@@ -198,7 +198,7 @@ public class EnemyBase : AEnemy
             } // End of knownLocation != null
             else
             {
-                Vector3 tempLocation = mPathing.UpdateDestination(_agent.remainingDistance);
+                Vector3 tempLocation = mPathing.UpdateDestination(_agent.destination, _agent.remainingDistance);
 
                 if (_agent.destination != tempLocation)
                 {
