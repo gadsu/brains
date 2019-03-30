@@ -19,7 +19,7 @@ public class BottleCollision : MonoBehaviour
         // if the player is the collision.
         if (collision.collider.CompareTag("Player") && collision.gameObject.name == "Spud")
         {
-            Debug.Log("Player");
+            //Debug.Log("Player");
             // if there is a rigidbody associate with this gameObject.
             if (GetComponent<Rigidbody>() != null)
             {

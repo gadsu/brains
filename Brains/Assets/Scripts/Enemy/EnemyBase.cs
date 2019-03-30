@@ -108,18 +108,21 @@ public class EnemyBase : AEnemy
         switch (Enemy_Detection)
         {
             case DetectionLevel.Pursuing:
-                GameObject.Find("PersistentStateController")
-                    .GetComponent<PersistentStateController>().AddEnemyToList(gameObject);
-
-                _chasing = true;
-
-                if (_agent.remainingDistance < rangeToAttack)
+                if (mDetecting.detectionAmount > 50f)
                 {
-                    _animationToPlay = animationGenerics["Attack"];
-                    _blockAnimation = true;
-                } // End of Attack check
+                    GameObject.Find("PersistentStateController")
+                        .GetComponent<PersistentStateController>().AddEnemyToList(gameObject);
 
-                knownLocation = _target.transform.position;
+                    _chasing = true;
+
+                    if (_agent.remainingDistance < rangeToAttack)
+                    {
+                        _animationToPlay = animationGenerics["Attack"];
+                        _blockAnimation = true;
+                    } // End of Attack check
+
+                    knownLocation = _target.transform.position;
+                }
                 break; // End of Pursuing case
             case DetectionLevel.Detecting:
                 break; // End of Detecting case
@@ -156,7 +159,7 @@ public class EnemyBase : AEnemy
                     _blockAnimation = true;
                 } // End of Surprised check
 
-                knownLocation = _target.transform.position;
+                //knownLocation = _target.transform.position;
                 break; // End of Aware case
             case AwarenessLevel.Losing:
                 Enemy_Detection = DetectionLevel.Losing;

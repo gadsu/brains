@@ -25,8 +25,7 @@ public class StealthHandler : MonoBehaviour
 
     public void UpdateStealthState(int playDead, int mvState)
     {
-
         stealth_val =
-            (_hidden - 1) * (-(Mathf.Abs(5 - mvState) * (playDead - 1)) + _hidden);
+            (1 - _hidden) * ((1 - playDead + .25f) / 2 * Mathf.Abs(mvState - 5));
     }
 }

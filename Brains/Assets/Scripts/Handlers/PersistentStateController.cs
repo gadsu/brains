@@ -94,7 +94,7 @@ public class PersistentStateController : MonoBehaviour {
         if(!detectedList.Contains(obj)) { 
             detectedList.Add(obj);
             detectedList.TrimExcess();
-            Debug.Log(detectedList.Capacity);
+            //Debug.Log(detectedList.Capacity);
         }
         DetectionMusic();
         detectedOnce = true;
