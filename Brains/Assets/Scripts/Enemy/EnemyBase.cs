@@ -230,20 +230,26 @@ public class EnemyBase : AEnemy
 
     private void LateUpdate()
     {
+        /*** Animation infomration ***/
         _animHandler.
             SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart);
         _animHandler.
             SetAnimationSpeed(_agent.velocity.magnitude);
+        /*****************************/
+
+        /*** Detection updates ***/
         mDetecting.
             UpdatingDetectionAmount(mSightValue, mHearValue, _target, (int)Enemy_Detection, (int)Enemy_Awareness);
 
         _touched = (Mathf.Abs(_lastTouchedTime - Time.time) > 3f) ? false : _touched;
+        /*************************/
 
+        /*** Resets ***/
         _animationToPlay = animationGenerics["Walk"];
         _blockAnimation = false;
+        /**************/
     }
 
-    // @Paul Moved these from TomAttackHandler.
     public void StartAttackCheck()
     {
         attackFX.GetComponent<ParticleSystem>().Play();

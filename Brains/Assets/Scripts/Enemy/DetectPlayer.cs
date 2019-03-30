@@ -39,9 +39,13 @@ public class DetectPlayer : MonoBehaviour
     {
         if (!hearing)
         {
-            detectionAmount += (gameObject.GetComponent<EnemyBase>().mHearValue * (objectHearability/3f) + objectHearability);
+            detectionAmount += (gameObject.GetComponent<EnemyBase>().mHearValue + objectHearability);
+
+            if (detectionAmount > 30f)
+            {
+                GetComponent<EnemyBase>().knownLocation = GameObject.Find("Spud").transform.position;
+            }
         }
-        GetComponent<EnemyBase>().knownLocation = GameObject.Find("Spud").transform.position;
         hearing = true;
     }
 
@@ -60,21 +64,6 @@ public class DetectPlayer : MonoBehaviour
 
     public void UpdateRayToPlayer(Vector3 p_targetPosition, int pPlayDead)
     {
-        //_ray.origin = tempCamera.transform.position;
-        //_targetPosition = p_targetPosition;
-        //_targetPosition.x = _targetPosition.x - _ray.origin.x;
-        //if (pPlayDead == 0)
-        //    _targetPosition.y = (_targetPosition.y - _ray.origin.y) + (.5f * playerSizeY);
-        //else
-        //    _targetPosition.y = (_targetPosition.y - _ray.origin.y) - (playerSizeY) + .2f;
-        //_targetPosition.z -= _ray.origin.z;
-
-        //_ray.direction = Vector3.RotateTowards(_ray.origin, _targetPosition, Mathf.Infinity, Mathf.Infinity);
-
-        //_ray.origin = tempCamera.transform.position;
-        //_ray.direction = Vector3.RotateTowards(
-        //    _ray.origin, tempCamera.transform.forward* Vector3.Angle(tempCamera.transform.position, targetTransform.position), Mathf.Infinity, Mathf.Infinity);
-
         _ray.origin = tempCamera.transform.position;
         _targetPosition = targetTransform.position;
         _targetPosition.x = _targetPosition.x - _ray.origin.x;
@@ -132,3 +121,18 @@ public class DetectPlayer : MonoBehaviour
         Debug.DrawLine(tempCamera.transform.position, tempCamera.transform.forward * 100f, Color.red);
     }
 }
+
+//_ray.origin = tempCamera.transform.position;
+//_targetPosition = p_targetPosition;
+//_targetPosition.x = _targetPosition.x - _ray.origin.x;
+//if (pPlayDead == 0)
+//    _targetPosition.y = (_targetPosition.y - _ray.origin.y) + (.5f * playerSizeY);
+//else
+//    _targetPosition.y = (_targetPosition.y - _ray.origin.y) - (playerSizeY) + .2f;
+//_targetPosition.z -= _ray.origin.z;
+
+//_ray.direction = Vector3.RotateTowards(_ray.origin, _targetPosition, Mathf.Infinity, Mathf.Infinity);
+
+//_ray.origin = tempCamera.transform.position;
+//_ray.direction = Vector3.RotateTowards(
+//    _ray.origin, tempCamera.transform.forward* Vector3.Angle(tempCamera.transform.position, targetTransform.position), Mathf.Infinity, Mathf.Infinity);
