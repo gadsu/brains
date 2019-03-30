@@ -6,6 +6,7 @@ using UnityEngine;
 public class DetectPlayer : MonoBehaviour
 {
     public Camera tempCamera;
+    //public GameObject eyes;
     Vector3 _targetPosition, _worldView;
     public Transform targetTransform;
 
@@ -68,11 +69,22 @@ public class DetectPlayer : MonoBehaviour
     {
         _ray.origin = tempCamera.transform.position;
         _targetPosition = targetTransform.position;
-        _targetPosition.x = _targetPosition.x - _ray.origin.x;
-        _targetPosition.y = (_targetPosition.y - _ray.origin.y);
-        _targetPosition.z -= _ray.origin.z;
 
-        _ray.direction = Vector3.RotateTowards(_ray.origin, _targetPosition, Mathf.Infinity, Mathf.Infinity);
+        //Vector3 temp = new Vector3()
+        //{
+        //    x = _targetPosition.x,
+        //    y = _targetPosition.y +
+        //        Vector3.SignedAngle(eyes.transform.position, _targetPosition, transform.forward),
+        //    z = _targetPosition.z
+        //};
+        //_ray.origin = tempCamera.transform.position;
+        //_targetPosition = targetTransform.position;
+        //_targetPosition.x = _targetPosition.x - _ray.origin.x;
+        //_targetPosition.y = (_targetPosition.y - _ray.origin.y);
+        //_targetPosition.z -= _ray.origin.z;
+
+        _ray.direction = _targetPosition - _ray.origin;
+        Debug.DrawRay(_ray.origin, _ray.direction * 10f, Color.cyan);
     }
 
     public bool IsVisible(Vector3 p_targetPosition)
@@ -94,13 +106,13 @@ public class DetectPlayer : MonoBehaviour
         if (detectionAmount < 0f)
         {
             detectionAmount = 0f;
-            Debug.Log("Lost");
+            //Debug.Log("Lost");
         }
 
         if (!isVisible)
             detectionAmount -= .1f;
         else
-            detectionAmount += p_player.GetComponent<StealthHandler>().Stealth_val + p_sight * 2f + .5f;
+            detectionAmount += p_player.GetComponent<StealthHandler>().Stealth_val + p_sight + .5f;
         //detectionAmount += (p_detection - 3 + p_awareness - _s + p_sight - 1.5f) * .025f;
 
         //Debug.Log("<color=orange>" + detectionAmount + "</color>");
