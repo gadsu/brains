@@ -71,9 +71,17 @@ public class DetectPlayer : MonoBehaviour
 
         //_ray.direction = Vector3.RotateTowards(_ray.origin, _targetPosition, Mathf.Infinity, Mathf.Infinity);
 
+        //_ray.origin = tempCamera.transform.position;
+        //_ray.direction = Vector3.RotateTowards(
+        //    _ray.origin, tempCamera.transform.forward* Vector3.Angle(tempCamera.transform.position, targetTransform.position), Mathf.Infinity, Mathf.Infinity);
+
         _ray.origin = tempCamera.transform.position;
-        _ray.direction = Vector3.RotateTowards(
-            _ray.origin, tempCamera.transform.forward* Vector3.Angle(tempCamera.transform.position, targetTransform.position), Mathf.Infinity, Mathf.Infinity);
+        _targetPosition = targetTransform.position;
+        _targetPosition.x = _targetPosition.x - _ray.origin.x;
+        _targetPosition.y = (_targetPosition.y - _ray.origin.y);
+        _targetPosition.z -= _ray.origin.z;
+
+        _ray.direction = Vector3.RotateTowards(_ray.origin, _targetPosition, Mathf.Infinity, Mathf.Infinity);
     }
 
     public bool IsVisible(Vector3 p_targetPosition)

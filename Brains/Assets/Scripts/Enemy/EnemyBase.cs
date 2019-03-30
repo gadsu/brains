@@ -171,6 +171,7 @@ public class EnemyBase : AEnemy
 
         if (_chasing)
         {
+            transform.LookAt(_target, Vector3.up);
             if (_animationToPlay != animationGenerics["Attack"] || _animationToPlay != animationGenerics["Surprise"])
             {
                 if (_agent.destination != _target.position)
@@ -186,14 +187,15 @@ public class EnemyBase : AEnemy
         } // End of _chasing
         else
         {
-            if (knownLocation != null && knownLocation != _agent.destination && !_chasing)
+            transform.LookAt(transform, transform.forward);
+            if (knownLocation != null && knownLocation != _agent.destination)
             {
                 _agent.SetDestination((Vector3)knownLocation);
                 _agent.destination = (Vector3)knownLocation;
-            }
+            } // End of 
             else
             {
-                Vector3 tempLocation = mPathing.UpdateDestination(_agent.destination, _agent.remainingDistance);
+                Vector3 tempLocation = mPathing.UpdateDestination(_agent.remainingDistance);
 
                 if (_agent.destination != tempLocation)
                 {
@@ -202,13 +204,6 @@ public class EnemyBase : AEnemy
                 }
             }
         } // End of !_chasing
-
-        _animHandler.
-            SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart, _target, Vector3.up);
-        _animHandler.
-            SetAnimationSpeed(_agent.velocity.magnitude);
-        mDetecting.
-            UpdatingDetectionAmount(mSightValue, mHearValue, _target, (int)Enemy_Detection, (int)Enemy_Awareness);
 
         throttle++;
 
@@ -233,7 +228,14 @@ public class EnemyBase : AEnemy
     }
 
     private void LateUpdate()
-    { 
+    {
+        _animHandler.
+            SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart);
+        _animHandler.
+            SetAnimationSpeed(_agent.velocity.magnitude);
+        mDetecting.
+            UpdatingDetectionAmount(mSightValue, mHearValue, _target, (int)Enemy_Detection, (int)Enemy_Awareness);
+
         _touched = (Mathf.Abs(_lastTouchedTime - Time.time) > 3f) ? false : _touched;
 
         _animationToPlay = animationGenerics["Walk"];

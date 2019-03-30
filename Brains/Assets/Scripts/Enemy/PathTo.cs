@@ -28,7 +28,7 @@ public class PathTo : MonoBehaviour
         _checking = false;
     }
 
-    public Vector3 UpdateDestination(Vector3 p_currentDestination, float p_distanceFromPoint)
+    public Vector3 UpdateDestination(float p_distanceFromPoint)
     {
         Vector3 l_destination = transform.position;
 
@@ -37,7 +37,7 @@ public class PathTo : MonoBehaviour
         {
             l_destination = path.pathPoints[_destinationI].location;
 
-            if (Vector3.Distance(p_currentDestination, path.pathPoints[_destinationI].location) < 1f && p_distanceFromPoint < .2f)
+            if (p_distanceFromPoint < .2f)
             {
                 Debug.Log("Is close enough");
                 switch (path.pathPoints[_destinationI].beviourAtPoint)

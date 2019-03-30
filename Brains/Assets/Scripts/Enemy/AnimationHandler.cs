@@ -24,7 +24,7 @@ public class AnimationHandler : MonoBehaviour
         _anim.SetFloat("Velocity", p_speed);
     }
 
-    public void SetAnimation(string pName, bool pBlocking, bool pChasing, NavMeshAgent pAgent, float pSpeed, Transform pTarget, Vector3 pDirection)
+    public void SetAnimation(string pName, bool pBlocking, bool pChasing, NavMeshAgent pAgent, float pSpeed)
     {
         if (isBlocked == false)
         {
@@ -39,9 +39,6 @@ public class AnimationHandler : MonoBehaviour
                 _anim.Play(pName);
             }
         }
-
-        if (pChasing) transform.LookAt(pTarget, pDirection);
-        else transform.LookAt(transform, transform.forward);
     }
 
     IEnumerator BlockingAnimCo(string pAnim, NavMeshAgent pAgent)
