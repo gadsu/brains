@@ -105,58 +105,17 @@ public class EnemyBase : AEnemy
             Enemy_Awareness = AwarenessLevel.Aware;
         } // End of _touched
 
-        switch (Enemy_Detection)
+        if (mDetecting.detectionAmount > 70f)
         {
-            case DetectionLevel.Pursuing:
-                if (mDetecting.detectionAmount > 50f)
-                {
-                    GameObject.Find("PersistentStateController")
-                        .GetComponent<PersistentStateController>().AddEnemyToList(gameObject);
-
-                    _chasing = true;
-
-                    if (_agent.remainingDistance < rangeToAttack)
-                    {
-                        _animationToPlay = animationGenerics["Attack"];
-                        _blockAnimation = true;
-                    } // End of Attack check
-
-                    knownLocation = _target.transform.position;
-                }
-                break; // End of Pursuing case
-            case DetectionLevel.Detecting:
-                break; // End of Detecting case
-            case DetectionLevel.Searching:
-                _chasing = false;
-
-                if (_agent.remainingDistance < 1f)
-                {
-                    knownLocation = null;
-                    Enemy_Awareness = AwarenessLevel.Losing;
-                } // End of knownLocation check
-                
-                break; // End of Searching case
-            case DetectionLevel.Losing:
-                Enemy_Awareness = AwarenessLevel.Unaware;
-                GameObject.Find("PersistentStateController")
-                    .GetComponent<PersistentStateController>().RemoveEnemyFromList(gameObject);
-                break; // End of Losing case
-            case DetectionLevel.Unseen:
-                break; // End of Unseen case
-            default:
-                break; // End of default case
-        } // End of switch(Enemy_Detection)
+            Enemy_Detection = DetectionLevel.Pursuing;
+        }
 
         switch (Enemy_Awareness)
         {
             case AwarenessLevel.Aware:
-                Enemy_Detection = DetectionLevel.Pursuing;
-                if (!_surpised)
+                if (mDetecting.detectionAmount > 50f)
                 {
-                    _surpised = true;
-                    _animationToPlay = animationGenerics["Surprise"];
-                    enemySounds.Play("Detect");
-                    _blockAnimation = true;
+                    knownLocation = Vector3.MoveTowards(transform.position, _target.transform.position, 3f);
                 } // End of Surprised check
 
                 //knownLocation = _target.transform.position;
@@ -170,6 +129,56 @@ public class EnemyBase : AEnemy
             default:
                 break; // End of default case
         } // End of switch(Enemy_Awareness)
+
+
+        switch (Enemy_Detection)
+        {
+            case DetectionLevel.Pursuing:
+                if (mDetecting.detectionAmount > 70f)
+                {
+                    GameObject.Find("PersistentStateController")
+                        .GetComponent<PersistentStateController>().AddEnemyToList(gameObject);
+
+                    _chasing = true;
+
+                    if (Mathf.Abs(Vector3.Distance(transform.position, _target.position)) < rangeToAttack)
+                    {
+                        _animationToPlay = animationGenerics["Attack"];
+                        _blockAnimation = true;
+                    } // End of Attack check
+
+                    if (!_surpised)
+                    {
+                            _surpised = true;
+                            _animationToPlay = animationGenerics["Surprise"];
+                            enemySounds.Play("Detect");
+                            _blockAnimation = true;
+                    } // End of !_surprised
+                    
+                    knownLocation = _target.transform.position;
+                }
+                break; // End of Pursuing case
+            case DetectionLevel.Detecting:
+                break; // End of Detecting case
+            case DetectionLevel.Searching:
+                _chasing = false;
+                if (_agent.remainingDistance < 1f)
+                {
+                    knownLocation = null;
+                    Enemy_Awareness = AwarenessLevel.Losing;
+                } // End of knownLocation check
+
+                break; // End of Searching case
+            case DetectionLevel.Losing:
+                Enemy_Awareness = AwarenessLevel.Unaware;
+                GameObject.Find("PersistentStateController")
+                    .GetComponent<PersistentStateController>().RemoveEnemyFromList(gameObject);
+                break; // End of Losing case
+            case DetectionLevel.Unseen:
+                break; // End of Unseen case
+            default:
+                break; // End of default case
+        } // End of switch(Enemy_Detection)
 
 
         if (_chasing)

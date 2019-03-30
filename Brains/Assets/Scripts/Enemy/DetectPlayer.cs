@@ -85,13 +85,6 @@ public class DetectPlayer : MonoBehaviour
 
     public void UpdatingDetectionAmount(int p_sight, int p_hear, Transform p_player, int p_detection, int p_awareness)
     {
-        if (!isVisible)
-            detectionAmount -= .1f;
-        else
-            detectionAmount += p_player.GetComponent<StealthHandler>().Stealth_val;
-        //detectionAmount += (p_detection - 3 + p_awareness - _s + p_sight - 1.5f) * .025f;
-
-
         if (detectionAmount > 100f)
         {
             detectionAmount = 100f;
@@ -103,6 +96,12 @@ public class DetectPlayer : MonoBehaviour
             detectionAmount = 0f;
             Debug.Log("Lost");
         }
+
+        if (!isVisible)
+            detectionAmount -= .1f;
+        else
+            detectionAmount += p_player.GetComponent<StealthHandler>().Stealth_val + p_sight * 2f + .5f;
+        //detectionAmount += (p_detection - 3 + p_awareness - _s + p_sight - 1.5f) * .025f;
 
         //Debug.Log("<color=orange>" + detectionAmount + "</color>");
     }
