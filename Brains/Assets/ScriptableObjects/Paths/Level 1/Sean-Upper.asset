@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: Sean-Upper
   m_EditorClassIdentifier: 
   pathPoints:
+  - beviourAtPoint: 1
+    location: {x: 89.534164, y: 4.2714834, z: -96.07103}
+    idleTime: 3
   - beviourAtPoint: 2
-    location: {x: 92.31293, y: 4.2714834, z: -109.17588}
-    idleTime: 0
-  - beviourAtPoint: 2
-    location: {x: 81.49999, y: 4.4877434, z: -89.7182}
+    location: {x: 81.49999, y: 4.4877434, z: -93.52901}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: 79.7592, y: 3.9780464, z: -106.84681}
