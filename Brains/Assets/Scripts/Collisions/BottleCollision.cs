@@ -6,6 +6,7 @@ public class BottleCollision : MonoBehaviour
 {
     // Holds the reference for the object sounds.
     public ObjectSounds sounds;
+    public float dtAmount = 0f;
 
     private void Awake()
     { 
@@ -22,12 +23,12 @@ public class BottleCollision : MonoBehaviour
             // if there is a rigidbody associate with this gameObject.
             if (GetComponent<Rigidbody>() != null)
             {
-                Debug.Log("Rigidbody");
+                //Debug.Log("Rigidbody");
                 GetComponent<Rigidbody>().
                     AddForce(collision.collider.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
 
-                Debug.Log(collision.collider.GetComponent<Rigidbody>().velocity);
-                Debug.Log("<color=red>" + GetComponent<Rigidbody>().velocity + "</color>");
+                //Debug.Log(collision.collider.GetComponent<Rigidbody>().velocity);
+                //Debug.Log("<color=red>" + GetComponent<Rigidbody>().velocity + "</color>");
 
                 if (sounds.objectSounds.Capacity > 0)
                     sounds.Play(sounds.objectSounds[Random.Range(0, sounds.objectSounds.Capacity - 1)]);
@@ -36,9 +37,9 @@ public class BottleCollision : MonoBehaviour
                 {
                     GetComponent<EnemiesInRange>().
                         enemies[i].GetComponent<DetectPlayer>().
-                        UpdatingDetectionAmountFromSound((1f / Vector3.
+                        UpdatingDetectionAmountFromSound(20f / Vector3.
                         Distance(GetComponent<EnemiesInRange>().enemies[i].transform.position,
-                        gameObject.transform.position)));
+                        gameObject.transform.position) + dtAmount);
                 }
             }
         }

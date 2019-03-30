@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Victory : MonoBehaviour
 {
@@ -11,12 +9,8 @@ public class Victory : MonoBehaviour
     {
         _gameState = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (!_gameState.gameOver)
-        {
-            //Debug.Log("Victory");
-            _gameState.SetState(GameStateHandler.GameState.Won);
-        }
+        _gameState.SetState(GameStateHandler.GameState.Won);
     }
 }
