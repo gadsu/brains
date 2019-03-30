@@ -96,7 +96,7 @@ public class Player : ACharacter
 				break; // End of Won case
 				
 			case GameStateHandler.GameState.InPlay:
-				if(Input.GetButtonDown("Dead") && (playDead == 0 || _deadDeltaTime > minimumPlayDeadTime)) // Put a delay on exiting playdead.
+				if(Input.GetButtonDown("Dead") && (_deadDeltaTime > minimumPlayDeadTime)) // Put a delay on exiting playdead.
                 {
                     _deadDeltaTime = 0;
                     GetComponent<Animator>().enabled = !GetComponent<Animator>().enabled;
@@ -113,8 +113,7 @@ public class Player : ACharacter
                             cJ.GetComponent<Rigidbody>().drag = 0f;
 						}
 					} // End of playDead == 0
-                    else
-                        spudSounds.Play("PlayDead");
+                    else spudSounds.Play("PlayDead");
                 }
 				
 				if(playDead == 0)
