@@ -11,6 +11,24 @@ ModelImporter:
     100010: S_CarCrunchedFront_RightAxle
     100012: S_CarCrunchedFront_RightWheel
     100014: S_CarCrunchedFront_Windows
+    100016: S_CarCrunchedFront_Interior_LOD0
+    100018: S_CarCrunchedFront_Interior_LOD1
+    100020: S_CarCrunchedFront_Interior_LOD2
+    100022: S_CarCrunchedFront_LeftAxle_LOD0
+    100024: S_CarCrunchedFront_LeftAxle_LOD1
+    100026: S_CarCrunchedFront_LeftAxle_LOD2
+    100028: S_CarCrunchedFront_LeftWheel_LOD0
+    100030: S_CarCrunchedFront_LeftWheel_LOD1
+    100032: S_CarCrunchedFront_LeftWheel_LOD2
+    100034: S_CarCrunchedFront_RightAxle_LOD0
+    100036: S_CarCrunchedFront_RightAxle_LOD1
+    100038: S_CarCrunchedFront_RightAxle_LOD2
+    100040: S_CarCrunchedFront_RightWheel_LOD0
+    100042: S_CarCrunchedFront_RightWheel_LOD1
+    100044: S_CarCrunchedFront_RightWheel_LOD2
+    100046: S_CarCrunchedFront_Windows_LOD0
+    100048: S_CarCrunchedFront_Windows_LOD1
+    100050: S_CarCrunchedFront_Windows_LOD2
     400000: //RootNode
     400002: //RootNode
     400004: S_CarCrunchedFront_Interior
@@ -19,6 +37,24 @@ ModelImporter:
     400010: S_CarCrunchedFront_RightAxle
     400012: S_CarCrunchedFront_RightWheel
     400014: S_CarCrunchedFront_Windows
+    400016: S_CarCrunchedFront_Interior_LOD0
+    400018: S_CarCrunchedFront_Interior_LOD1
+    400020: S_CarCrunchedFront_Interior_LOD2
+    400022: S_CarCrunchedFront_LeftAxle_LOD0
+    400024: S_CarCrunchedFront_LeftAxle_LOD1
+    400026: S_CarCrunchedFront_LeftAxle_LOD2
+    400028: S_CarCrunchedFront_LeftWheel_LOD0
+    400030: S_CarCrunchedFront_LeftWheel_LOD1
+    400032: S_CarCrunchedFront_LeftWheel_LOD2
+    400034: S_CarCrunchedFront_RightAxle_LOD0
+    400036: S_CarCrunchedFront_RightAxle_LOD1
+    400038: S_CarCrunchedFront_RightAxle_LOD2
+    400040: S_CarCrunchedFront_RightWheel_LOD0
+    400042: S_CarCrunchedFront_RightWheel_LOD1
+    400044: S_CarCrunchedFront_RightWheel_LOD2
+    400046: S_CarCrunchedFront_Windows_LOD0
+    400048: S_CarCrunchedFront_Windows_LOD1
+    400050: S_CarCrunchedFront_Windows_LOD2
     2100000: None__lamppost
     2300000: //RootNode
     2300002: S_CarCrunchedFront_Interior
@@ -27,6 +63,24 @@ ModelImporter:
     2300008: S_CarCrunchedFront_RightAxle
     2300010: S_CarCrunchedFront_RightWheel
     2300012: S_CarCrunchedFront_Windows
+    2300014: S_CarCrunchedFront_Interior_LOD0
+    2300016: S_CarCrunchedFront_Interior_LOD1
+    2300018: S_CarCrunchedFront_Interior_LOD2
+    2300020: S_CarCrunchedFront_LeftAxle_LOD0
+    2300022: S_CarCrunchedFront_LeftAxle_LOD1
+    2300024: S_CarCrunchedFront_LeftAxle_LOD2
+    2300026: S_CarCrunchedFront_LeftWheel_LOD0
+    2300028: S_CarCrunchedFront_LeftWheel_LOD1
+    2300030: S_CarCrunchedFront_LeftWheel_LOD2
+    2300032: S_CarCrunchedFront_RightAxle_LOD0
+    2300034: S_CarCrunchedFront_RightAxle_LOD1
+    2300036: S_CarCrunchedFront_RightAxle_LOD2
+    2300038: S_CarCrunchedFront_RightWheel_LOD0
+    2300040: S_CarCrunchedFront_RightWheel_LOD1
+    2300042: S_CarCrunchedFront_RightWheel_LOD2
+    2300044: S_CarCrunchedFront_Windows_LOD0
+    2300046: S_CarCrunchedFront_Windows_LOD1
+    2300048: S_CarCrunchedFront_Windows_LOD2
     3300000: //RootNode
     3300002: S_CarCrunchedFront_Interior
     3300004: S_CarCrunchedFront_LeftAxle
@@ -34,6 +88,24 @@ ModelImporter:
     3300008: S_CarCrunchedFront_RightAxle
     3300010: S_CarCrunchedFront_RightWheel
     3300012: S_CarCrunchedFront_Windows
+    3300014: S_CarCrunchedFront_Interior_LOD0
+    3300016: S_CarCrunchedFront_Interior_LOD1
+    3300018: S_CarCrunchedFront_Interior_LOD2
+    3300020: S_CarCrunchedFront_LeftAxle_LOD0
+    3300022: S_CarCrunchedFront_LeftAxle_LOD1
+    3300024: S_CarCrunchedFront_LeftAxle_LOD2
+    3300026: S_CarCrunchedFront_LeftWheel_LOD0
+    3300028: S_CarCrunchedFront_LeftWheel_LOD1
+    3300030: S_CarCrunchedFront_LeftWheel_LOD2
+    3300032: S_CarCrunchedFront_RightAxle_LOD0
+    3300034: S_CarCrunchedFront_RightAxle_LOD1
+    3300036: S_CarCrunchedFront_RightAxle_LOD2
+    3300038: S_CarCrunchedFront_RightWheel_LOD0
+    3300040: S_CarCrunchedFront_RightWheel_LOD1
+    3300042: S_CarCrunchedFront_RightWheel_LOD2
+    3300044: S_CarCrunchedFront_Windows_LOD0
+    3300046: S_CarCrunchedFront_Windows_LOD1
+    3300048: S_CarCrunchedFront_Windows_LOD2
     4300000: Cylinder
     4300002: S_CarCrunchedFront_RightAxle
     4300004: S_CarCrunchedFront_LeftAxle
@@ -41,8 +113,27 @@ ModelImporter:
     4300008: S_CarCrunchedFront_Windows
     4300010: S_CarCrunchedFront_Interior
     4300012: S_CarCrunchedFront_LeftWheel
+    4300014: S_CarCrunchedFront_RightAxle_LOD2
+    4300016: S_CarCrunchedFront_LeftAxle_LOD2
+    4300018: S_CarCrunchedFront_RightWheel_LOD2
+    4300020: S_CarCrunchedFront_Windows_LOD2
+    4300022: S_CarCrunchedFront_Interior_LOD2
+    4300024: S_CarCrunchedFront_LeftWheel_LOD2
+    4300026: S_CarCrunchedFront_LeftWheel_LOD1
+    4300028: S_CarCrunchedFront_Interior_LOD1
+    4300030: S_CarCrunchedFront_Windows_LOD1
+    4300032: S_CarCrunchedFront_RightWheel_LOD1
+    4300034: S_CarCrunchedFront_LeftAxle_LOD1
+    4300036: S_CarCrunchedFront_RightAxle_LOD1
+    4300038: S_CarCrunchedFront_RightAxle_LOD0
+    4300040: S_CarCrunchedFront_LeftAxle_LOD0
+    4300042: S_CarCrunchedFront_RightWheel_LOD0
+    4300044: S_CarCrunchedFront_Windows_LOD0
+    4300046: S_CarCrunchedFront_Interior_LOD0
+    4300048: S_CarCrunchedFront_LeftWheel_LOD0
     7400000: Default Take
     9500000: //RootNode
+    20500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -74,7 +165,10 @@ ModelImporter:
     clipAnimations: []
     isReadable: 1
   meshes:
-    lODScreenPercentages: []
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.01
     globalScale: 1
     meshCompression: 0
     addColliders: 0
