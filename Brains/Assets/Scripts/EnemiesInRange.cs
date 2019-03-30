@@ -20,7 +20,7 @@ public class EnemiesInRange : MonoBehaviour
             case "Mac":
             case "Sea": enemies.Add(other.gameObject);
                 enemies.TrimExcess();
-                Debug.Log("<color=cyan>" + other.gameObject.name + "</color>");
+                //Debug.Log("<color=cyan>" + other.gameObject.name + "</color>");
                 break;
             default: break;
         }

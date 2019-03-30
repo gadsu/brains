@@ -188,11 +188,14 @@ public class EnemyBase : AEnemy
         else
         {
             transform.LookAt(transform, transform.forward);
-            if (knownLocation != null && knownLocation != _agent.destination)
+            if (knownLocation != null)
             {
-                _agent.SetDestination((Vector3)knownLocation);
-                _agent.destination = (Vector3)knownLocation;
-            } // End of 
+                if (knownLocation != _agent.destination)
+                {
+                    _agent.SetDestination((Vector3)knownLocation);
+                    _agent.destination = (Vector3)knownLocation;
+                }
+            } // End of knownLocation != null
             else
             {
                 Vector3 tempLocation = mPathing.UpdateDestination(_agent.remainingDistance);
@@ -213,8 +216,6 @@ public class EnemyBase : AEnemy
             throttle = 0;
         } // End of adjust Footstep sound check
 
-        Debug.Log("<color=red>" + Enemy_Awareness.ToString() + "</color>");
-        Debug.Log("<color=blue>" + Enemy_Detection.ToString() + "</color>");
     } // End of Update
 
     private void OnCollisionStay(Collision collision)
