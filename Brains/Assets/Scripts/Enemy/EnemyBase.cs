@@ -245,6 +245,8 @@ public class EnemyBase : AEnemy
     {
         attackFX.GetComponent<ParticleSystem>().Play();
         registerAttack = true;
+        // Camera tracks the enemy who killed spud.
+        GameObject.Find("GameStateController").GetComponent<GameStateHandler>().killer = gameObject;
     }
 
     public void EndAttackCheck()

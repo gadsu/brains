@@ -35,6 +35,8 @@ public class Player : ACharacter
     public GameObject limbToLookAt;
     private Vector3 _outOfDeadSnapPosition;
     public CapsuleCollider[] colliders;
+    private float _deadDeltaTime;
+    public float minimumPlayDeadTime = 0.5f;
 
     [HideInInspector]
     public int playDead;
@@ -82,7 +84,9 @@ public class Player : ACharacter
 		_moving = 0;
 		MvState = MovementState.Idling;
 		_outOfDeadSnapPosition = limbToLookAt.transform.position;
-		switch(_gameState.currentState)
+        _deadDeltaTime += Time.deltaTime;
+
+        switch (_gameState.currentState)
 		{
 			case GameStateHandler.GameState.Lost:
 				playDead = 1;
@@ -92,8 +96,9 @@ public class Player : ACharacter
 				break; // End of Won case
 				
 			case GameStateHandler.GameState.InPlay:
-				if(Input.GetButtonDown("Dead"))
-				{
+				if(Input.GetButtonDown("Dead") && (playDead == 0 || _deadDeltaTime > minimumPlayDeadTime)) // Put a delay on exiting playdead.
+                {
+                    _deadDeltaTime = 0;
                     GetComponent<Animator>().enabled = !GetComponent<Animator>().enabled;
 					playDead = Convert.ToInt32(!GetComponent<Animator>().enabled);
 					
@@ -136,8 +141,8 @@ public class Player : ACharacter
 					{ // Sets standards for when crawling stops.
                         spudSounds.Play("Uncrawl");
                         colliders[0].enabled = true;
-						colliders[1].enabled = false;
-					}
+                        colliders[1].enabled = false;
+                    }
 				} // End of playDead == 0
 				
 				_scriptPMove.SetSpeed((int)MvState)

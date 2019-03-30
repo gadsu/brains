@@ -38,6 +38,8 @@ public class GameStateHandler : MonoBehaviour
     /////////////////////////
 
     private int lastState = -1337;
+    [HideInInspector]
+    public GameObject killer;
 
     private void Awake()
     {
@@ -48,6 +50,7 @@ public class GameStateHandler : MonoBehaviour
         eventSounds.InitSounds(gameObject, GetComponent<AudioSource>());
         gameOverTint.SetActive(false);
         gameWonTint.SetActive(false);
+
 
         psc = GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>();
         psc.Restart();
@@ -61,9 +64,9 @@ public class GameStateHandler : MonoBehaviour
             switch (pState)
             {
                 case GameState.InPlay:
+                    cameraContainer.GetComponent<CameraOperator>().doDisableControls = false;
                     pauseMenu.SetActive(false);
                     pauseMenuContainer.SetActive(false);
-                    cameraContainer.GetComponent<CameraOperator>().doCinematicMode = false;
                     bigText.Show(false);
                     uiPeriphery.SetActive(true);
                     groanMeter.SetActive(true);
@@ -74,6 +77,7 @@ public class GameStateHandler : MonoBehaviour
 
                 case GameState.Won:
                     gameOver = true;
+                    cameraContainer.GetComponent<CameraOperator>().doDisableControls = true;
 
                     bigText.Show(true);
                     bigText.Set(winLines[Random.Range(0, winLines.Length)], winColor);
@@ -90,6 +94,9 @@ public class GameStateHandler : MonoBehaviour
 
 
                 case GameState.Lost:
+                    cameraContainer.GetComponent<CameraOperator>()._doTrackObject = true;
+                    cameraContainer.GetComponent<CameraOperator>().lookTarget = killer;
+                    cameraContainer.GetComponent<CameraOperator>().doDisableControls = true;
                     GameObject.Find("Spud").GetComponent<Player>().playDead = 1;
                     gameOver = true;
 
@@ -108,9 +115,9 @@ public class GameStateHandler : MonoBehaviour
 
 
                 case GameState.Paused:
+                    cameraContainer.GetComponent<CameraOperator>().doDisableControls = true;
                     pauseMenu.SetActive(true);
                     pauseMenuContainer.SetActive(true);
-                    cameraContainer.GetComponent<CameraOperator>().doCinematicMode = true;
                     bigText.Show(false);
                     uiPeriphery.SetActive(false);
                     groanMeter.SetActive(false);
