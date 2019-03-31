@@ -9,7 +9,6 @@ public class AttackHitting : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit");
         if (other.CompareTag("Player") && (tah.registerAttack || isTrain) && other.transform.name == "Spud")
         {
             if(isTrain)

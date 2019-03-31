@@ -104,7 +104,8 @@ public class Player : ACharacter
 					
 					if(playDead == 0)
 					{ // Is set here because it only happens when exiting the playDead state.
-						transform.position = _outOfDeadSnapPosition;
+                        colliders[0].enabled = true;
+                        transform.position = _outOfDeadSnapPosition;
 						_rbody.isKinematic = false;
                         
                         foreach (CharacterJoint cJ in GetComponentsInChildren<CharacterJoint>())
@@ -118,6 +119,7 @@ public class Player : ACharacter
 				
 				if(playDead == 0)
 				{ // Sets InPlay standards when not playing dead.
+
 					_scriptPMove.SetDirection();
 
 					if(_scriptPMove.playerDirection != Vector3.zero)
@@ -135,6 +137,11 @@ public class Player : ACharacter
                     }
                     else if(Input.GetButton("Crawl") || mustCrawl)
                     { // Keeps crawl state persistent.
+                        if (colliders[0].enabled)
+                        {
+                            colliders[1].enabled = true;
+                            colliders[0].enabled = false;
+                        }
                         MvState = MovementState.Crawling;
 					}else if(Input.GetButtonUp("Crawl"))
 					{ // Sets standards for when crawling stops.
@@ -161,6 +168,11 @@ public class Player : ACharacter
 
 		if (playDead == 1)
 		{
+            if (colliders[0].enabled || colliders[1].enabled)
+            {
+                colliders[0].enabled = false;
+                colliders[1].enabled = false;
+            }
 			_rbody.velocity = Vector3.zero;
 			GetComponent<Animator>().enabled = false;
 			_rbody.isKinematic = true;
@@ -182,16 +194,14 @@ public class Player : ACharacter
         {
             case GameStateHandler.GameState.InPlay:
                 if (transform.position.y < -10 || transform.position.y > 150)
-                {
                     transform.position = _spawn;
-                }
 
                 _scriptPMove.Move(_rbody);
                 _scriptStealthHandler.UpdateStealthState(playDead, (int)MvState);
-                _scriptGroanHandler.SetGroanSpeed((int)MvState, _scriptPMove.MoveSpeed);
+                _scriptGroanHandler.SetGroanSpeed((int)MvState, playDead);
                 break; // End of InPlay case
             default:
-                _scriptGroanHandler.SetGroanSpeed((int)MovementState.Idling, 0);
+                _scriptGroanHandler.SetGroanSpeed((int)MovementState.Idling, 1f);
                 _rbody.velocity = Vector3.zero;
                 break; // End of default case
 

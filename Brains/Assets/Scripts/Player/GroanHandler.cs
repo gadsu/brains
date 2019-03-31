@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GroanHandler : MonoBehaviour {
     private float _currentAmount, _groanSpeed;
-    private readonly float _groanRate = .02f;
+    private readonly float _groanRate = 7f;
     private Vector3 _groanTransformScale;
 
     public GameObject groanMeter;
@@ -30,9 +30,17 @@ public class GroanHandler : MonoBehaviour {
         /*****************************************/
     }
 
-    public void SetGroanSpeed(int mvState, float mvSpeed)
+    public void SetGroanSpeed(int mvState, float playDead)
     {
-        _groanSpeed = _groanRate + (.5f * _groanRate)*(mvSpeed * Mathf.Log(mvState + 1)); // manipulates the groan speed by the movement state and speed.
+        if (playDead != 1f)
+        {
+            _groanSpeed = 1 / ((1f - playDead) * (Mathf.Abs(mvState - 5f) + _groanRate)); // manipulates the groan speed by the movement state and speed.
+
+            if(mvState == 0)
+                _groanSpeed = 1 / ((1f - playDead) * (Mathf.Abs(mvState - 15f) + _groanRate));
+        }
+        else
+            _groanSpeed = 0f;
     }
 
     public bool UpdateGroanAmount()
@@ -69,13 +77,6 @@ public class GroanHandler : MonoBehaviour {
 
         /* Iterates across the length of the groan. */
         yield return new WaitForSeconds(GetComponent<Player>().spudSounds.GetSound("Groan").clip.length);
-        //do
-        //{
-        //    x++;
-        //    //Debug.Log("Groan!");
-        //    yield return new WaitForSeconds(.2f);
-        //} while (x < 5);
-        /********************************************/
 
         groaning = false; // closes out the groan state by ending the groaning.
     }
