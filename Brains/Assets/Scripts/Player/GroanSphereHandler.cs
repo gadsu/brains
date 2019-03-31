@@ -11,7 +11,7 @@ public class GroanSphereHandler : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") && other.name != "ZTRAIN" && other.name != "FrustrumPyramid" && other.name != "TRAIN")
         {
             if (!_groanInfo.groaning)
                 other.GetComponent<DetectPlayer>().NotHearing();
@@ -25,7 +25,7 @@ public class GroanSphereHandler : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") && other.name != "ZTRAIN" && other.name != "FrustrumPyramid" && other.name != "TRAIN")
         {
             other.GetComponent<DetectPlayer>().NotHearing();
         }
