@@ -70,9 +70,8 @@ public class DetectPlayer : MonoBehaviour
         /*** Update ray dependant positions ***/
         _ray.origin = tempCamera.transform.position;
         _targetPosition = targetTransform.position;
-        _ray.direction = _targetPosition - _ray.origin;
+        _ray.direction = (_targetPosition - _ray.origin) * Vector3.Distance(targetTransform.position, transform.position);
         /**************************************/
-
     } // End of UpdateRayToPlayer(1 Vector3, 1 int)
 
     public bool IsVisible(Vector3 p_targetPosition)
@@ -93,7 +92,7 @@ public class DetectPlayer : MonoBehaviour
         } // End of detectionAmount < 0f
         else if (detectionAmount > 100f)
         {
-            detectionAmount = 100;
+            detectionAmount = 100f;
         } // End of detectionAmount > 100f
 
         if (!isVisible)
@@ -104,6 +103,8 @@ public class DetectPlayer : MonoBehaviour
                 (p_sight + .5f) *
                 (1f/2f)*p_player.GetComponent<StealthHandler>().Stealth_val;
         // End of isVisible
+
+
     } // End of UpdatingDetectionAmount(4 int, 1 Transform)
 
     public void NotHearing()

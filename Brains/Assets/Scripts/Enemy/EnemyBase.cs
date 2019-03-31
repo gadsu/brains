@@ -108,7 +108,10 @@ public class EnemyBase : AEnemy
             Enemy_Awareness = AwarenessLevel.Aware;
         } // End of _touched
 
-
+        if (mDetecting.detectionAmount > 70f)
+        {
+            Enemy_Detection = DetectionLevel.Pursuing;
+        }
 
         switch (Enemy_Awareness)
         {
