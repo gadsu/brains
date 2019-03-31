@@ -49,7 +49,7 @@ MonoBehaviour:
     oneShot: 1
     source: {fileID: 0}
   - name: PlayDead
-    clip: {fileID: 8300000, guid: 4de6cf4aeba0832418936c1499a51fca, type: 3}
+    clip: {fileID: 8300000, guid: 36c9d38b601b8484fb3b30fd935ae942, type: 3}
     volume: 0.467
     pitch: 1
     defaultVolume: 0.438
