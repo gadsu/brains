@@ -19,7 +19,6 @@ public class GroanSphereHandler : MonoBehaviour
             {
                 other.GetComponent<DetectPlayer>().UpdatingDetectionAmountFromSound(15f);
             }
-
         }            
     }
 

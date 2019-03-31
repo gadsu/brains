@@ -41,12 +41,9 @@ public class DetectPlayer : MonoBehaviour
         if (!hearing)
         {
             detectionAmount +=
-                gameObject.GetComponent<EnemyBase>().mHearValue *
+                gameObject.GetComponent<EnemyBase>().mHearValue +
                 (objectHearability / 3f) +
                 objectHearability;
-
-            if (detectionAmount > 15f)
-                GetComponent<EnemyBase>().knownLocation = GameObject.Find("Spud").transform.position;
         }
 
         hearing = true;
@@ -77,7 +74,7 @@ public class DetectPlayer : MonoBehaviour
     public bool IsVisible(Vector3 p_targetPosition)
     {
         if (Physics.Raycast(_ray, out _out, tempCamera.farClipPlane))
-            if (_out.transform.CompareTag("Player")) isVisible = true;
+            if (_out.transform.GetComponentInParent<Player>() != null) isVisible = true;
             // End of CompareTag("Player")
         // End of Raycast
 
@@ -94,16 +91,22 @@ public class DetectPlayer : MonoBehaviour
         {
             detectionAmount = 100f;
         } // End of detectionAmount > 100f
-
-        if (!isVisible)
-            detectionAmount -= .1f;
-        // End of !isVisible
         else
-            detectionAmount += p_player.GetComponent<StealthHandler>().Stealth_val + 
-                (p_sight + .5f) *
-                (1f/2f)*p_player.GetComponent<StealthHandler>().Stealth_val;
-        // End of isVisible
+        {
+            if (!isVisible)
+                detectionAmount -= .1f;
+            // End of !isVisible
+            else
+                detectionAmount += p_player.GetComponent<StealthHandler>().Stealth_val +
+                    (p_sight + 1f) *
+                    (1f / 2f) * p_player.GetComponent<StealthHandler>().Stealth_val;
+            // End of isVisible
 
+            if (detectionAmount > 15f && hearing)
+                GetComponent<EnemyBase>().knownLocation = GameObject.Find("Spud").transform.position;
+
+            Debug.Log(detectionAmount);
+        } // End of 0 < detectionAmount < 100.0...1
 
     } // End of UpdatingDetectionAmount(4 int, 1 Transform)
 

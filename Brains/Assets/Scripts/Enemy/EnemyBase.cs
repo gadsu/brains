@@ -14,8 +14,7 @@ public class EnemyBase : AEnemy
     public float moveSpeedStart = 3f;
 
     private string _animationToPlay = "";
-    private bool _surpised = false, _touched = false, _blockAnimation = false;
-    public bool _chasing;
+    private bool _surpised = false, _touched = false, _blockAnimation = false, _interrupted;
     private float _lastTouchedTime = 0f;
 
     public Vector3? knownLocation;
@@ -40,7 +39,6 @@ public class EnemyBase : AEnemy
     {
         mPathing = GetComponent<PathTo>();
         mDetecting = GetComponent<DetectPlayer>();
-        _chasing = false;
 
         
         _agent = GetComponent<NavMeshAgent>();
@@ -116,7 +114,7 @@ public class EnemyBase : AEnemy
         switch (Enemy_Awareness)
         {
             case AwarenessLevel.Aware:
-                if (mDetecting.detectionAmount > 30f && knownLocation == null)
+                if (mDetecting.detectionAmount > 30f && knownLocation == null && mDetecting.detectionAmount < 70f)
                 {
                     knownLocation = Vector3.MoveTowards(transform.position, _target.transform.position, 3f);
                 } // End of Surprised check
@@ -137,34 +135,44 @@ public class EnemyBase : AEnemy
         switch (Enemy_Detection)
         {
             case DetectionLevel.Pursuing:
-                if (mDetecting.detectionAmount > 70f)
+                GameObject.Find("PersistentStateController")
+                    .GetComponent<PersistentStateController>().AddEnemyToList(gameObject);
+
+                transform.LookAt(_target, Vector3.up);
+                _interrupted = true;
+
+                if (Mathf.Abs(Vector3.Distance(transform.position, _target.position)) < rangeToAttack)
                 {
-                    GameObject.Find("PersistentStateController")
-                        .GetComponent<PersistentStateController>().AddEnemyToList(gameObject);
+                    _animationToPlay = animationGenerics["Attack"];
+                    _blockAnimation = true;
+                } // End of Attack check
 
-                    _chasing = true;
+                if (!_surpised)
+                {
+                        _surpised = true;
+                        _animationToPlay = animationGenerics["Surprise"];
+                        enemySounds.Play("Detect");
+                    _blockAnimation = true;
+                } // End of !_surprised
 
-                    if (Mathf.Abs(Vector3.Distance(transform.position, _target.position)) < rangeToAttack)
+                if (_animationToPlay != animationGenerics["Attack"] || _animationToPlay != animationGenerics["Surprise"])
+                {
+                    if (_agent.destination != _target.position)
                     {
-                        _animationToPlay = animationGenerics["Attack"];
-                        _blockAnimation = true;
-                    } // End of Attack check
+                        _agent.SetDestination(_target.position);
+                        _agent.destination = _target.position;
+                    } // End of if we are not already at the player location.
+                } // End of if animation doesn't block movement
+                else
+                {
+                    _agent.isStopped = true;
+                } // End of if animation does block movement
 
-                    if (!_surpised)
-                    {
-                            _surpised = true;
-                            _animationToPlay = animationGenerics["Surprise"];
-                            enemySounds.Play("Detect");
-                            _blockAnimation = true;
-                    } // End of !_surprised
-                    
-                    knownLocation = _target.transform.position;
-                }
+                knownLocation = _target.transform.position;
                 break; // End of Pursuing case
             case DetectionLevel.Detecting:
                 break; // End of Detecting case
             case DetectionLevel.Searching:
-                _chasing = false;
                 if (_agent.remainingDistance < 1f)
                 {
                     knownLocation = null;
@@ -183,24 +191,7 @@ public class EnemyBase : AEnemy
                 break; // End of default case
         } // End of switch(Enemy_Detection)
 
-
-        if (_chasing)
-        {
-            transform.LookAt(_target, Vector3.up);
-            if (_animationToPlay != animationGenerics["Attack"] || _animationToPlay != animationGenerics["Surprise"])
-            {
-                if (_agent.destination != _target.position)
-                {
-                    _agent.SetDestination(_target.position);
-                    _agent.destination = _target.position;
-                } // End of if we are not already at the player location.
-            } // End of if animation doesn't block movement
-            else
-            {
-                _agent.isStopped = true;
-            } // End of if animation does block movement
-        } // End of _chasing
-        else
+        if(Enemy_Detection != DetectionLevel.Pursuing)
         {
             transform.LookAt(transform, transform.forward);
             if (knownLocation != null)
@@ -215,13 +206,14 @@ public class EnemyBase : AEnemy
             {
                 Vector3 tempLocation = mPathing.UpdateDestination(_agent.destination, _agent.remainingDistance);
 
-                if (_agent.destination != tempLocation)
+                if (_interrupted || _agent.destination != tempLocation)
                 {
                     _agent.SetDestination(tempLocation);
                     _agent.destination = tempLocation;
+                    _interrupted = false;
                 } // End of _agent.destination != tempLocation
             } // End of knownLocation == null
-        } // End of !_chasing
+        } // End of !DetectionLevel.Pursuing
 
         throttle++;
 
@@ -245,9 +237,9 @@ public class EnemyBase : AEnemy
 
     private void LateUpdate()
     {
-        /*** Animation infomration ***/
+        /*** Animation information ***/
         _animHandler.
-            SetAnimation(_animationToPlay, _blockAnimation, _chasing, _agent, moveSpeedStart);
+            SetAnimation(_animationToPlay, _blockAnimation, (int)Enemy_Detection, _agent, moveSpeedStart);
         _animHandler.
             SetAnimationSpeed(_agent.velocity.magnitude);
         /*****************************/

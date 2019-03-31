@@ -23,11 +23,11 @@ public class AnimationHandler : MonoBehaviour
         _anim.SetFloat("Velocity", p_speed);
     }
 
-    public void SetAnimation(string pName, bool pBlocking, bool pChasing, NavMeshAgent pAgent, float pSpeed)
+    public void SetAnimation(string pName, bool pBlocking, int detectionState, NavMeshAgent pAgent, float pSpeed)
     {
         if (isBlocked == false)
         {
-            pAgent.speed = (pChasing) ? pSpeed * 2f : pSpeed;
+            pAgent.speed = (detectionState == 4) ? pSpeed * 2f : pSpeed;
 
             if (pBlocking)
             {
