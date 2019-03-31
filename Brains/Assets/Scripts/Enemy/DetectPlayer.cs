@@ -63,78 +63,51 @@ public class DetectPlayer : MonoBehaviour
         isVisible = false;
 
         return inView;
-    }
+    } // End of IsInView(1 Vector3)
 
     public void UpdateRayToPlayer(Vector3 p_targetPosition, int pPlayDead)
     {
+        /*** Update ray dependant positions ***/
         _ray.origin = tempCamera.transform.position;
         _targetPosition = targetTransform.position;
-
-        //Vector3 temp = new Vector3()
-        //{
-        //    x = _targetPosition.x,
-        //    y = _targetPosition.y +
-        //        Vector3.SignedAngle(eyes.transform.position, _targetPosition, transform.forward),
-        //    z = _targetPosition.z
-        //};
-        //_ray.origin = tempCamera.transform.position;
-        //_targetPosition = targetTransform.position;
-        //_targetPosition.x = _targetPosition.x - _ray.origin.x;
-        //_targetPosition.y = (_targetPosition.y - _ray.origin.y);
-        //_targetPosition.z -= _ray.origin.z;
-
         _ray.direction = _targetPosition - _ray.origin;
-        Debug.DrawRay(_ray.origin, _ray.direction * 10f, Color.cyan);
-    }
+        /**************************************/
+
+    } // End of UpdateRayToPlayer(1 Vector3, 1 int)
 
     public bool IsVisible(Vector3 p_targetPosition)
     {
         if (Physics.Raycast(_ray, out _out, tempCamera.farClipPlane))
             if (_out.transform.CompareTag("Player")) isVisible = true;
+            // End of CompareTag("Player")
+        // End of Raycast
 
         return isVisible;
-    }
+    } // End of IsVisible(1 Vector3)
 
     public void UpdatingDetectionAmount(int p_sight, int p_hear, Transform p_player, int p_detection, int p_awareness)
     {
-        if (detectionAmount > 100f)
-        {
-            detectionAmount = 100f;
-            Debug.Log("Detected");
-        }
-
         if (detectionAmount < 0f)
         {
             detectionAmount = 0f;
-            //Debug.Log("Lost");
-        }
+        } // End of detectionAmount < 0f
+        else if (detectionAmount > 100f)
+        {
+            detectionAmount = 100;
+        } // End of detectionAmount > 100f
 
         if (!isVisible)
             detectionAmount -= .1f;
+        // End of !isVisible
         else
-            detectionAmount += p_player.GetComponent<StealthHandler>().Stealth_val + p_sight + .5f;
-        //detectionAmount += (p_detection - 3 + p_awareness - _s + p_sight - 1.5f) * .025f;
-
-        //Debug.Log("<color=orange>" + detectionAmount + "</color>");
-    }
+            detectionAmount += p_player.GetComponent<StealthHandler>().Stealth_val + 
+                (p_sight + .5f) *
+                (1f/2f)*p_player.GetComponent<StealthHandler>().Stealth_val;
+        // End of isVisible
+    } // End of UpdatingDetectionAmount(4 int, 1 Transform)
 
     public void NotHearing()
     {
         hearing = false;
     }
 }
-
-//_ray.origin = tempCamera.transform.position;
-//_targetPosition = p_targetPosition;
-//_targetPosition.x = _targetPosition.x - _ray.origin.x;
-//if (pPlayDead == 0)
-//    _targetPosition.y = (_targetPosition.y - _ray.origin.y) + (.5f * playerSizeY);
-//else
-//    _targetPosition.y = (_targetPosition.y - _ray.origin.y) - (playerSizeY) + .2f;
-//_targetPosition.z -= _ray.origin.z;
-
-//_ray.direction = Vector3.RotateTowards(_ray.origin, _targetPosition, Mathf.Infinity, Mathf.Infinity);
-
-//_ray.origin = tempCamera.transform.position;
-//_ray.direction = Vector3.RotateTowards(
-//    _ray.origin, tempCamera.transform.forward* Vector3.Angle(tempCamera.transform.position, targetTransform.position), Mathf.Infinity, Mathf.Infinity);

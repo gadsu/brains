@@ -108,15 +108,12 @@ public class EnemyBase : AEnemy
             Enemy_Awareness = AwarenessLevel.Aware;
         } // End of _touched
 
-        if (mDetecting.detectionAmount > 70f)
-        {
-            Enemy_Detection = DetectionLevel.Pursuing;
-        }
+
 
         switch (Enemy_Awareness)
         {
             case AwarenessLevel.Aware:
-                if (mDetecting.detectionAmount > 50f)
+                if (mDetecting.detectionAmount > 30f && knownLocation == null)
                 {
                     knownLocation = Vector3.MoveTowards(transform.position, _target.transform.position, 3f);
                 } // End of Surprised check
@@ -219,8 +216,8 @@ public class EnemyBase : AEnemy
                 {
                     _agent.SetDestination(tempLocation);
                     _agent.destination = tempLocation;
-                }
-            }
+                } // End of _agent.destination != tempLocation
+            } // End of knownLocation == null
         } // End of !_chasing
 
         throttle++;
