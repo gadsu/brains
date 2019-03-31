@@ -66,12 +66,15 @@ public class EnemyBase : AEnemy
             attached.GetComponent<AttackHitting>().tah = GetComponent<EnemyBase>();
             attackFX = transform.Find("Attack FX");
             // Quick patch for Mac misplaced attack fx.
-            if(boneToAttachFXOverride != "")
+            if (attackFX)
             {
-                GameObject fxroot = transform.FindChildByRecursion(boneToAttachFXOverride).gameObject;
-                attackFX.SetParent(fxroot.transform);
+                if (boneToAttachFXOverride != "")
+                {
+                    GameObject fxroot = transform.FindChildByRecursion(boneToAttachFXOverride).gameObject;
+                    attackFX.SetParent(fxroot.transform);
+                }
+                else attackFX.SetParent(attached.transform);
             }
-            else attackFX.SetParent(attached.transform);
         }
         else throw new System.Exception("Attack hitbox bone not found.");
     }
