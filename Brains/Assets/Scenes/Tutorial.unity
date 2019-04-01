@@ -5352,7 +5352,6 @@ GameObject:
   - component: {fileID: 303891338}
   - component: {fileID: 303891342}
   - component: {fileID: 303891341}
-  - component: {fileID: 303891340}
   - component: {fileID: 303891339}
   m_Layer: 11
   m_Name: asphalt
@@ -5386,20 +5385,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.000001, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!64 &303891340
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 303891337}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &303891341
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6423,7 +6408,6 @@ GameObject:
   - component: {fileID: 413764207}
   - component: {fileID: 413764210}
   - component: {fileID: 413764209}
-  - component: {fileID: 413764208}
   - component: {fileID: 413764211}
   m_Layer: 11
   m_Name: asphalt
@@ -6445,20 +6429,6 @@ Transform:
   m_Father: {fileID: 572980708}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &413764208
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 413764206}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &413764209
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7114,7 +7084,6 @@ GameObject:
   - component: {fileID: 464948018}
   - component: {fileID: 464948021}
   - component: {fileID: 464948020}
-  - component: {fileID: 464948019}
   - component: {fileID: 464948022}
   m_Layer: 11
   m_Name: asphalt
@@ -7136,20 +7105,6 @@ Transform:
   m_Father: {fileID: 572980708}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &464948019
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 464948017}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &464948020
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8819,8 +8774,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!64 &570457168
-MeshCollider:
+--- !u!65 &570457168
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -8828,11 +8783,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 2
+  m_Size: {x: 10, y: 2.220446e-16, z: 10.000001}
+  m_Center: {x: 0.00000011920929, y: 0, z: 0}
 --- !u!23 &570457169
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17203,7 +17156,6 @@ GameObject:
   - component: {fileID: 1074443052}
   - component: {fileID: 1074443055}
   - component: {fileID: 1074443054}
-  - component: {fileID: 1074443053}
   - component: {fileID: 1074443056}
   m_Layer: 11
   m_Name: asphalt
@@ -17225,20 +17177,6 @@ Transform:
   m_Father: {fileID: 572980708}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1074443053
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1074443051}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1074443054
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28748,7 +28686,6 @@ GameObject:
   - component: {fileID: 1591253099}
   - component: {fileID: 1591253102}
   - component: {fileID: 1591253101}
-  - component: {fileID: 1591253100}
   - component: {fileID: 1591253103}
   m_Layer: 11
   m_Name: asphalt playable
@@ -28770,20 +28707,6 @@ Transform:
   m_Father: {fileID: 572980708}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1591253100
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1591253098}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1591253101
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28834,7 +28757,7 @@ BoxCollider:
   m_GameObject: {fileID: 1591253098}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000001, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: -0.000000029802322}
@@ -37082,7 +37005,6 @@ GameObject:
   - component: {fileID: 2129081253}
   - component: {fileID: 2129081256}
   - component: {fileID: 2129081255}
-  - component: {fileID: 2129081254}
   - component: {fileID: 2129081257}
   m_Layer: 11
   m_Name: asphalt
@@ -37104,20 +37026,6 @@ Transform:
   m_Father: {fileID: 572980708}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &2129081254
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2129081252}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &2129081255
 MeshRenderer:
   m_ObjectHideFlags: 0
