@@ -153,6 +153,7 @@ public class Player : ACharacter
 				
 				_scriptPMove.SetSpeed((int)MvState)
 					.RotatePlayer(playDead);
+
 				_scriptPDiction.SetAnimationSpeed((_rbody.velocity.magnitude / 1.4f + 0.1f) * Mathf.Sign(Input.GetAxis("Vertical")));
 				break; // End of InPlay case
 				
@@ -170,7 +171,7 @@ public class Player : ACharacter
 		{
             if (colliders[0].enabled || colliders[1].enabled)
             {
-                colliders[0].enabled = false;
+                colliders[0].enabled = true;
                 colliders[1].enabled = false;
             }
 			_rbody.velocity = Vector3.zero;
@@ -179,8 +180,11 @@ public class Player : ACharacter
 
 			foreach (CharacterJoint cJ in GetComponentsInChildren<CharacterJoint>())
 			{
-				cJ.enableProjection = true;
-                cJ.GetComponent<Rigidbody>().drag = 1f;
+                if (!cJ.enableProjection)
+                {
+                    cJ.enableProjection = true;
+                    cJ.GetComponent<Rigidbody>().drag = 1f;
+                }
             }
 
 			_scriptPDiction.SetAnimationSpeed((_rbody.velocity.magnitude / 1.4f + 0.1f) * Mathf.Sign(Input.GetAxis("Vertical")));

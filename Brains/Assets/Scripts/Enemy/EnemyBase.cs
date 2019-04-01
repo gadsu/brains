@@ -226,7 +226,7 @@ public class EnemyBase : AEnemy
 
     private void OnCollisionStay(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player") && collision.gameObject.GetComponent<Player>().playDead != 1f)
         {
             _lastTouchedTime = Time.time;
             _touched = true;
