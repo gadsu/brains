@@ -65,7 +65,6 @@ public class GameStateHandler : MonoBehaviour
             {
                 case GameState.InPlay:
                     cameraContainer.GetComponent<CameraOperator>().doDisableControls = false;
-                    pauseMenu.SetActive(false);
                     pauseMenuContainer.SetActive(false);
                     bigText.Show(false);
                     uiPeriphery.SetActive(true);
