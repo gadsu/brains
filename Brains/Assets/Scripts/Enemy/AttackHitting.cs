@@ -27,17 +27,18 @@ public class AttackHitting : MonoBehaviour
                 GameObject.Find("GameStateController").GetComponent<GameStateHandler>().killer = gameObject;
 
                 train.Play("Victory");
+                GameObject.Find("GameStateController").GetComponent<GameStateHandler>().SetState(GameStateHandler.GameState.Lost);
             }
 
-            if (tah != null)
+            if (tah != null && tah.registerAttack)
             {
                 tah.SoundEvent("Hit");
                 if (Random.value > 0.5f)
                 {
                     tah.SoundEvent("Victory");
                 }
+                GameObject.Find("GameStateController").GetComponent<GameStateHandler>().SetState(GameStateHandler.GameState.Lost);
             }
-            GameObject.Find("GameStateController").GetComponent<GameStateHandler>().SetState(GameStateHandler.GameState.Lost);
         }
     }
 }
