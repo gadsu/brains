@@ -41,6 +41,8 @@ public class GroanHandler : MonoBehaviour {
         }
         else
             _groanSpeed = 0f;
+
+        _groanSpeed *= .5f;
     }
 
     public bool UpdateGroanAmount()
