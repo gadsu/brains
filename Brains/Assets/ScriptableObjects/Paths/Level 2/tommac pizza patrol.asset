@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: tommac pizza patrol
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 2
+    location: {x: 31.099634, y: 30.494164, z: 305.66022}
+    idleTime: 4
+  - beviourAtPoint: 1
+    location: {x: 27.033546, y: 30.5, z: 301.50607}
+    idleTime: 5
+  - beviourAtPoint: 2
+    location: {x: 49.01042, y: 30.5, z: 286.26804}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 69.42533, y: 30.5, z: 306.95032}
+    idleTime: 0
+  - beviourAtPoint: 1
+    location: {x: 59.59534, y: 30.5, z: 322.7756}
+    idleTime: 2
+  - beviourAtPoint: 2
+    location: {x: 32.416008, y: 30.5, z: 344.97067}
+    idleTime: 0
+  - beviourAtPoint: 1
+    location: {x: 12.007198, y: 30.5, z: 322.2881}
+    idleTime: 2
