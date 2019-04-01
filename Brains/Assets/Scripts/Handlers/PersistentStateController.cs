@@ -56,6 +56,7 @@ public class PersistentStateController : MonoBehaviour {
         levelAttempts[activeLevel]+= 1;
 
         gstate = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
+
         if (!gstate) { throw new Exception("Could not find game state controller"); }
         eventSounds.InitSounds(gameObject, GetComponent<AudioSource>());
 

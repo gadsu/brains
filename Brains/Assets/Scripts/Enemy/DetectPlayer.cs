@@ -104,8 +104,6 @@ public class DetectPlayer : MonoBehaviour
 
             if (detectionAmount > 15f && hearing)
                 GetComponent<EnemyBase>().knownLocation = GameObject.Find("Spud").transform.position;
-
-            Debug.Log(detectionAmount);
         } // End of 0 < detectionAmount < 100.0...1
 
     } // End of UpdatingDetectionAmount(4 int, 1 Transform)

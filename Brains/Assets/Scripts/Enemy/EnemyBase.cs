@@ -145,6 +145,8 @@ public class EnemyBase : AEnemy
                 {
                     _animationToPlay = animationGenerics["Attack"];
                     _blockAnimation = true;
+                    _agent.isStopped = true;
+                    _agent.velocity = Vector3.zero;
                 } // End of Attack check
 
                 if (!_surpised)
@@ -153,6 +155,7 @@ public class EnemyBase : AEnemy
                         _animationToPlay = animationGenerics["Surprise"];
                         enemySounds.Play("Detect");
                     _blockAnimation = true;
+                    _agent.isStopped = true;
                 } // End of !_surprised
 
                 if (_animationToPlay != animationGenerics["Attack"] || _animationToPlay != animationGenerics["Surprise"])
@@ -163,10 +166,6 @@ public class EnemyBase : AEnemy
                         _agent.destination = _target.position;
                     } // End of if we are not already at the player location.
                 } // End of if animation doesn't block movement
-                else
-                {
-                    _agent.isStopped = true;
-                } // End of if animation does block movement
 
                 knownLocation = _target.transform.position;
                 break; // End of Pursuing case
