@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c2d62f2d28d1c47900ad8414c4e204, type: 3}
+  m_Name: ZombleSounds
+  m_EditorClassIdentifier: 
+  objectSounds:
+  - name: BrainShow
+    clip: {fileID: 8300000, guid: 6af1f5e2caa2b46eb8126d26ff514ffb, type: 3}
+    volume: 0.75
+    pitch: 3
+    defaultVolume: 0.738
+    volumeScale: 0.729
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: BrainHide
+    clip: {fileID: 8300000, guid: 49a5b59cdcb7f4b9fbc71b9ee914ad20, type: 3}
+    volume: 0.636
+    pitch: 1
+    defaultVolume: 0.636
+    volumeScale: 0.636
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
