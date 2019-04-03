@@ -1,6 +1,14 @@
 # brains
+Unity Version: 2018.2.8f1
 
-Project brains from the gadsu organizations projects is a student worked project.
+Student Project from Dakota State Universities project courses.
+For access to the current build just go to the master branch and then into the CurrentBuild folder.
 
-Brains is using Unity as the chosen game engine therefore the .gitignore file for unity is used.
-As a larger project we are using git LFS(large file system) and tracking media files that unity can use.
+Team members:
+Julian Buettgenback
+Sam Beinlich
+Detrian Hallem
+Shane Beranek
+Quinton Halliday
+Tristen Brinkman
+Luke Reiner
