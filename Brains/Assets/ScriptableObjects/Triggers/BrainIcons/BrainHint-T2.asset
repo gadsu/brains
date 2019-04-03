@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   words: 'Brought to You by Zomb Inc:
 
-    Utilize Crawling (SHIFT) to get through those hard to reach spaces'
+    Utilize Crawling (SHIFT) to move faster and get through those hard to reach spaces'
   eventSounds: {fileID: 11400000, guid: 05d82a724cbd6fb4f99aa9a113d3bdec, type: 2}

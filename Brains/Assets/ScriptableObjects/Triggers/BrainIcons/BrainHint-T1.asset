@@ -11,7 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4666afc7a39a8554eacb731acbaeaa0b, type: 3}
   m_Name: BrainHint-T1
   m_EditorClassIdentifier: 
-  words: 'Brought to You by Zomb Inc:
-
-    Green Light marks your objective, while Red light means Danger'
+  words: "Brought to You by Zomb Inc:\n\rYour groan meter on the bottom will fill
+    up over time. \nWatch it closely when near enemies."
   eventSounds: {fileID: 11400000, guid: 05d82a724cbd6fb4f99aa9a113d3bdec, type: 2}
