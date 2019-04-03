@@ -7,17 +7,10 @@ For access to the current build just go to the master branch and then into the C
 
 
 Team members:
-
 Julian Buettgenback
-
 Sam Beinlich
-
 Detrian Hallem
-
 Shane Beranek
-
 Quinton Halliday
-
 Tristen Brinkman
-
 Luke Reiner
