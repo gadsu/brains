@@ -14,6 +14,7 @@ public class PersistentStateController : MonoBehaviour {
     public ObjectSounds musicSounds;
     private List<GameObject> detectedList;
     private bool detectedOnce;
+    public FloatVariable maxVolume;
 
     // Use this for initialization
     void Awake() {
@@ -24,22 +25,18 @@ public class PersistentStateController : MonoBehaviour {
         detectedList = new List<GameObject>();
         if (SceneManager.GetActiveScene().name == "Menu")
         {
-            musicSounds.Play("Menu");
+            musicSounds.Play("Menu", maxVolume.GetFloat());
         }
     }
 	
-
 
 	// GameStateController hook that plays intro cutscene / sounds if needed.
 	public void Restart() {
         musicSounds.SetVolume("Menu", 0f);
         detectedList = new List<GameObject>();
-        musicSounds.Play("Gameplay");
-        musicSounds.Play("Cool");
-        musicSounds.Play("Danger");
-        musicSounds.SetVolume("Gameplay", 0.25f);
-        musicSounds.SetVolume("Danger", 0f);
-        musicSounds.SetVolume("Cool", 0f);
+        musicSounds.Play("Gameplay", .25f * maxVolume.GetFloat());
+        musicSounds.Play("Cool", 0f);
+        musicSounds.Play("Danger", 0f);
         detectedOnce = false;
 
         if (activeLevel != SceneManager.GetActiveScene().name)
@@ -128,7 +125,7 @@ public class PersistentStateController : MonoBehaviour {
     {
         if (detectedList.Capacity > 0)
         {
-            musicSounds.SetVolume("Danger", 0.75f);
+            musicSounds.SetVolume("Danger", 0.75f * maxVolume.GetFloat());
             musicSounds.SetVolume("Cool", 0f);
         }
         else
@@ -136,7 +133,7 @@ public class PersistentStateController : MonoBehaviour {
             musicSounds.SetVolume("Danger", 0f);
             if (detectedOnce)
             {
-                musicSounds.SetVolume("Cool", 0.5f);
+                musicSounds.SetVolume("Cool", 0.5f * maxVolume.GetFloat());
             }
         }
     }
@@ -152,7 +149,7 @@ public class PersistentStateController : MonoBehaviour {
             }
             else
             {
-                musicSounds.SetVolume("Gameplay", 0.25f);
+                musicSounds.SetVolume("Gameplay", 0.25f * maxVolume.GetFloat());
             }
         }
     }
