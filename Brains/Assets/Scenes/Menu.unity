@@ -252,9 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2075f4de3894204dbccfbd36d6c44df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: {fileID: 11400000, guid: aec789526d971b4438da92c2f059b4c8, type: 2}
+  value: {fileID: 11400000, guid: aec789526d971b4438da92c2f059b4c8, type: 2}
   mainSlider: {fileID: 9845677}
-  psc: {fileID: 0}
+  psc: {fileID: 1563402908}
 --- !u!1 &40886246
 GameObject:
   m_ObjectHideFlags: 0
@@ -15334,6 +15334,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1558776766}
   m_CullTransparentMesh: 0
+--- !u!114 &1563402908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114552962586753156, guid: a1485823a82a842e69d0a60111ef11eb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1861960846}
+  m_Script: {fileID: 11500000, guid: 7e531655464e94d9795d2fa57a111053, type: 3}
 --- !u!1 &1577082004
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,6 +63,8 @@ public class CameraOperator : MonoBehaviour
 
 	public Vector3 tempLookAtRayPoint = Vector3.zero;
 
+    public FloatVariable sensitivity;
+
 
 	//********************************************************************************************************
     private void Start()
@@ -103,6 +105,7 @@ public class CameraOperator : MonoBehaviour
             if (baseSens >= 2)
             {
                 baseSens--;
+                sensitivity.SetFloat(baseSens);
                 Debug.Log("Decreasing sens to " + baseSens);
             }
         }
@@ -111,6 +114,7 @@ public class CameraOperator : MonoBehaviour
             if (baseSens <= 15)
             {
                 baseSens++;
+                sensitivity.SetFloat(baseSens);
                 Debug.Log("Increasing sens to " + baseSens);
             }
         }
