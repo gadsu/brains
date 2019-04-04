@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     private GameStateHandler gstate;
-    public enum ButtonFunction { Pause, Resume, LoadScene, LoadScreen };
+    public enum ButtonFunction { Pause, Options, Resume, LoadScene, LoadScreen };
+    public GameObject options, pauseMenuContainer;
 
     private void Awake()
     {
@@ -57,5 +58,18 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Loading level");
         SceneManager.LoadScene("Scenes/"+level, LoadSceneMode.Single);
     }
+
+    public void Options()
+    {
+        options.SetActive(true);
+        pauseMenuContainer.SetActive(false);
+    }
+
+    public void BackFromOptions()
+    {
+        options.SetActive(false);
+        pauseMenuContainer.SetActive(true);
+    }
+
 
 }
