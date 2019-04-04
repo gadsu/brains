@@ -1,0 +1,45 @@
+Text lines
+Important hints presented by Zombinc:
+
+“Using the deadly art of playing dead to hide inside zombie piles to sneak around your foes.”
+“Remember: green is your friend, important objectives are that color. But red is dangerous, please avoid at all costs.”
+“Using the crawling mechanic is recommended to get into hard to reach places”
+
+Upon entering level:
+“There's the grave, although it looks like I’ll have to go around.”
+“Huh, that grave is pretty lit up that seems like the place to go.”
+“Who puts a fence around a cemetary? It’s not like the dead are just going come back alive.”
+
+Seeing Poster at barricade:
+“Whose this handsome devil? Oh wait, that me. Why am I on a poster?”
+“Huh, looks like I’m wanted...Well, there’s a first time for everything.”
+“Wait I’m wanted?!?!? But I haven’t done anything yet.”
+
+Seeing Tom after the porch/Upon seeing grave entrance: 
+“Looks like I’m gonna have to crawl in order to get to that grave.”
+“Why is the entrance of the cemetery boarded up? Good thing I can crawl.”
+“Uh oh… Tom’s here. Looks like I’m going sneak around.” 
+
+
+ 1st hint: about grave
+2nd hint: near the poster
+3rd hint: near entrance to graveyard saying to utilize craw
+
+Level 1: 
+
+Upon entering the level:
+“Since when does the ground light up important areas?.”
+“That grave was too small, I had to really curl up to fit.”
+
+When seeing the lit up light posts:
+“Looks like it wants me to follow these lights, but why...”
+“I know these lights are leading me somewhere, my trap senses are tingling though.”
+
+When seeing Tom’s bar:
+“Ah Tom’s Bar….. those were some good times I had there.”
+“ Oh it Tom’s Bar…..I wonder if he will sell me a drink.”
+“Hey its Tom’s Bar. I wonder if he has zombies still banned.”
+
+Upon seeing Zombink Tower:
+“‘Here at Zombink safety is our top priority’ heh yeah right.”
+“Oh so that's where these lights are taking me. I really hate this place.”
