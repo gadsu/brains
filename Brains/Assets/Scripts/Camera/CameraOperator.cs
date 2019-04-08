@@ -58,6 +58,8 @@ public class CameraOperator : MonoBehaviour
     private GameStateHandler _gstate;
     private Player m_player;
     private bool wasCrawling = false;
+    private bool wasFirstPerson = false;
+    private float _lastDist;
 
     public int shoulderState = 0;
 
@@ -82,6 +84,7 @@ public class CameraOperator : MonoBehaviour
         //_baseSensStart = baseSens; is unused
         _gstate = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
         m_player = positionTarget.GetComponent<Player>();
+        _trueZDistanceGoal = zDistanceStart;
 
         /*if (!positionTarget)
             positionTarget = GameObject.Find("GP_Spud");
@@ -141,15 +144,17 @@ public class CameraOperator : MonoBehaviour
         {
             if ( m_player.mustCrawl)
             {
+                wasFirstPerson = doFirstPerson;
                 wasCrawling = true;
                 doFirstPerson = true;
             }
             else
             {
-                if(wasCrawling)
+                if (wasCrawling)
                 {
-                    wasCrawling = false;
+                    //doFirstPerson = wasFirstPerson;
                     doFirstPerson = false;
+                    wasCrawling = false;
                 }
                 if(Input.GetButtonDown("FPerson"))
                 {
@@ -164,12 +169,10 @@ public class CameraOperator : MonoBehaviour
                     shoulderState = (Input.GetButtonDown("LShoulder")) ? -1 : (Input.GetButtonDown("RShoulder")) ? 1 : shoulderState;
                 else shoulderState = (Input.GetButtonDown("RShoulder")) ? 0 : (Input.GetButtonDown("LShoulder")) ? 0 : shoulderState;
             }
-            if(doFirstPerson)
+            if (doFirstPerson)
             {
                 shoulderState = 0;
-                zDistanceGoal = -0.5f;
             }
-            else { zDistanceGoal = zDistanceStart; }
 
 
 
@@ -190,7 +193,7 @@ public class CameraOperator : MonoBehaviour
             }
 
             // Set camera 3D position, with height offset.
-            _truePivotGoal.y = Mathf.Lerp(_pivotOffset.y, _pivotOffsetGoal.y, Time.deltaTime * 2);
+            _truePivotGoal.y = Mathf.Lerp(_pivotOffset.y, _pivotOffsetGoal.y, Time.deltaTime * 3.5f);
             //truePivotOffset.x = Mathf.Lerp(pivotOffset.x, pivotOffsetGoal.x, Time.deltaTime);
             //truePivotOffset.z = Mathf.Lerp(pivotOffset.z, pivotOffsetGoal.z, Time.deltaTime);
             transform.position = new Vector3(
@@ -256,7 +259,7 @@ public class CameraOperator : MonoBehaviour
 
 	//********************************************************************************************************
 	private void LateUpdate() {
-        Vector3 pos = cam.transform.position;
+        Vector3 pos = transform.position;
 
         if (!_doTrackObject)
         {
@@ -265,28 +268,29 @@ public class CameraOperator : MonoBehaviour
             //********** Z CAMERA OFFSET
             RaycastHit hit;
             Vector3 dir = Vector3.back;
-            _trueZDistanceGoal = zDistanceGoal;
+            
             _camPushRayLength = camPushRayStartLength;
             // Make sure the raycast isn't too long or short
             //Mathf.Clamp(camPushRayLength, 0.1f, camPushRayStartLength);
 
             // Check for intersection
-            if (Physics.Raycast(pos, transform.TransformDirection(dir), out hit, _camPushRayLength))
+            if (Physics.Raycast(pos, transform.TransformDirection(dir), out hit, zDistanceStart, ~(1<<LayerMask.NameToLayer("Player"))) && hit.distance > _zDistanceMin)
             {
                 Debug.DrawRay(pos, transform.TransformDirection(dir) * hit.distance, Color.yellow);
-
+               _trueZDistanceGoal = hit.distance;
             }
             else
             {
                 Debug.DrawRay(pos, transform.TransformDirection(dir) * _camPushRayLength, Color.green);
+                _trueZDistanceGoal = zDistanceStart;
             }
 
             // Limit z distance
             Mathf.Clamp(_trueZDistanceGoal, _zDistanceMin, _zDistanceMax);
 
             // Set z distance. DO THE THINGY
-            Vector3 derp = cam.transform.localPosition;
-            cam.transform.localPosition = new Vector3(derp.x, derp.y, _trueZDistanceGoal * zOrbitDistance);
+            //Vector3 derp = cam.transform.localPosition;
+            //cam.transform.localPosition = new Vector3(derp.x, derp.y, _trueZDistanceGoal * zOrbitDistance);
 
 
 
@@ -309,14 +313,20 @@ public class CameraOperator : MonoBehaviour
             if (doFirstPerson)
             {
                 camOffsetGoal.y = 0.25f;
+                camOffsetGoal.z = 0.5f;
+            }
+            else
+            {
+                camOffsetGoal.z = _trueZDistanceGoal * zOrbitDistance;
             }
 
             _trueCamGoal.y = Mathf.Lerp(_camOffset.y, camOffsetGoal.y, Time.deltaTime * 4);
             _trueCamGoal.x = Mathf.Lerp(_camOffset.x, camOffsetGoal.x, Time.deltaTime * 4);
+            _trueCamGoal.z = Mathf.Lerp(_camOffset.z, camOffsetGoal.z, Time.deltaTime * 8);
             cam.transform.localPosition = new Vector3(
                 _trueCamGoal.x,
                 _trueCamGoal.y,
-                cam.transform.localPosition.z
+                _trueCamGoal.z
             );
 
         }
