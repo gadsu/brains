@@ -15,14 +15,16 @@ public class AdjustSliderValue : MonoBehaviour
     {
         mainSlider.value = value.GetFloat();
         //commented out due to conflicts with volume slider. Also was breaking out during start-up.
-        /*switch (value.name)
+        switch (value.name)
         {
             case "Sensitivity":
-                break;
-            default:
                 GameObject.Find("CameraContainer").GetComponent<CameraOperator>().baseSens = value.GetFloat();
                 break;
-        }*/
+            case "Volume":
+                break;
+            default:                
+                break;
+        }
     }
 
     public void Start()

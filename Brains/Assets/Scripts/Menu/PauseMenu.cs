@@ -23,15 +23,10 @@ public class PauseMenu : MonoBehaviour
             else
             {
                 Cursor.visible = true;
-                Pause();
+                gstate.SetState(GameStateHandler.GameState.Paused);
             }
         }
 	}
-
-    public void Pause()
-    {
-        gstate.SetState(GameStateHandler.GameState.Paused);
-    }
 
     public void Resume()
     {
@@ -67,8 +62,8 @@ public class PauseMenu : MonoBehaviour
 
     public void BackFromOptions()
     {
-        options.SetActive(false);
         pauseMenuContainer.SetActive(true);
+        options.SetActive(false);
     }
 
 
