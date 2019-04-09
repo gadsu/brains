@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c2d62f2d28d1c47900ad8414c4e204, type: 3}
+  m_Name: TrainSounds
+  m_EditorClassIdentifier: 
+  objectSounds:
+  - name: Hit
+    clip: {fileID: 8300000, guid: 064176667cc4c427db8e05714c4d305b, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Detect
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 1
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Swipe
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Lost
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 1
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Touched
+    clip: {fileID: 8300000, guid: 064176667cc4c427db8e05714c4d305b, type: 3}
+    volume: 0
+    pitch: 1
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Victory
+    clip: {fileID: 8300000, guid: 3f8baad0b1b584081a5492bf3624d197, type: 3}
+    volume: 1
+    pitch: 1
+    defaultVolume: 1
+    volumeScale: 1
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: Windup
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 1
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}

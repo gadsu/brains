@@ -23,6 +23,6 @@ public class Sound
 
     public bool loop, oneShot; // allows the developer to set the whether or not the sound loops, or if it is a OneShot which can be consolidated if is necessary.
 
-    [HideInInspector] // Doesn't really do anything I think, don't remember why I have it.
-    public AudioSource source; 
+    [HideInInspector]
+    public AudioSource source;
 }

@@ -30,7 +30,7 @@ public class ObjectSounds : ScriptableObject
     }
 
     public void InitSounds(GameObject gameObject, AudioSource _aSource)
-    {// Allows the InitSounds to run and set audio to the passed source.
+    { // Allows the InitSounds to run and set audio to the passed source.
         for (int i = 0; i < objectSounds.Capacity; i++)
         {
             if (objectSounds[i].source == null)
@@ -146,26 +146,33 @@ public class ObjectSounds : ScriptableObject
         return (GetSound(name) != null) ? GetSound(name).pitch : 0f;
     }
 
-    public bool AddSoundToList(Sound pSound)
-    {
-        bool soundExists = false;
-        foreach (Sound s in objectSounds)
-        {
-            if (s.source.clip.name == pSound.source.clip.name)
-            {
-                s.name = pSound.name;
-                s.volume = pSound.volume;
-                s.volumeScale = pSound.volumeScale;
-                s.source.volume = s.volume * s.volumeScale;
-                Play(s);
-                soundExists = true;
-            }
-        }
-        if (!soundExists)
-        {
-            objectSounds.Add(pSound);
-        }
+    //public bool AddSoundToList(Sound pSound)
+    //{
+    //    bool soundExists = false;
+    //    foreach (Sound s in objectSounds)
+    //    {
+    //        if (s.source.clip.name == pSound.source.clip.name)
+    //        {
+    //            s.name = pSound.name;
+    //            s.volume = pSound.volume;
+    //            s.volumeScale = pSound.volumeScale;
+    //            s.source.volume = s.volume * s.volumeScale;
+    //            Play(s);
+    //            soundExists = true;
+    //        }
+    //    }
+    //    if (!soundExists)
+    //    {
+    //        objectSounds.Add(pSound);
+    //    }
 
-        return !soundExists;
+    //    return !soundExists;
+    //}
+
+    public void SetToDefaultVolume(string pName)
+    {
+        Sound l_sound = GetSound(pName);
+
+        l_sound.source.volume = l_sound.defaultVolume;
     }
 }
