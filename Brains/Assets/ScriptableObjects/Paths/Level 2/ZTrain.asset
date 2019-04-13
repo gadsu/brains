@@ -16,23 +16,26 @@ MonoBehaviour:
     location: {x: -125.00456, y: 25.569138, z: 139.31783}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 125.969536, y: 25.42186, z: 139.50293}
+    location: {x: 125.969536, y: 25.42186, z: 138.41977}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: -6.2674837, y: 32.765263, z: 265.47937}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -176.29816, y: 25.472828, z: 427.52618}
+    location: {x: -176.14842, y: 25.472828, z: 427.52618}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -176.60973, y: 25.500847, z: 553.8092}
+    location: {x: -178.61864, y: 25.500847, z: 620.0335}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 154.14851, y: 25.977123, z: 553.5071}
+    location: {x: 167.66423, y: 37.55471, z: 619.6008}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 154.19879, y: 25.608555, z: 431.00955}
+    location: {x: 166.14735, y: 37.360012, z: 442.82657}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -126.59221, y: 25.631046, z: 142.50351}
+    location: {x: 106.32359, y: 25.78537, z: 381.75745}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -126.5922, y: 25.63105, z: 142.5035}
     idleTime: 0
