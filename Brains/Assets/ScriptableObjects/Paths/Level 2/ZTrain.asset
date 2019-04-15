@@ -22,7 +22,7 @@ MonoBehaviour:
     location: {x: -6.2674837, y: 32.765263, z: 265.47937}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -176.14842, y: 25.472828, z: 427.52618}
+    location: {x: -179.65703, y: 25.472828, z: 427.52618}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: -178.61864, y: 25.500847, z: 620.0335}
@@ -31,10 +31,10 @@ MonoBehaviour:
     location: {x: 167.66423, y: 37.55471, z: 619.6008}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 166.14735, y: 37.360012, z: 442.82657}
+    location: {x: 167.71329, y: 37.360012, z: 442.82657}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 106.32359, y: 25.78537, z: 381.75745}
+    location: {x: 108.68727, y: 25.78537, z: 381.75745}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: -126.5922, y: 25.63105, z: 142.5035}
