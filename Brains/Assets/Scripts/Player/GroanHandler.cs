@@ -17,6 +17,8 @@ public class GroanHandler : MonoBehaviour {
     [HideInInspector]
     public bool groaning;
 
+    public bool pizza = false;
+
     private void Awake()
     {
         /* Initializing 'simple' data variables. */
@@ -48,10 +50,14 @@ public class GroanHandler : MonoBehaviour {
     public bool UpdateGroanAmount()
     {
         /* Updates the current amount both data-wise and visual-wise. */
-        _currentAmount += (_groanSpeed * Time.deltaTime);
+        _currentAmount += (
+            _groanSpeed * Time.deltaTime);
+
         _groanTransformScale.x = _currentAmount;
         groanMeter.transform.localScale = _groanTransformScale;
-        _colorControl.color = new Color(_colorControl.color.r, _colorControl.color.g, _colorControl.color.b,_groanTransformScale.x);
+
+        _colorControl.color = new Color(
+            _colorControl.color.r, _colorControl.color.g, _colorControl.color.b,_groanTransformScale.x);
         /**************************************************************/
 
         return (_currentAmount > 1f) ? true : false; // tells us that it is time to groan.. or not.
@@ -61,7 +67,12 @@ public class GroanHandler : MonoBehaviour {
     {
         /* Sets the states for groaning. */
         _currentAmount = 0f;
-        GetComponent<Player>().spudSounds.Play("Groan");
+        if (!pizza)
+            GetComponent<Player>().spudSounds.
+                Play("Groan", (UnityEngine.Random.Range(0f, .3f) + .7f), (UnityEngine.Random.Range(0f, .3f) + .7f));
+        else
+            Debug.Log("Waiting for pizza groan!");
+
         groaning = true;
         /*********************************/
 
@@ -78,8 +89,16 @@ public class GroanHandler : MonoBehaviour {
         /******************************************/
 
         /* Iterates across the length of the groan. */
-        yield return new WaitForSeconds(GetComponent<Player>().spudSounds.GetSound("Groan").clip.length);
+        if (pizza)
+        {
+            yield return new WaitForSeconds(GetComponent<Player>().spudSounds.GetSound("Groan").clip.length);
+            Debug.Log("Waiting for pizza.");
+        }
+        else
+            yield return new WaitForSeconds(
+                GetComponent<Player>().spudSounds.GetSound("Groan").clip.length);
 
         groaning = false; // closes out the groan state by ending the groaning.
     }
 }
+//(UnityEngine.Random.Range(0f, 3f) * 10f + 70f) / 100f

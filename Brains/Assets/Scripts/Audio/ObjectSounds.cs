@@ -99,10 +99,14 @@ public class ObjectSounds : ScriptableObject
     public void Play(string name, float p_volume, float pitch)
     {// Directly modifies the sound based assuming its already running.
         Sound l_sound = GetSound(name);
-        l_sound.volume = p_volume;
-        l_sound.pitch = pitch;
-        l_sound.source.volume = p_volume;
-        l_sound.source.pitch = pitch;
+        if (l_sound != null)
+        {
+            l_sound.volume = p_volume;
+            l_sound.pitch = pitch;
+            l_sound.source.volume = p_volume;
+            l_sound.source.pitch = pitch;
+            Play(l_sound);
+        }
     }
 
     /////////////////////////////////////////////////////// MISTAH PAUL
