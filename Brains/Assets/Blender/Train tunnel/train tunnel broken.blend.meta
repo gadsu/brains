@@ -20,6 +20,8 @@ ModelImporter:
     100028: Cylinder_008
     100030: Cylinder_009
     100032: Cylinder_010
+    100034: Cube
+    100036: block
     400000: //RootNode
     400002: Circle
     400004: Cylinder
@@ -37,6 +39,8 @@ ModelImporter:
     400028: Cylinder_008
     400030: Cylinder_009
     400032: Cylinder_010
+    400034: Cube
+    400036: block
     2100000: None__lamppost
     2300000: //RootNode
     2300002: Circle
@@ -54,6 +58,8 @@ ModelImporter:
     2300026: Cylinder_008
     2300028: Cylinder_009
     2300030: Cylinder_010
+    2300032: Cube
+    2300034: block
     3300000: //RootNode
     3300002: Circle
     3300004: Cylinder
@@ -70,6 +76,8 @@ ModelImporter:
     3300026: Cylinder_008
     3300028: Cylinder_009
     3300030: Cylinder_010
+    3300032: Cube
+    3300034: block
     4300000: Cylinder
     4300002: Cylinder_006
     4300004: Cylinder
@@ -86,6 +94,8 @@ ModelImporter:
     4300026: Cylinder_008
     4300028: Cylinder_009
     4300030: Cylinder_010
+    4300032: Cube
+    4300034: block
     7400000: Default Take
     9500000: //RootNode
     2186277476908879412: ImportLogs
