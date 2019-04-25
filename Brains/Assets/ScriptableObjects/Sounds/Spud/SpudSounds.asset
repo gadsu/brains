@@ -64,5 +64,5 @@ MonoBehaviour:
     defaultVolume: 1
     volumeScale: 1
     loop: 0
-    oneShot: 0
+    oneShot: 1
     source: {fileID: 0}

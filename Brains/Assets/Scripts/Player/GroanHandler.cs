@@ -68,10 +68,13 @@ public class GroanHandler : MonoBehaviour {
         /* Sets the states for groaning. */
         _currentAmount = 0f;
         if (!pizza)
-            GetComponent<Player>().spudSounds.
-                Play("Groan", (UnityEngine.Random.Range(0f, .3f) + .7f), (UnityEngine.Random.Range(0f, .3f) + .7f));
+            GetComponent<Player>().spudSounds.Play("Groan",
+                UnityEngine.Random.Range(0f, .15f) + .85f,
+                UnityEngine.Random.Range(0f, .15f) + .85f);
         else
-            Debug.Log("Waiting for pizza groan!");
+            GetComponent<Player>().spudSounds.Play("Pizza",
+                UnityEngine.Random.Range(0f, .15f) + .85f,
+                UnityEngine.Random.Range(0f, .15f) + .85f);
 
         groaning = true;
         /*********************************/
@@ -82,7 +85,6 @@ public class GroanHandler : MonoBehaviour {
     private IEnumerator Groaning()
     {
         /* Sets initial information for groaning. */
-        /*int x = 0;*/ // acts as the length of the groan.
         groanLocation = transform.position;
         groanLocation.y += 1.5f; // sets the groan location to approximately spuds throat.
 
@@ -91,8 +93,7 @@ public class GroanHandler : MonoBehaviour {
         /* Iterates across the length of the groan. */
         if (pizza)
         {
-            yield return new WaitForSeconds(GetComponent<Player>().spudSounds.GetSound("Groan").clip.length);
-            Debug.Log("Waiting for pizza.");
+            yield return new WaitForSeconds(GetComponent<Player>().spudSounds.GetSound("Pizza").clip.length);
         }
         else
             yield return new WaitForSeconds(

@@ -3,6 +3,7 @@
 public class GroanSphereHandler : MonoBehaviour
 {
     private GroanHandler _groanInfo;
+    public float groanAmount;
 
     private void Awake()
     {
@@ -17,7 +18,7 @@ public class GroanSphereHandler : MonoBehaviour
                 other.GetComponent<DetectPlayer>().NotHearing();
             else
             {
-                other.GetComponent<DetectPlayer>().UpdatingDetectionAmountFromSound(15f);
+                other.GetComponent<DetectPlayer>().UpdatingDetectionAmountFromSound(groanAmount);
             }
         }            
     }

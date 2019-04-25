@@ -35,6 +35,21 @@ public class EnemyBase : AEnemy
     [HideInInspector]
     public bool registerAttack = false;
 
+    public static float bMkPursueAmount;
+    public static float bMkAwareAmount;
+
+    public float GetPursueAmount()
+    { return bMkPursueAmount; }
+
+    public void SetPursueAmount(float pValue)
+    { bMkPursueAmount = pValue; }
+
+    public float GetAwareAmount()
+    { return bMkAwareAmount; }
+
+    public void SetAwareAmount(float pValue)
+    { bMkAwareAmount = pValue; }
+
     private void Awake()
     {
         mPathing = GetComponent<PathTo>();
@@ -50,18 +65,15 @@ public class EnemyBase : AEnemy
         }
 
         enemySounds.InitSounds(gameObject);
-        // TODO DOES NOT WORK
         footSounds.InitSounds(gameObject, GetComponent<AudioSource>());
 
         knownLocation = null;
         GameObject attached = transform.FindChildByRecursion(boneToAttachHitbox).gameObject;
         if (attached)
         {
-            attached.AddComponent<BoxCollider>();
-            attached.GetComponent<BoxCollider>().size = attackHitboxSize;
+            attached.AddComponent<BoxCollider>().size = attackHitboxSize;
             attached.GetComponent<BoxCollider>().isTrigger = true;
-            attached.AddComponent<AttackHitting>();
-            attached.GetComponent<AttackHitting>().tah = GetComponent<EnemyBase>();
+            attached.AddComponent<AttackHitting>().tah = GetComponent<EnemyBase>();
             attackFX = transform.Find("Attack FX");
             // Quick patch for Mac misplaced attack fx.
             if (attackFX)
@@ -106,7 +118,7 @@ public class EnemyBase : AEnemy
             Enemy_Awareness = AwarenessLevel.Aware;
         } // End of _touched
 
-        if (mDetecting.detectionAmount > 70f)
+        if (mDetecting.detectionAmount > bMkPursueAmount)
         {
             Enemy_Detection = DetectionLevel.Pursuing;
         }
@@ -114,7 +126,7 @@ public class EnemyBase : AEnemy
         switch (Enemy_Awareness)
         {
             case AwarenessLevel.Aware:
-                if (mDetecting.detectionAmount > 30f && knownLocation == null && mDetecting.detectionAmount < 70f)
+                if (mDetecting.detectionAmount > bMkAwareAmount && knownLocation == null && mDetecting.detectionAmount < bMkPursueAmount)
                 {
                     knownLocation = Vector3.MoveTowards(transform.position, _target.transform.position, 3f);
                 } // End of Surprised check

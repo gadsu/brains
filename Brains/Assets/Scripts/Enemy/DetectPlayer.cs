@@ -6,7 +6,7 @@ using UnityEngine;
 public class DetectPlayer : MonoBehaviour
 {
     public Camera tempCamera;
-    //public GameObject eyes;
+
     Vector3 _targetPosition, _worldView;
     public Transform targetTransform;
 
@@ -15,16 +15,14 @@ public class DetectPlayer : MonoBehaviour
     Ray _ray;
     RaycastHit _out;
 
+    [HideInInspector]
     public bool inView, isVisible;
-    public GameObject textNotice;
-
-    [Range(1f, 5f)]
-    public float xtime;
-    public float playerSizeY;
 
     [HideInInspector]
     public float detectionAmount;
     private bool hearing = false;
+
+    public static float bMkSoundLocation;
 
     private void Start()
     {
@@ -102,7 +100,7 @@ public class DetectPlayer : MonoBehaviour
                     (1f / 2f) * p_player.GetComponent<StealthHandler>().Stealth_val;
             // End of isVisible
 
-            if (detectionAmount > 15f && hearing)
+            if (detectionAmount > bMkSoundLocation && hearing)
                 GetComponent<EnemyBase>().knownLocation = GameObject.Find("Spud").transform.position;
         } // End of 0 < detectionAmount < 100.0...1
 
