@@ -9,14 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
-  m_Name: ZTrain
+  m_Name: ZTrain 2
   m_EditorClassIdentifier: 
   pathPoints:
-  - beviourAtPoint: 2
-    location: {x: -123.201675, y: 25.093018, z: 139.31783}
-    idleTime: 0
-  - beviourAtPoint: 2
-    location: {x: 125.969536, y: 25.623474, z: 138.41977}
+  - beviourAtPoint: 0
+    location: {x: 125.969536, y: 24.94203, z: 138.64717}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: -6.2674837, y: 32.765263, z: 265.47937}
@@ -40,5 +37,17 @@ MonoBehaviour:
     location: {x: 106.075165, y: 25.676678, z: 381.0273}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -67.17994, y: 24.637314, z: 204.09232}
+    location: {x: 36.578312, y: 25.455582, z: 309.7846}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -70.71367, y: 25.649231, z: 200.37323}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -125.30979, y: 25.487675, z: 144.51488}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -123.271935, y: 25.614876, z: 140.36563}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -99.54873, y: 25.6, z: 139.52063}
     idleTime: 0
