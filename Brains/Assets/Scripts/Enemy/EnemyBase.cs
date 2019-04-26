@@ -35,20 +35,8 @@ public class EnemyBase : AEnemy
     [HideInInspector]
     public bool registerAttack = false;
 
-    public static float bMkPursueAmount;
-    public static float bMkAwareAmount;
-
-    public float GetPursueAmount()
-    { return bMkPursueAmount; }
-
-    public void SetPursueAmount(float pValue)
-    { bMkPursueAmount = pValue; }
-
-    public float GetAwareAmount()
-    { return bMkAwareAmount; }
-
-    public void SetAwareAmount(float pValue)
-    { bMkAwareAmount = pValue; }
+    public float bMkPursueAmount;
+    public float bMkAwareAmount;
 
     private void Awake()
     {
