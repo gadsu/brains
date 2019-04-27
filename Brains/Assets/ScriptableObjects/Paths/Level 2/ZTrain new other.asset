@@ -67,10 +67,10 @@ MonoBehaviour:
     location: {x: 169.44304, y: 37.5, z: 445.01636}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: 107.19555, y: 25.483322, z: 381.6664}
+    location: {x: 136.12488, y: 39.2462, z: 410.55627}
     idleTime: 0
   - beviourAtPoint: 2
-    location: {x: -70.02091, y: 25.469986, z: 201.12173}
+    location: {x: 109.50922, y: 25.756607, z: 384.7137}
     idleTime: 0
   - beviourAtPoint: 2
     location: {x: -118.2545, y: 25.619408, z: 150.9817}
