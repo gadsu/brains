@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: Sean in venice square
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 1
+    location: {x: 249.41368, y: 27.631516, z: 519.2049}
+    idleTime: 2
+  - beviourAtPoint: 1
+    location: {x: 260.07455, y: 27.6, z: 515.8984}
+    idleTime: 3
+  - beviourAtPoint: 1
+    location: {x: 265.64734, y: 27.6, z: 523.5356}
+    idleTime: 2
+  - beviourAtPoint: 1
+    location: {x: 255.36331, y: 27.6, z: 524.73834}
+    idleTime: 3

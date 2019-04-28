@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: Mac in park
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 2
+    location: {x: 159.27525, y: 19.048393, z: 474.66473}
+    idleTime: 5
+  - beviourAtPoint: 2
+    location: {x: 148.80945, y: 19, z: 482.64005}
+    idleTime: 5
+  - beviourAtPoint: 1
+    location: {x: 139.78464, y: 19, z: 480.94586}
+    idleTime: 4
+  - beviourAtPoint: 2
+    location: {x: 146.0135, y: 19, z: 471.95413}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 146, y: 19, z: 459.92484}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 152.01038, y: 19, z: 456.42465}
+    idleTime: 0

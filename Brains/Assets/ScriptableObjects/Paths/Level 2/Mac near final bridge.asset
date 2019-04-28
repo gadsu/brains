@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: Mac near final bridge
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 1
+    location: {x: 252.1755, y: 27.815556, z: 560.0634}
+    idleTime: 5
+  - beviourAtPoint: 2
+    location: {x: 253.9101, y: 27.8, z: 545.0697}
+    idleTime: 5
+  - beviourAtPoint: 1
+    location: {x: 255.46452, y: 27.8, z: 536.7466}
+    idleTime: 3
+  - beviourAtPoint: 2
+    location: {x: 262.69443, y: 27.8, z: 538.6862}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 267.40863, y: 27.8, z: 532.0597}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 258.7987, y: 27.8, z: 529.90137}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 253.7738, y: 27.8, z: 541.23114}
+    idleTime: 0

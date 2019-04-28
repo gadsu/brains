@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: Tom train station
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 2
+    location: {x: -158.6239, y: 26.08883, z: 463.69702}
+    idleTime: 3
+  - beviourAtPoint: 2
+    location: {x: -153.21613, y: 26, z: 451.94687}
+    idleTime: 0
+  - beviourAtPoint: 1
+    location: {x: -161.97908, y: 26, z: 452.91962}
+    idleTime: 2
+  - beviourAtPoint: 2
+    location: {x: -165.47113, y: 26, z: 462.83606}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: -159.7915, y: 26, z: 468.3396}
+    idleTime: 3
+  - beviourAtPoint: 2
+    location: {x: -154.40201, y: 26, z: 467.6985}
+    idleTime: 0

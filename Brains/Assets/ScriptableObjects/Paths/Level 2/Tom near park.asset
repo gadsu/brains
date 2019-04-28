@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: Tom near park
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 1
+    location: {x: 183.21307, y: 18.670866, z: 467.83554}
+    idleTime: 3
+  - beviourAtPoint: 2
+    location: {x: 191.6156, y: 18.6, z: 469.67725}
+    idleTime: 0
+  - beviourAtPoint: 1
+    location: {x: 194.33478, y: 18.6, z: 497.3709}
+    idleTime: 2
+  - beviourAtPoint: 1
+    location: {x: 193.16248, y: 18.6, z: 460.9608}
+    idleTime: 2
