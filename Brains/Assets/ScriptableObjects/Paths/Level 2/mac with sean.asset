@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: mac with sean
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 2
+    location: {x: 126.95141, y: 35.183212, z: 375.08832}
+    idleTime: 4
+  - beviourAtPoint: 2
+    location: {x: 131.76668, y: 35.58674, z: 371.94083}
+    idleTime: 5
+  - beviourAtPoint: 2
+    location: {x: 137.20139, y: 35, z: 365.1803}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 147.22757, y: 35, z: 373.55557}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 141.3771, y: 35, z: 379.50354}
+    idleTime: 2
+  - beviourAtPoint: 2
+    location: {x: 137.68344, y: 35, z: 372.93713}
+    idleTime: 0

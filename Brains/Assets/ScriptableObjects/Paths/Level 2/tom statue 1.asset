@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: tom statue 1
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 1
+    location: {x: -15.59713, y: 26, z: 236.29349}
+    idleTime: 2
+  - beviourAtPoint: 1
+    location: {x: -8.106058, y: 26, z: 238.8032}
+    idleTime: 2
+  - beviourAtPoint: 1
+    location: {x: -15.0985985, y: 26, z: 244.01524}
+    idleTime: 2

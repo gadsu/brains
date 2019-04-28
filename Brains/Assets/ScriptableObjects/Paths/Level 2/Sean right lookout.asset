@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9278c649a795643a5401f0f2d4da68, type: 3}
+  m_Name: Sean right lookout
+  m_EditorClassIdentifier: 
+  pathPoints:
+  - beviourAtPoint: 1
+    location: {x: 140.1437, y: 29.963352, z: 338.61618}
+    idleTime: 2
+  - beviourAtPoint: 1
+    location: {x: 141.88034, y: 29.955154, z: 337.30713}
+    idleTime: 3
+  - beviourAtPoint: 1
+    location: {x: 144.78972, y: 29.936705, z: 340.14484}
+    idleTime: 3
+  - beviourAtPoint: 2
+    location: {x: 141.09636, y: 29.982452, z: 344.14813}
+    idleTime: 0
+  - beviourAtPoint: 2
+    location: {x: 147.59601, y: 28.344093, z: 350.35934}
+    idleTime: 0
+  - beviourAtPoint: 1
+    location: {x: 150.46802, y: 28.3, z: 346.73248}
+    idleTime: 4
