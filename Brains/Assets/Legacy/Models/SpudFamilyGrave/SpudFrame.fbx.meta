@@ -1,0 +1,142 @@
+fileFormatVersion: 2
+guid: 4ca011a932360874998eeb7b2ca6775d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Engraving_LOD1
+    100004: LOD_1
+    100006: //RootNode
+    100008: Engraving_LOD0
+    100010: Engraving_LOD2
+    100012: Engraving_LOD3
+    100014: Engraving_LOD4
+    100016: LOD_0
+    100018: LOD_2
+    100020: LOD_3
+    100022: LOD_4
+    400000: //RootNode
+    400002: Engraving_LOD1
+    400004: LOD_1
+    400006: //RootNode
+    400008: Engraving_LOD0
+    400010: Engraving_LOD2
+    400012: Engraving_LOD3
+    400014: Engraving_LOD4
+    400016: LOD_0
+    400018: LOD_2
+    400020: LOD_3
+    400022: LOD_4
+    2100000: None__lamppost
+    2100002: Engraving
+    2300000: //RootNode
+    2300002: Engraving_LOD1
+    2300004: Engraving_LOD0
+    2300006: Engraving_LOD2
+    2300008: Engraving_LOD3
+    2300010: Engraving_LOD4
+    3300000: //RootNode
+    3300002: Engraving_LOD1
+    3300004: Engraving_LOD0
+    3300006: Engraving_LOD2
+    3300008: Engraving_LOD3
+    3300010: Engraving_LOD4
+    4300000: Cylinder
+    4300002: Engraving_LOD1
+    4300004: Engraving_LOD0
+    4300006: Engraving_LOD2
+    4300008: Engraving_LOD3
+    4300010: Engraving_LOD4
+    7400000: Default Take
+    9500000: //RootNode
+    20500000: //RootNode
+    2186277476908879412: ImportLogs
+    2186277476908879414: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.0625
+    - 0.03125
+    - 0.01
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
