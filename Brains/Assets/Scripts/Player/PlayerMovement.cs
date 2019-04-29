@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour {
 
     Vector3 _playerRotation;
     float _cameraY;
+    float crawlTime;
+    public bool crawlNerf;
 
     private void Awake()
     {
@@ -36,6 +38,7 @@ public class PlayerMovement : MonoBehaviour {
     public PlayerMovement SetSpeed(int p_mvState)
     {
         _moveSpeed = (float)(speedRate * (Math.Sin(p_mvState / (Math.Sqrt(p_mvState) + 1)))); // calculates the new speed according to the movement state.
+        
         return this;
     }
 
@@ -68,8 +71,20 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    public void Move(Rigidbody p_rbody)
+    public void Move(Rigidbody p_rbody, int p_mvState)
     {
+        // If crawling, speed gradually decreases.
+        if (crawlTime >= 0)
+        {
+            if (crawlNerf && p_mvState == 5)
+            {
+                crawlTime += Time.deltaTime / 15f;
+                _moveSpeed *= (1 / (1 + crawlTime));
+            }
+            else crawlTime += -Time.deltaTime / 5f;
+        }
+        else crawlTime = 0;
+
         Vector3 l_newCameraDirection = cameraTransform.forward; // assigns the camera forward direction.
         l_newCameraDirection.y = 0f; // zeros out the rotations y value to prevent walking into the air.
 		

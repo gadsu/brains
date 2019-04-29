@@ -84,6 +84,7 @@ public class EnemyBase : AEnemy
 
     private void Update()
     {
+        if (Vector3.Distance(_target.position, transform.position) > 100) return;
         if (mDetecting.IsInView(_target.position))
         {
             mDetecting.UpdateRayToPlayer(_target.position, _target.GetComponent<Player>().playDead);
@@ -138,28 +139,29 @@ public class EnemyBase : AEnemy
                 GameObject.Find("PersistentStateController")
                     .GetComponent<PersistentStateController>().AddEnemyToList(gameObject);
 
-                transform.LookAt(_target, Vector3.up);
+                if(!_agent.isStopped){ transform.LookAt(_target, Vector3.up); }
                 _interrupted = true;
 
                 if (Mathf.Abs(Vector3.Distance(transform.position, _target.position)) < rangeToAttack)
                 {
-                    _animationToPlay = animationGenerics["Attack"];
                     _blockAnimation = true;
-                    _agent.isStopped = true;
-                    _agent.velocity = Vector3.zero;
+                    _animationToPlay = animationGenerics["Attack"];
+                    //_agent.isStopped = true;
+                    //_agent.velocity = Vector3.zero;
                 } // End of Attack check
 
                 if (!_surpised)
                 {
-                        _surpised = true;
-                        _animationToPlay = animationGenerics["Surprise"];
-                        enemySounds.Play("Detect");
+                    _surpised = true;
                     _blockAnimation = true;
+                    _animationToPlay = animationGenerics["Surprise"];
+                    enemySounds.Play("Detect");
                     _agent.isStopped = true;
                 } // End of !_surprised
 
                 if (_animationToPlay != animationGenerics["Attack"] || _animationToPlay != animationGenerics["Surprise"])
                 {
+                    //_blockAnimation = false;
                     if (_agent.destination != _target.position)
                     {
                         _agent.SetDestination(_target.position);
@@ -192,7 +194,7 @@ public class EnemyBase : AEnemy
 
         if(Enemy_Detection != DetectionLevel.Pursuing)
         {
-            transform.LookAt(transform, transform.forward);
+            if(!_agent.isStopped) { transform.LookAt(transform, transform.forward); }
             if (knownLocation != null)
             {
                 if (knownLocation != _agent.destination)
@@ -215,7 +217,6 @@ public class EnemyBase : AEnemy
         } // End of !DetectionLevel.Pursuing
 
         throttle++;
-
         if (throttle > 100)
         {
             footSounds.SetVolume((_agent.velocity.magnitude / 3) + 0.5f);
@@ -236,6 +237,7 @@ public class EnemyBase : AEnemy
 
     private void LateUpdate()
     {
+        if (Vector3.Distance(_target.position, transform.position) > 100) return;
         /*** Animation information ***/
         _animHandler.
             SetAnimation(_animationToPlay, _blockAnimation, (int)Enemy_Detection, _agent, moveSpeedStart);

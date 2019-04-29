@@ -16,6 +16,7 @@ public class GroanHandler : MonoBehaviour {
     public Vector3 groanLocation;
     [HideInInspector]
     public bool groaning;
+    public float crawlPenalty = 1f;
 
     public bool pizza = false;
 
@@ -45,6 +46,12 @@ public class GroanHandler : MonoBehaviour {
             _groanSpeed = 0f;
 
         _groanSpeed *= .5f;
+
+        if (mvState == 5)
+        {
+            // @paul: Wanted to tweak the crawling rate, not sure where in the formula to tweak it.
+            _groanSpeed *= crawlPenalty;
+        }
     }
 
     public bool UpdateGroanAmount()

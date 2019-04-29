@@ -200,7 +200,7 @@ public class Player : ACharacter
                 if (transform.position.y < -10 || transform.position.y > 150)
                     transform.position = _spawn;
 
-                _scriptPMove.Move(_rbody);
+                _scriptPMove.Move(_rbody, (int)MvState);
                 _scriptStealthHandler.UpdateStealthState(playDead, (int)MvState);
                 _scriptGroanHandler.SetGroanSpeed((int)MvState, playDead);
                 break; // End of InPlay case
