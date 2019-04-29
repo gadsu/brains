@@ -8,27 +8,52 @@ ModelImporter:
     100004: S_BuildingZomb2
     100006: S_BuildingZomb3
     100008: S_BuildingZomb4
+    100010: S_BuildingZomb0
+    100012: S_BuildingZomb5
+    100014: S_BuildingZomb6
+    100016: S_BuildingZomb7
+    100018: S_BuildingZomb8
     400000: //RootNode
     400002: S_BuildingZomb1
     400004: S_BuildingZomb2
     400006: S_BuildingZomb3
     400008: S_BuildingZomb4
+    400010: S_BuildingZomb0
+    400012: S_BuildingZomb5
+    400014: S_BuildingZomb6
+    400016: S_BuildingZomb7
+    400018: S_BuildingZomb8
     2100000: None__lamppost
     2300000: //RootNode
     2300002: S_BuildingZomb1
     2300004: S_BuildingZomb2
     2300006: S_BuildingZomb3
     2300008: S_BuildingZomb4
+    2300010: S_BuildingZomb0
+    2300012: S_BuildingZomb5
+    2300014: S_BuildingZomb6
+    2300016: S_BuildingZomb7
+    2300018: S_BuildingZomb8
     3300000: //RootNode
     3300002: S_BuildingZomb1
     3300004: S_BuildingZomb2
     3300006: S_BuildingZomb3
     3300008: S_BuildingZomb4
+    3300010: S_BuildingZomb0
+    3300012: S_BuildingZomb5
+    3300014: S_BuildingZomb6
+    3300016: S_BuildingZomb7
+    3300018: S_BuildingZomb8
     4300000: Cylinder
     4300002: S_BuildingZomb4
     4300004: S_BuildingZomb3
     4300006: S_BuildingZomb1
     4300008: S_BuildingZomb2
+    4300010: S_BuildingZomb5
+    4300012: S_BuildingZomb0
+    4300014: S_BuildingZomb7
+    4300016: S_BuildingZomb6
+    4300018: S_BuildingZomb8
     7400000: Default Take
     9500000: //RootNode
     2186277476908879412: ImportLogs
