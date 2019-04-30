@@ -10,6 +10,7 @@ public class AnimationHandler : MonoBehaviour
     Vector3 whyareunityvectorssostupid;
     Vector3 temp;
     GameObject spud;
+    public float lookDownValue = -1f;
 
     private void Awake()
     {
@@ -31,7 +32,7 @@ public class AnimationHandler : MonoBehaviour
             {
                 whyareunityvectorssostupid = new Vector3();
                 whyareunityvectorssostupid.x = temp.x;
-                whyareunityvectorssostupid.y = temp.y - 1f;
+                whyareunityvectorssostupid.y = temp.y - lookDownValue;
                 whyareunityvectorssostupid.z = temp.z;
                 transform.LookAt(whyareunityvectorssostupid, Vector3.up);
             }
