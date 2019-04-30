@@ -6,7 +6,7 @@ public class MakeHidden : MonoBehaviour
     {
         if (other.CompareTag("Player") && other.transform.name == "Spud")
         {
-            GetComponent<ParticleSystem>().Play();
+            if(GetComponent<ParticleSystem>()) { GetComponent<ParticleSystem>().Play(); }
             if (other.GetComponent<Player>().playDead == 1)
                 other.GetComponent<StealthHandler>().UpdateHiddenState(true);
             else

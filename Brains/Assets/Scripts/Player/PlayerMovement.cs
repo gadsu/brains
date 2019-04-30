@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour {
     float _cameraY;
     float crawlTime;
     public bool crawlNerf;
+    public float crawlSpeedRecover = 5f;
+    public float crawlSpeedDrain = 20f;
 
     private void Awake()
     {
@@ -78,10 +80,10 @@ public class PlayerMovement : MonoBehaviour {
         {
             if (crawlNerf && p_mvState == 5)
             {
-                crawlTime += Time.deltaTime / 15f;
+                crawlTime += Time.deltaTime / crawlSpeedDrain;
                 _moveSpeed *= (1 / (1 + crawlTime));
             }
-            else crawlTime += -Time.deltaTime / 5f;
+            else crawlTime += -Time.deltaTime / crawlSpeedRecover;
         }
         else crawlTime = 0;
 
