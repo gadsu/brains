@@ -17,10 +17,10 @@ MonoBehaviour:
     idleTime: 3
   - beviourAtPoint: 1
     location: {x: -69.20823, y: 0.42252994, z: -84.10449}
-    idleTime: 3
+    idleTime: 4
   - beviourAtPoint: 1
     location: {x: -70.43721, y: 0.5331812, z: -85.59925}
     idleTime: 4
   - beviourAtPoint: 1
     location: {x: -69.207405, y: 0.42542863, z: -84.01987}
-    idleTime: 1
+    idleTime: 2
