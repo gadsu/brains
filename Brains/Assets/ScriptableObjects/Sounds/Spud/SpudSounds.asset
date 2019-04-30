@@ -41,8 +41,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Groan
     clip: {fileID: 8300000, guid: 577dc5878730af7469edb50cca67799d, type: 3}
-    volume: 0.99726707
-    pitch: 0.95440525
+    volume: 0.96364737
+    pitch: 0.92286307
     defaultVolume: 1
     volumeScale: 1
     loop: 0
@@ -59,8 +59,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Pizza
     clip: {fileID: 8300000, guid: d190162d0fa2aab4e875ae38e06efec9, type: 3}
-    volume: 1
-    pitch: 1
+    volume: 0.96381366
+    pitch: 0.90119666
     defaultVolume: 1
     volumeScale: 1
     loop: 0
