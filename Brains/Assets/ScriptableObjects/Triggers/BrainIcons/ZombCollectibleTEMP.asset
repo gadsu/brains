@@ -13,7 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   words: 'CONGRATULATIONS
 
-    You found the hidden Zomble!
-
-    This will be more functional in the future'
+    You found the hidden Zomble!'
   eventSounds: {fileID: 11400000, guid: ca7ac13b61d0e445d84df54399777640, type: 2}
