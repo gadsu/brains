@@ -25,10 +25,10 @@ public class AnimationHandler : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(isBlocked)
+        if(isBlocked && transform.rotation.eulerAngles.x < 20 && transform.rotation.eulerAngles.x > -20)
         {
             temp = spud.transform.position;
-            if ((spud.GetComponent<Player>().MState == ACharacter.MovementState.Crawling || spud.GetComponent<Player>().playDead == 1) && transform.rotation.eulerAngles.x < 20 && transform.rotation.eulerAngles.x > -20)
+            if (spud.GetComponent<Player>().MState == ACharacter.MovementState.Crawling) //|| spud.GetComponent<Player>().playDead == 1))
             {
                 Debug.Log(transform.rotation.eulerAngles.x);
                 whyareunityvectorssostupid = new Vector3();
@@ -41,6 +41,7 @@ public class AnimationHandler : MonoBehaviour
             {
                 transform.LookAt(temp, Vector3.up);
             }
+
         }
     }
 

@@ -11,4 +11,121 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c2d62f2d28d1c47900ad8414c4e204, type: 3}
   m_Name: Loudspeaker
   m_EditorClassIdentifier: 
-  objectSounds: []
+  objectSounds:
+  - name: 1
+    clip: {fileID: 8300000, guid: 47a338151774140428bb29d6c9aa40c9, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: 2
+    clip: {fileID: 8300000, guid: 197ee3ea3286b0940b939da78856fab8, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: 3
+    clip: {fileID: 8300000, guid: e1552f10a2013ad43b24f09f91e271bd, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: 3
+    clip: {fileID: 8300000, guid: 924ada3180bc68b4a8292f2d77b26117, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: 4
+    clip: {fileID: 8300000, guid: 9e181e574d68dcf4da13f659b928df7d, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: 5
+    clip: {fileID: 8300000, guid: 63c3c2bd3caaf4646926f86212138761, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: edd868ba3f5b4d34cabf88b20a06ee98, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: e4bcabaa6058b6f41a5294eec2fc5415, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 12b31adcad81d3846a8c3c99e189cb41, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 84fd574b52ac3d740b5f66cb7297cfdc, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: c53a872645276e7439bc671bf4f48403, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: ASD
+    clip: {fileID: 8300000, guid: e4a4317a8c388534ea8b65b242b29788, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: c9374a6b37aa003428e5490f07ff3f07, type: 3}
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    loop: 0
+    oneShot: 1
+    source: {fileID: 0}
