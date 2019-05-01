@@ -28,8 +28,9 @@ public class AnimationHandler : MonoBehaviour
         if(isBlocked)
         {
             temp = spud.transform.position;
-            if (spud.GetComponent<Player>().MState == ACharacter.MovementState.Crawling || spud.GetComponent<Player>().playDead == 1)
+            if ((spud.GetComponent<Player>().MState == ACharacter.MovementState.Crawling || spud.GetComponent<Player>().playDead == 1) && transform.rotation.eulerAngles.x < 20 && transform.rotation.eulerAngles.x > -20)
             {
+                Debug.Log(transform.rotation.eulerAngles.x);
                 whyareunityvectorssostupid = new Vector3();
                 whyareunityvectorssostupid.x = temp.x;
                 whyareunityvectorssostupid.y = temp.y - lookDownValue;
