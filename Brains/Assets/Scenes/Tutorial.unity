@@ -9949,6 +9949,11 @@ Prefab:
       propertyPath: m_Radius
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 114340405576965032, guid: 081cb1ca92a5a824ba412361a5dc43ca,
+        type: 2}
+      propertyPath: crawlNerf
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 081cb1ca92a5a824ba412361a5dc43ca, type: 2}
   m_IsPrefabAsset: 0
@@ -27931,6 +27936,11 @@ Prefab:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23970171591247424, guid: 5f34e192fa4eb5f429f663ec73d75768,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fb1b4a6e4ba778f478f0a851bcf0de74, type: 2}
     m_RemovedComponents:
     - {fileID: 64417734402929924, guid: 5f34e192fa4eb5f429f663ec73d75768, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 5f34e192fa4eb5f429f663ec73d75768, type: 2}
