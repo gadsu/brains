@@ -231,7 +231,10 @@ public class EnemyBase : AEnemy
         {
             _lastTouchedTime = Time.time;
             _touched = true;
-            enemySounds.Play("Touched");
+            if(Enemy_Detection != DetectionLevel.Pursuing)
+            {
+                enemySounds.Play("Touched");
+            }
         }
     }
 

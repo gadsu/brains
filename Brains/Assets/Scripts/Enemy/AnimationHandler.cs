@@ -10,7 +10,7 @@ public class AnimationHandler : MonoBehaviour
     Vector3 whyareunityvectorssostupid;
     Vector3 temp;
     GameObject spud;
-    public float lookDownValue = -1f;
+    public float lookDownValue = 1f;
 
     private void Awake()
     {
