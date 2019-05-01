@@ -85,11 +85,10 @@ public class CameraOperator : MonoBehaviour
         _gstate = GameObject.Find("GameStateController").GetComponent<GameStateHandler>();
         m_player = positionTarget.GetComponent<Player>();
         _trueZDistanceGoal = zDistanceStart;
-
+        baseSens = sensitivity.GetFloat();
         /*if (!positionTarget)
             positionTarget = GameObject.Find("GP_Spud");
         }*/
-
     }
 
 

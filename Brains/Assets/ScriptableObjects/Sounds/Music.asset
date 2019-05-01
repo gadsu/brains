@@ -14,10 +14,10 @@ MonoBehaviour:
   objectSounds:
   - name: Gameplay
     clip: {fileID: 8300000, guid: 4fce4b7d621004df0bf60b7bc7890ad6, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
-    defaultVolume: 0.5
-    volumeScale: 0.5
+    defaultVolume: 1
+    volumeScale: 1
     loop: 1
     oneShot: 0
     source: {fileID: 0}
@@ -32,7 +32,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Cool
     clip: {fileID: 8300000, guid: faf7f26b5085f480096f7eb0e93ceed4, type: 3}
-    volume: 0.85
+    volume: 0
     pitch: 1
     defaultVolume: 0.85
     volumeScale: 0.85
@@ -41,7 +41,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Menu
     clip: {fileID: 8300000, guid: e34a542565491e24f9744fa820cbe389, type: 3}
-    volume: 0.75
+    volume: 1
     pitch: 1
     defaultVolume: 0.75
     volumeScale: 0.75

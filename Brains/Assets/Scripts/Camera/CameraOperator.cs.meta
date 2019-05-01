@@ -3,7 +3,11 @@ guid: c97f602766b4a0c45960a42867273fa5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - positionTarget: {instanceID: 0}
+  - lookTarget: {instanceID: 0}
+  - cam: {instanceID: 0}
+  - sensitivity: {fileID: 11400000, guid: 956dad753d143c64e8abc2c57a661fa7, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

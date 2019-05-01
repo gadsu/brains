@@ -51,7 +51,6 @@ public class GameStateHandler : MonoBehaviour
         gameOverTint.SetActive(false);
         gameWonTint.SetActive(false);
 
-
         psc = GameObject.Find("PersistentStateController").GetComponent<PersistentStateController>();
         psc.Restart();
     }
@@ -71,13 +70,10 @@ public class GameStateHandler : MonoBehaviour
                     groanMeter.SetActive(true);
                     Time.timeScale = 1f;
                     break;
-
-
-
+                    
                 case GameState.Won:
                     gameOver = true;
                     cameraContainer.GetComponent<CameraOperator>().doDisableControls = true;
-
                     bigText.Show(true);
                     bigText.Set(winLines[Random.Range(0, winLines.Length)], winColor);
                     gameWonTint.SetActive(true);
@@ -89,9 +85,7 @@ public class GameStateHandler : MonoBehaviour
                     Time.timeScale = .5f;
                     StartCoroutine("PlayingVictory");
                     break;
-
-
-
+                    
                 case GameState.Lost:
                     cameraContainer.GetComponent<CameraOperator>()._doTrackObject = true;
                     cameraContainer.GetComponent<CameraOperator>().lookTarget = killer;
@@ -110,9 +104,7 @@ public class GameStateHandler : MonoBehaviour
                     Time.timeScale = .5f;
                     StartCoroutine("PlayingLoss");
                     break;
-
-
-
+                    
                 case GameState.Paused:
                     cameraContainer.GetComponent<CameraOperator>().doDisableControls = true;
                     pauseMenuContainer.SetActive(true);
@@ -121,9 +113,7 @@ public class GameStateHandler : MonoBehaviour
                     groanMeter.SetActive(false);
                     Time.timeScale = 0f;
                     break;
-
-
-
+                    
                 default:
                     break;
             }

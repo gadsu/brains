@@ -34,10 +34,10 @@ public class PersistentStateController : MonoBehaviour {
 	public void Restart() {
         musicSounds.SetVolume("Menu", 0f);
         detectedList = new List<GameObject>();
-        musicSounds.Play("Gameplay", .25f * maxVolume.GetFloat());
         musicSounds.Play("Cool", 0f);
         musicSounds.Play("Danger", 0f);
         detectedOnce = false;
+        musicSounds.Play("Gameplay", musicSounds.GetSound("Gameplay").defaultVolume * maxVolume.GetFloat());
 
         if (activeLevel != SceneManager.GetActiveScene().name)
         {
@@ -149,7 +149,7 @@ public class PersistentStateController : MonoBehaviour {
             }
             else
             {
-                musicSounds.SetVolume("Gameplay", 0.25f * maxVolume.GetFloat());
+                musicSounds.SetVolume("Gameplay", musicSounds.GetSound("Gameplay").defaultVolume * maxVolume.GetFloat());
             }
         }
     }
